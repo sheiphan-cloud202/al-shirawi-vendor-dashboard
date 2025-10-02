@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vendor Analysis - Al Shirawi ORC POC</title>
+  <link rel="stylesheet" href="/ui/styles.css" />
+  <link rel="stylesheet" href="/ui/analysis.css" />
+  <script defer src="/ui/analysis.js"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'/>">
+  <meta name="color-scheme" content="light dark" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📊 Vendor Comparison & Analysis</h1>
+      <p class="subtitle">AI-powered vendor quote comparison and recommendations</p>
+      <nav class="nav">
+        <a href="/ui/">← Upload</a>
+        <a href="/ui/analysis.html" class="active">Analysis</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Loading State -->
+    <div id="loading" class="loading">Loading vendors...</div>
+
+    <!-- No Data State -->
+    <div id="no-data" class="no-data" style="display: none;">
+      <p>No vendor comparisons found. Please upload files and run the workflow first.</p>
+      <a href="/ui/" class="btn">Go to Upload</a>
+    </div>
+
+    <!-- Vendor Selection -->
+    <section id="vendor-section" class="card" style="display: none;">
+      <h2>Select Vendors to Compare</h2>
+      <div id="vendor-list" class="vendor-grid"></div>
+      <button id="analyze-btn" class="btn btn-primary" disabled>Analyze Selected Vendors</button>
+    </section>
+
+    <!-- Individual Vendor Details -->
+    <section id="details-section" style="display: none;">
+      <h2>Vendor Details</h2>
+      <div id="vendor-details" class="vendor-details-grid"></div>
+    </section>
+
+    <!-- AI Recommendations -->
+    <section id="recommendations-section" class="card" style="display: none;">
+      <h2>🤖 AI Recommendations</h2>
+      <div id="ai-loading" class="loading" style="display: none;">Analyzing with AI...</div>
+      <div id="ai-results"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <small>Powered by AWS Bedrock (Claude 3.5 Sonnet) • API: /api/vendors, /api/analyze</small>
+    </div>
+  </footer>
+</body>
+</html>
+

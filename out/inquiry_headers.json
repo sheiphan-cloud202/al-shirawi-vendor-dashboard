@@ -1,0 +1,20 @@
+[
+  {
+    "sheet": "FINAL",
+    "header_row_index": 8,
+    "raw_columns": [
+      "Sr. No",
+      "Description",
+      "TOTAL Qty in Length / Nos",
+      "UOM",
+      "REMARKS"
+    ],
+    "normalized_columns": [
+      "sr._no",
+      "description",
+      "total_qty_in_length_nos",
+      "uom",
+      "remarks"
+    ]
+  }
+]

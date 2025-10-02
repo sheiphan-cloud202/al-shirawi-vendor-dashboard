@@ -1,0 +1,5992 @@
+[
+  {
+    "page": 1,
+    "cells": [
+      {
+        "row": 1,
+        "col": 1,
+        "text": "Date"
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "text": "15/6/2023"
+      },
+      {
+        "row": 2,
+        "col": 1,
+        "text": "Quotation No."
+      },
+      {
+        "row": 2,
+        "col": 2,
+        "text": "RC/CMS/062023/142"
+      },
+      {
+        "row": 3,
+        "col": 1,
+        "text": "Project"
+      },
+      {
+        "row": 3,
+        "col": 2,
+        "text": "PT-295/4 INNOVATION HUB -PHASE 2"
+      },
+      {
+        "row": 4,
+        "col": 1,
+        "text": "Currency"
+      },
+      {
+        "row": 4,
+        "col": 2,
+        "text": "AED"
+      },
+      {
+        "row": 5,
+        "col": 1,
+        "text": "Pages"
+      },
+      {
+        "row": 5,
+        "col": 2,
+        "text": "1 of 1"
+      }
+    ]
+  },
+  {
+    "page": 1,
+    "cells": [
+      {
+        "row": 1,
+        "col": 1,
+        "text": "To"
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "text": ": M/S ASEMCO"
+      },
+      {
+        "row": 2,
+        "col": 1,
+        "text": "Address"
+      },
+      {
+        "row": 2,
+        "col": 2,
+        "text": ": DUABI; UAE"
+      },
+      {
+        "row": 3,
+        "col": 1,
+        "text": "Attention"
+      },
+      {
+        "row": 3,
+        "col": 2,
+        "text": ": Mr. Ankit Bajpayee"
+      },
+      {
+        "row": 4,
+        "col": 1,
+        "text": "Contact"
+      },
+      {
+        "row": 4,
+        "col": 2,
+        "text": ": 971 56 539 1872"
+      },
+      {
+        "row": 5,
+        "col": 1,
+        "text": "Email"
+      },
+      {
+        "row": 5,
+        "col": 2,
+        "text": ":"
+      }
+    ]
+  },
+  {
+    "page": 1,
+    "cells": [
+      {
+        "row": 1,
+        "col": 1,
+        "text": "Dear Sir,"
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "text": "We thank"
+      },
+      {
+        "row": 1,
+        "col": 3,
+        "text": "you for your inquiry and are pleased to submit our best price for"
+      },
+      {
+        "row": 1,
+        "col": 4,
+        "text": "the"
+      },
+      {
+        "row": 1,
+        "col": 5,
+        "text": "following items."
+      },
+      {
+        "row": 1,
+        "col": 6,
+        "text": ""
+      },
+      {
+        "row": 1,
+        "col": 7,
+        "text": ""
+      },
+      {
+        "row": 2,
+        "col": 1,
+        "text": "SL.NO"
+      },
+      {
+        "row": 2,
+        "col": 2,
+        "text": "BRAND"
+      },
+      {
+        "row": 2,
+        "col": 3,
+        "text": "DESCRIPTION"
+      },
+      {
+        "row": 2,
+        "col": 4,
+        "text": "UNIT"
+      },
+      {
+        "row": 2,
+        "col": 5,
+        "text": "QTY"
+      },
+      {
+        "row": 2,
+        "col": 6,
+        "text": "PRICE"
+      },
+      {
+        "row": 2,
+        "col": 7,
+        "text": "TOTAL PRICE"
+      },
+      {
+        "row": 3,
+        "col": 1,
+        "text": "1"
+      },
+      {
+        "row": 3,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 3,
+        "col": 3,
+        "text": "900 MM CABLE TRAY HDG, 2.0 MM THICKNESS - 3 METER LENGTH"
+      },
+      {
+        "row": 3,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 3,
+        "col": 5,
+        "text": "119.00"
+      },
+      {
+        "row": 3,
+        "col": 6,
+        "text": "271.92"
+      },
+      {
+        "row": 3,
+        "col": 7,
+        "text": "32,358.48"
+      },
+      {
+        "row": 4,
+        "col": 1,
+        "text": "2"
+      },
+      {
+        "row": 4,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 4,
+        "col": 3,
+        "text": "750 MM CABLE TRAY HDG, 2.0 MM THICKNESS- 3 METER LENGTH"
+      },
+      {
+        "row": 4,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 4,
+        "col": 5,
+        "text": "77.00"
+      },
+      {
+        "row": 4,
+        "col": 6,
+        "text": "232.32"
+      },
+      {
+        "row": 4,
+        "col": 7,
+        "text": "17,888.64"
+      },
+      {
+        "row": 5,
+        "col": 1,
+        "text": "3"
+      },
+      {
+        "row": 5,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 5,
+        "col": 3,
+        "text": "600 MM CABLE TRAY HDG, 2.0 MM THICKNESS 3 METER LENGTH"
+      },
+      {
+        "row": 5,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 5,
+        "col": 5,
+        "text": "111.00"
+      },
+      {
+        "row": 5,
+        "col": 6,
+        "text": "192.72"
+      },
+      {
+        "row": 5,
+        "col": 7,
+        "text": "21,391.92"
+      },
+      {
+        "row": 6,
+        "col": 1,
+        "text": "4"
+      },
+      {
+        "row": 6,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 6,
+        "col": 3,
+        "text": "450 MM CABLE TRAY HDG, 2.0 MM THICKNESS - 3 METER LENGTH"
+      },
+      {
+        "row": 6,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 6,
+        "col": 5,
+        "text": "271.00"
+      },
+      {
+        "row": 6,
+        "col": 6,
+        "text": "153.12"
+      },
+      {
+        "row": 6,
+        "col": 7,
+        "text": "41,495.52"
+      },
+      {
+        "row": 7,
+        "col": 1,
+        "text": "5"
+      },
+      {
+        "row": 7,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 7,
+        "col": 3,
+        "text": "300 MM CABLE TRAY HDG, 1.5 MM THICKNESS- 3 METER LENGTH"
+      },
+      {
+        "row": 7,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 7,
+        "col": 5,
+        "text": "786.00"
+      },
+      {
+        "row": 7,
+        "col": 6,
+        "text": "85.14"
+      },
+      {
+        "row": 7,
+        "col": 7,
+        "text": "66,920.04"
+      },
+      {
+        "row": 8,
+        "col": 1,
+        "text": "6"
+      },
+      {
+        "row": 8,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 8,
+        "col": 3,
+        "text": "225 MM CABLE TRAY HDG, 1.5 MM THICKNESS- 3 METER LENGTH"
+      },
+      {
+        "row": 8,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 8,
+        "col": 5,
+        "text": "560.00"
+      },
+      {
+        "row": 8,
+        "col": 6,
+        "text": "70.29"
+      },
+      {
+        "row": 8,
+        "col": 7,
+        "text": "39,362.40"
+      },
+      {
+        "row": 9,
+        "col": 1,
+        "text": "7"
+      },
+      {
+        "row": 9,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 9,
+        "col": 3,
+        "text": "200 MM CABLE TRAY HDG, 1.5 MM THICKNESS- 3 METER LENGTH"
+      },
+      {
+        "row": 9,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 9,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 9,
+        "col": 6,
+        "text": "65.34"
+      },
+      {
+        "row": 9,
+        "col": 7,
+        "text": "653.40"
+      },
+      {
+        "row": 10,
+        "col": 1,
+        "text": "8"
+      },
+      {
+        "row": 10,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 10,
+        "col": 3,
+        "text": "150 MM CABLE TRAY HDG, 1.5 MM THICKNESS- 3 METER LENGTH"
+      },
+      {
+        "row": 10,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 10,
+        "col": 5,
+        "text": "1000.00"
+      },
+      {
+        "row": 10,
+        "col": 6,
+        "text": "55.44"
+      },
+      {
+        "row": 10,
+        "col": 7,
+        "text": "55,440.00"
+      },
+      {
+        "row": 11,
+        "col": 1,
+        "text": "9"
+      },
+      {
+        "row": 11,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 11,
+        "col": 3,
+        "text": "100 MM CABLE TRAY HDG, 1.5 MM THICKNESS- 3 METER LENGTH"
+      },
+      {
+        "row": 11,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 11,
+        "col": 5,
+        "text": "900.00"
+      },
+      {
+        "row": 11,
+        "col": 6,
+        "text": "45.54"
+      },
+      {
+        "row": 11,
+        "col": 7,
+        "text": "40,986.00"
+      },
+      {
+        "row": 12,
+        "col": 1,
+        "text": "10"
+      },
+      {
+        "row": 12,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 12,
+        "col": 3,
+        "text": "900 MM CABLE TRAY COVER HDG,- 3 METER LENGTH- 1.5mm THICKNESS"
+      },
+      {
+        "row": 12,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 12,
+        "col": 5,
+        "text": "7.00"
+      },
+      {
+        "row": 12,
+        "col": 6,
+        "text": "184.14"
+      },
+      {
+        "row": 12,
+        "col": 7,
+        "text": "1,288.98"
+      },
+      {
+        "row": 13,
+        "col": 1,
+        "text": "11"
+      },
+      {
+        "row": 13,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 13,
+        "col": 3,
+        "text": "750 MM CABLE TRAY COVER HDG, - 3 METER LENGTH"
+      },
+      {
+        "row": 13,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 13,
+        "col": 5,
+        "text": "4.00"
+      },
+      {
+        "row": 13,
+        "col": 6,
+        "text": "174.24"
+      },
+      {
+        "row": 13,
+        "col": 7,
+        "text": "696.96"
+      },
+      {
+        "row": 14,
+        "col": 1,
+        "text": "12"
+      },
+      {
+        "row": 14,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 14,
+        "col": 3,
+        "text": "600 MM CABLE TRAY COVER HDG,- 3 METER LENGTH"
+      },
+      {
+        "row": 14,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 14,
+        "col": 5,
+        "text": "11.00"
+      },
+      {
+        "row": 14,
+        "col": 6,
+        "text": "124.74"
+      },
+      {
+        "row": 14,
+        "col": 7,
+        "text": "1,372.14"
+      },
+      {
+        "row": 15,
+        "col": 1,
+        "text": "13"
+      },
+      {
+        "row": 15,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 15,
+        "col": 3,
+        "text": "450 MM CABLE TRAY COVER HDG,- 3 METER LENGTH"
+      },
+      {
+        "row": 15,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 15,
+        "col": 5,
+        "text": "5.00"
+      },
+      {
+        "row": 15,
+        "col": 6,
+        "text": "95.04"
+      },
+      {
+        "row": 15,
+        "col": 7,
+        "text": "475.20"
+      },
+      {
+        "row": 16,
+        "col": 1,
+        "text": "14"
+      },
+      {
+        "row": 16,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 16,
+        "col": 3,
+        "text": "300 MM CABLE TRAY COVER HDG,- 3 METER LENGTH"
+      },
+      {
+        "row": 16,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 16,
+        "col": 5,
+        "text": "44.00"
+      },
+      {
+        "row": 16,
+        "col": 6,
+        "text": "52.27"
+      },
+      {
+        "row": 16,
+        "col": 7,
+        "text": "2,299.88"
+      },
+      {
+        "row": 17,
+        "col": 1,
+        "text": "15"
+      },
+      {
+        "row": 17,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 17,
+        "col": 3,
+        "text": "225 MM CABLE TRAY COVER HDG,- 3 METER LENGTH"
+      },
+      {
+        "row": 17,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 17,
+        "col": 5,
+        "text": "38.00"
+      },
+      {
+        "row": 17,
+        "col": 6,
+        "text": "40.39"
+      },
+      {
+        "row": 17,
+        "col": 7,
+        "text": "1,534.82"
+      },
+      {
+        "row": 18,
+        "col": 1,
+        "text": "16"
+      },
+      {
+        "row": 18,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 18,
+        "col": 3,
+        "text": "200 MM CABLE TRAY COVER HDG,- 3 METER LENGTH"
+      },
+      {
+        "row": 18,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 18,
+        "col": 5,
+        "text": "2.00"
+      },
+      {
+        "row": 18,
+        "col": 6,
+        "text": "36.43"
+      },
+      {
+        "row": 18,
+        "col": 7,
+        "text": "72.86"
+      },
+      {
+        "row": 19,
+        "col": 1,
+        "text": "17"
+      },
+      {
+        "row": 19,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 19,
+        "col": 3,
+        "text": "150 MM CABLE TRAY COVER HDG,- 3 METER LENGTH"
+      },
+      {
+        "row": 19,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 19,
+        "col": 5,
+        "text": "19.00"
+      },
+      {
+        "row": 19,
+        "col": 6,
+        "text": "28.51"
+      },
+      {
+        "row": 19,
+        "col": 7,
+        "text": "541.69"
+      },
+      {
+        "row": 20,
+        "col": 1,
+        "text": "18"
+      },
+      {
+        "row": 20,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 20,
+        "col": 3,
+        "text": "100 MM CABLE TRAY COVER HDG,- 3 METER LENGTH"
+      },
+      {
+        "row": 20,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 20,
+        "col": 5,
+        "text": "204.00"
+      },
+      {
+        "row": 20,
+        "col": 6,
+        "text": "20.59"
+      },
+      {
+        "row": 20,
+        "col": 7,
+        "text": "4,200.36"
+      },
+      {
+        "row": 21,
+        "col": 1,
+        "text": "19"
+      },
+      {
+        "row": 21,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 21,
+        "col": 3,
+        "text": "900 MM CABLE TRAY 90DEG BEND"
+      },
+      {
+        "row": 21,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 21,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 21,
+        "col": 6,
+        "text": "81.57"
+      },
+      {
+        "row": 21,
+        "col": 7,
+        "text": "815.70"
+      },
+      {
+        "row": 22,
+        "col": 1,
+        "text": "20"
+      },
+      {
+        "row": 22,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 22,
+        "col": 3,
+        "text": "750 MM CABLE TRAY 90DEG BEND"
+      },
+      {
+        "row": 22,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 22,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 22,
+        "col": 6,
+        "text": "69.69"
+      },
+      {
+        "row": 22,
+        "col": 7,
+        "text": "696.90"
+      },
+      {
+        "row": 23,
+        "col": 1,
+        "text": "21"
+      },
+      {
+        "row": 23,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 23,
+        "col": 3,
+        "text": "600 MM CABLE TRAY 90DEG BEND"
+      },
+      {
+        "row": 23,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 23,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 23,
+        "col": 6,
+        "text": "57.81"
+      },
+      {
+        "row": 23,
+        "col": 7,
+        "text": "578.10"
+      },
+      {
+        "row": 24,
+        "col": 1,
+        "text": "22"
+      },
+      {
+        "row": 24,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 24,
+        "col": 3,
+        "text": "450 MM CABLE TRAY 90DEG BEND"
+      },
+      {
+        "row": 24,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 24,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 24,
+        "col": 6,
+        "text": "45.93"
+      },
+      {
+        "row": 24,
+        "col": 7,
+        "text": "459.30"
+      },
+      {
+        "row": 25,
+        "col": 1,
+        "text": "23"
+      },
+      {
+        "row": 25,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 25,
+        "col": 3,
+        "text": "300 MM CABLE TRAY 90DEG BEND"
+      },
+      {
+        "row": 25,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 25,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 25,
+        "col": 6,
+        "text": "25.54"
+      },
+      {
+        "row": 25,
+        "col": 7,
+        "text": "255.40"
+      },
+      {
+        "row": 26,
+        "col": 1,
+        "text": "24"
+      },
+      {
+        "row": 26,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 26,
+        "col": 3,
+        "text": "225 MM CABLE TRAY 90DEG BEND"
+      },
+      {
+        "row": 26,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 26,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 26,
+        "col": 6,
+        "text": "21.08"
+      },
+      {
+        "row": 26,
+        "col": 7,
+        "text": "210.80"
+      },
+      {
+        "row": 27,
+        "col": 1,
+        "text": "25"
+      },
+      {
+        "row": 27,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 27,
+        "col": 3,
+        "text": "200 MM CABLE TRAY 90DEG BEND"
+      },
+      {
+        "row": 27,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 27,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 27,
+        "col": 6,
+        "text": "19.60"
+      },
+      {
+        "row": 27,
+        "col": 7,
+        "text": "196.00"
+      },
+      {
+        "row": 28,
+        "col": 1,
+        "text": "26"
+      },
+      {
+        "row": 28,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 28,
+        "col": 3,
+        "text": "150 MM CABLE TRAY 90DEG BEND"
+      },
+      {
+        "row": 28,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 28,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 28,
+        "col": 6,
+        "text": "16.63"
+      },
+      {
+        "row": 28,
+        "col": 7,
+        "text": "166.30"
+      },
+      {
+        "row": 29,
+        "col": 1,
+        "text": "27"
+      },
+      {
+        "row": 29,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 29,
+        "col": 3,
+        "text": "100 MM CABLE TRAY 90DEG BEND"
+      },
+      {
+        "row": 29,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 29,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 29,
+        "col": 6,
+        "text": "13.66"
+      },
+      {
+        "row": 29,
+        "col": 7,
+        "text": "136.60"
+      },
+      {
+        "row": 30,
+        "col": 1,
+        "text": "28"
+      },
+      {
+        "row": 30,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 30,
+        "col": 3,
+        "text": "900 MM CABLE TRAY 45DEG BEND"
+      },
+      {
+        "row": 30,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 30,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 30,
+        "col": 6,
+        "text": "81.57"
+      },
+      {
+        "row": 30,
+        "col": 7,
+        "text": "815.70"
+      },
+      {
+        "row": 31,
+        "col": 1,
+        "text": "29"
+      },
+      {
+        "row": 31,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 31,
+        "col": 3,
+        "text": "750 MM CABLE TRAY 45DEG BEND"
+      },
+      {
+        "row": 31,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 31,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 31,
+        "col": 6,
+        "text": "69.69"
+      },
+      {
+        "row": 31,
+        "col": 7,
+        "text": "696.90"
+      },
+      {
+        "row": 32,
+        "col": 1,
+        "text": "30"
+      },
+      {
+        "row": 32,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 32,
+        "col": 3,
+        "text": "600 MM CABLE TRAY 45DEG BEND"
+      },
+      {
+        "row": 32,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 32,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 32,
+        "col": 6,
+        "text": "57.81"
+      },
+      {
+        "row": 32,
+        "col": 7,
+        "text": "578.10"
+      },
+      {
+        "row": 33,
+        "col": 1,
+        "text": "31"
+      },
+      {
+        "row": 33,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 33,
+        "col": 3,
+        "text": "450 MM CABLE TRAY 45DEG BEND"
+      },
+      {
+        "row": 33,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 33,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 33,
+        "col": 6,
+        "text": "45.93"
+      },
+      {
+        "row": 33,
+        "col": 7,
+        "text": "459.30"
+      },
+      {
+        "row": 34,
+        "col": 1,
+        "text": "32"
+      },
+      {
+        "row": 34,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 34,
+        "col": 3,
+        "text": "300 MM CABLE TRAY 45DEG BEND"
+      },
+      {
+        "row": 34,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 34,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 34,
+        "col": 6,
+        "text": "25.54"
+      },
+      {
+        "row": 34,
+        "col": 7,
+        "text": "255.40"
+      },
+      {
+        "row": 35,
+        "col": 1,
+        "text": "33"
+      },
+      {
+        "row": 35,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 35,
+        "col": 3,
+        "text": "225 MM CABLE TRAY 45DEG BEND"
+      },
+      {
+        "row": 35,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 35,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 35,
+        "col": 6,
+        "text": "21.08"
+      },
+      {
+        "row": 35,
+        "col": 7,
+        "text": "210.80"
+      }
+    ]
+  },
+  {
+    "page": 2,
+    "cells": [
+      {
+        "row": 1,
+        "col": 1,
+        "text": "Date"
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "text": "15/6/2023"
+      },
+      {
+        "row": 2,
+        "col": 1,
+        "text": "Quotation No."
+      },
+      {
+        "row": 2,
+        "col": 2,
+        "text": ": RC/CMS/062023/142"
+      },
+      {
+        "row": 3,
+        "col": 1,
+        "text": "Project"
+      },
+      {
+        "row": 3,
+        "col": 2,
+        "text": "PT-295/4 INNOVATION HUB -PHASE 2"
+      },
+      {
+        "row": 4,
+        "col": 1,
+        "text": "Currency"
+      },
+      {
+        "row": 4,
+        "col": 2,
+        "text": "AED"
+      },
+      {
+        "row": 5,
+        "col": 1,
+        "text": "Pages"
+      },
+      {
+        "row": 5,
+        "col": 2,
+        "text": "1 of 1"
+      }
+    ]
+  },
+  {
+    "page": 2,
+    "cells": [
+      {
+        "row": 1,
+        "col": 1,
+        "text": "To"
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "text": ": M/S ASEMCO"
+      },
+      {
+        "row": 2,
+        "col": 1,
+        "text": "Address"
+      },
+      {
+        "row": 2,
+        "col": 2,
+        "text": ": DUABI; UAE"
+      },
+      {
+        "row": 3,
+        "col": 1,
+        "text": "Attention"
+      },
+      {
+        "row": 3,
+        "col": 2,
+        "text": ": Mr. Ankit Bajpayee"
+      },
+      {
+        "row": 4,
+        "col": 1,
+        "text": "Contact"
+      },
+      {
+        "row": 4,
+        "col": 2,
+        "text": ": 971 56 539 1872"
+      },
+      {
+        "row": 5,
+        "col": 1,
+        "text": "Email"
+      },
+      {
+        "row": 5,
+        "col": 2,
+        "text": ":"
+      }
+    ]
+  },
+  {
+    "page": 2,
+    "cells": [
+      {
+        "row": 1,
+        "col": 1,
+        "text": "Sir,"
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "text": ""
+      },
+      {
+        "row": 1,
+        "col": 3,
+        "text": "you for your inquiry are pleased to our price for"
+      },
+      {
+        "row": 1,
+        "col": 4,
+        "text": ""
+      },
+      {
+        "row": 1,
+        "col": 5,
+        "text": "following"
+      },
+      {
+        "row": 1,
+        "col": 6,
+        "text": ""
+      },
+      {
+        "row": 1,
+        "col": 7,
+        "text": ""
+      },
+      {
+        "row": 2,
+        "col": 1,
+        "text": "SL.NO"
+      },
+      {
+        "row": 2,
+        "col": 2,
+        "text": "BRAND"
+      },
+      {
+        "row": 2,
+        "col": 3,
+        "text": "DESCRIPTION"
+      },
+      {
+        "row": 2,
+        "col": 4,
+        "text": "UNIT"
+      },
+      {
+        "row": 2,
+        "col": 5,
+        "text": "QTY"
+      },
+      {
+        "row": 2,
+        "col": 6,
+        "text": "PRICE"
+      },
+      {
+        "row": 2,
+        "col": 7,
+        "text": "TOTAL PRICE"
+      },
+      {
+        "row": 3,
+        "col": 1,
+        "text": "34"
+      },
+      {
+        "row": 3,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 3,
+        "col": 3,
+        "text": "200 MM CABLE TRAY 45DEG BEND"
+      },
+      {
+        "row": 3,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 3,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 3,
+        "col": 6,
+        "text": "19.60"
+      },
+      {
+        "row": 3,
+        "col": 7,
+        "text": "196.00"
+      },
+      {
+        "row": 4,
+        "col": 1,
+        "text": "35"
+      },
+      {
+        "row": 4,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 4,
+        "col": 3,
+        "text": "150 MM CABLE TRAY 45DEG BEND"
+      },
+      {
+        "row": 4,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 4,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 4,
+        "col": 6,
+        "text": "16.63"
+      },
+      {
+        "row": 4,
+        "col": 7,
+        "text": "166.30"
+      },
+      {
+        "row": 5,
+        "col": 1,
+        "text": "36"
+      },
+      {
+        "row": 5,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 5,
+        "col": 3,
+        "text": "100 MM CABLE TRAY 45DEG BEND"
+      },
+      {
+        "row": 5,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 5,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 5,
+        "col": 6,
+        "text": "13.66"
+      },
+      {
+        "row": 5,
+        "col": 7,
+        "text": "136.60"
+      },
+      {
+        "row": 6,
+        "col": 1,
+        "text": "37"
+      },
+      {
+        "row": 6,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 6,
+        "col": 3,
+        "text": "900 MM CABLE TRAY EQUAL TEE"
+      },
+      {
+        "row": 6,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 6,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 6,
+        "col": 6,
+        "text": "108.76"
+      },
+      {
+        "row": 6,
+        "col": 7,
+        "text": "1,087.60"
+      },
+      {
+        "row": 7,
+        "col": 1,
+        "text": "38"
+      },
+      {
+        "row": 7,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 7,
+        "col": 3,
+        "text": "750 MM CABLE TRAY EQUAL TEE"
+      },
+      {
+        "row": 7,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 7,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 7,
+        "col": 6,
+        "text": "92.92"
+      },
+      {
+        "row": 7,
+        "col": 7,
+        "text": "929.20"
+      },
+      {
+        "row": 8,
+        "col": 1,
+        "text": "39"
+      },
+      {
+        "row": 8,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 8,
+        "col": 3,
+        "text": "600 MM CABLE TRAY EQUAL TEE"
+      },
+      {
+        "row": 8,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 8,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 8,
+        "col": 6,
+        "text": "77.08"
+      },
+      {
+        "row": 8,
+        "col": 7,
+        "text": "770.80"
+      },
+      {
+        "row": 9,
+        "col": 1,
+        "text": "40"
+      },
+      {
+        "row": 9,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 9,
+        "col": 3,
+        "text": "450 MM CABLE TRAY EQUAL TEE"
+      },
+      {
+        "row": 9,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 9,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 9,
+        "col": 6,
+        "text": "61.24"
+      },
+      {
+        "row": 9,
+        "col": 7,
+        "text": "612.40"
+      },
+      {
+        "row": 10,
+        "col": 1,
+        "text": "41"
+      },
+      {
+        "row": 10,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 10,
+        "col": 3,
+        "text": "300 MM CABLE TRAY EQUAL TEE"
+      },
+      {
+        "row": 10,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 10,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 10,
+        "col": 6,
+        "text": "34.05"
+      },
+      {
+        "row": 10,
+        "col": 7,
+        "text": "340.50"
+      },
+      {
+        "row": 11,
+        "col": 1,
+        "text": "42"
+      },
+      {
+        "row": 11,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 11,
+        "col": 3,
+        "text": "225 MM CABLE TRAY EQUAL TEE"
+      },
+      {
+        "row": 11,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 11,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 11,
+        "col": 6,
+        "text": "28.11"
+      },
+      {
+        "row": 11,
+        "col": 7,
+        "text": "281.10"
+      },
+      {
+        "row": 12,
+        "col": 1,
+        "text": "43"
+      },
+      {
+        "row": 12,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 12,
+        "col": 3,
+        "text": "200 MM CABLE TRAY EQUAL TEE"
+      },
+      {
+        "row": 12,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 12,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 12,
+        "col": 6,
+        "text": "26.13"
+      },
+      {
+        "row": 12,
+        "col": 7,
+        "text": "261.30"
+      },
+      {
+        "row": 13,
+        "col": 1,
+        "text": "44"
+      },
+      {
+        "row": 13,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 13,
+        "col": 3,
+        "text": "150 MM CABLE TRAY EQUAL TEE"
+      },
+      {
+        "row": 13,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 13,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 13,
+        "col": 6,
+        "text": "22.17"
+      },
+      {
+        "row": 13,
+        "col": 7,
+        "text": "221.70"
+      },
+      {
+        "row": 14,
+        "col": 1,
+        "text": "45"
+      },
+      {
+        "row": 14,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 14,
+        "col": 3,
+        "text": "100 MM CABLE TRAY EQUAL TEE"
+      },
+      {
+        "row": 14,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 14,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 14,
+        "col": 6,
+        "text": "18.21"
+      },
+      {
+        "row": 14,
+        "col": 7,
+        "text": "182.10"
+      },
+      {
+        "row": 15,
+        "col": 1,
+        "text": "46"
+      },
+      {
+        "row": 15,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 15,
+        "col": 3,
+        "text": "900X900X750 MM UNEQUAL TEE"
+      },
+      {
+        "row": 15,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 15,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 15,
+        "col": 6,
+        "text": "108.76"
+      },
+      {
+        "row": 15,
+        "col": 7,
+        "text": "2,175.20"
+      },
+      {
+        "row": 16,
+        "col": 1,
+        "text": "47"
+      },
+      {
+        "row": 16,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 16,
+        "col": 3,
+        "text": "750X750X600 MM UNEQUAL TEE"
+      },
+      {
+        "row": 16,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 16,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 16,
+        "col": 6,
+        "text": "92.92"
+      },
+      {
+        "row": 16,
+        "col": 7,
+        "text": "1,858.40"
+      },
+      {
+        "row": 17,
+        "col": 1,
+        "text": "48"
+      },
+      {
+        "row": 17,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 17,
+        "col": 3,
+        "text": "600X600X450 MM UNEQUAL TEE"
+      },
+      {
+        "row": 17,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 17,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 17,
+        "col": 6,
+        "text": "77.08"
+      },
+      {
+        "row": 17,
+        "col": 7,
+        "text": "1,541.60"
+      },
+      {
+        "row": 18,
+        "col": 1,
+        "text": "49"
+      },
+      {
+        "row": 18,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 18,
+        "col": 3,
+        "text": "450X450X300 MM UNEQUAL TEE"
+      },
+      {
+        "row": 18,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 18,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 18,
+        "col": 6,
+        "text": "61.24"
+      },
+      {
+        "row": 18,
+        "col": 7,
+        "text": "1,224.80"
+      },
+      {
+        "row": 19,
+        "col": 1,
+        "text": "50"
+      },
+      {
+        "row": 19,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 19,
+        "col": 3,
+        "text": "300X300X225 MM UNEQUAL TEE"
+      },
+      {
+        "row": 19,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 19,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 19,
+        "col": 6,
+        "text": "34.05"
+      },
+      {
+        "row": 19,
+        "col": 7,
+        "text": "681.00"
+      },
+      {
+        "row": 20,
+        "col": 1,
+        "text": "51"
+      },
+      {
+        "row": 20,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 20,
+        "col": 3,
+        "text": "225X225X150 MM UNEQUAL TEE"
+      },
+      {
+        "row": 20,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 20,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 20,
+        "col": 6,
+        "text": "28.11"
+      },
+      {
+        "row": 20,
+        "col": 7,
+        "text": "562.20"
+      },
+      {
+        "row": 21,
+        "col": 1,
+        "text": "52"
+      },
+      {
+        "row": 21,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 21,
+        "col": 3,
+        "text": "150X150X100 MM UNEQUAL TEE"
+      },
+      {
+        "row": 21,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 21,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 21,
+        "col": 6,
+        "text": "22.17"
+      },
+      {
+        "row": 21,
+        "col": 7,
+        "text": "443.40"
+      },
+      {
+        "row": 22,
+        "col": 1,
+        "text": "53"
+      },
+      {
+        "row": 22,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 22,
+        "col": 3,
+        "text": "900X750 MM STRAIGHT REDUCER"
+      },
+      {
+        "row": 22,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 22,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 22,
+        "col": 6,
+        "text": "81.57"
+      },
+      {
+        "row": 22,
+        "col": 7,
+        "text": "815.70"
+      },
+      {
+        "row": 23,
+        "col": 1,
+        "text": "54"
+      },
+      {
+        "row": 23,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 23,
+        "col": 3,
+        "text": "750X600 MM STRAIGHT REDUCER"
+      },
+      {
+        "row": 23,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 23,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 23,
+        "col": 6,
+        "text": "69.69"
+      },
+      {
+        "row": 23,
+        "col": 7,
+        "text": "696.90"
+      },
+      {
+        "row": 24,
+        "col": 1,
+        "text": "55"
+      },
+      {
+        "row": 24,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 24,
+        "col": 3,
+        "text": "600X450 MM STRAIGHT REDUCER"
+      },
+      {
+        "row": 24,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 24,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 24,
+        "col": 6,
+        "text": "57.81"
+      },
+      {
+        "row": 24,
+        "col": 7,
+        "text": "578.10"
+      },
+      {
+        "row": 25,
+        "col": 1,
+        "text": "56"
+      },
+      {
+        "row": 25,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 25,
+        "col": 3,
+        "text": "450X300 MM STRAIGHT REDUCER"
+      },
+      {
+        "row": 25,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 25,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 25,
+        "col": 6,
+        "text": "45.93"
+      },
+      {
+        "row": 25,
+        "col": 7,
+        "text": "459.30"
+      },
+      {
+        "row": 26,
+        "col": 1,
+        "text": "57"
+      },
+      {
+        "row": 26,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 26,
+        "col": 3,
+        "text": "300X225 MM STRAIGHT REDUCER"
+      },
+      {
+        "row": 26,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 26,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 26,
+        "col": 6,
+        "text": "25.54"
+      },
+      {
+        "row": 26,
+        "col": 7,
+        "text": "255.40"
+      },
+      {
+        "row": 27,
+        "col": 1,
+        "text": "58"
+      },
+      {
+        "row": 27,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 27,
+        "col": 3,
+        "text": "225X150 MM STRAIGHT REDUCER"
+      },
+      {
+        "row": 27,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 27,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 27,
+        "col": 6,
+        "text": "21.08"
+      },
+      {
+        "row": 27,
+        "col": 7,
+        "text": "210.80"
+      },
+      {
+        "row": 28,
+        "col": 1,
+        "text": "59"
+      },
+      {
+        "row": 28,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 28,
+        "col": 3,
+        "text": "150X100 MM STRAIGHT REDUCER"
+      },
+      {
+        "row": 28,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 28,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 28,
+        "col": 6,
+        "text": "16.63"
+      },
+      {
+        "row": 28,
+        "col": 7,
+        "text": "166.30"
+      },
+      {
+        "row": 29,
+        "col": 1,
+        "text": "60"
+      },
+      {
+        "row": 29,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 29,
+        "col": 3,
+        "text": "900 MM INSIDE RISER"
+      },
+      {
+        "row": 29,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 29,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 29,
+        "col": 6,
+        "text": "81.57"
+      },
+      {
+        "row": 29,
+        "col": 7,
+        "text": "815.70"
+      },
+      {
+        "row": 30,
+        "col": 1,
+        "text": "61"
+      },
+      {
+        "row": 30,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 30,
+        "col": 3,
+        "text": "750 MM INSIDE RISER"
+      },
+      {
+        "row": 30,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 30,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 30,
+        "col": 6,
+        "text": "69.69"
+      },
+      {
+        "row": 30,
+        "col": 7,
+        "text": "696.90"
+      },
+      {
+        "row": 31,
+        "col": 1,
+        "text": "62"
+      },
+      {
+        "row": 31,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 31,
+        "col": 3,
+        "text": "600 MM INSIDE RISER"
+      },
+      {
+        "row": 31,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 31,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 31,
+        "col": 6,
+        "text": "57.81"
+      },
+      {
+        "row": 31,
+        "col": 7,
+        "text": "578.10"
+      },
+      {
+        "row": 32,
+        "col": 1,
+        "text": "63"
+      },
+      {
+        "row": 32,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 32,
+        "col": 3,
+        "text": "450 MM INSIDE RISER"
+      },
+      {
+        "row": 32,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 32,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 32,
+        "col": 6,
+        "text": "45.93"
+      },
+      {
+        "row": 32,
+        "col": 7,
+        "text": "459.30"
+      },
+      {
+        "row": 33,
+        "col": 1,
+        "text": "64"
+      },
+      {
+        "row": 33,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 33,
+        "col": 3,
+        "text": "300 MM INSIDE RISER"
+      },
+      {
+        "row": 33,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 33,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 33,
+        "col": 6,
+        "text": "25.54"
+      },
+      {
+        "row": 33,
+        "col": 7,
+        "text": "255.40"
+      },
+      {
+        "row": 34,
+        "col": 1,
+        "text": "65"
+      },
+      {
+        "row": 34,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 34,
+        "col": 3,
+        "text": "225 MM INSIDE RISER"
+      },
+      {
+        "row": 34,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 34,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 34,
+        "col": 6,
+        "text": "21.08"
+      },
+      {
+        "row": 34,
+        "col": 7,
+        "text": "210.80"
+      },
+      {
+        "row": 35,
+        "col": 1,
+        "text": "66"
+      },
+      {
+        "row": 35,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 35,
+        "col": 3,
+        "text": "200 MM INSIDE RISER"
+      },
+      {
+        "row": 35,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 35,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 35,
+        "col": 6,
+        "text": "19.60"
+      },
+      {
+        "row": 35,
+        "col": 7,
+        "text": "196.00"
+      },
+      {
+        "row": 36,
+        "col": 1,
+        "text": "67"
+      },
+      {
+        "row": 36,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 36,
+        "col": 3,
+        "text": "150 MM INSIDE RISER"
+      },
+      {
+        "row": 36,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 36,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 36,
+        "col": 6,
+        "text": "16.63"
+      },
+      {
+        "row": 36,
+        "col": 7,
+        "text": "166.30"
+      },
+      {
+        "row": 37,
+        "col": 1,
+        "text": "68"
+      },
+      {
+        "row": 37,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 37,
+        "col": 3,
+        "text": "100 MM INSIDE RISER"
+      },
+      {
+        "row": 37,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 37,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 37,
+        "col": 6,
+        "text": "13.66"
+      },
+      {
+        "row": 37,
+        "col": 7,
+        "text": "136.60"
+      },
+      {
+        "row": 38,
+        "col": 1,
+        "text": "69"
+      },
+      {
+        "row": 38,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 38,
+        "col": 3,
+        "text": "900 MM OUTSIDE RISER"
+      },
+      {
+        "row": 38,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 38,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 38,
+        "col": 6,
+        "text": "81.57"
+      },
+      {
+        "row": 38,
+        "col": 7,
+        "text": "815.70"
+      },
+      {
+        "row": 39,
+        "col": 1,
+        "text": "70"
+      },
+      {
+        "row": 39,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 39,
+        "col": 3,
+        "text": "750 MM OUTSIDE RISER"
+      },
+      {
+        "row": 39,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 39,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 39,
+        "col": 6,
+        "text": "69.69"
+      },
+      {
+        "row": 39,
+        "col": 7,
+        "text": "696.90"
+      },
+      {
+        "row": 40,
+        "col": 1,
+        "text": "71"
+      },
+      {
+        "row": 40,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 40,
+        "col": 3,
+        "text": "600 MM OUTSIDE RISER"
+      },
+      {
+        "row": 40,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 40,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 40,
+        "col": 6,
+        "text": "57.81"
+      },
+      {
+        "row": 40,
+        "col": 7,
+        "text": "578.10"
+      },
+      {
+        "row": 41,
+        "col": 1,
+        "text": "72"
+      },
+      {
+        "row": 41,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 41,
+        "col": 3,
+        "text": "450 MM OUTSIDE RISER"
+      },
+      {
+        "row": 41,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 41,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 41,
+        "col": 6,
+        "text": "45.93"
+      },
+      {
+        "row": 41,
+        "col": 7,
+        "text": "459.30"
+      },
+      {
+        "row": 42,
+        "col": 1,
+        "text": "73"
+      },
+      {
+        "row": 42,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 42,
+        "col": 3,
+        "text": "300 MM OUTSIDE RISER"
+      },
+      {
+        "row": 42,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 42,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 42,
+        "col": 6,
+        "text": "25.54"
+      },
+      {
+        "row": 42,
+        "col": 7,
+        "text": "255.40"
+      },
+      {
+        "row": 43,
+        "col": 1,
+        "text": "74"
+      },
+      {
+        "row": 43,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 43,
+        "col": 3,
+        "text": "225 MM OUTSIDE RISER"
+      },
+      {
+        "row": 43,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 43,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 43,
+        "col": 6,
+        "text": "21.08"
+      },
+      {
+        "row": 43,
+        "col": 7,
+        "text": "210.80"
+      },
+      {
+        "row": 44,
+        "col": 1,
+        "text": "75"
+      },
+      {
+        "row": 44,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 44,
+        "col": 3,
+        "text": "200 MM OUTSIDE RISER"
+      },
+      {
+        "row": 44,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 44,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 44,
+        "col": 6,
+        "text": "19.60"
+      },
+      {
+        "row": 44,
+        "col": 7,
+        "text": "196.00"
+      },
+      {
+        "row": 45,
+        "col": 1,
+        "text": "76"
+      },
+      {
+        "row": 45,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 45,
+        "col": 3,
+        "text": "150 MM OUTSIDE RISER"
+      },
+      {
+        "row": 45,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 45,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 45,
+        "col": 6,
+        "text": "16.63"
+      },
+      {
+        "row": 45,
+        "col": 7,
+        "text": "166.30"
+      },
+      {
+        "row": 46,
+        "col": 1,
+        "text": "77"
+      },
+      {
+        "row": 46,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 46,
+        "col": 3,
+        "text": "100 MM OUTSIDE RISER"
+      },
+      {
+        "row": 46,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 46,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 46,
+        "col": 6,
+        "text": "13.66"
+      },
+      {
+        "row": 46,
+        "col": 7,
+        "text": "136.60"
+      },
+      {
+        "row": 47,
+        "col": 1,
+        "text": "78"
+      },
+      {
+        "row": 47,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 47,
+        "col": 3,
+        "text": "75 MM OUTSIDE RISER"
+      },
+      {
+        "row": 47,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 47,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 47,
+        "col": 6,
+        "text": "12.18"
+      },
+      {
+        "row": 47,
+        "col": 7,
+        "text": "121.80"
+      },
+      {
+        "row": 48,
+        "col": 1,
+        "text": "79"
+      },
+      {
+        "row": 48,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 48,
+        "col": 3,
+        "text": "50 MM OUTSIDE RISER"
+      },
+      {
+        "row": 48,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 48,
+        "col": 5,
+        "text": "10.00"
+      },
+      {
+        "row": 48,
+        "col": 6,
+        "text": "10.69"
+      },
+      {
+        "row": 48,
+        "col": 7,
+        "text": "106.90"
+      },
+      {
+        "row": 49,
+        "col": 1,
+        "text": "80"
+      },
+      {
+        "row": 49,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 49,
+        "col": 3,
+        "text": "900 MM ADDON BRANCH"
+      },
+      {
+        "row": 49,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 49,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 49,
+        "col": 6,
+        "text": "54.38"
+      },
+      {
+        "row": 49,
+        "col": 7,
+        "text": "1,087.60"
+      }
+    ]
+  },
+  {
+    "page": 3,
+    "cells": [
+      {
+        "row": 1,
+        "col": 1,
+        "text": "Date"
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "text": "15/6/2023"
+      },
+      {
+        "row": 2,
+        "col": 1,
+        "text": "Quotation No."
+      },
+      {
+        "row": 2,
+        "col": 2,
+        "text": ": RC/CMS/062023/142"
+      },
+      {
+        "row": 3,
+        "col": 1,
+        "text": "Project"
+      },
+      {
+        "row": 3,
+        "col": 2,
+        "text": "PT-295/4 INNOVATION HUB -PHASE 2"
+      },
+      {
+        "row": 4,
+        "col": 1,
+        "text": "Currency"
+      },
+      {
+        "row": 4,
+        "col": 2,
+        "text": "AED"
+      },
+      {
+        "row": 5,
+        "col": 1,
+        "text": "Pages"
+      },
+      {
+        "row": 5,
+        "col": 2,
+        "text": "1 of 1"
+      }
+    ]
+  },
+  {
+    "page": 3,
+    "cells": [
+      {
+        "row": 1,
+        "col": 1,
+        "text": "To"
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "text": ": M/S ASEMCO"
+      },
+      {
+        "row": 2,
+        "col": 1,
+        "text": "Address"
+      },
+      {
+        "row": 2,
+        "col": 2,
+        "text": ": DUABI; UAE"
+      },
+      {
+        "row": 3,
+        "col": 1,
+        "text": "Attention"
+      },
+      {
+        "row": 3,
+        "col": 2,
+        "text": ": Mr. Ankit Bajpayee"
+      },
+      {
+        "row": 4,
+        "col": 1,
+        "text": "Contact"
+      },
+      {
+        "row": 4,
+        "col": 2,
+        "text": ": 971 56 539 1872"
+      },
+      {
+        "row": 5,
+        "col": 1,
+        "text": "Email"
+      },
+      {
+        "row": 5,
+        "col": 2,
+        "text": ":"
+      }
+    ]
+  },
+  {
+    "page": 3,
+    "cells": [
+      {
+        "row": 1,
+        "col": 1,
+        "text": "Dear Sir,"
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "text": "We thank"
+      },
+      {
+        "row": 1,
+        "col": 3,
+        "text": "you for your inquiry and are pleased to submit our best price for"
+      },
+      {
+        "row": 1,
+        "col": 4,
+        "text": "the"
+      },
+      {
+        "row": 1,
+        "col": 5,
+        "text": "following items."
+      },
+      {
+        "row": 1,
+        "col": 6,
+        "text": ""
+      },
+      {
+        "row": 1,
+        "col": 7,
+        "text": ""
+      },
+      {
+        "row": 2,
+        "col": 1,
+        "text": "SL.NO"
+      },
+      {
+        "row": 2,
+        "col": 2,
+        "text": "BRAND"
+      },
+      {
+        "row": 2,
+        "col": 3,
+        "text": "DESCRIPTION"
+      },
+      {
+        "row": 2,
+        "col": 4,
+        "text": "UNIT"
+      },
+      {
+        "row": 2,
+        "col": 5,
+        "text": "QTY"
+      },
+      {
+        "row": 2,
+        "col": 6,
+        "text": "PRICE"
+      },
+      {
+        "row": 2,
+        "col": 7,
+        "text": "TOTAL PRICE"
+      },
+      {
+        "row": 3,
+        "col": 1,
+        "text": "81"
+      },
+      {
+        "row": 3,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 3,
+        "col": 3,
+        "text": "750 MM ADDON BRANCH"
+      },
+      {
+        "row": 3,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 3,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 3,
+        "col": 6,
+        "text": "46.46"
+      },
+      {
+        "row": 3,
+        "col": 7,
+        "text": "929.20"
+      },
+      {
+        "row": 4,
+        "col": 1,
+        "text": "82"
+      },
+      {
+        "row": 4,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 4,
+        "col": 3,
+        "text": "600 MM ADDON BRANCH"
+      },
+      {
+        "row": 4,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 4,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 4,
+        "col": 6,
+        "text": "38.54"
+      },
+      {
+        "row": 4,
+        "col": 7,
+        "text": "770.80"
+      },
+      {
+        "row": 5,
+        "col": 1,
+        "text": "83"
+      },
+      {
+        "row": 5,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 5,
+        "col": 3,
+        "text": "450 MM ADDON BRANCH"
+      },
+      {
+        "row": 5,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 5,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 5,
+        "col": 6,
+        "text": "30.62"
+      },
+      {
+        "row": 5,
+        "col": 7,
+        "text": "612.40"
+      },
+      {
+        "row": 6,
+        "col": 1,
+        "text": "84"
+      },
+      {
+        "row": 6,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 6,
+        "col": 3,
+        "text": "300 MM ADDON BRANCH"
+      },
+      {
+        "row": 6,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 6,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 6,
+        "col": 6,
+        "text": "17.02"
+      },
+      {
+        "row": 6,
+        "col": 7,
+        "text": "340.40"
+      },
+      {
+        "row": 7,
+        "col": 1,
+        "text": "85"
+      },
+      {
+        "row": 7,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 7,
+        "col": 3,
+        "text": "225 MM ADDON BRANCH"
+      },
+      {
+        "row": 7,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 7,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 7,
+        "col": 6,
+        "text": "14.05"
+      },
+      {
+        "row": 7,
+        "col": 7,
+        "text": "281.00"
+      },
+      {
+        "row": 8,
+        "col": 1,
+        "text": "86"
+      },
+      {
+        "row": 8,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 8,
+        "col": 3,
+        "text": "150 MM ADDON BRANCH"
+      },
+      {
+        "row": 8,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 8,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 8,
+        "col": 6,
+        "text": "13.06"
+      },
+      {
+        "row": 8,
+        "col": 7,
+        "text": "261.20"
+      },
+      {
+        "row": 9,
+        "col": 1,
+        "text": "87"
+      },
+      {
+        "row": 9,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 9,
+        "col": 3,
+        "text": "100 MM ADDON BRANCH"
+      },
+      {
+        "row": 9,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 9,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 9,
+        "col": 6,
+        "text": "11.08"
+      },
+      {
+        "row": 9,
+        "col": 7,
+        "text": "221.60"
+      },
+      {
+        "row": 10,
+        "col": 1,
+        "text": "88"
+      },
+      {
+        "row": 10,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 10,
+        "col": 3,
+        "text": "900X50 MM FISH PLATE"
+      },
+      {
+        "row": 10,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 10,
+        "col": 5,
+        "text": "50.00"
+      },
+      {
+        "row": 10,
+        "col": 6,
+        "text": "27.19"
+      },
+      {
+        "row": 10,
+        "col": 7,
+        "text": "1,359.50"
+      },
+      {
+        "row": 11,
+        "col": 1,
+        "text": "89"
+      },
+      {
+        "row": 11,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 11,
+        "col": 3,
+        "text": "750X50 MM FISH PLATE"
+      },
+      {
+        "row": 11,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 11,
+        "col": 5,
+        "text": "50.00"
+      },
+      {
+        "row": 11,
+        "col": 6,
+        "text": "23.23"
+      },
+      {
+        "row": 11,
+        "col": 7,
+        "text": "1,161.50"
+      },
+      {
+        "row": 12,
+        "col": 1,
+        "text": "90"
+      },
+      {
+        "row": 12,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 12,
+        "col": 3,
+        "text": "600X50 MM FISH PLATE"
+      },
+      {
+        "row": 12,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 12,
+        "col": 5,
+        "text": "50.00"
+      },
+      {
+        "row": 12,
+        "col": 6,
+        "text": "19.27"
+      },
+      {
+        "row": 12,
+        "col": 7,
+        "text": "963.50"
+      },
+      {
+        "row": 13,
+        "col": 1,
+        "text": "91"
+      },
+      {
+        "row": 13,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 13,
+        "col": 3,
+        "text": "450X50 MM FISH PLATE"
+      },
+      {
+        "row": 13,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 13,
+        "col": 5,
+        "text": "50.00"
+      },
+      {
+        "row": 13,
+        "col": 6,
+        "text": "15.31"
+      },
+      {
+        "row": 13,
+        "col": 7,
+        "text": "765.50"
+      },
+      {
+        "row": 14,
+        "col": 1,
+        "text": "92"
+      },
+      {
+        "row": 14,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 14,
+        "col": 3,
+        "text": "300X50 MM FISH PLATE"
+      },
+      {
+        "row": 14,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 14,
+        "col": 5,
+        "text": "50.00"
+      },
+      {
+        "row": 14,
+        "col": 6,
+        "text": "8.51"
+      },
+      {
+        "row": 14,
+        "col": 7,
+        "text": "425.50"
+      },
+      {
+        "row": 15,
+        "col": 1,
+        "text": "93"
+      },
+      {
+        "row": 15,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 15,
+        "col": 3,
+        "text": "225X50 MM FISH PLATE"
+      },
+      {
+        "row": 15,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 15,
+        "col": 5,
+        "text": "50.00"
+      },
+      {
+        "row": 15,
+        "col": 6,
+        "text": "7.02"
+      },
+      {
+        "row": 15,
+        "col": 7,
+        "text": "351.00"
+      },
+      {
+        "row": 16,
+        "col": 1,
+        "text": "94"
+      },
+      {
+        "row": 16,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 16,
+        "col": 3,
+        "text": "150X50 MM FISH PLATE"
+      },
+      {
+        "row": 16,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 16,
+        "col": 5,
+        "text": "50.00"
+      },
+      {
+        "row": 16,
+        "col": 6,
+        "text": "6.53"
+      },
+      {
+        "row": 16,
+        "col": 7,
+        "text": "326.50"
+      },
+      {
+        "row": 17,
+        "col": 1,
+        "text": "95"
+      },
+      {
+        "row": 17,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 17,
+        "col": 3,
+        "text": "100X50 MM FISH PLATE"
+      },
+      {
+        "row": 17,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 17,
+        "col": 5,
+        "text": "50.00"
+      },
+      {
+        "row": 17,
+        "col": 6,
+        "text": "5.54"
+      },
+      {
+        "row": 17,
+        "col": 7,
+        "text": "277.00"
+      },
+      {
+        "row": 18,
+        "col": 1,
+        "text": "96"
+      },
+      {
+        "row": 18,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 18,
+        "col": 3,
+        "text": "CABLE TRAY FLANGE ( NEED CLARIFICATION)"
+      },
+      {
+        "row": 18,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 18,
+        "col": 5,
+        "text": "100.00"
+      },
+      {
+        "row": 18,
+        "col": 6,
+        "text": ""
+      },
+      {
+        "row": 18,
+        "col": 7,
+        "text": "-"
+      },
+      {
+        "row": 19,
+        "col": 1,
+        "text": "97"
+      },
+      {
+        "row": 19,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 19,
+        "col": 3,
+        "text": "CABLE TRAY END CAP ( SIZE REQUIRED)"
+      },
+      {
+        "row": 19,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 19,
+        "col": 5,
+        "text": "100.00"
+      },
+      {
+        "row": 19,
+        "col": 6,
+        "text": ""
+      },
+      {
+        "row": 19,
+        "col": 7,
+        "text": "-"
+      },
+      {
+        "row": 20,
+        "col": 1,
+        "text": "98"
+      },
+      {
+        "row": 20,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 20,
+        "col": 3,
+        "text": "CABLE TRAY COUPLER"
+      },
+      {
+        "row": 20,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 20,
+        "col": 5,
+        "text": "10000.00"
+      },
+      {
+        "row": 20,
+        "col": 6,
+        "text": "2.00"
+      },
+      {
+        "row": 20,
+        "col": 7,
+        "text": "20,000.00"
+      },
+      {
+        "row": 21,
+        "col": 1,
+        "text": "99"
+      },
+      {
+        "row": 21,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 21,
+        "col": 3,
+        "text": "CABLE TRAY COUPLER WRAP OVER"
+      },
+      {
+        "row": 21,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 21,
+        "col": 5,
+        "text": "1000.00"
+      },
+      {
+        "row": 21,
+        "col": 6,
+        "text": "3.00"
+      },
+      {
+        "row": 21,
+        "col": 7,
+        "text": "3,000.00"
+      },
+      {
+        "row": 22,
+        "col": 1,
+        "text": "100"
+      },
+      {
+        "row": 22,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 22,
+        "col": 3,
+        "text": "CABLE TRAY EARTH STRIP"
+      },
+      {
+        "row": 22,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 22,
+        "col": 5,
+        "text": "20000.00"
+      },
+      {
+        "row": 22,
+        "col": 6,
+        "text": "1.00"
+      },
+      {
+        "row": 22,
+        "col": 7,
+        "text": "20,000.00"
+      },
+      {
+        "row": 23,
+        "col": 1,
+        "text": "101"
+      },
+      {
+        "row": 23,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 23,
+        "col": 3,
+        "text": "CABLE TRAY EXPANSION COUPLER 50MM HEIGHT"
+      },
+      {
+        "row": 23,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 23,
+        "col": 5,
+        "text": "100.00"
+      },
+      {
+        "row": 23,
+        "col": 6,
+        "text": "5.00"
+      },
+      {
+        "row": 23,
+        "col": 7,
+        "text": "500.00"
+      },
+      {
+        "row": 24,
+        "col": 1,
+        "text": ""
+      },
+      {
+        "row": 24,
+        "col": 2,
+        "text": ""
+      },
+      {
+        "row": 24,
+        "col": 3,
+        "text": ""
+      },
+      {
+        "row": 24,
+        "col": 4,
+        "text": ""
+      },
+      {
+        "row": 24,
+        "col": 5,
+        "text": ""
+      },
+      {
+        "row": 24,
+        "col": 6,
+        "text": ""
+      },
+      {
+        "row": 24,
+        "col": 7,
+        "text": "-"
+      },
+      {
+        "row": 25,
+        "col": 1,
+        "text": ""
+      },
+      {
+        "row": 25,
+        "col": 2,
+        "text": ""
+      },
+      {
+        "row": 25,
+        "col": 3,
+        "text": ""
+      },
+      {
+        "row": 25,
+        "col": 4,
+        "text": ""
+      },
+      {
+        "row": 25,
+        "col": 5,
+        "text": ""
+      },
+      {
+        "row": 25,
+        "col": 6,
+        "text": ""
+      },
+      {
+        "row": 25,
+        "col": 7,
+        "text": "-"
+      },
+      {
+        "row": 26,
+        "col": 1,
+        "text": "1"
+      },
+      {
+        "row": 26,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 26,
+        "col": 3,
+        "text": "150X150 MM CABLE TRUNKING 1.5MM THICKNESS- - 3 METER LENGTH"
+      },
+      {
+        "row": 26,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 26,
+        "col": 5,
+        "text": "50.00"
+      },
+      {
+        "row": 26,
+        "col": 6,
+        "text": "87.55"
+      },
+      {
+        "row": 26,
+        "col": 7,
+        "text": "4,377.50"
+      },
+      {
+        "row": 27,
+        "col": 1,
+        "text": "2"
+      },
+      {
+        "row": 27,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 27,
+        "col": 3,
+        "text": "100X100 MM CABLE TRUNKING 1.2MM THICKNESS- - 3 METER LENGTH"
+      },
+      {
+        "row": 27,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 27,
+        "col": 5,
+        "text": "100.00"
+      },
+      {
+        "row": 27,
+        "col": 6,
+        "text": "48.15"
+      },
+      {
+        "row": 27,
+        "col": 7,
+        "text": "4,815.00"
+      },
+      {
+        "row": 28,
+        "col": 1,
+        "text": "3"
+      },
+      {
+        "row": 28,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 28,
+        "col": 3,
+        "text": "75X75 MM CABLE TRUNKING 1.0MM THICKNESS- - 3 METER LENGTH"
+      },
+      {
+        "row": 28,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 28,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 28,
+        "col": 6,
+        "text": "31.00"
+      },
+      {
+        "row": 28,
+        "col": 7,
+        "text": "620.00"
+      },
+      {
+        "row": 29,
+        "col": 1,
+        "text": "4"
+      },
+      {
+        "row": 29,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 29,
+        "col": 3,
+        "text": "50X50 MM CABLE TRUNKING 1.0MM THICKNESS- - 3 METER LENGTH"
+      },
+      {
+        "row": 29,
+        "col": 4,
+        "text": "Lth"
+      },
+      {
+        "row": 29,
+        "col": 5,
+        "text": "50.00"
+      },
+      {
+        "row": 29,
+        "col": 6,
+        "text": "21.88"
+      },
+      {
+        "row": 29,
+        "col": 7,
+        "text": "1,094.00"
+      },
+      {
+        "row": 30,
+        "col": 1,
+        "text": "5"
+      },
+      {
+        "row": 30,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 30,
+        "col": 3,
+        "text": "150X150 MM CABLE TRUNKING EQUAL TEE"
+      },
+      {
+        "row": 30,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 30,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 30,
+        "col": 6,
+        "text": "35.02"
+      },
+      {
+        "row": 30,
+        "col": 7,
+        "text": "700.40"
+      },
+      {
+        "row": 31,
+        "col": 1,
+        "text": "6"
+      },
+      {
+        "row": 31,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 31,
+        "col": 3,
+        "text": "100X100 MM CABLE TRUNKING EQUAL TEE"
+      },
+      {
+        "row": 31,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 31,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 31,
+        "col": 6,
+        "text": "19.26"
+      },
+      {
+        "row": 31,
+        "col": 7,
+        "text": "385.20"
+      },
+      {
+        "row": 32,
+        "col": 1,
+        "text": "7"
+      },
+      {
+        "row": 32,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 32,
+        "col": 3,
+        "text": "75X75 MM CABLE TRUNKING EQUAL TEE"
+      },
+      {
+        "row": 32,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 32,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 32,
+        "col": 6,
+        "text": "12.40"
+      },
+      {
+        "row": 32,
+        "col": 7,
+        "text": "248.00"
+      },
+      {
+        "row": 33,
+        "col": 1,
+        "text": "8"
+      },
+      {
+        "row": 33,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 33,
+        "col": 3,
+        "text": "50X50 MM CABLE TRUNKING EQUAL TEE"
+      },
+      {
+        "row": 33,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 33,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 33,
+        "col": 6,
+        "text": "8.75"
+      },
+      {
+        "row": 33,
+        "col": 7,
+        "text": "175.00"
+      },
+      {
+        "row": 34,
+        "col": 1,
+        "text": "9"
+      },
+      {
+        "row": 34,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 34,
+        "col": 3,
+        "text": "150X150 MM CABLE TRUNKING EQUAL TEE TOP LID"
+      },
+      {
+        "row": 34,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 34,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 34,
+        "col": 6,
+        "text": "35.02"
+      },
+      {
+        "row": 34,
+        "col": 7,
+        "text": "700.40"
+      },
+      {
+        "row": 35,
+        "col": 1,
+        "text": "10"
+      },
+      {
+        "row": 35,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 35,
+        "col": 3,
+        "text": "100X100 MM CABLE TRUNKING EQUAL TEE TOP LID"
+      },
+      {
+        "row": 35,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 35,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 35,
+        "col": 6,
+        "text": "19.26"
+      },
+      {
+        "row": 35,
+        "col": 7,
+        "text": "385.20"
+      },
+      {
+        "row": 36,
+        "col": 1,
+        "text": "11"
+      },
+      {
+        "row": 36,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 36,
+        "col": 3,
+        "text": "75X75 MM CABLE TRUNKING EQUAL TEE TOP LID"
+      },
+      {
+        "row": 36,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 36,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 36,
+        "col": 6,
+        "text": "12.40"
+      },
+      {
+        "row": 36,
+        "col": 7,
+        "text": "248.00"
+      },
+      {
+        "row": 37,
+        "col": 1,
+        "text": "12"
+      },
+      {
+        "row": 37,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 37,
+        "col": 3,
+        "text": "50X50 MM CABLE TRUNKING EQUAL TEE TOP LID"
+      },
+      {
+        "row": 37,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 37,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 37,
+        "col": 6,
+        "text": "8.75"
+      },
+      {
+        "row": 37,
+        "col": 7,
+        "text": "175.00"
+      },
+      {
+        "row": 38,
+        "col": 1,
+        "text": "13"
+      },
+      {
+        "row": 38,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 38,
+        "col": 3,
+        "text": "150X150 MM CABLE TRUNKING 45 DEGREE BEND"
+      },
+      {
+        "row": 38,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 38,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 38,
+        "col": 6,
+        "text": "26.26"
+      },
+      {
+        "row": 38,
+        "col": 7,
+        "text": "525.20"
+      },
+      {
+        "row": 39,
+        "col": 1,
+        "text": "14"
+      },
+      {
+        "row": 39,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 39,
+        "col": 3,
+        "text": "100X100 MM CABLE TRUNKING 45 DEGREE BEND"
+      },
+      {
+        "row": 39,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 39,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 39,
+        "col": 6,
+        "text": "14.44"
+      },
+      {
+        "row": 39,
+        "col": 7,
+        "text": "288.80"
+      },
+      {
+        "row": 40,
+        "col": 1,
+        "text": "15"
+      },
+      {
+        "row": 40,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 40,
+        "col": 3,
+        "text": "75X75 MM CABLE TRUNKING 45 DEGREE BEND"
+      },
+      {
+        "row": 40,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 40,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 40,
+        "col": 6,
+        "text": "9.30"
+      },
+      {
+        "row": 40,
+        "col": 7,
+        "text": "186.00"
+      },
+      {
+        "row": 41,
+        "col": 1,
+        "text": "16"
+      },
+      {
+        "row": 41,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 41,
+        "col": 3,
+        "text": "50X50 MM CABLE TRUNKING 45 DEGREE BEND"
+      },
+      {
+        "row": 41,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 41,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 41,
+        "col": 6,
+        "text": "6.56"
+      },
+      {
+        "row": 41,
+        "col": 7,
+        "text": "131.20"
+      }
+    ]
+  },
+  {
+    "page": 4,
+    "cells": [
+      {
+        "row": 1,
+        "col": 1,
+        "text": "Date"
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "text": "15/6/2023"
+      },
+      {
+        "row": 2,
+        "col": 1,
+        "text": "Quotation No."
+      },
+      {
+        "row": 2,
+        "col": 2,
+        "text": ": RC/CMS/062023/142"
+      },
+      {
+        "row": 3,
+        "col": 1,
+        "text": "Project"
+      },
+      {
+        "row": 3,
+        "col": 2,
+        "text": "PT-295/4 INNOVATION HUB -PHASE 2"
+      },
+      {
+        "row": 4,
+        "col": 1,
+        "text": "Currency"
+      },
+      {
+        "row": 4,
+        "col": 2,
+        "text": "AED"
+      },
+      {
+        "row": 5,
+        "col": 1,
+        "text": "Pages"
+      },
+      {
+        "row": 5,
+        "col": 2,
+        "text": "1 of 1"
+      }
+    ]
+  },
+  {
+    "page": 4,
+    "cells": [
+      {
+        "row": 1,
+        "col": 1,
+        "text": "To"
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "text": ": M/S ASEMCO"
+      },
+      {
+        "row": 2,
+        "col": 1,
+        "text": "Address"
+      },
+      {
+        "row": 2,
+        "col": 2,
+        "text": ": DUABI; UAE"
+      },
+      {
+        "row": 3,
+        "col": 1,
+        "text": "Attention"
+      },
+      {
+        "row": 3,
+        "col": 2,
+        "text": ": Mr. Ankit Bajpayee"
+      },
+      {
+        "row": 4,
+        "col": 1,
+        "text": "Contact"
+      },
+      {
+        "row": 4,
+        "col": 2,
+        "text": ": 971 56 539 1872"
+      },
+      {
+        "row": 5,
+        "col": 1,
+        "text": "Email"
+      },
+      {
+        "row": 5,
+        "col": 2,
+        "text": ":"
+      }
+    ]
+  },
+  {
+    "page": 4,
+    "cells": [
+      {
+        "row": 1,
+        "col": 1,
+        "text": "SL.NO"
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "text": "BRAND"
+      },
+      {
+        "row": 1,
+        "col": 3,
+        "text": "DESCRIPTION"
+      },
+      {
+        "row": 1,
+        "col": 4,
+        "text": "UNIT"
+      },
+      {
+        "row": 1,
+        "col": 5,
+        "text": "QTY"
+      },
+      {
+        "row": 1,
+        "col": 6,
+        "text": "PRICE"
+      },
+      {
+        "row": 1,
+        "col": 7,
+        "text": "TOTAL PRICE"
+      },
+      {
+        "row": 2,
+        "col": 1,
+        "text": "17"
+      },
+      {
+        "row": 2,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 2,
+        "col": 3,
+        "text": "150X150 MM CABLE TRUNKING 90 DEGREE BEND"
+      },
+      {
+        "row": 2,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 2,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 2,
+        "col": 6,
+        "text": "26.26"
+      },
+      {
+        "row": 2,
+        "col": 7,
+        "text": "525.20"
+      },
+      {
+        "row": 3,
+        "col": 1,
+        "text": "18"
+      },
+      {
+        "row": 3,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 3,
+        "col": 3,
+        "text": "100X100 MM CABLE TRUNKING 90 DEGREE BEND"
+      },
+      {
+        "row": 3,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 3,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 3,
+        "col": 6,
+        "text": "14.44"
+      },
+      {
+        "row": 3,
+        "col": 7,
+        "text": "288.80"
+      },
+      {
+        "row": 4,
+        "col": 1,
+        "text": "19"
+      },
+      {
+        "row": 4,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 4,
+        "col": 3,
+        "text": "75X75 MM CABLE TRUNKING 90 DEGREE BEND"
+      },
+      {
+        "row": 4,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 4,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 4,
+        "col": 6,
+        "text": "9.30"
+      },
+      {
+        "row": 4,
+        "col": 7,
+        "text": "186.00"
+      },
+      {
+        "row": 5,
+        "col": 1,
+        "text": "20"
+      },
+      {
+        "row": 5,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 5,
+        "col": 3,
+        "text": "50X50 MM CABLE TRUNKING 90 DEGREE BEND"
+      },
+      {
+        "row": 5,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 5,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 5,
+        "col": 6,
+        "text": "6.56"
+      },
+      {
+        "row": 5,
+        "col": 7,
+        "text": "131.20"
+      },
+      {
+        "row": 6,
+        "col": 1,
+        "text": "21"
+      },
+      {
+        "row": 6,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 6,
+        "col": 3,
+        "text": "150X150MM TO 100X100 MM REDUCER"
+      },
+      {
+        "row": 6,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 6,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 6,
+        "col": 6,
+        "text": "26.26"
+      },
+      {
+        "row": 6,
+        "col": 7,
+        "text": "525.20"
+      },
+      {
+        "row": 7,
+        "col": 1,
+        "text": "22"
+      },
+      {
+        "row": 7,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 7,
+        "col": 3,
+        "text": "150X100MM TO 100X100 MM REDUCER"
+      },
+      {
+        "row": 7,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 7,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 7,
+        "col": 6,
+        "text": "24.00"
+      },
+      {
+        "row": 7,
+        "col": 7,
+        "text": "480.00"
+      },
+      {
+        "row": 8,
+        "col": 1,
+        "text": "23"
+      },
+      {
+        "row": 8,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 8,
+        "col": 3,
+        "text": "100X100MM TO 50X50 MM REDUCER"
+      },
+      {
+        "row": 8,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 8,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 8,
+        "col": 6,
+        "text": "14.44"
+      },
+      {
+        "row": 8,
+        "col": 7,
+        "text": "288.80"
+      },
+      {
+        "row": 9,
+        "col": 1,
+        "text": "24"
+      },
+      {
+        "row": 9,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 9,
+        "col": 3,
+        "text": "75X75MM TO 50X50 MM REDUCER"
+      },
+      {
+        "row": 9,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 9,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 9,
+        "col": 6,
+        "text": "9.30"
+      },
+      {
+        "row": 9,
+        "col": 7,
+        "text": "186.00"
+      },
+      {
+        "row": 10,
+        "col": 1,
+        "text": "25"
+      },
+      {
+        "row": 10,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 10,
+        "col": 3,
+        "text": "100X100MM TO 75X75 MM REDUCER"
+      },
+      {
+        "row": 10,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 10,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 10,
+        "col": 6,
+        "text": "14.44"
+      },
+      {
+        "row": 10,
+        "col": 7,
+        "text": "288.80"
+      },
+      {
+        "row": 11,
+        "col": 1,
+        "text": "26"
+      },
+      {
+        "row": 11,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 11,
+        "col": 3,
+        "text": "150X150X100 UNEQUAL TEE"
+      },
+      {
+        "row": 11,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 11,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 11,
+        "col": 6,
+        "text": "35.02"
+      },
+      {
+        "row": 11,
+        "col": 7,
+        "text": "700.40"
+      },
+      {
+        "row": 12,
+        "col": 1,
+        "text": "27"
+      },
+      {
+        "row": 12,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 12,
+        "col": 3,
+        "text": "100X100X50 UNEQUAL TEE"
+      },
+      {
+        "row": 12,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 12,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 12,
+        "col": 6,
+        "text": "35.02"
+      },
+      {
+        "row": 12,
+        "col": 7,
+        "text": "700.40"
+      },
+      {
+        "row": 13,
+        "col": 1,
+        "text": "28"
+      },
+      {
+        "row": 13,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 13,
+        "col": 3,
+        "text": "75X75X50 UNEQUAL TEE"
+      },
+      {
+        "row": 13,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 13,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 13,
+        "col": 6,
+        "text": "12.40"
+      },
+      {
+        "row": 13,
+        "col": 7,
+        "text": "248.00"
+      },
+      {
+        "row": 14,
+        "col": 1,
+        "text": "29"
+      },
+      {
+        "row": 14,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 14,
+        "col": 3,
+        "text": "100x50x50 UNEQUAL TEE"
+      },
+      {
+        "row": 14,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 14,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 14,
+        "col": 6,
+        "text": "19.26"
+      },
+      {
+        "row": 14,
+        "col": 7,
+        "text": "385.20"
+      },
+      {
+        "row": 15,
+        "col": 1,
+        "text": "30"
+      },
+      {
+        "row": 15,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 15,
+        "col": 3,
+        "text": "100X100X75 UNEQUAL TEE"
+      },
+      {
+        "row": 15,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 15,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 15,
+        "col": 6,
+        "text": "19.26"
+      },
+      {
+        "row": 15,
+        "col": 7,
+        "text": "385.20"
+      },
+      {
+        "row": 16,
+        "col": 1,
+        "text": "31"
+      },
+      {
+        "row": 16,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 16,
+        "col": 3,
+        "text": "150X150X100X100 SQUARE TEE"
+      },
+      {
+        "row": 16,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 16,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 16,
+        "col": 6,
+        "text": "39.39"
+      },
+      {
+        "row": 16,
+        "col": 7,
+        "text": "787.80"
+      },
+      {
+        "row": 17,
+        "col": 1,
+        "text": "32"
+      },
+      {
+        "row": 17,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 17,
+        "col": 3,
+        "text": "150X150X150X100 SQUARE TEE"
+      },
+      {
+        "row": 17,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 17,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 17,
+        "col": 6,
+        "text": "39.39"
+      },
+      {
+        "row": 17,
+        "col": 7,
+        "text": "787.80"
+      },
+      {
+        "row": 18,
+        "col": 1,
+        "text": "33"
+      },
+      {
+        "row": 18,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 18,
+        "col": 3,
+        "text": "50MM TRUNKING COUPLER"
+      },
+      {
+        "row": 18,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 18,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 18,
+        "col": 6,
+        "text": "1.20"
+      },
+      {
+        "row": 18,
+        "col": 7,
+        "text": "24.00"
+      },
+      {
+        "row": 19,
+        "col": 1,
+        "text": "34"
+      },
+      {
+        "row": 19,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 19,
+        "col": 3,
+        "text": "75MM TRUNKING COUPLER"
+      },
+      {
+        "row": 19,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 19,
+        "col": 5,
+        "text": "1,500.00"
+      },
+      {
+        "row": 19,
+        "col": 6,
+        "text": "1.50"
+      },
+      {
+        "row": 19,
+        "col": 7,
+        "text": "2,250.00"
+      },
+      {
+        "row": 20,
+        "col": 1,
+        "text": "35"
+      },
+      {
+        "row": 20,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 20,
+        "col": 3,
+        "text": "100MM TRUNKING COUPLER"
+      },
+      {
+        "row": 20,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 20,
+        "col": 5,
+        "text": "1,500.00"
+      },
+      {
+        "row": 20,
+        "col": 6,
+        "text": "2.00"
+      },
+      {
+        "row": 20,
+        "col": 7,
+        "text": "3,000.00"
+      },
+      {
+        "row": 21,
+        "col": 1,
+        "text": "36"
+      },
+      {
+        "row": 21,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 21,
+        "col": 3,
+        "text": "150MM TRUNKING COUPLER"
+      },
+      {
+        "row": 21,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 21,
+        "col": 5,
+        "text": "1,500.00"
+      },
+      {
+        "row": 21,
+        "col": 6,
+        "text": "2.20"
+      },
+      {
+        "row": 21,
+        "col": 7,
+        "text": "3,300.00"
+      },
+      {
+        "row": 22,
+        "col": 1,
+        "text": "37"
+      },
+      {
+        "row": 22,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 22,
+        "col": 3,
+        "text": "150X150 MM CABLE TRUNKING EXPANSION COUPLER"
+      },
+      {
+        "row": 22,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 22,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 22,
+        "col": 6,
+        "text": "3.50"
+      },
+      {
+        "row": 22,
+        "col": 7,
+        "text": "70.00"
+      },
+      {
+        "row": 23,
+        "col": 1,
+        "text": "38"
+      },
+      {
+        "row": 23,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 23,
+        "col": 3,
+        "text": "100X100 MM CABLE TRUNKING EXPANSION COUPLER"
+      },
+      {
+        "row": 23,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 23,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 23,
+        "col": 6,
+        "text": "3.25"
+      },
+      {
+        "row": 23,
+        "col": 7,
+        "text": "65.00"
+      },
+      {
+        "row": 24,
+        "col": 1,
+        "text": "39"
+      },
+      {
+        "row": 24,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 24,
+        "col": 3,
+        "text": "75X75 MM CABLE TRUNKING EXPANSION COUPLER"
+      },
+      {
+        "row": 24,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 24,
+        "col": 5,
+        "text": "20.00"
+      },
+      {
+        "row": 24,
+        "col": 6,
+        "text": "3.00"
+      },
+      {
+        "row": 24,
+        "col": 7,
+        "text": "60.00"
+      },
+      {
+        "row": 25,
+        "col": 1,
+        "text": "40"
+      },
+      {
+        "row": 25,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 25,
+        "col": 3,
+        "text": "50X50 MM CABLE TRUNKING EXPANSION COUPLER"
+      },
+      {
+        "row": 25,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 25,
+        "col": 5,
+        "text": "100.00"
+      },
+      {
+        "row": 25,
+        "col": 6,
+        "text": "2.75"
+      },
+      {
+        "row": 25,
+        "col": 7,
+        "text": "275.00"
+      },
+      {
+        "row": 26,
+        "col": 1,
+        "text": "41"
+      },
+      {
+        "row": 26,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 26,
+        "col": 3,
+        "text": "CABLE TRUNKING END CAP"
+      },
+      {
+        "row": 26,
+        "col": 4,
+        "text": "NOS"
+      },
+      {
+        "row": 26,
+        "col": 5,
+        "text": "500.00"
+      },
+      {
+        "row": 26,
+        "col": 6,
+        "text": "4.00"
+      },
+      {
+        "row": 26,
+        "col": 7,
+        "text": "2,000.00"
+      },
+      {
+        "row": 27,
+        "col": 1,
+        "text": "42"
+      },
+      {
+        "row": 27,
+        "col": 2,
+        "text": "METAR"
+      },
+      {
+        "row": 27,
+        "col": 3,
+        "text": "CABLE TRUNKING EARTH STRIP"
+      },
+      {
+        "row": 27,
+        "col": 4,
+        "text": "Nos"
+      },
+      {
+        "row": 27,
+        "col": 5,
+        "text": "5,000.00"
+      },
+      {
+        "row": 27,
+        "col": 6,
+        "text": "1.40"
+      },
+      {
+        "row": 27,
+        "col": 7,
+        "text": "7,000.00"
+      },
+      {
+        "row": 28,
+        "col": 1,
+        "text": ""
+      },
+      {
+        "row": 28,
+        "col": 2,
+        "text": ""
+      },
+      {
+        "row": 28,
+        "col": 3,
+        "text": ""
+      },
+      {
+        "row": 28,
+        "col": 4,
+        "text": ""
+      },
+      {
+        "row": 28,
+        "col": 5,
+        "text": ""
+      },
+      {
+        "row": 28,
+        "col": 6,
+        "text": ""
+      },
+      {
+        "row": 28,
+        "col": 7,
+        "text": ""
+      },
+      {
+        "row": 29,
+        "col": 1,
+        "text": "Validity"
+      },
+      {
+        "row": 29,
+        "col": 2,
+        "text": ""
+      },
+      {
+        "row": 29,
+        "col": 3,
+        "text": ":7 Days from the date of quotation."
+      },
+      {
+        "row": 29,
+        "col": 4,
+        "text": "Total"
+      },
+      {
+        "row": 29,
+        "col": 5,
+        "text": "Amount"
+      },
+      {
+        "row": 29,
+        "col": 6,
+        "text": "AED."
+      },
+      {
+        "row": 29,
+        "col": 7,
+        "text": "453,252.09"
+      },
+      {
+        "row": 30,
+        "col": 1,
+        "text": "Payment"
+      },
+      {
+        "row": 30,
+        "col": 2,
+        "text": ""
+      },
+      {
+        "row": 30,
+        "col": 3,
+        "text": ": Need to be agreed"
+      },
+      {
+        "row": 30,
+        "col": 4,
+        "text": ""
+      },
+      {
+        "row": 30,
+        "col": 5,
+        "text": ""
+      },
+      {
+        "row": 30,
+        "col": 6,
+        "text": ""
+      },
+      {
+        "row": 30,
+        "col": 7,
+        "text": ""
+      },
+      {
+        "row": 31,
+        "col": 1,
+        "text": "Delivery"
+      },
+      {
+        "row": 31,
+        "col": 2,
+        "text": ""
+      },
+      {
+        "row": 31,
+        "col": 3,
+        "text": ": At Site"
+      },
+      {
+        "row": 31,
+        "col": 4,
+        "text": ""
+      },
+      {
+        "row": 31,
+        "col": 5,
+        "text": ""
+      },
+      {
+        "row": 31,
+        "col": 6,
+        "text": ""
+      },
+      {
+        "row": 31,
+        "col": 7,
+        "text": ""
+      },
+      {
+        "row": 32,
+        "col": 1,
+        "text": "Delivery"
+      },
+      {
+        "row": 32,
+        "col": 2,
+        "text": "Period"
+      },
+      {
+        "row": 32,
+        "col": 3,
+        "text": ": As per schedule"
+      },
+      {
+        "row": 32,
+        "col": 4,
+        "text": "VAT 5%"
+      },
+      {
+        "row": 32,
+        "col": 5,
+        "text": ""
+      },
+      {
+        "row": 32,
+        "col": 6,
+        "text": "AED."
+      },
+      {
+        "row": 32,
+        "col": 7,
+        "text": "22,662.60"
+      },
+      {
+        "row": 33,
+        "col": 1,
+        "text": ""
+      },
+      {
+        "row": 33,
+        "col": 2,
+        "text": ""
+      },
+      {
+        "row": 33,
+        "col": 3,
+        "text": ""
+      },
+      {
+        "row": 33,
+        "col": 4,
+        "text": "NET"
+      },
+      {
+        "row": 33,
+        "col": 5,
+        "text": "TOTAL"
+      },
+      {
+        "row": 33,
+        "col": 6,
+        "text": "AED."
+      },
+      {
+        "row": 33,
+        "col": 7,
+        "text": "475,914.69"
+      }
+    ]
+  }
+]

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Al Shirawi ORC POC</title>
+  <link rel="stylesheet" href="/ui/styles.css" />
+  <link rel="stylesheet" href="/ui/analysis.css" />
+  <script defer src="/ui/app.js"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'/>">
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    /* Critical minimal styles if CSS fails to load */
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; padding: 0; }
+  </style>
+  
+  <!--
+    Simple UI to upload Enquiry Excel, multiple Vendor PDFs, and run workflow.
+  -->
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Al Shirawi ORC POC</h1>
+      <p class="subtitle">Upload BOQ Excel, vendor PDFs, and run the workflow</p>
+      <nav class="nav">
+        <a href="/ui/" class="active">Upload</a>
+        <a href="/ui/analysis.html">Analysis</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>1. Upload Enquiry Excel</h2>
+      <form id="form-enquiry" class="form" enctype="multipart/form-data">
+        <input type="file" id="enquiry-file" name="file" accept=".xlsx,.xls,.xlsm" required />
+        <button type="submit">Upload Enquiry</button>
+      </form>
+      <pre id="enquiry-result" class="result"></pre>
+    </section>
+
+    <section class="card">
+      <h2>2. Upload Vendor PDFs</h2>
+      <form id="form-vendor" class="form" enctype="multipart/form-data">
+        <label>
+          Response Number
+          <input type="number" id="vendor-response" name="response_number" min="1" step="1" required />
+        </label>
+        <input type="file" id="vendor-files" name="files" accept="application/pdf" multiple required />
+        <button type="submit">Upload Vendor PDFs</button>
+      </form>
+      <pre id="vendor-result" class="result"></pre>
+    </section>
+
+    <section class="card">
+      <h2>3. Run Workflow</h2>
+      <form id="form-run" class="form">
+        <label class="checkbox">
+          <input type="checkbox" id="skip-textract" name="skip_textract" /> Skip Textract (use existing CSVs)
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" id="skip-boq" name="skip_boq" /> Skip BOQ extraction (use existing CSV)
+        </label>
+        <button type="submit">Run</button>
+      </form>
+      <pre id="run-result" class="result"></pre>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <small>API: <code>/upload/enquiry</code>, <code>/upload/vendor</code>, <code>/run-workflow</code></small>
+    </div>
+  </footer>
+</body>
+</html>
+
+
