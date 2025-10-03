@@ -37,9 +37,90 @@ class EnhancedBedrockClient:
         self.model_id = os.getenv("BEDROCK_MODEL_ID", "anthropic.claude-3-5-sonnet-20240620-v1:0")
         self.use_bedrock = os.getenv("BEDROCK_DISABLE") != "1"
     
+    def invoke_structured(self, prompt: str, json_schema: Dict, 
+                         tool_name: str = "extract_data",
+                         tool_description: str = "Extract structured data from the input",
+                         max_tokens: int = 4096, 
+                         temperature: float = 0.0) -> Optional[Dict]:
+        """
+        Invoke Bedrock with structured output using Tool Use (Converse API).
+        This provides native JSON schema support for reliable structured responses.
+        Reference: https://aws.amazon.com/blogs/machine-learning/structured-data-response-with-amazon-bedrock-prompt-engineering-and-tool-use/
+        
+        Args:
+            prompt: The user prompt/question
+            json_schema: JSON schema defining the expected output structure
+            tool_name: Name of the tool to use
+            tool_description: Description of what the tool does
+            max_tokens: Maximum tokens for response
+            temperature: Sampling temperature (0.0 for deterministic)
+        
+        Returns:
+            Parsed JSON dict matching the schema, or None on error
+        """
+        if not self.use_bedrock:
+            return None
+        
+        try:
+            # Define tool with JSON schema
+            tool_config = {
+                "tools": [
+                    {
+                        "toolSpec": {
+                            "name": tool_name,
+                            "description": tool_description,
+                            "inputSchema": {
+                                "json": json_schema
+                            }
+                        }
+                    }
+                ]
+            }
+            
+            # Prepare message
+            messages = [
+                {
+                    "role": "user",
+                    "content": [{"text": prompt}]
+                }
+            ]
+            
+            # Call Converse API with tool use
+            response = self.client.converse(
+                modelId=self.model_id,
+                messages=messages,
+                toolConfig=tool_config,
+                inferenceConfig={
+                    "maxTokens": max_tokens,
+                    "temperature": temperature
+                }
+            )
+            
+            # Extract tool use result
+            output_message = response.get("output", {}).get("message", {})
+            content = output_message.get("content", [])
+            
+            # Find tool use in response
+            for item in content:
+                if "toolUse" in item:
+                    tool_use = item["toolUse"]
+                    # Return the structured input data (which is our output)
+                    return tool_use.get("input", {})
+            
+            # Fallback: try to extract text response
+            for item in content:
+                if "text" in item:
+                    return self.extract_json(item["text"])
+            
+            return None
+            
+        except Exception as e:
+            print(f"      ⚠️  Bedrock structured invoke error: {e}")
+            return None
+    
     def invoke(self, prompt: str, system_prompt: Optional[str] = None, 
                max_tokens: int = 4096, temperature: float = 0.0) -> str:
-        """Invoke Bedrock model"""
+        """Invoke Bedrock model (legacy text-based method)"""
         if not self.use_bedrock:
             return "{}"
         
@@ -94,6 +175,18 @@ class EnhancedBedrockClient:
                     except Exception:
                         continue
         
+        # Try to extract JSON embedded in text (find first { to last })
+        start_idx = text.find('{')
+        if start_idx != -1:
+            # Find the matching closing brace
+            end_idx = text.rfind('}')
+            if end_idx != -1 and end_idx > start_idx:
+                candidate = text[start_idx:end_idx + 1]
+                try:
+                    return json.loads(candidate)
+                except Exception:
+                    pass
+        
         return None
 
 
@@ -104,6 +197,7 @@ class EnhancedBedrockClient:
 @dataclass
 class BOQLineUnderstanding:
     """LLM's deep understanding of a BOQ line item"""
+    row_index: int  # DataFrame row index
     sr_no: str
     raw_description: str
     
@@ -168,47 +262,80 @@ class BOQUnderstandingAgent:
     def __init__(self, bedrock: EnhancedBedrockClient):
         self.bedrock = bedrock
     
-    def understand_boq_line(self, sr_no: str, description: str, qty: float, uom: str) -> BOQLineUnderstanding:
+    def understand_boq_line(self, row_index: int, sr_no: str, description: str, qty: float, uom: str) -> BOQLineUnderstanding:
         """Use LLM to extract semantic understanding from BOQ line"""
         
-        system_prompt = """You are an expert in construction materials and BOQ (Bill of Quantities) analysis.
-                        Your job is to deeply understand BOQ line items and extract structured semantic information."""
+        # Define JSON schema for structured output
+        json_schema = {
+            "type": "object",
+            "properties": {
+                "item_type": {
+                    "type": "string",
+                    "description": "Type of item: cable tray, bend, tee, cover, accessory, etc."
+                },
+                "dimensions": {
+                    "type": "object",
+                    "properties": {
+                        "width": {"type": ["string", "null"], "description": "Width with unit (e.g., 900mm)"},
+                        "height": {"type": ["string", "null"], "description": "Height with unit (e.g., 50mm)"},
+                        "thickness": {"type": ["string", "null"], "description": "Thickness with unit (e.g., 2.0mm)"},
+                        "length": {"type": ["string", "null"], "description": "Length with unit (e.g., 3m)"}
+                    }
+                },
+                "material": {
+                    "type": "string",
+                    "description": "Material type: HDG (Hot Dip Galvanized), GI, SS304, Aluminum, etc."
+                },
+                "quantity": {
+                    "type": "number",
+                    "description": "Numeric quantity value"
+                },
+                "uom": {
+                    "type": "string",
+                    "description": "Unit of measure: Mtr, Lth, NOS, etc."
+                },
+                "key_specs": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": "Key specifications beyond dimensions"
+                },
+                "search_keywords": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": "Keywords for fuzzy matching"
+                },
+                "reasoning": {
+                    "type": "string",
+                    "description": "Brief explanation of what this item is"
+                }
+            },
+            "required": ["item_type", "dimensions", "material", "quantity", "uom", "search_keywords", "reasoning"]
+        }
                                 
         prompt = f"""Analyze this BOQ line item and extract detailed semantic information.
 
-                    BOQ Line:
-                    Sr. No: {sr_no}
-                    Description: {description}
-                    Quantity: {qty}
-                    UOM: {uom}
+BOQ Line:
+Sr. No: {sr_no}
+Description: {description}
+Quantity: {qty}
+UOM: {uom}
 
-                    Extract and return ONLY valid JSON:
-                    {{
-                    "item_type": "cable tray | bend | tee | cover | accessory | ...",
-                    "dimensions": {{
-                        "width": "900mm or null",
-                        "height": "50mm or null", 
-                        "thickness": "2.0mm or null",
-                        "length": "3m or null"
-                    }},
-                    "material": "HDG | GI | SS304 | Aluminum | ...",
-                    "quantity": {qty},
-                    "uom": "{uom}",
-                    "key_specs": ["spec1", "spec2", ...],
-                    "search_keywords": ["keyword1", "keyword2", ...],
-                    "reasoning": "Brief explanation of what this item is"
-                    }}
-
-                    Important:
-                    - Extract ALL dimensions mentioned (width, height, thickness, length)
-                    - Identify material type (HDG = Hot Dip Galvanized)
-                    - List key specifications beyond dimensions
-                    - Generate keywords for fuzzy matching
-                    - Be precise with units (mm, m, inch, etc.)
-                """
+Important:
+- Extract ALL dimensions mentioned (width, height, thickness, length) with units
+- Identify material type (HDG = Hot Dip Galvanized, GI, SS304, etc.)
+- List key specifications beyond dimensions
+- Generate comprehensive keywords for fuzzy matching
+- Be precise with units (mm, m, inch, etc.)
+"""
         
-        response = self.bedrock.invoke(prompt, system_prompt=system_prompt, max_tokens=1024)
-        result = self.bedrock.extract_json(response)
+        result = self.bedrock.invoke_structured(
+            prompt=prompt,
+            json_schema=json_schema,
+            tool_name="extract_boq_data",
+            tool_description="Extract structured information from BOQ line item",
+            max_tokens=1024,
+            temperature=0.0
+        )
         
         if result:
             try:
@@ -217,6 +344,7 @@ class BOQUnderstandingAgent:
                 parsed_qty = qty
             
             return BOQLineUnderstanding(
+                row_index=row_index,
                 sr_no=sr_no,
                 raw_description=description,
                 item_type=result.get("item_type") or "unknown",
@@ -230,9 +358,9 @@ class BOQUnderstandingAgent:
             )
         else:
             # Fallback heuristic
-            return self._fallback_understanding(sr_no, description, qty, uom)
+            return self._fallback_understanding(row_index, sr_no, description, qty, uom)
     
-    def _fallback_understanding(self, sr_no: str, description: str, qty: float, uom: str) -> BOQLineUnderstanding:
+    def _fallback_understanding(self, row_index: int, sr_no: str, description: str, qty: float, uom: str) -> BOQLineUnderstanding:
         """Heuristic fallback when LLM unavailable"""
         desc_lower = description.lower()
         
@@ -270,6 +398,7 @@ class BOQUnderstandingAgent:
         keywords = [w for w in re.findall(r'\w+', desc_lower) if len(w) > 2]
         
         return BOQLineUnderstanding(
+            row_index=row_index,
             sr_no=sr_no,
             raw_description=description,
             item_type=item_type,
@@ -309,43 +438,86 @@ class VendorQuoteUnderstandingAgent:
         if not description:
             return None
         
-        system_prompt = """You are an expert in construction materials and vendor quotations.
-                            Extract detailed semantic information from vendor quote lines."""
+        # Define JSON schema for structured output
+        json_schema = {
+            "type": "object",
+            "properties": {
+                "item_type": {
+                    "type": "string",
+                    "description": "Type of item: cable tray, bend, tee, cover, accessory, etc."
+                },
+                "dimensions": {
+                    "type": "object",
+                    "properties": {
+                        "width": {"type": ["string", "null"], "description": "Width with unit (e.g., 900mm)"},
+                        "height": {"type": ["string", "null"], "description": "Height with unit (e.g., 50mm)"},
+                        "thickness": {"type": ["string", "null"], "description": "Thickness with unit (e.g., 2.0mm)"},
+                        "length": {"type": ["string", "null"], "description": "Length with unit (e.g., 3m)"}
+                    }
+                },
+                "material": {
+                    "type": "string",
+                    "description": "Material type: HDG, GI, SS304, etc."
+                },
+                "quantity": {
+                    "type": ["number", "null"],
+                    "description": "Numeric quantity value"
+                },
+                "uom": {
+                    "type": ["string", "null"],
+                    "description": "Unit of measure: Mtr, Lth, NOS, etc."
+                },
+                "unit_price": {
+                    "type": ["number", "null"],
+                    "description": "Unit price as numeric value"
+                },
+                "total_price": {
+                    "type": ["number", "null"],
+                    "description": "Total price as numeric value"
+                },
+                "brand": {
+                    "type": ["string", "null"],
+                    "description": "Brand or manufacturer name"
+                },
+                "key_specs": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": "Key specifications as list of strings"
+                },
+                "search_keywords": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": "Keywords for searching/matching"
+                },
+                "reasoning": {
+                    "type": "string",
+                    "description": "Brief explanation of what this item is"
+                }
+            },
+            "required": ["item_type", "dimensions", "material", "search_keywords", "reasoning"]
+        }
         
         prompt = f"""Analyze this vendor quotation line and extract structured information.
 
-                    Vendor Quote Line:
-                    {json.dumps(row_data, indent=2)}
+Vendor Quote Line:
+{json.dumps(row_data, indent=2)}
 
-                    Extract and return ONLY valid JSON:
-                    {{
-                    "item_type": "cable tray | bend | tee | cover | accessory | ...",
-                    "dimensions": {{
-                        "width": "900mm or null",
-                        "height": "50mm or null",
-                        "thickness": "2.0mm or null",
-                        "length": "3m or null"
-                    }},
-                    "material": "HDG | GI | SS304 | ...",
-                    "quantity": numeric_value_or_null,
-                    "uom": "Mtr | Lth | NOS | ...",
-                    "unit_price": numeric_value_or_null,
-                    "total_price": numeric_value_or_null,
-                    "brand": "brand_name or null",
-                    "key_specs": ["spec1", "spec2", ...],
-                    "search_keywords": ["keyword1", "keyword2", ...],
-                    "reasoning": "What this item is"
-                    }}
-
-                    Important:
-                    - Extract ALL numeric values (qty, prices) from any column
-                    - Identify dimensions from description
-                    - Material type identification
-                    - Parse UOM variations (Mtr/Lth/NOS/Nos/etc.)
-                """
+Important:
+- Extract ALL numeric values (qty, prices) from any column
+- Identify dimensions from description with units
+- Identify material type (HDG, GI, SS304, etc.)
+- Parse UOM variations (Mtr/Lth/NOS/Nos/etc.)
+- Provide comprehensive search keywords for matching
+"""
         
-        response = self.bedrock.invoke(prompt, system_prompt=system_prompt, max_tokens=1024)
-        result = self.bedrock.extract_json(response)
+        result = self.bedrock.invoke_structured(
+            prompt=prompt,
+            json_schema=json_schema,
+            tool_name="extract_vendor_quote_data",
+            tool_description="Extract structured information from vendor quotation line",
+            max_tokens=1024,
+            temperature=0.0
+        )
         
         if result:
             return VendorLineUnderstanding(
@@ -472,12 +644,36 @@ class IntelligentAlignmentAgent:
     
     def _prefilter_candidates(self, boq_line: BOQLineUnderstanding,
                              vendor_lines: List[VendorLineUnderstanding],
-                             top_k: int = 5) -> List[VendorLineUnderstanding]:
-        """Pre-filter using heuristic scoring"""
+                             top_k: int = 5,
+                             window_size: int = 5) -> List[VendorLineUnderstanding]:
+        """Pre-filter using heuristic scoring with sliding window based on row_index"""
+        
+        # Apply sliding window filter based on BOQ row index
+        # For row 0: compare with vendor rows 0-4
+        # For row 1: compare with vendor rows 1-5
+        # For row 2: compare with vendor rows 2-6, etc.
+        try:
+            boq_row_idx = boq_line.row_index
+            start_index = boq_row_idx
+            end_index = boq_row_idx + window_size
+            
+            # Filter vendor lines within the window based on row_index
+            windowed_vendor_lines = [
+                vline for vline in vendor_lines 
+                if start_index <= vline.row_index < end_index
+            ]
+            
+            # If no items in window, fall back to all vendor lines
+            if not windowed_vendor_lines:
+                windowed_vendor_lines = vendor_lines
+            
+        except (ValueError, AttributeError):
+            # If row_index is missing, use all vendor lines
+            windowed_vendor_lines = vendor_lines
         
         scored = []
         
-        for vline in vendor_lines:
+        for vline in windowed_vendor_lines:
             score = 0.0
             
             # Item type match
@@ -526,7 +722,7 @@ class IntelligentAlignmentAgent:
                             Select the vendor line that best matches the BOQ requirement."""
                                     
         candidates_text = "\n".join([
-                            f"""Candidate {i+1}:
+                            f"""Candidate {i}:
                                 Description: {c.raw_description}
                                 Type: {c.item_type}
                                 Dimensions: {c.dimensions}
@@ -659,6 +855,7 @@ class EnhancedWorkflowOrchestrator:
         self.inquiry_csv = self.out_dir / "inquiry_csv" / "FINAL.csv"
         self.textract_csv_dir = self.out_dir / "textract_csv"
         self.comparison_dir = self.out_dir / "vendor_comparisons"
+        self.cache_dir = self.out_dir / "vendor_cache"
     
     def run(self) -> int:
         """Execute enhanced workflow"""
@@ -667,10 +864,22 @@ class EnhancedWorkflowOrchestrator:
         print("Enhanced Per-Vendor BOQ Comparison Workflow")
         print("=" * 80)
         
-        # Step 1: Load and understand BOQ requirements
+        # Step 1: Load and understand BOQ requirements (with caching)
         print("\n[Step 1] 🧠 Understanding BOQ Requirements with LLM...")
-        boq_lines = self._load_and_understand_boq()
-        print(f"  ✓ Understood {len(boq_lines)} BOQ line items")
+        
+        # Try to load from cache first
+        boq_lines = self._load_boq_lines_cache()
+        
+        if boq_lines is None:
+            # Cache miss or invalid - process with LLM
+            print("  🤖 Processing BOQ with LLM (cache miss)...")
+            boq_lines = self._load_and_understand_boq()
+            print(f"  ✓ Understood {len(boq_lines)} BOQ line items")
+            
+            # Save to cache for next time
+            self._save_boq_lines_cache(boq_lines)
+        else:
+            print(f"  ✓ Loaded {len(boq_lines)} BOQ line items from cache")
         
         # Step 2: Process each vendor
         print("\n[Step 2] 🏭 Processing Vendor Quotations...")
@@ -683,10 +892,22 @@ class EnhancedWorkflowOrchestrator:
             vendor_name = self._extract_vendor_name(csv_path.name)
             print(f"  Processing: {vendor_name}")
             
-            # Step 2a: Understand vendor lines
+            # Step 2a: Understand vendor lines (with caching)
             print("    🧠 Understanding vendor quotes with LLM...")
-            vendor_lines = self._load_and_understand_vendor(csv_path)
-            print(f"      ✓ Understood {len(vendor_lines)} vendor line items")
+            
+            # Try to load from cache first
+            vendor_lines = self._load_vendor_lines_cache(csv_path)
+            
+            if vendor_lines is None:
+                # Cache miss or invalid - process with LLM 
+                print("    🤖 Processing with LLM (cache miss)...")
+                vendor_lines = self._load_and_understand_vendor(csv_path)
+                print(f"      ✓ Understood {len(vendor_lines)} vendor line items")
+                
+                # Save to cache for next time
+                self._save_vendor_lines_cache(csv_path, vendor_lines)
+            else:
+                print(f"      ✓ Loaded {len(vendor_lines)} vendor line items from cache")
             
             # Step 2b: Align BOQ to vendor
             print("    🔗 Aligning BOQ to vendor quotes...")
@@ -744,7 +965,7 @@ class EnhancedWorkflowOrchestrator:
             if idx % 3 == 0:
                 print(f"    🤖 LLM analyzing: {sr_no} - {description[:50]}...")
             
-            understanding = self.boq_agent.understand_boq_line(sr_no, description, qty, uom)
+            understanding = self.boq_agent.understand_boq_line(idx, sr_no, description, qty, uom)
             boq_lines.append(understanding)
         
         return boq_lines
@@ -833,6 +1054,203 @@ class EnhancedWorkflowOrchestrator:
             vendor_part = parts[0].replace("Response_", "").replace("_-_", " - ").replace("_", " ")
             return vendor_part
         return filename
+    
+    def _get_cache_path(self, csv_path: Path) -> Path:
+        """Get cache file path for a vendor CSV"""
+        vendor_name = self._extract_vendor_name(csv_path.name)
+        safe_name = vendor_name.replace("/", "_").replace("\\", "_").replace(" ", "_")
+        return self.cache_dir / f"{safe_name}_vendor_lines.json"
+    
+    def _save_vendor_lines_cache(self, csv_path: Path, vendor_lines: List[VendorLineUnderstanding]) -> None:
+        """Save vendor lines to cache"""
+        self.cache_dir.mkdir(parents=True, exist_ok=True)
+        cache_path = self._get_cache_path(csv_path)
+        
+        # Convert dataclasses to dictionaries for JSON serialization
+        cache_data = []
+        for line in vendor_lines:
+            line_dict = {
+                'row_index': line.row_index,
+                'raw_description': line.raw_description,
+                'item_type': line.item_type,
+                'dimensions': line.dimensions,
+                'material': line.material,
+                'quantity': line.quantity,
+                'uom': line.uom,
+                'unit_price': line.unit_price,
+                'total_price': line.total_price,
+                'brand': line.brand,
+                'key_specs': line.key_specs,
+                'search_keywords': line.search_keywords,
+                'reasoning': line.reasoning
+            }
+            cache_data.append(line_dict)
+        
+        with open(cache_path, 'w', encoding='utf-8') as f:
+            json.dump(cache_data, f, indent=2, ensure_ascii=False)
+        
+        print(f"      💾 Cached vendor lines: {cache_path.name}")
+    
+    def _load_vendor_lines_cache(self, csv_path: Path) -> Optional[List[VendorLineUnderstanding]]:
+        """Load vendor lines from cache if available and valid"""
+        cache_path = self._get_cache_path(csv_path)
+        
+        if not cache_path.exists():
+            return None
+        
+        try:
+            with open(cache_path, 'r', encoding='utf-8') as f:
+                cache_data = json.load(f)
+            
+            # Convert dictionaries back to dataclasses
+            vendor_lines = []
+            for line_dict in cache_data:
+                line = VendorLineUnderstanding(
+                    row_index=line_dict['row_index'],
+                    raw_description=line_dict['raw_description'],
+                    item_type=line_dict['item_type'],
+                    dimensions=line_dict['dimensions'],
+                    material=line_dict['material'],
+                    quantity=line_dict['quantity'],
+                    uom=line_dict['uom'],
+                    unit_price=line_dict['unit_price'],
+                    total_price=line_dict['total_price'],
+                    brand=line_dict['brand'],
+                    key_specs=line_dict['key_specs'],
+                    search_keywords=line_dict['search_keywords'],
+                    reasoning=line_dict['reasoning']
+                )
+                vendor_lines.append(line)
+            
+            print(f"      📂 Loaded {len(vendor_lines)} vendor lines from cache")
+            return vendor_lines
+            
+        except Exception as e:
+            print(f"      ⚠️  Cache load error: {e}, regenerating...")
+            return None
+    
+    def clear_vendor_cache(self) -> None:
+        """Clear all cached data (BOQ and vendor lines)"""
+        if self.cache_dir.exists():
+            import shutil
+            shutil.rmtree(self.cache_dir)
+            print("🗑️  Cleared all cache (BOQ and vendor lines)")
+        else:
+            print("ℹ️  No cache to clear")
+    
+    def get_cache_info(self) -> Dict[str, Any]:
+        """Get information about cached data"""
+        cache_info = {
+            'cache_dir': str(self.cache_dir),
+            'cache_exists': self.cache_dir.exists(),
+            'boq_cache': {
+                'exists': False,
+                'path': str(self._get_boq_cache_path()),
+                'size_bytes': 0,
+                'modified_time': 0
+            },
+            'vendor_caches': []
+        }
+        
+        if self.cache_dir.exists():
+            # Check BOQ cache
+            boq_cache_path = self._get_boq_cache_path()
+            if boq_cache_path.exists():
+                try:
+                    stat = boq_cache_path.stat()
+                    cache_info['boq_cache'] = {
+                        'exists': True,
+                        'path': str(boq_cache_path),
+                        'size_bytes': stat.st_size,
+                        'modified_time': stat.st_mtime
+                    }
+                except Exception:
+                    pass
+            
+            # Check vendor caches
+            for cache_file in self.cache_dir.glob("*_vendor_lines.json"):
+                try:
+                    stat = cache_file.stat()
+                    cache_info['vendor_caches'].append({
+                        'filename': cache_file.name,
+                        'size_bytes': stat.st_size,
+                        'modified_time': stat.st_mtime
+                    })
+                except Exception:
+                    pass
+        
+        return cache_info
+    
+    def _get_boq_cache_path(self) -> Path:
+        """Get cache file path for BOQ lines"""
+        return self.cache_dir / "boq_lines.json"
+    
+    def _save_boq_lines_cache(self, boq_lines: List[BOQLineUnderstanding]) -> None:
+        """Save BOQ lines to cache"""
+        self.cache_dir.mkdir(parents=True, exist_ok=True)
+        cache_path = self._get_boq_cache_path()
+        
+        # Convert dataclasses to dictionaries for JSON serialization
+        cache_data = []
+        for line in boq_lines:
+            line_dict = {
+                'row_index': line.row_index,
+                'sr_no': line.sr_no,
+                'raw_description': line.raw_description,
+                'item_type': line.item_type,
+                'dimensions': line.dimensions,
+                'material': line.material,
+                'quantity': line.quantity,
+                'uom': line.uom,
+                'key_specs': line.key_specs,
+                'search_keywords': line.search_keywords,
+                'reasoning': line.reasoning
+            }
+            cache_data.append(line_dict)
+        
+        with open(cache_path, 'w', encoding='utf-8') as f:
+            json.dump(cache_data, f, indent=2, ensure_ascii=False)
+        
+        print(f"  💾 Cached BOQ lines: {cache_path.name}")
+    
+    def _load_boq_lines_cache(self) -> Optional[List[BOQLineUnderstanding]]:
+        """Load BOQ lines from cache if available and valid"""
+        cache_path = self._get_boq_cache_path()
+        
+        if not cache_path.exists():
+            return None
+        
+        try:
+            with open(cache_path, 'r', encoding='utf-8') as f:
+                cache_data = json.load(f)
+            
+            # Convert dictionaries back to dataclasses
+            boq_lines = []
+            for idx, line_dict in enumerate(cache_data):
+                # Handle backward compatibility - old cache files may not have row_index
+                row_index = line_dict.get('row_index', idx)
+                
+                line = BOQLineUnderstanding(
+                    row_index=row_index,
+                    sr_no=line_dict['sr_no'],
+                    raw_description=line_dict['raw_description'],
+                    item_type=line_dict['item_type'],
+                    dimensions=line_dict['dimensions'],
+                    material=line_dict['material'],
+                    quantity=line_dict['quantity'],
+                    uom=line_dict['uom'],
+                    key_specs=line_dict['key_specs'],
+                    search_keywords=line_dict['search_keywords'],
+                    reasoning=line_dict['reasoning']
+                )
+                boq_lines.append(line)
+            
+            print(f"  📂 Loaded {len(boq_lines)} BOQ lines from cache")
+            return boq_lines
+            
+        except Exception as e:
+            print(f"  ⚠️  BOQ cache load error: {e}, regenerating...")
+            return None
     
     def _write_vendor_comparison_csv(self, vendor_name: str, alignments: List[AlignedMatch]) -> Path:
         """Write per-vendor comparison CSV"""

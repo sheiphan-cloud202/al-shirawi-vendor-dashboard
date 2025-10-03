@@ -1,0 +1,4838 @@
+[
+  {
+    "row_index": 0,
+    "raw_description": "CABLE TRAY 900X50MM, 2.0MM THK, 3 MTR LTH -HDG",
+    "item_type": "cable tray",
+    "dimensions": {
+      "width": "900mm",
+      "height": "50mm",
+      "thickness": "2.0mm",
+      "length": "3m"
+    },
+    "material": "HDG",
+    "quantity": 119.0,
+    "uom": "LTHS",
+    "unit_price": 416.628,
+    "total_price": 49578.732,
+    "brand": null,
+    "key_specs": [
+      "900x50mm",
+      "2.0mm thickness",
+      "3 meter length",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "cable tray",
+      "900mm",
+      "50mm",
+      "2.0mm",
+      "3m",
+      "HDG",
+      "hot-dip galvanized",
+      "LTHS",
+      "lengths"
+    ],
+    "reasoning": "This item is a cable tray used for organizing and supporting electrical cables. It has specific dimensions, is made of HDG (Hot-Dip Galvanized) material for corrosion resistance, and comes in 3-meter lengths."
+  },
+  {
+    "row_index": 1,
+    "raw_description": "CABLE TRAY 750X50MM, 2.0MM THK, 3 MTR LTH -HDG",
+    "item_type": "cable tray",
+    "dimensions": {
+      "width": "750mm",
+      "height": "50mm",
+      "thickness": "2.0mm",
+      "length": "3m"
+    },
+    "material": "HDG",
+    "quantity": 77.0,
+    "uom": "LTHS",
+    "unit_price": 354.936,
+    "total_price": 27330.072,
+    "brand": null,
+    "key_specs": [
+      "750x50mm",
+      "2.0mm thickness",
+      "3 meter length",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "cable tray",
+      "750mm",
+      "50mm",
+      "2.0mm",
+      "3m",
+      "HDG",
+      "hot-dip galvanized",
+      "LTHS",
+      "lengths"
+    ],
+    "reasoning": "This item is a cable tray used for organizing and supporting electrical cables. It is made of hot-dip galvanized (HDG) material for corrosion resistance. The tray has specific dimensions and is sold in 3-meter lengths."
+  },
+  {
+    "row_index": 2,
+    "raw_description": "CABLE TRAY 600X50MM, 2.0MM THK, 3 MTR LTH -HDG",
+    "item_type": "cable tray",
+    "dimensions": {
+      "width": "600mm",
+      "height": "50mm",
+      "thickness": "2.0mm",
+      "length": "3m"
+    },
+    "material": "HDG",
+    "quantity": 111.0,
+    "uom": "LTHS",
+    "unit_price": 293.244,
+    "total_price": 32550.084,
+    "brand": null,
+    "key_specs": [
+      "600x50mm",
+      "2.0mm thickness",
+      "3 meter length",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "cable tray",
+      "600mm",
+      "50mm",
+      "2.0mm",
+      "3m",
+      "HDG",
+      "hot-dip galvanized",
+      "600x50mm"
+    ],
+    "reasoning": "This item is a cable tray used for organizing and supporting electrical cables. It has specific dimensions, is made of HDG (Hot-Dip Galvanized) material for corrosion resistance, and comes in 3-meter lengths."
+  },
+  {
+    "row_index": 3,
+    "raw_description": "CABLE TRAY 450X50MM, 2.0MM THK, 3 MTR LTH -HDG",
+    "item_type": "cable tray",
+    "dimensions": {
+      "width": "450mm",
+      "height": "50mm",
+      "thickness": "2.0mm",
+      "length": "3m"
+    },
+    "material": "HDG",
+    "quantity": 271.0,
+    "uom": "LTHS",
+    "unit_price": 231.552,
+    "total_price": 62750.592,
+    "brand": null,
+    "key_specs": [
+      "450x50mm",
+      "2.0mm thick",
+      "3 meter length",
+      "HDG"
+    ],
+    "search_keywords": [
+      "cable tray",
+      "450x50mm",
+      "2.0mm thick",
+      "3 meter length",
+      "HDG",
+      "hot-dip galvanized",
+      "450mm width",
+      "50mm height"
+    ],
+    "reasoning": "This item is a cable tray used for organizing and supporting electrical cables. It has specific dimensions, is made of HDG (Hot-Dip Galvanized) material for corrosion resistance, and comes in 3-meter lengths."
+  },
+  {
+    "row_index": 4,
+    "raw_description": "CABLE TRAY 300X50MM, 1.5MM THK, 3 MTR LTH -HDG",
+    "item_type": "cable tray",
+    "dimensions": {
+      "width": "300mm",
+      "height": "50mm",
+      "thickness": "1.5mm",
+      "length": "3m"
+    },
+    "material": "HDG",
+    "quantity": 786.0,
+    "uom": "LTHS",
+    "unit_price": 131.22,
+    "total_price": 103138.92,
+    "brand": null,
+    "key_specs": [
+      "300x50mm",
+      "1.5mm thick",
+      "3 meter length",
+      "HDG"
+    ],
+    "search_keywords": [
+      "cable tray",
+      "300x50mm",
+      "1.5mm thick",
+      "3 meter length",
+      "HDG",
+      "hot-dip galvanized",
+      "LTHS"
+    ],
+    "reasoning": "This item is a cable tray used for organizing and supporting electrical cables. It has specific dimensions, is made of HDG (Hot-Dip Galvanized) material for corrosion resistance, and comes in 3-meter lengths."
+  },
+  {
+    "row_index": 5,
+    "raw_description": "CABLE TRAY 225X50MM, 1.5MM THK, 3 MTR LTH -HDG",
+    "item_type": "cable tray",
+    "dimensions": {
+      "width": "225mm",
+      "height": "50mm",
+      "thickness": "1.5mm",
+      "length": "3m"
+    },
+    "material": "HDG",
+    "quantity": 560.0,
+    "uom": "LTHS",
+    "unit_price": 107.388,
+    "total_price": 60137.28,
+    "brand": null,
+    "key_specs": [
+      "225x50mm",
+      "1.5mm thick",
+      "3 meter length",
+      "HDG"
+    ],
+    "search_keywords": [
+      "cable tray",
+      "225x50mm",
+      "1.5mm thick",
+      "3 meter length",
+      "HDG",
+      "hot-dip galvanized",
+      "LTHS",
+      "lengths"
+    ],
+    "reasoning": "This item is a cable tray used for organizing and supporting electrical cables. It is made of hot-dip galvanized (HDG) material for corrosion resistance. The tray has specific dimensions and is sold in 3-meter lengths."
+  },
+  {
+    "row_index": 6,
+    "raw_description": "CABLE TRAY 200X50MM, 1.5MM THK, 3 MTR LTH -HDG",
+    "item_type": "cable tray",
+    "dimensions": {
+      "width": "200mm",
+      "height": "50mm",
+      "thickness": "1.5mm",
+      "length": "3m"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "LTHS",
+    "unit_price": 99.444,
+    "total_price": 994.44,
+    "brand": null,
+    "key_specs": [
+      "200x50mm",
+      "1.5mm thick",
+      "3 meter length",
+      "HDG"
+    ],
+    "search_keywords": [
+      "cable tray",
+      "200x50mm",
+      "1.5mm thick",
+      "3 meter length",
+      "HDG",
+      "hot-dip galvanized",
+      "LTHS"
+    ],
+    "reasoning": "This item is a cable tray used for organizing and supporting electrical cables. It has specific dimensions, is made of HDG (Hot-Dip Galvanized) material for corrosion resistance, and comes in 3-meter lengths."
+  },
+  {
+    "row_index": 7,
+    "raw_description": "CABLE TRAY 150X50MM, 1.5MM THK, 3 MTR LTH -HDG",
+    "item_type": "cable tray",
+    "dimensions": {
+      "width": "150mm",
+      "height": "50mm",
+      "thickness": "1.5mm",
+      "length": "3m"
+    },
+    "material": "HDG",
+    "quantity": 1000.0,
+    "uom": "LTHS",
+    "unit_price": 83.568,
+    "total_price": 83568.0,
+    "brand": null,
+    "key_specs": [
+      "150x50mm",
+      "1.5mm thick",
+      "3 meter length",
+      "HDG"
+    ],
+    "search_keywords": [
+      "cable tray",
+      "150x50mm",
+      "1.5mm thick",
+      "3 meter length",
+      "HDG",
+      "hot-dip galvanized",
+      "LTHS"
+    ],
+    "reasoning": "This item is a cable tray used for organizing and supporting electrical cables. It has specific dimensions, is made of HDG (Hot-Dip Galvanized) material for corrosion resistance, and comes in 3-meter lengths."
+  },
+  {
+    "row_index": 8,
+    "raw_description": "CABLE TRAY 100X50MM, 1.5MM THK, 3 MTR LTH -HDG",
+    "item_type": "cable tray",
+    "dimensions": {
+      "width": "100mm",
+      "height": "50mm",
+      "thickness": "1.5mm",
+      "length": "3m"
+    },
+    "material": "HDG",
+    "quantity": 900.0,
+    "uom": "LTHS",
+    "unit_price": 67.668,
+    "total_price": 60901.2,
+    "brand": null,
+    "key_specs": [
+      "100x50mm",
+      "1.5mm thick",
+      "3 meter length",
+      "HDG"
+    ],
+    "search_keywords": [
+      "cable tray",
+      "100x50mm",
+      "1.5mm thick",
+      "3 meter length",
+      "HDG",
+      "hot-dip galvanized",
+      "LTHS",
+      "lengths"
+    ],
+    "reasoning": "This item is a cable tray used for organizing and supporting electrical cables. It has specific dimensions, is made of HDG (Hot-Dip Galvanized) material for corrosion resistance, and is sold in lengths."
+  },
+  {
+    "row_index": 9,
+    "raw_description": "COVER FOR 900MM CABLE TRAY, 2.0MM THK, 3 MTR LTH - HDG",
+    "item_type": "cover",
+    "dimensions": {
+      "width": "900mm",
+      "thickness": "2.0mm",
+      "length": "3m"
+    },
+    "material": "HDG",
+    "quantity": 7.0,
+    "uom": "LTHS",
+    "unit_price": 366.012,
+    "total_price": 2562.084,
+    "brand": null,
+    "key_specs": [
+      "900mm width",
+      "2.0mm thickness",
+      "3m length",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "cover",
+      "cable tray",
+      "900mm",
+      "2.0mm",
+      "3m",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a cover for a 900mm wide cable tray. It is made of HDG (Hot-Dip Galvanized) material, with a thickness of 2.0mm and a length of 3 meters. The cover is designed to protect the cables in the tray from external elements and provide a clean, finished appearance."
+  },
+  {
+    "row_index": 10,
+    "raw_description": "COVER FOR 750MM CABLE TRAY, 2.0MM THK, 3 MTR LTH - HDG",
+    "item_type": "cover",
+    "dimensions": {
+      "width": "750mm",
+      "thickness": "2.0mm",
+      "length": "3m"
+    },
+    "material": "HDG",
+    "quantity": 4.0,
+    "uom": "LTHS",
+    "unit_price": 306.78,
+    "total_price": 1227.12,
+    "brand": null,
+    "key_specs": [
+      "750mm width",
+      "2.0mm thickness",
+      "3m length",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "cover",
+      "cable tray",
+      "750mm",
+      "2.0mm",
+      "3m",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a cover for a cable tray. It is made of HDG (Hot-Dip Galvanized) material, designed to fit a 750mm wide cable tray. The cover is 2.0mm thick and comes in 3-meter lengths."
+  },
+  {
+    "row_index": 11,
+    "raw_description": "COVER FOR 600MM CABLE TRAY, 2.0MM THK, 3 MTR LTH - HDG",
+    "item_type": "cover",
+    "dimensions": {
+      "width": "600mm",
+      "thickness": "2.0mm",
+      "length": "3m"
+    },
+    "material": "HDG",
+    "quantity": 11.0,
+    "uom": "LTHS",
+    "unit_price": 249.624,
+    "total_price": 2745.864,
+    "brand": null,
+    "key_specs": [
+      "600mm width",
+      "2.0mm thickness",
+      "3m length",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "cover",
+      "cable tray",
+      "600mm",
+      "2.0mm",
+      "3m",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a cover for a 600mm wide cable tray. It is made of HDG (Hot-Dip Galvanized) material, with a thickness of 2.0mm and a length of 3 meters."
+  },
+  {
+    "row_index": 12,
+    "raw_description": "COVER FOR 450MM CABLE TRAY, 2.0MM THK, 3 MTR LTH - HDG",
+    "item_type": "cover",
+    "dimensions": {
+      "width": "450mm",
+      "thickness": "2.0mm",
+      "length": "3m"
+    },
+    "material": "HDG",
+    "quantity": 5.0,
+    "uom": "LTHS",
+    "unit_price": 193.032,
+    "total_price": 965.16,
+    "brand": null,
+    "key_specs": [
+      "450mm width",
+      "2.0mm thickness",
+      "3m length",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "cover",
+      "cable tray",
+      "450mm",
+      "2.0mm",
+      "3m",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a cover for a 450mm wide cable tray. It is made of HDG (Hot-Dip Galvanized) material, with a thickness of 2.0mm and a length of 3 meters."
+  },
+  {
+    "row_index": 13,
+    "raw_description": "COVER FOR 300MM CABLE TRAY, 1.5MM THK, 3 MTR LTH - HDG",
+    "item_type": "cover",
+    "dimensions": {
+      "width": "300mm",
+      "thickness": "1.5mm",
+      "length": "3m"
+    },
+    "material": "HDG",
+    "quantity": 44.0,
+    "uom": "LTHS",
+    "unit_price": 103.896,
+    "total_price": 4571.424,
+    "brand": null,
+    "key_specs": [
+      "300mm width",
+      "1.5mm thickness",
+      "3m length",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "cover",
+      "cable tray",
+      "300mm",
+      "1.5mm",
+      "3m",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a cover for a 300mm wide cable tray. It is made of HDG (Hot-Dip Galvanized) material, with a thickness of 1.5mm and a length of 3 meters. The cover is designed to protect the cables in the tray from external elements and provide a clean, finished appearance."
+  },
+  {
+    "row_index": 14,
+    "raw_description": "COVER FOR 225MM CABLE TRAY, 1.5MM THK, 3 MTR LTH - HDG",
+    "item_type": "cover",
+    "dimensions": {
+      "width": "225mm",
+      "thickness": "1.5mm",
+      "length": "3m"
+    },
+    "material": "HDG",
+    "quantity": 38.0,
+    "uom": "LTHS",
+    "unit_price": 80.064,
+    "total_price": 3042.432,
+    "brand": null,
+    "key_specs": [
+      "225mm width",
+      "1.5mm thickness",
+      "3m length",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "cover",
+      "cable tray",
+      "225mm",
+      "1.5mm",
+      "3m",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a cover for a cable tray. It is made of HDG (Hot-Dip Galvanized) material, designed to fit a 225mm wide cable tray. The cover itself is 1.5mm thick and comes in 3-meter lengths."
+  },
+  {
+    "row_index": 15,
+    "raw_description": "COVER FOR 200MM CABLE TRAY, 1.5MM THK, 3 MTR LTH - HDG",
+    "item_type": "cover",
+    "dimensions": {
+      "width": "200mm",
+      "thickness": "1.5mm",
+      "length": "3m"
+    },
+    "material": "HDG",
+    "quantity": 2.0,
+    "uom": "LTHS",
+    "unit_price": 72.12,
+    "total_price": 144.24,
+    "brand": null,
+    "key_specs": [
+      "200mm width",
+      "1.5mm thickness",
+      "3m length",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "cover",
+      "cable tray",
+      "200mm",
+      "1.5mm",
+      "3m",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a cover for a 200mm wide cable tray. It is made of HDG (Hot-Dip Galvanized) material, with a thickness of 1.5mm and a length of 3 meters. The cover is designed to protect the cables in the tray from external elements and provide a clean, finished appearance to the cable management system."
+  },
+  {
+    "row_index": 16,
+    "raw_description": "COVER FOR 150MM CABLE TRAY, 1.5MM THK, 3 MTR LTH - HDG",
+    "item_type": "cover",
+    "dimensions": {
+      "width": "150mm",
+      "thickness": "1.5mm",
+      "length": "3m"
+    },
+    "material": "HDG",
+    "quantity": 19.0,
+    "uom": "LTHS",
+    "unit_price": 57.132,
+    "total_price": 1085.508,
+    "brand": null,
+    "key_specs": [
+      "150mm width",
+      "1.5mm thickness",
+      "3m length",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "cover",
+      "cable tray",
+      "150mm",
+      "1.5mm",
+      "3m",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a cover for a cable tray. It is made of HDG (Hot-Dip Galvanized) material, designed to fit a 150mm wide cable tray. The cover is 1.5mm thick and comes in 3-meter lengths."
+  },
+  {
+    "row_index": 17,
+    "raw_description": "COVER FOR 100MM CABLE TRAY, 1.5MM THK, 3 MTR LTH - HDG",
+    "item_type": "cover",
+    "dimensions": {
+      "thickness": "1.5mm",
+      "length": "3m",
+      "width": "100mm"
+    },
+    "material": "HDG",
+    "quantity": 204.0,
+    "uom": "LTHS",
+    "unit_price": 41.964,
+    "total_price": 8560.656,
+    "brand": null,
+    "key_specs": [
+      "100mm width",
+      "1.5mm thickness",
+      "3m length",
+      "HDG material",
+      "For cable tray"
+    ],
+    "search_keywords": [
+      "cover",
+      "cable tray",
+      "100mm",
+      "1.5mm",
+      "3m",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a cover for a 100mm cable tray. It is made of HDG (Hot-Dip Galvanized) material, with dimensions of 100mm width, 1.5mm thickness, and 3 meters length."
+  },
+  {
+    "row_index": 18,
+    "raw_description": "CLOSED COVER FIXING BRACKET - HDG C/W HWRS. (SETS OFROOFING BOLT M6X16MM C/W NUT -EG &PAN HEAD PHLIPS SELF TAPPING SCREW 5.5MM X 1/2 INCH -SS304)",
+    "item_type": "Closed cover fixing bracket",
+    "dimensions": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "thickness": null
+    },
+    "material": "HDG",
+    "quantity": 2004.0,
+    "uom": "NOS",
+    "unit_price": 1.98,
+    "total_price": 3967.92,
+    "brand": null,
+    "key_specs": [
+      "Closed cover fixing bracket",
+      "HDG",
+      "Comes with hardware (HWRS)",
+      "Roofing bolt M6x16mm with nut (EG)",
+      "Pan head Phillips self-tapping screw 5.5mm x 1/2 inch (SS304)"
+    ],
+    "search_keywords": [
+      "closed cover",
+      "fixing bracket",
+      "HDG",
+      "hardware",
+      "roofing bolt",
+      "M6",
+      "nut",
+      "pan head",
+      "Phillips",
+      "self-tapping screw",
+      "SS304"
+    ],
+    "reasoning": "This item is a closed cover fixing bracket made of HDG (Hot-Dip Galvanized) material. It comes with hardware including roofing bolts and self-tapping screws. The bracket is used for fixing closed covers, likely in a roofing or similar construction application."
+  },
+  {
+    "row_index": 19,
+    "raw_description": "FLAT BEND 90° FOR 900X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "900mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 255.984,
+    "total_price": 2559.84,
+    "brand": null,
+    "key_specs": [
+      "90 degree",
+      "900x50mm",
+      "2.0mm thick",
+      "HDG"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "90 degree",
+      "cable tray",
+      "900mm",
+      "50mm",
+      "2.0mm",
+      "HDG",
+      "hot dip galvanized"
+    ],
+    "reasoning": "This item is a flat bend for a cable tray system. It's a 90-degree bend designed for a 900mm wide by 50mm high cable tray. The bend is made of 2.0mm thick hot-dip galvanized (HDG) material."
+  },
+  {
+    "row_index": 20,
+    "raw_description": "FLAT BEND 90° FOR 750X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "750mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 192.036,
+    "total_price": 1920.36,
+    "brand": null,
+    "key_specs": [
+      "90 degree",
+      "750x50mm",
+      "2.0mm thickness",
+      "HDG"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "90 degree",
+      "750x50mm",
+      "cable tray",
+      "HDG",
+      "2.0mm thickness"
+    ],
+    "reasoning": "This item is a 90-degree flat bend for a cable tray system. It is made of Hot-Dip Galvanized (HDG) material, designed for a 750mm wide by 50mm high cable tray, with a thickness of 2.0mm. It's a specialized component used in cable management systems to change the direction of cable trays at right angles."
+  },
+  {
+    "row_index": 21,
+    "raw_description": "FLAT BEND 90° FOR 600X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "600mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 134.304,
+    "total_price": 1343.04,
+    "brand": null,
+    "key_specs": [
+      "90° angle",
+      "600x50mm size",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "90 degree",
+      "600x50mm",
+      "cable tray",
+      "HDG",
+      "2.0mm thickness"
+    ],
+    "reasoning": "This item is a flat bend for a cable tray system. It's a 90-degree bend designed for a 600mm wide by 50mm high cable tray. The bend is made of HDG (Hot-Dip Galvanized) material with a thickness of 2.0mm, which provides corrosion resistance and durability."
+  },
+  {
+    "row_index": 22,
+    "raw_description": "FLAT BEND 90° FOR 450X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "450mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 89.856,
+    "total_price": 898.56,
+    "brand": null,
+    "key_specs": [
+      "90 degree",
+      "450x50mm",
+      "2.0mm thickness",
+      "HDG"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "90 degree",
+      "450x50mm",
+      "cable tray",
+      "HDG",
+      "2.0mm thickness"
+    ],
+    "reasoning": "This item is a flat bend for a cable tray system. It's a 90-degree bend designed for a 450mm wide by 50mm high cable tray. The bend is made of HDG (Hot-Dip Galvanized) material with a thickness of 2.0mm."
+  },
+  {
+    "row_index": 23,
+    "raw_description": "FLAT BEND 90° FOR 300X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "300mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 42.588,
+    "total_price": 425.88,
+    "brand": null,
+    "key_specs": [
+      "90 degree",
+      "300x50mm",
+      "1.5mm thickness",
+      "HDG"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "90 degree",
+      "300x50mm",
+      "cable tray",
+      "HDG",
+      "1.5mm thickness"
+    ],
+    "reasoning": "This item is a flat bend for a cable tray system. It's a 90-degree bend designed for a 300x50mm cable tray, made of HDG (Hot-Dip Galvanized) material with a thickness of 1.5mm."
+  },
+  {
+    "row_index": 24,
+    "raw_description": "FLAT BEND 90° FOR 225X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "225mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 31.224,
+    "total_price": 312.24,
+    "brand": null,
+    "key_specs": [
+      "90 degree",
+      "225x50mm",
+      "1.5mm thickness",
+      "HDG"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "90 degree",
+      "225x50mm",
+      "cable tray",
+      "HDG",
+      "1.5mm thickness"
+    ],
+    "reasoning": "This item is a flat bend for a cable tray system. It's a 90-degree bend designed for a 225x50mm cable tray, made of HDG (Hot-Dip Galvanized) material with a thickness of 1.5mm."
+  },
+  {
+    "row_index": 25,
+    "raw_description": "FLAT BEND 90° FOR 200X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "200mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 28.98,
+    "total_price": 289.8,
+    "brand": null,
+    "key_specs": [
+      "90 degree bend",
+      "200x50mm size",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "90 degree",
+      "200x50mm",
+      "cable tray",
+      "HDG",
+      "1.5mm thickness"
+    ],
+    "reasoning": "This item is a 90-degree flat bend for a cable tray system. It is made of HDG (Hot-Dip Galvanized) material and designed for a 200x50mm cable tray with a thickness of 1.5mm."
+  },
+  {
+    "row_index": 26,
+    "raw_description": "FLAT BEND 90° FOR 150X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "150mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 23.88,
+    "total_price": 238.8,
+    "brand": null,
+    "key_specs": [
+      "90 degree",
+      "150x50mm",
+      "1.5mm thick",
+      "HDG"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "90 degree",
+      "cable tray",
+      "150x50mm",
+      "1.5mm thick",
+      "HDG",
+      "hot dip galvanized"
+    ],
+    "reasoning": "This item is a flat bend for a cable tray system. It's a 90-degree bend designed for a 150mm wide by 50mm high cable tray. The bend is made of 1.5mm thick hot-dip galvanized (HDG) material, which provides corrosion resistance."
+  },
+  {
+    "row_index": 27,
+    "raw_description": "FLAT BEND 90° FOR 100X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "100mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 18.012,
+    "total_price": 180.12,
+    "brand": null,
+    "key_specs": [
+      "90 degree",
+      "100x50mm",
+      "1.5mm thickness",
+      "HDG"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "90 degree",
+      "cable tray",
+      "HDG",
+      "hot dip galvanized",
+      "100x50mm",
+      "1.5mm thickness"
+    ],
+    "reasoning": "This item is a flat bend for a cable tray system. It's a 90-degree bend designed for a 100x50mm cable tray, made of 1.5mm thick hot-dip galvanized (HDG) material. It's used to change the direction of cable trays in a right angle while maintaining a flat profile."
+  },
+  {
+    "row_index": 28,
+    "raw_description": "FLAT BEND 45° FOR 450X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "450mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 151.44,
+    "total_price": 1514.4,
+    "brand": null,
+    "key_specs": [
+      "45 degree",
+      "450x50mm",
+      "2.0mm thick",
+      "HDG"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "45 degree",
+      "cable tray",
+      "450x50mm",
+      "2.0mm",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a flat bend for a cable tray system. It has a 45-degree angle and is designed for a 450x50mm cable tray. The bend is made of 2.0mm thick hot-dip galvanized (HDG) material."
+  },
+  {
+    "row_index": 29,
+    "raw_description": "FLAT BEND 45° FOR 750X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "750mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 115.908,
+    "total_price": 1159.08,
+    "brand": null,
+    "key_specs": [
+      "45 degree",
+      "750x50mm",
+      "2.0mm thick",
+      "HDG"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "45 degree",
+      "cable tray",
+      "750mm",
+      "50mm",
+      "2.0mm",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a flat bend for a cable tray system. It has a 45-degree angle and is designed for a 750mm wide by 50mm high cable tray. The bend is made of 2.0mm thick hot-dip galvanized (HDG) material."
+  },
+  {
+    "row_index": 30,
+    "raw_description": "FLAT BEND 45° FOR 600X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "600mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 84.9,
+    "total_price": 849.0,
+    "brand": null,
+    "key_specs": [
+      "45 degree angle",
+      "600x50mm size",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "45 degree",
+      "600x50mm",
+      "cable tray",
+      "2.0mm thick",
+      "HDG"
+    ],
+    "reasoning": "This item is a 45-degree flat bend for a cable tray system. It is made of HDG (Hot-Dip Galvanized) material and has specific dimensions for width, height, and thickness."
+  },
+  {
+    "row_index": 31,
+    "raw_description": "FLAT BEND 45° FOR 450X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "450mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 61.128,
+    "total_price": 611.28,
+    "brand": null,
+    "key_specs": [
+      "45 degree angle",
+      "450x50mm size",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "45 degree",
+      "450x50mm",
+      "cable tray",
+      "HDG",
+      "2.0mm thickness"
+    ],
+    "reasoning": "This item is a flat bend for a cable tray system. It has a 45-degree angle and is designed for a 450x50mm cable tray. The bend is made of HDG (Hot-Dip Galvanized) material with a thickness of 2.0mm, which provides corrosion resistance and durability for electrical installations."
+  },
+  {
+    "row_index": 32,
+    "raw_description": "FLAT BEND 45° FOR 300X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "300mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 30.588,
+    "total_price": 305.88,
+    "brand": null,
+    "key_specs": [
+      "45 degree",
+      "300x50mm",
+      "1.5mm thick",
+      "HDG"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "45 degree",
+      "cable tray",
+      "300x50mm",
+      "1.5mm thick",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a flat bend for a cable tray system. It has a 45-degree angle and is designed for a 300x50mm cable tray. The bend is made of 1.5mm thick material and is hot-dip galvanized (HDG) for corrosion protection."
+  },
+  {
+    "row_index": 33,
+    "raw_description": "FLAT BEND 45° FOR 225X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "225mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 22.968,
+    "total_price": 229.68,
+    "brand": null,
+    "key_specs": [
+      "45 degree",
+      "225x50mm",
+      "1.5mm thick",
+      "HDG"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "45 degree",
+      "cable tray",
+      "225x50mm",
+      "1.5mm thick",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a flat bend for a cable tray system. It has a 45-degree angle and is designed for a 225x50mm cable tray. The bend is made of 1.5mm thick material and is hot-dip galvanized (HDG) for corrosion protection."
+  },
+  {
+    "row_index": 34,
+    "raw_description": "FLAT BEND 45° FOR 200X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "200mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 21.024,
+    "total_price": 210.24,
+    "brand": null,
+    "key_specs": [
+      "45 degree",
+      "200x50mm",
+      "1.5mm thick",
+      "HDG"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "45 degree",
+      "cable tray",
+      "200x50mm",
+      "1.5mm thick",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a flat bend for a cable tray system. It has a 45-degree angle and is designed for a 200x50mm cable tray. The bend is made of 1.5mm thick hot-dip galvanized (HDG) material, which provides corrosion resistance."
+  },
+  {
+    "row_index": 35,
+    "raw_description": "FLAT BEND 45° FOR 150X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "150mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 20.388,
+    "total_price": 203.88,
+    "brand": null,
+    "key_specs": [
+      "45 degree angle",
+      "150x50mm size",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "45 degree",
+      "150x50mm",
+      "cable tray",
+      "HDG",
+      "1.5mm thickness"
+    ],
+    "reasoning": "This item is a 45-degree flat bend for a cable tray system. It is made of HDG (Hot-Dip Galvanized) material and designed for a 150x50mm cable tray with a thickness of 1.5mm."
+  },
+  {
+    "row_index": 36,
+    "raw_description": "FLAT BEND 45° FOR 100X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Flat Bend",
+    "dimensions": {
+      "width": "100mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 16.824,
+    "total_price": 168.24,
+    "brand": null,
+    "key_specs": [
+      "45 degree",
+      "100x50mm",
+      "1.5mm thick",
+      "HDG"
+    ],
+    "search_keywords": [
+      "flat bend",
+      "45 degree",
+      "cable tray",
+      "100x50mm",
+      "1.5mm thick",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a flat bend for a cable tray system. It has a 45-degree angle and is designed for a 100x50mm cable tray. The bend is made of 1.5mm thick material and is hot-dip galvanized (HDG) for corrosion protection."
+  },
+  {
+    "row_index": 37,
+    "raw_description": "EQUAL TEE FOR 900X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Equal Tee",
+    "dimensions": {
+      "width": "900mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 249.588,
+    "total_price": 2495.88,
+    "brand": null,
+    "key_specs": [
+      "900x50mm",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "equal tee",
+      "cable tray",
+      "900x50mm",
+      "2.0mm thick",
+      "HDG",
+      "hot-dip galvanized",
+      "tee fitting",
+      "cable management"
+    ],
+    "reasoning": "This item is an Equal Tee fitting for a cable tray system. It's designed for a 900mm wide by 50mm high cable tray, with a thickness of 2.0mm. The material is HDG (Hot-Dip Galvanized), which provides corrosion resistance. It's a crucial component for creating T-junctions in cable tray installations."
+  },
+  {
+    "row_index": 38,
+    "raw_description": "EQUAL TEE FOR 750X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Equal Tee",
+    "dimensions": {
+      "width": "750mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 195.996,
+    "total_price": 1959.96,
+    "brand": null,
+    "key_specs": [
+      "Equal Tee",
+      "750x50mm",
+      "2.0mm thickness",
+      "HDG material",
+      "For cable tray"
+    ],
+    "search_keywords": [
+      "equal tee",
+      "cable tray",
+      "750x50mm",
+      "2.0mm thickness",
+      "HDG",
+      "hot-dip galvanized",
+      "tee fitting",
+      "cable management"
+    ],
+    "reasoning": "This item is an Equal Tee fitting for a cable tray system. It's designed to connect cable trays at right angles, maintaining the same dimensions (750x50mm) as the connected trays. The tee is made of 2.0mm thick HDG (Hot-Dip Galvanized) material, which provides excellent corrosion resistance for industrial or outdoor applications."
+  },
+  {
+    "row_index": 39,
+    "raw_description": "EQUAL TEE FOR 600X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Equal Tee",
+    "dimensions": {
+      "width": "600mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 148.848,
+    "total_price": 1488.48,
+    "brand": null,
+    "key_specs": [
+      "600x50mm",
+      "2.0mm thickness",
+      "HDG material",
+      "Equal Tee"
+    ],
+    "search_keywords": [
+      "equal tee",
+      "cable tray",
+      "600x50mm",
+      "2.0mm thickness",
+      "HDG",
+      "hot-dip galvanized",
+      "tee fitting",
+      "cable management"
+    ],
+    "reasoning": "This item is an Equal Tee fitting for a cable tray system. It's designed for a 600x50mm cable tray, made of 2.0mm thick Hot-Dip Galvanized (HDG) material. The tee is used to create T-junctions in cable tray installations, allowing for branching of cable routes."
+  },
+  {
+    "row_index": 40,
+    "raw_description": "EQUAL TEE FOR 450X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Equal Tee",
+    "dimensions": {
+      "width": "450mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 102.768,
+    "total_price": 1027.68,
+    "brand": null,
+    "key_specs": [
+      "450x50mm",
+      "2.0mm thickness",
+      "HDG material",
+      "Equal Tee"
+    ],
+    "search_keywords": [
+      "equal tee",
+      "cable tray",
+      "450x50mm",
+      "2.0mm thickness",
+      "HDG",
+      "hot-dip galvanized",
+      "tee fitting",
+      "cable management"
+    ],
+    "reasoning": "This item is an Equal Tee fitting for a cable tray system. It is designed for a 450x50mm cable tray, made of 2.0mm thick hot-dip galvanized (HDG) material. The tee is used to create T-shaped junctions in cable tray installations, allowing for branching of cable routes."
+  },
+  {
+    "row_index": 41,
+    "raw_description": "EQUAL TEE FOR 300X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Equal Tee",
+    "dimensions": {
+      "width": "300mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 48.72,
+    "total_price": 487.2,
+    "brand": null,
+    "key_specs": [
+      "300x50mm",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "equal tee",
+      "cable tray",
+      "300x50mm",
+      "1.5mm thick",
+      "HDG",
+      "hot-dip galvanized",
+      "tee fitting",
+      "cable management"
+    ],
+    "reasoning": "This item is an Equal Tee fitting for a cable tray system. It is designed for a 300x50mm cable tray, made of 1.5mm thick hot-dip galvanized (HDG) material. The tee is used to create T-junctions in cable tray installations, allowing for branching of cable routes."
+  },
+  {
+    "row_index": 42,
+    "raw_description": "EQUAL TEE FOR 225X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Equal Tee",
+    "dimensions": {
+      "width": "225mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 36.864,
+    "total_price": 368.64,
+    "brand": null,
+    "key_specs": [
+      "225x50mm size",
+      "1.5mm thickness",
+      "HDG material",
+      "Equal Tee fitting"
+    ],
+    "search_keywords": [
+      "equal tee",
+      "cable tray",
+      "225x50mm",
+      "1.5mm thickness",
+      "HDG",
+      "hot-dip galvanized",
+      "tee fitting",
+      "cable management"
+    ],
+    "reasoning": "This item is an Equal Tee fitting for a cable tray system. It's designed for a 225x50mm cable tray, made of 1.5mm thick hot-dip galvanized (HDG) material. The tee is used to create T-shaped junctions in cable tray installations, allowing for branching of cable routes."
+  },
+  {
+    "row_index": 43,
+    "raw_description": "EQUAL TEE FOR 200X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Equal Tee",
+    "dimensions": {
+      "width": "200mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 34.284,
+    "total_price": 342.84,
+    "brand": null,
+    "key_specs": [
+      "200x50mm size",
+      "1.5mm thickness",
+      "HDG material",
+      "Equal Tee fitting"
+    ],
+    "search_keywords": [
+      "equal tee",
+      "cable tray",
+      "200x50mm",
+      "1.5mm thickness",
+      "HDG",
+      "hot-dip galvanized",
+      "tee fitting",
+      "cable management"
+    ],
+    "reasoning": "This item is an Equal Tee fitting for a cable tray system. It's designed to connect three cable tray sections at right angles, forming a T-junction. The tee is sized for 200x50mm cable trays, made of 1.5mm thick hot-dip galvanized (HDG) material for corrosion resistance."
+  },
+  {
+    "row_index": 44,
+    "raw_description": "EQUAL TEE FOR 150X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Equal Tee",
+    "dimensions": {
+      "width": "150mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 28.86,
+    "total_price": 288.6,
+    "brand": null,
+    "key_specs": [
+      "150x50mm size",
+      "1.5mm thickness",
+      "HDG material",
+      "Equal Tee fitting"
+    ],
+    "search_keywords": [
+      "equal tee",
+      "cable tray",
+      "150x50mm",
+      "1.5mm thickness",
+      "HDG",
+      "hot-dip galvanized",
+      "tee fitting",
+      "cable management"
+    ],
+    "reasoning": "This item is an Equal Tee fitting for a cable tray system. It's designed to connect cable trays at right angles, forming a T-junction. The tee is sized for 150x50mm cable trays, made of 1.5mm thick HDG (Hot-Dip Galvanized) material for corrosion resistance."
+  },
+  {
+    "row_index": 45,
+    "raw_description": "EQUAL TEE FOR 100X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Equal Tee",
+    "dimensions": {
+      "width": "100mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 23.7,
+    "total_price": 237.0,
+    "brand": null,
+    "key_specs": [
+      "Equal Tee",
+      "100x50mm",
+      "1.5mm thickness",
+      "HDG material",
+      "For cable tray"
+    ],
+    "search_keywords": [
+      "equal tee",
+      "cable tray",
+      "100x50mm",
+      "1.5mm thickness",
+      "HDG",
+      "hot-dip galvanized",
+      "tee fitting",
+      "cable management"
+    ],
+    "reasoning": "This item is an equal tee fitting for a cable tray system. It's designed to connect cable trays at a T-junction, maintaining the same dimensions (100x50mm) as the main tray. The fitting is made of hot-dip galvanized (HDG) material for corrosion resistance, with a thickness of 1.5mm."
+  },
+  {
+    "row_index": 46,
+    "raw_description": "UNEQUAL TEE FOR 900X50-900X50-750X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Unequal Tee",
+    "dimensions": {
+      "width": "900mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 249.588,
+    "total_price": 4991.76,
+    "brand": null,
+    "key_specs": [
+      "Unequal Tee",
+      "900x50-900x50-750x50mm",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "unequal tee",
+      "cable tray",
+      "900x50",
+      "750x50",
+      "HDG",
+      "2.0mm thickness"
+    ],
+    "reasoning": "This item is an unequal tee fitting for a cable tray system. It connects three sections of cable tray with different sizes: two 900x50mm sections and one 750x50mm section. The fitting is made of HDG (Hot-Dip Galvanized) material with a thickness of 2.0mm, providing corrosion resistance and durability for electrical cable management systems."
+  },
+  {
+    "row_index": 47,
+    "raw_description": "UNEQUAL TEE FOR 750X50-750X50-600X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Unequal Tee",
+    "dimensions": {
+      "width": "750mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 195.996,
+    "total_price": 3919.92,
+    "brand": null,
+    "key_specs": [
+      "750x50-750x50-600x50mm",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "unequal tee",
+      "cable tray",
+      "750x50",
+      "600x50",
+      "HDG",
+      "2.0mm thickness"
+    ],
+    "reasoning": "This item is an unequal tee fitting for a cable tray system. It connects three cable tray sections with different dimensions: two 750x50mm sections and one 600x50mm section. The fitting is made of HDG (Hot-Dip Galvanized) material with a thickness of 2.0mm, providing corrosion resistance and durability for electrical cable management systems."
+  },
+  {
+    "row_index": 48,
+    "raw_description": "UNEQUAL TEE FOR 600X50-600X50-450X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Unequal Tee",
+    "dimensions": {
+      "width": "600mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 148.848,
+    "total_price": 2976.96,
+    "brand": null,
+    "key_specs": [
+      "Unequal Tee",
+      "600x50mm to 600x50mm to 450x50mm",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "unequal tee",
+      "cable tray",
+      "600x50mm",
+      "450x50mm",
+      "2.0mm thickness",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is an unequal tee fitting for a cable tray system. It's designed to connect three cable tray sections of different sizes (600x50mm, 600x50mm, and 450x50mm). The fitting is made of 2.0mm thick hot-dip galvanized (HDG) material, which provides corrosion resistance."
+  },
+  {
+    "row_index": 49,
+    "raw_description": "UNEQUAL TEE FOR 450X50-450X50-300X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Unequal Tee",
+    "dimensions": {
+      "width": "450mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 102.768,
+    "total_price": 2055.36,
+    "brand": null,
+    "key_specs": [
+      "Unequal Tee",
+      "450x50-450x50-300x50mm",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "unequal tee",
+      "cable tray",
+      "450x50mm",
+      "300x50mm",
+      "2.0mm thickness",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is an unequal tee fitting for a cable tray system. It's designed to connect cable trays of different sizes (450x50mm and 300x50mm) at a T-junction. The fitting is made of 2.0mm thick hot-dip galvanized (HDG) material for corrosion resistance."
+  },
+  {
+    "row_index": 50,
+    "raw_description": "UNEQUAL TEE FOR 300X50-300X50-225X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Unequal Tee",
+    "dimensions": {
+      "width": "300mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 48.72,
+    "total_price": 974.4,
+    "brand": null,
+    "key_specs": [
+      "300x50-300x50-225x50mm",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "unequal tee",
+      "cable tray",
+      "300x50",
+      "225x50",
+      "HDG",
+      "hot-dip galvanized",
+      "1.5mm thickness"
+    ],
+    "reasoning": "This item is an unequal tee fitting for a cable tray system. It's designed to connect cable trays of different sizes (300x50mm and 225x50mm). The fitting is made of HDG (Hot-Dip Galvanized) material with a thickness of 1.5mm, providing corrosion resistance and durability."
+  },
+  {
+    "row_index": 51,
+    "raw_description": "UNEQUAL TEE FOR 225X50-225X50-150X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Unequal Tee",
+    "dimensions": {
+      "length": "225mm",
+      "width": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 36.864,
+    "total_price": 737.28,
+    "brand": null,
+    "key_specs": [
+      "225x50-225x50-150x50mm",
+      "1.5mm thickness",
+      "HDG"
+    ],
+    "search_keywords": [
+      "unequal tee",
+      "cable tray",
+      "225x50mm",
+      "150x50mm",
+      "1.5mm thickness",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is an unequal tee fitting for a cable tray system. It's designed to connect cable trays of different sizes (225x50mm and 150x50mm) in a T-shaped configuration. The fitting is made of hot-dip galvanized (HDG) material with a thickness of 1.5mm, providing corrosion resistance and durability."
+  },
+  {
+    "row_index": 52,
+    "raw_description": "UNEQUAL TEE FOR 150X50-150X50-100X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Unequal Tee",
+    "dimensions": {
+      "width": "150mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 28.86,
+    "total_price": 577.2,
+    "brand": null,
+    "key_specs": [
+      "Unequal Tee",
+      "150x50-150x50-100x50mm",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "unequal tee",
+      "cable tray",
+      "150x50mm",
+      "100x50mm",
+      "1.5mm thickness",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is an unequal tee fitting for a cable tray system. It's designed to connect cable trays of different sizes (150x50mm and 100x50mm). The fitting is made of HDG (Hot-Dip Galvanized) material with a thickness of 1.5mm, providing corrosion resistance and durability for electrical installations."
+  },
+  {
+    "row_index": 53,
+    "raw_description": "STRAIGHT REDUCER FOR 900X50-750X50MM CABLE TRAY, 2.0MM THK - HDG",
+    "item_type": "Straight Reducer",
+    "dimensions": {
+      "width": "900mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 60.876,
+    "total_price": 608.76,
+    "brand": null,
+    "key_specs": [
+      "900x50mm to 750x50mm",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "straight reducer",
+      "cable tray",
+      "HDG",
+      "900x50mm",
+      "750x50mm",
+      "2.0mm thickness",
+      "reducer"
+    ],
+    "reasoning": "This item is a straight reducer for a cable tray system. It transitions from a 900x50mm tray to a 750x50mm tray, maintaining the same height. It's made of HDG (Hot-Dip Galvanized) material with a thickness of 2.0mm, which provides corrosion resistance and durability for electrical installations."
+  },
+  {
+    "row_index": 54,
+    "raw_description": "STRAIGHT REDUCER FOR 750X50-600X50MM CABLE TRAY, 2.0MM THK HDG",
+    "item_type": "Straight Reducer",
+    "dimensions": {
+      "width": "750mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 53.916,
+    "total_price": 539.16,
+    "brand": null,
+    "key_specs": [
+      "750x50mm to 600x50mm",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "straight reducer",
+      "cable tray",
+      "750x50mm",
+      "600x50mm",
+      "2.0mm thickness",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a straight reducer for a cable tray system. It transitions from a 750x50mm tray to a 600x50mm tray, maintaining a 50mm height. The reducer is made of 2.0mm thick hot-dip galvanized (HDG) material, which provides corrosion resistance."
+  },
+  {
+    "row_index": 55,
+    "raw_description": "STRAIGHT REDUCER FOR 600X50-450X50MM CABLE TRAY, 2.0MM THK HDG",
+    "item_type": "Straight Reducer",
+    "dimensions": {
+      "width": "600mm",
+      "height": "50mm",
+      "thickness": "2.0mm",
+      "length": null
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 47.904,
+    "total_price": 479.04,
+    "brand": null,
+    "key_specs": [
+      "600x50mm to 450x50mm",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "straight reducer",
+      "cable tray",
+      "600x50mm",
+      "450x50mm",
+      "HDG",
+      "2.0mm thickness"
+    ],
+    "reasoning": "This item is a straight reducer for a cable tray system. It transitions from a 600x50mm tray to a 450x50mm tray, maintaining the same height. It's made of HDG (Hot-Dip Galvanized) material with a thickness of 2.0mm, which provides corrosion resistance and durability."
+  },
+  {
+    "row_index": 56,
+    "raw_description": "STRAIGHT REDUCER FOR 450X50-300X50MM CABLE TRAY, 2.0MM THK HDG",
+    "item_type": "Straight Reducer",
+    "dimensions": {
+      "width": "450mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 44.04,
+    "total_price": 440.4,
+    "brand": null,
+    "key_specs": [
+      "450x50mm to 300x50mm",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "straight reducer",
+      "cable tray",
+      "450x50mm",
+      "300x50mm",
+      "HDG",
+      "2.0mm thickness"
+    ],
+    "reasoning": "This item is a straight reducer for a cable tray system. It transitions from a 450x50mm tray to a 300x50mm tray, maintaining the same height. It's made of HDG (Hot-Dip Galvanized) material with a thickness of 2.0mm, which provides corrosion resistance and durability."
+  },
+  {
+    "row_index": 57,
+    "raw_description": "STRAIGHT REDUCER FOR 300X50-225X50MM CABLE TRAY, 1.5MM THK - HDG",
+    "item_type": "Straight Reducer",
+    "dimensions": {
+      "width": "300mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 26.772,
+    "total_price": 267.72,
+    "brand": null,
+    "key_specs": [
+      "300x50mm to 225x50mm",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "straight reducer",
+      "cable tray",
+      "300x50mm",
+      "225x50mm",
+      "1.5mm thickness",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a straight reducer for cable trays, used to transition from a 300x50mm tray to a 225x50mm tray. It's made of HDG (Hot-Dip Galvanized) material with a thickness of 1.5mm, providing corrosion resistance and durability for cable management systems."
+  },
+  {
+    "row_index": 58,
+    "raw_description": "STRAIGHT REDUCER FOR 225X50-150X50MM CABLE TRAY, 1.5MM THK - HDG",
+    "item_type": "Straight Reducer",
+    "dimensions": {
+      "length": null,
+      "width": "225mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 22.8,
+    "total_price": 228.0,
+    "brand": null,
+    "key_specs": [
+      "225x50mm to 150x50mm",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "straight reducer",
+      "cable tray",
+      "225x50mm",
+      "150x50mm",
+      "1.5mm thickness",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a straight reducer for cable trays, used to transition between two different tray sizes (225x50mm to 150x50mm). It's made of HDG (Hot-Dip Galvanized) material with a thickness of 1.5mm, which provides corrosion resistance and durability."
+  },
+  {
+    "row_index": 59,
+    "raw_description": "STRAIGHT REDUCER FOR 150X50-100X50MM CABLE TRAY, 1.5MM THK - HDG",
+    "item_type": "Straight Reducer",
+    "dimensions": {
+      "length": null,
+      "width": "150mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 17.808,
+    "total_price": 178.08,
+    "brand": null,
+    "key_specs": [
+      "150x50mm to 100x50mm",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "straight reducer",
+      "cable tray",
+      "150x50mm",
+      "100x50mm",
+      "1.5mm thickness",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is a straight reducer for cable trays, used to transition between different tray sizes. It reduces from 150x50mm to 100x50mm, is made of HDG (Hot-Dip Galvanized) material, and has a thickness of 1.5mm."
+  },
+  {
+    "row_index": 60,
+    "raw_description": "INSIDE RISER 90° FOR 900X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Inside Riser 90°",
+    "dimensions": {
+      "width": "900mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 86.52,
+    "total_price": 865.2,
+    "brand": null,
+    "key_specs": [
+      "90° angle",
+      "900x50mm size",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "inside riser",
+      "90 degree",
+      "cable tray",
+      "900x50mm",
+      "2.0mm thick",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is an inside riser with a 90-degree angle, designed for a cable tray system. It has specific dimensions and is made of hot-dip galvanized (HDG) material."
+  },
+  {
+    "row_index": 61,
+    "raw_description": "INSIDE RISER 90° FOR 750X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Inside Riser 90°",
+    "dimensions": {
+      "width": "750mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 75.36,
+    "total_price": 753.6,
+    "brand": null,
+    "key_specs": [
+      "90° angle",
+      "750mm width",
+      "50mm height",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "inside riser",
+      "90 degree",
+      "cable tray",
+      "750x50mm",
+      "2.0mm thick",
+      "HDG",
+      "hot dip galvanized"
+    ],
+    "reasoning": "This item is an inside riser with a 90-degree angle, designed for a cable tray system. It has specific dimensions (750mm x 50mm) and is made of 2.0mm thick Hot Dip Galvanized (HDG) material. It's used to create a vertical transition in cable tray routing, typically at corners or when changing elevation."
+  },
+  {
+    "row_index": 62,
+    "raw_description": "INSIDE RISER 90° FOR 600X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Inside Riser 90°",
+    "dimensions": {
+      "width": "600mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 64.2,
+    "total_price": 642.0,
+    "brand": null,
+    "key_specs": [
+      "600x50mm",
+      "2.0mm thick",
+      "HDG",
+      "90 degree"
+    ],
+    "search_keywords": [
+      "inside riser",
+      "90 degree",
+      "cable tray",
+      "600x50mm",
+      "2.0mm thick",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is an inside riser with a 90-degree angle, designed for a 600x50mm cable tray. It is made of hot-dip galvanized (HDG) material with a thickness of 2.0mm. It's a specialized component used in cable management systems to facilitate vertical cable runs with a right-angle turn."
+  },
+  {
+    "row_index": 63,
+    "raw_description": "INSIDE RISER 90° FOR 450X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Inside Riser 90°",
+    "dimensions": {
+      "width": "450mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 52.824,
+    "total_price": 528.24,
+    "brand": null,
+    "key_specs": [
+      "90° angle",
+      "450x50mm size",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "inside riser",
+      "90 degree",
+      "cable tray",
+      "450x50mm",
+      "2.0mm thick",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is an inside riser with a 90-degree angle, designed for a 450x50mm cable tray. It is made of HDG (Hot-Dip Galvanized) material with a thickness of 2.0mm. It's an accessory used in cable management systems to facilitate vertical cable routing with a right-angle turn."
+  },
+  {
+    "row_index": 64,
+    "raw_description": "INSIDE RISER 90° FOR 300X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Inside Riser 90°",
+    "dimensions": {
+      "width": "300mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 36.42,
+    "total_price": 364.2,
+    "brand": null,
+    "key_specs": [
+      "300x50mm",
+      "1.5mm thick",
+      "HDG",
+      "90 degree"
+    ],
+    "search_keywords": [
+      "inside riser",
+      "90 degree",
+      "cable tray",
+      "300x50mm",
+      "1.5mm thick",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is an inside riser with a 90-degree angle, designed for a 300x50mm cable tray. It is made of HDG (Hot-Dip Galvanized) material with a thickness of 1.5mm. It's used in cable management systems to facilitate vertical cable routing with a right-angle turn."
+  },
+  {
+    "row_index": 65,
+    "raw_description": "INSIDE RISER 90° FOR 225X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Inside Riser 90°",
+    "dimensions": {
+      "width": "225mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 32.136,
+    "total_price": 321.36,
+    "brand": null,
+    "key_specs": [
+      "90° angle",
+      "225x50mm size",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "inside riser",
+      "90 degree",
+      "cable tray",
+      "225x50mm",
+      "1.5mm thick",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is an inside riser with a 90-degree angle, designed for a 225x50mm cable tray. It is made of HDG (Hot-Dip Galvanized) material with a thickness of 1.5mm. It's an accessory used in cable management systems to facilitate vertical cable routing with a right-angle turn."
+  },
+  {
+    "row_index": 66,
+    "raw_description": "INSIDE RISER 90° FOR 200X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Inside Riser 90°",
+    "dimensions": {
+      "width": "200mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 31.128,
+    "total_price": 311.28,
+    "brand": null,
+    "key_specs": [
+      "90° angle",
+      "200x50mm size",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "inside riser",
+      "90 degree",
+      "cable tray",
+      "200x50mm",
+      "1.5mm thick",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is an inside riser with a 90-degree angle, designed for a 200x50mm cable tray. It is made of HDG (Hot-Dip Galvanized) material with a thickness of 1.5mm. It's an accessory used in cable management systems to facilitate vertical cable routing with a right-angle turn."
+  },
+  {
+    "row_index": 67,
+    "raw_description": "INSIDE RISER 90° FOR 150X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Inside Riser 90°",
+    "dimensions": {
+      "width": "150mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 28.248,
+    "total_price": 282.48,
+    "brand": null,
+    "key_specs": [
+      "90° angle",
+      "150x50mm size",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "inside riser",
+      "90 degree",
+      "cable tray",
+      "150x50mm",
+      "1.5mm thick",
+      "HDG",
+      "hot dip galvanized"
+    ],
+    "reasoning": "This item is an inside riser with a 90-degree angle, designed for a 150x50mm cable tray. It is made of HDG (Hot Dip Galvanized) material with a thickness of 1.5mm. It's an accessory used in cable tray systems to change the direction of cables vertically at a right angle while maintaining proper support and protection."
+  },
+  {
+    "row_index": 68,
+    "raw_description": "INSIDE RISER 90° FOR 100X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Inside Riser 90°",
+    "dimensions": {
+      "width": "100mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 24.66,
+    "total_price": 246.6,
+    "brand": null,
+    "key_specs": [
+      "90° angle",
+      "100x50mm size",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "inside riser",
+      "90 degree",
+      "cable tray",
+      "HDG",
+      "hot-dip galvanized",
+      "100x50mm",
+      "1.5mm thickness"
+    ],
+    "reasoning": "This item is an inside riser with a 90-degree angle, designed for a 100x50mm cable tray. It is made of HDG (Hot-Dip Galvanized) material with a thickness of 1.5mm. It's an accessory used in cable management systems to facilitate vertical cable routing with a right-angle turn."
+  },
+  {
+    "row_index": 69,
+    "raw_description": "OUTSIDE RISER 90° FOR 900X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Outside Riser 90°",
+    "dimensions": {
+      "width": "900mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 75.36,
+    "total_price": 753.6,
+    "brand": null,
+    "key_specs": [
+      "90° bend",
+      "900x50mm cable tray",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "outside riser",
+      "90 degree",
+      "cable tray",
+      "HDG",
+      "hot-dip galvanized",
+      "900mm",
+      "50mm",
+      "2.0mm"
+    ],
+    "reasoning": "This item is an outside riser with a 90-degree angle, designed for a 900x50mm cable tray. It is made of HDG (Hot-Dip Galvanized) material with a thickness of 2.0mm. It's an accessory used in cable management systems to facilitate vertical cable routing with a right-angle turn."
+  },
+  {
+    "row_index": 70,
+    "raw_description": "OUTSIDE RISER 90° FOR 750X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Outside Riser 90°",
+    "dimensions": {
+      "width": "750mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 66.084,
+    "total_price": 660.84,
+    "brand": null,
+    "key_specs": [
+      "Outside Riser",
+      "90 degree bend",
+      "750mm width",
+      "50mm height",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "outside riser",
+      "90 degree",
+      "cable tray",
+      "750x50mm",
+      "2.0mm thick",
+      "HDG",
+      "hot dip galvanized"
+    ],
+    "reasoning": "This item is an outside riser with a 90-degree bend for a cable tray system. It is designed for a 750mm wide by 50mm high cable tray, made of 2.0mm thick hot-dip galvanized (HDG) material. It's used to route cables vertically along the outside of a structure while making a 90-degree turn."
+  },
+  {
+    "row_index": 71,
+    "raw_description": "OUTSIDE RISER 90° FOR 600X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Outside Riser 90°",
+    "dimensions": {
+      "width": "600mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 56.688,
+    "total_price": 566.88,
+    "brand": null,
+    "key_specs": [
+      "90° angle",
+      "600x50mm size",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "outside riser",
+      "90 degree",
+      "cable tray",
+      "HDG",
+      "hot-dip galvanized",
+      "600x50mm",
+      "2.0mm thickness"
+    ],
+    "reasoning": "This item is an outside riser with a 90-degree angle, designed for a 600x50mm cable tray. It is made of HDG (Hot-Dip Galvanized) material with a thickness of 2.0mm. It's an accessory used in cable management systems to facilitate vertical cable runs with a right-angle turn."
+  },
+  {
+    "row_index": 72,
+    "raw_description": "OUTSIDE RISER 90° FOR 450X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Outside Riser 90°",
+    "dimensions": {
+      "width": "450mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 47.124,
+    "total_price": 471.24,
+    "brand": null,
+    "key_specs": [
+      "Outside Riser",
+      "90° bend",
+      "450x50mm size",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "outside riser",
+      "90 degree",
+      "cable tray",
+      "450x50mm",
+      "2.0mm thick",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is an outside riser with a 90-degree bend for a cable tray system. It is designed for a 450x50mm cable tray, made of 2.0mm thick hot-dip galvanized (HDG) material. It's a specialized component used in cable management systems to route cables vertically while maintaining the required bend radius."
+  },
+  {
+    "row_index": 73,
+    "raw_description": "OUTSIDE RISER 90° FOR 300X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Outside Riser 90°",
+    "dimensions": {
+      "width": "300mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 33.12,
+    "total_price": 331.2,
+    "brand": null,
+    "key_specs": [
+      "300x50mm",
+      "1.5mm thick",
+      "HDG",
+      "90 degree"
+    ],
+    "search_keywords": [
+      "outside riser",
+      "90 degree",
+      "cable tray",
+      "300x50mm",
+      "1.5mm thick",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is an outside riser with a 90-degree angle, designed for a 300x50mm cable tray. It is made of hot-dip galvanized (HDG) material with a thickness of 1.5mm. It's used in cable management systems to facilitate vertical cable runs with a right-angle turn."
+  },
+  {
+    "row_index": 74,
+    "raw_description": "OUTSIDE RISER 90° FOR 225X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Outside Riser 90°",
+    "dimensions": {
+      "width": "225mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 30.312,
+    "total_price": 303.12,
+    "brand": null,
+    "key_specs": [
+      "Outside Riser",
+      "90 degree bend",
+      "225x50mm size",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "outside riser",
+      "90 degree",
+      "cable tray",
+      "225x50mm",
+      "1.5mm thick",
+      "HDG",
+      "hot dip galvanized"
+    ],
+    "reasoning": "This item is an outside riser with a 90-degree bend for a cable tray system. It is designed for a 225x50mm cable tray, made of 1.5mm thick hot-dip galvanized (HDG) material. It's a specialized component used in cable management systems to route cables vertically while maintaining the required bend radius."
+  },
+  {
+    "row_index": 75,
+    "raw_description": "OUTSIDE RISER 90° FOR 200X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Outside Riser 90°",
+    "dimensions": {
+      "width": "200mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 29.484,
+    "total_price": 294.84,
+    "brand": null,
+    "key_specs": [
+      "90° angle",
+      "200x50mm size",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "outside riser",
+      "90 degree",
+      "cable tray",
+      "HDG",
+      "hot-dip galvanized",
+      "200x50mm",
+      "1.5mm thickness"
+    ],
+    "reasoning": "This item is an outside riser with a 90-degree angle, designed for a 200x50mm cable tray. It is made of HDG (Hot-Dip Galvanized) material with a thickness of 1.5mm. It's an accessory used in cable management systems to facilitate vertical cable routing with a right-angle turn."
+  },
+  {
+    "row_index": 76,
+    "raw_description": "OUTSIDE RISER 90° FOR 150X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Outside Riser 90°",
+    "dimensions": {
+      "width": "150mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 26.496,
+    "total_price": 264.96,
+    "brand": null,
+    "key_specs": [
+      "90° angle",
+      "150x50mm size",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "outside riser",
+      "90 degree",
+      "cable tray",
+      "HDG",
+      "hot-dip galvanized",
+      "150x50mm",
+      "1.5mm thickness"
+    ],
+    "reasoning": "This item is an outside riser with a 90-degree angle, designed for a 150x50mm cable tray. It is made of HDG (Hot-Dip Galvanized) material with a thickness of 1.5mm. It's an accessory used in cable management systems to facilitate vertical cable runs with a right-angle turn."
+  },
+  {
+    "row_index": 77,
+    "raw_description": "OUTSIDE RISER 90° FOR 100X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Outside Riser 90°",
+    "dimensions": {
+      "width": "100mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 23.508,
+    "total_price": 235.08,
+    "brand": null,
+    "key_specs": [
+      "90° bend",
+      "100x50mm cable tray",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "outside riser",
+      "90 degree",
+      "cable tray",
+      "HDG",
+      "hot-dip galvanized",
+      "bend",
+      "elbow"
+    ],
+    "reasoning": "This item is an outside riser, which is a 90-degree bend or elbow for a cable tray system. It's designed for a 100x50mm cable tray, made of HDG (Hot-Dip Galvanized) material with a thickness of 1.5mm. It's used to change the direction of cable trays in vertical risers or outside corners."
+  },
+  {
+    "row_index": 78,
+    "raw_description": "OUTSIDE RISER 90° FOR 75X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Outside Riser 90°",
+    "dimensions": {
+      "width": "75mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 22.008,
+    "total_price": 220.08,
+    "brand": null,
+    "key_specs": [
+      "90° angle",
+      "75x50mm size",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "outside riser",
+      "90 degree",
+      "cable tray",
+      "HDG",
+      "hot-dip galvanized",
+      "75x50mm",
+      "1.5mm thickness"
+    ],
+    "reasoning": "This item is an outside riser with a 90-degree angle, designed for a 75x50mm cable tray. It is made of HDG (Hot-Dip Galvanized) material with a thickness of 1.5mm. It's an accessory used in cable management systems to facilitate vertical cable runs with a right-angle turn."
+  },
+  {
+    "row_index": 79,
+    "raw_description": "OUTSIDE RISER 90° FOR 50X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Outside Riser 90°",
+    "dimensions": {
+      "width": "50mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 10.0,
+    "uom": "NOS",
+    "unit_price": 20.52,
+    "total_price": 205.2,
+    "brand": null,
+    "key_specs": [
+      "90° angle",
+      "50x50mm size",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "outside riser",
+      "90 degree",
+      "cable tray",
+      "HDG",
+      "hot-dip galvanized",
+      "50x50mm",
+      "1.5mm thickness"
+    ],
+    "reasoning": "This item is an outside riser with a 90-degree angle, designed for a 50x50mm cable tray. It is made of HDG (Hot-Dip Galvanized) material with a thickness of 1.5mm. It's an accessory used in cable management systems to route cables vertically along the outside of a structure."
+  },
+  {
+    "row_index": 80,
+    "raw_description": "ADD ON BRANCH TEE FOR 900X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Branch Tee",
+    "dimensions": {
+      "width": "900mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 61.272,
+    "total_price": 1225.44,
+    "brand": null,
+    "key_specs": [
+      "900x50mm",
+      "2.0mm thick",
+      "HDG"
+    ],
+    "search_keywords": [
+      "cable tray",
+      "branch tee",
+      "add on",
+      "900x50mm",
+      "2.0mm thick",
+      "HDG",
+      "hot dip galvanized"
+    ],
+    "reasoning": "This item is an add-on branch tee for a cable tray system. It's designed to create a T-junction in a 900mm wide by 50mm high cable tray setup. The branch tee is made of 2.0mm thick hot-dip galvanized (HDG) material, which provides corrosion resistance."
+  },
+  {
+    "row_index": 81,
+    "raw_description": "ADD ON BRANCH TEE FOR 750X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Branch Tee",
+    "dimensions": {
+      "width": "750mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 53.196,
+    "total_price": 1063.92,
+    "brand": null,
+    "key_specs": [
+      "750x50mm",
+      "2.0mm thick",
+      "HDG"
+    ],
+    "search_keywords": [
+      "cable tray",
+      "branch tee",
+      "add on",
+      "750x50mm",
+      "2.0mm thick",
+      "HDG",
+      "hot dip galvanized"
+    ],
+    "reasoning": "This item is an add-on branch tee for a cable tray system. It's designed to create a T-junction in a cable tray setup, allowing for branching of the cable route. The tee is sized for a 750mm wide by 50mm high cable tray and is made of 2.0mm thick hot-dip galvanized (HDG) material for corrosion resistance."
+  },
+  {
+    "row_index": 82,
+    "raw_description": "ADD ON BRANCH TEE FOR 600X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Branch Tee",
+    "dimensions": {
+      "width": "600mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 45.144,
+    "total_price": 902.88,
+    "brand": null,
+    "key_specs": [
+      "600x50mm",
+      "2.0mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "cable tray",
+      "branch tee",
+      "add-on",
+      "HDG",
+      "600x50mm",
+      "2.0mm thickness"
+    ],
+    "reasoning": "This item is an add-on branch tee for a cable tray system. It's designed to create a T-junction in a 600x50mm cable tray setup. The branch tee is made of HDG (Hot-Dip Galvanized) material with a thickness of 2.0mm, providing durability and corrosion resistance."
+  },
+  {
+    "row_index": 83,
+    "raw_description": "ADD ON BRANCH TEE FOR 450X50MM CABLE TRAY, 2.0MM THK -HDG",
+    "item_type": "Add-on Branch Tee",
+    "dimensions": {
+      "width": "450mm",
+      "height": "50mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 39.192,
+    "total_price": 783.84,
+    "brand": null,
+    "key_specs": [
+      "450x50mm",
+      "2.0mm thickness",
+      "HDG"
+    ],
+    "search_keywords": [
+      "add-on branch tee",
+      "cable tray",
+      "450x50mm",
+      "2.0mm thickness",
+      "HDG",
+      "hot-dip galvanized",
+      "accessory"
+    ],
+    "reasoning": "This item is an add-on branch tee, which is an accessory for a cable tray system. It is designed to fit a 450x50mm cable tray and is made of 2.0mm thick hot-dip galvanized (HDG) material. The branch tee allows for creating T-junctions in the cable tray system, enabling cables to be routed in different directions."
+  },
+  {
+    "row_index": 84,
+    "raw_description": "ADD ON BRANCH TEE FOR 300X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Branch Tee",
+    "dimensions": {
+      "width": "300mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 25.62,
+    "total_price": 512.4,
+    "brand": null,
+    "key_specs": [
+      "300x50mm",
+      "1.5mm thick",
+      "HDG"
+    ],
+    "search_keywords": [
+      "cable tray",
+      "branch tee",
+      "add on",
+      "300x50mm",
+      "1.5mm thick",
+      "HDG",
+      "hot dip galvanized"
+    ],
+    "reasoning": "This item is an add-on branch tee for a cable tray system. It's designed to create a T-junction in a 300x50mm cable tray setup. The tee is made of hot-dip galvanized (HDG) material with a thickness of 1.5mm, providing corrosion resistance and durability for electrical cable management systems."
+  },
+  {
+    "row_index": 85,
+    "raw_description": "ADD ON BRANCH TEE FOR 225X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Add-on Branch Tee",
+    "dimensions": {
+      "width": "225mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 22.056,
+    "total_price": 441.12,
+    "brand": null,
+    "key_specs": [
+      "225x50mm",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "add-on",
+      "branch",
+      "tee",
+      "cable tray",
+      "225x50mm",
+      "1.5mm",
+      "HDG",
+      "hot-dip galvanized"
+    ],
+    "reasoning": "This item is an add-on branch tee, which is an accessory for a cable tray system. It's designed to create a T-junction in the cable tray setup, allowing for branching of cables. The tee is sized for a 225x50mm cable tray, made of 1.5mm thick hot-dip galvanized (HDG) material for corrosion resistance."
+  },
+  {
+    "row_index": 86,
+    "raw_description": "ADD ON BRANCH TEE FOR 150X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Branch Tee",
+    "dimensions": {
+      "width": "150mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 18.504,
+    "total_price": 370.08,
+    "brand": null,
+    "key_specs": [
+      "150x50mm",
+      "1.5mm thickness",
+      "HDG material"
+    ],
+    "search_keywords": [
+      "cable tray",
+      "branch tee",
+      "add-on",
+      "HDG",
+      "150x50mm",
+      "1.5mm thickness"
+    ],
+    "reasoning": "This item is an add-on branch tee for a cable tray system. It's designed to create a T-junction in a 150x50mm cable tray setup. The tee is made of HDG (Hot-Dip Galvanized) material with a thickness of 1.5mm, providing corrosion resistance and durability for electrical cable management systems."
+  },
+  {
+    "row_index": 87,
+    "raw_description": "ADD ON BRANCH TEE FOR 100X50MM CABLE TRAY, 1.5MM THK -HDG",
+    "item_type": "Branch Tee",
+    "dimensions": {
+      "width": "100mm",
+      "height": "50mm",
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 16.944,
+    "total_price": 338.88,
+    "brand": null,
+    "key_specs": [
+      "100x50mm",
+      "1.5mm thickness",
+      "HDG"
+    ],
+    "search_keywords": [
+      "cable tray",
+      "branch tee",
+      "add-on",
+      "HDG",
+      "100x50mm",
+      "1.5mm thickness"
+    ],
+    "reasoning": "This item is an add-on branch tee for a cable tray system. It's designed to create a T-junction in a 100x50mm cable tray setup. The branch tee is made of Hot-Dip Galvanized (HDG) material with a thickness of 1.5mm, providing corrosion resistance and durability for electrical cable management systems."
+  },
+  {
+    "row_index": 88,
+    "raw_description": "FISH PLATE FOR 900MM CABLE TRAY, 2.0MM THK -HDG W/O HWRS.",
+    "item_type": "Fish plate",
+    "dimensions": {
+      "width": "900mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 50.0,
+    "uom": "NOS",
+    "unit_price": 16.188,
+    "total_price": 809.4,
+    "brand": null,
+    "key_specs": [
+      "For 900mm cable tray",
+      "2.0mm thick",
+      "HDG",
+      "Without hardware"
+    ],
+    "search_keywords": [
+      "fish plate",
+      "cable tray",
+      "900mm",
+      "2.0mm",
+      "HDG",
+      "hot-dip galvanized",
+      "accessory",
+      "without hardware"
+    ],
+    "reasoning": "This item is a fish plate, which is an accessory used to join sections of cable tray. It is designed for a 900mm wide cable tray, made of 2.0mm thick hot-dip galvanized (HDG) material, and does not include hardware."
+  },
+  {
+    "row_index": 89,
+    "raw_description": "FISH PLATE FOR 750MM CABLE TRAY, 2.0MM THK -HDG W/O HWRS.",
+    "item_type": "Fish plate",
+    "dimensions": {
+      "width": "750mm",
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 50.0,
+    "uom": "NOS",
+    "unit_price": 14.7,
+    "total_price": 735.0,
+    "brand": null,
+    "key_specs": [
+      "For 750mm cable tray",
+      "2.0mm thickness",
+      "HDG material",
+      "Without hardware"
+    ],
+    "search_keywords": [
+      "fish plate",
+      "cable tray",
+      "750mm",
+      "2.0mm",
+      "HDG",
+      "hardware",
+      "accessory"
+    ],
+    "reasoning": "This item is a fish plate, which is an accessory used to join sections of cable tray. It is designed for a 750mm wide cable tray, made of HDG (Hot-Dip Galvanized) material, and has a thickness of 2.0mm. The item is sold without hardware (W/O HWRS)."
+  },
+  {
+    "row_index": 90,
+    "raw_description": "FISH PLATE FOR 600MM CABLE TRAY, 2.0MM THK -HDG W/O HWRS.",
+    "item_type": "Fish plate",
+    "dimensions": {
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 50.0,
+    "uom": "NOS",
+    "unit_price": 12.72,
+    "total_price": 636.0,
+    "brand": null,
+    "key_specs": [
+      "For 600mm cable tray",
+      "2.0mm thick",
+      "HDG",
+      "Without hardware"
+    ],
+    "search_keywords": [
+      "fish plate",
+      "cable tray",
+      "600mm",
+      "2.0mm",
+      "HDG",
+      "hot-dip galvanized",
+      "accessory",
+      "without hardware"
+    ],
+    "reasoning": "This item is a fish plate, which is an accessory used to join sections of cable trays. It is designed for a 600mm wide cable tray, made of 2.0mm thick hot-dip galvanized (HDG) material, and does not include hardware."
+  },
+  {
+    "row_index": 91,
+    "raw_description": "FISH PLATE FOR 450MM CABLE TRAY, 2.0MM THK -HDG W/O HWRS.",
+    "item_type": "Fish plate",
+    "dimensions": {
+      "thickness": "2.0mm"
+    },
+    "material": "HDG",
+    "quantity": 50.0,
+    "uom": "NOS",
+    "unit_price": 10.728,
+    "total_price": 536.4,
+    "brand": null,
+    "key_specs": [
+      "For 450mm cable tray",
+      "2.0mm thickness",
+      "HDG material",
+      "Without hardware"
+    ],
+    "search_keywords": [
+      "fish plate",
+      "cable tray",
+      "450mm",
+      "2.0mm",
+      "HDG",
+      "without hardware",
+      "accessory"
+    ],
+    "reasoning": "This item is a fish plate, which is an accessory used to join sections of cable tray. It is designed for a 450mm cable tray, made of HDG (Hot-Dip Galvanized) material, and does not include hardware."
+  },
+  {
+    "row_index": 92,
+    "raw_description": "FISH PLATE FOR 300MM CABLE TRAY, 1.5MM THK -HDG W/O HWRS.",
+    "item_type": "Fish plate",
+    "dimensions": {
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 50.0,
+    "uom": "NOS",
+    "unit_price": 7.5,
+    "total_price": 375.0,
+    "brand": null,
+    "key_specs": [
+      "For 300mm cable tray",
+      "1.5mm thick",
+      "Without hardware"
+    ],
+    "search_keywords": [
+      "fish plate",
+      "cable tray",
+      "300mm",
+      "1.5mm",
+      "HDG",
+      "hot-dip galvanized",
+      "without hardware",
+      "accessory"
+    ],
+    "reasoning": "This item is a fish plate, which is an accessory used to join sections of cable trays. It is designed for a 300mm cable tray, made of hot-dip galvanized (HDG) material, with a thickness of 1.5mm. The item is sold without hardware (fasteners)."
+  },
+  {
+    "row_index": 93,
+    "raw_description": "FISH PLATE FOR 225MM CABLE TRAY, 1.5MM THK -HDG W/O HWRS.",
+    "item_type": "Fish plate",
+    "dimensions": {
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 50.0,
+    "uom": "NOS",
+    "unit_price": 6.528,
+    "total_price": 326.4,
+    "brand": null,
+    "key_specs": [
+      "For 225mm cable tray",
+      "1.5mm thickness",
+      "HDG",
+      "Without hardware"
+    ],
+    "search_keywords": [
+      "fish plate",
+      "cable tray",
+      "225mm",
+      "1.5mm",
+      "HDG",
+      "without hardware"
+    ],
+    "reasoning": "This item is a fish plate, which is an accessory used to join sections of cable tray. It is designed for a 225mm cable tray, made of HDG (Hot-Dip Galvanized) material, with a thickness of 1.5mm. The fish plate is supplied without hardware (fasteners)."
+  },
+  {
+    "row_index": 94,
+    "raw_description": "FISH PLATE FOR 150MM CABLE TRAY, 1.5MM THK -HDG W/O HWRS.",
+    "item_type": "Fish plate",
+    "dimensions": {
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 50.0,
+    "uom": "NOS",
+    "unit_price": 5.532,
+    "total_price": 276.6,
+    "brand": null,
+    "key_specs": [
+      "For 150mm cable tray",
+      "1.5mm thick",
+      "Without hardware"
+    ],
+    "search_keywords": [
+      "fish plate",
+      "cable tray",
+      "150mm",
+      "1.5mm",
+      "HDG",
+      "hot-dip galvanized",
+      "without hardware",
+      "accessory"
+    ],
+    "reasoning": "This item is a fish plate, which is an accessory used to join sections of cable trays. It is designed for 150mm cable trays, made of hot-dip galvanized (HDG) material, and has a thickness of 1.5mm. It is supplied without hardware (fasteners)."
+  },
+  {
+    "row_index": 95,
+    "raw_description": "FISH PLATE FOR 100MM CABLE TRAY, 1.5MM THK -HDG W/O HWRS.",
+    "item_type": "fish plate",
+    "dimensions": {
+      "thickness": "1.5mm"
+    },
+    "material": "HDG",
+    "quantity": 50.0,
+    "uom": "NOS",
+    "unit_price": 4.032,
+    "total_price": 201.6,
+    "brand": null,
+    "key_specs": [
+      "for 100mm cable tray",
+      "1.5mm thick",
+      "without hardware"
+    ],
+    "search_keywords": [
+      "fish plate",
+      "cable tray",
+      "100mm",
+      "1.5mm",
+      "HDG",
+      "hot-dip galvanized",
+      "without hardware",
+      "accessory"
+    ],
+    "reasoning": "This item is a fish plate, which is an accessory used for joining cable trays. It is designed for 100mm cable trays, made of HDG (Hot-Dip Galvanized) material, and has a thickness of 1.5mm. It is supplied without hardware."
+  },
+  {
+    "row_index": 96,
+    "raw_description": "ROOFING BOLT M6X16MM C/W NUT, FLAT WASHER -EG(FOR FISH PLATE)",
+    "item_type": "accessory",
+    "dimensions": {
+      "length": "16mm"
+    },
+    "material": "EG",
+    "quantity": 2200.0,
+    "uom": "NOS",
+    "unit_price": 0.204,
+    "total_price": 448.8,
+    "brand": null,
+    "key_specs": [
+      "M6x16mm",
+      "with nut and flat washer",
+      "Electro-Galvanized (EG)",
+      "For fish plate"
+    ],
+    "search_keywords": [
+      "roofing bolt",
+      "M6",
+      "16mm",
+      "nut",
+      "flat washer",
+      "EG",
+      "fish plate",
+      "fastener"
+    ],
+    "reasoning": "This item is a roofing bolt used for fastening fish plates. It comes with a nut and flat washer, is made of Electro-Galvanized (EG) material, and has specific dimensions (M6x16mm)."
+  },
+  {
+    "row_index": 97,
+    "raw_description": "CABLE TRAY FLANGE(NEED MORE DETAILS)",
+    "item_type": "cable tray flange",
+    "dimensions": {
+      "height": null,
+      "length": null,
+      "width": null,
+      "thickness": null
+    },
+    "material": "null",
+    "quantity": 100.0,
+    "uom": "NOS",
+    "unit_price": 0.0,
+    "total_price": 0.0,
+    "brand": null,
+    "key_specs": [
+      "CABLE TRAY FLANGE",
+      "NEED MORE DETAILS"
+    ],
+    "search_keywords": [
+      "cable tray",
+      "flange",
+      "accessory"
+    ],
+    "reasoning": "This item is a cable tray flange, which is an accessory used in cable tray systems. The description mentions that more details are needed, indicating incomplete information."
+  },
+  {
+    "row_index": 98,
+    "raw_description": "CABLE TRAY END CAP(PROVIDE WIDTH)",
+    "item_type": "cable tray end cap",
+    "dimensions": {
+      "width": null
+    },
+    "material": "null",
+    "quantity": 100.0,
+    "uom": "NOS",
+    "unit_price": 0.0,
+    "total_price": 0.0,
+    "brand": null,
+    "key_specs": [
+      "Width to be provided"
+    ],
+    "search_keywords": [
+      "cable tray",
+      "end cap",
+      "width",
+      "accessory"
+    ],
+    "reasoning": "This item is a cable tray end cap, which is an accessory used to cover the end of a cable tray. The description mentions that the width needs to be provided, indicating that it's a customizable component."
+  },
+  {
+    "row_index": 99,
+    "raw_description": "STRAIGHT COUPLER FOR 50MM(H) CABLE TRAY - HDG W/O HWRS.",
+    "item_type": "Straight Coupler",
+    "dimensions": {
+      "height": "50mm"
+    },
+    "material": "HDG",
+    "quantity": 10000.0,
+    "uom": "NOS",
+    "unit_price": 2.388,
+    "total_price": 23880.0,
+    "brand": null,
+    "key_specs": [
+      "50mm height",
+      "HDG material",
+      "For cable tray",
+      "Without hardware"
+    ],
+    "search_keywords": [
+      "straight coupler",
+      "cable tray",
+      "HDG",
+      "50mm",
+      "without hardware",
+      "connector"
+    ],
+    "reasoning": "This item is a straight coupler used to connect sections of cable tray. It is designed for a 50mm high cable tray, made of HDG (Hot-Dip Galvanized) material, and does not include hardware for installation."
+  },
+  {
+    "row_index": 100,
+    "raw_description": "WRAPOVER COUPLER FOR 50MM(H) CABLE TRAY - HDG W/O HWRS.",
+    "item_type": "Wrapover Coupler",
+    "dimensions": {
+      "height": "50mm"
+    },
+    "material": "HDG",
+    "quantity": 1000.0,
+    "uom": "NOS",
+    "unit_price": 3.684,
+    "total_price": 3684.0,
+    "brand": null,
+    "key_specs": [
+      "For 50mm height cable tray",
+      "HDG material",
+      "Without hardware"
+    ],
+    "search_keywords": [
+      "wrapover coupler",
+      "cable tray",
+      "50mm",
+      "HDG",
+      "hardware",
+      "connector"
+    ],
+    "reasoning": "This item is a wrapover coupler, which is an accessory used to join sections of cable tray. It is designed for a 50mm high cable tray, made of HDG (Hot-Dip Galvanized) material, and does not include hardware."
+  },
+  {
+    "row_index": 101,
+    "raw_description": "EARTH BRAID 6MM² X 100MM WITH 6MM END LUGS",
+    "item_type": "Earth Braid",
+    "dimensions": {
+      "width": "6mm²",
+      "length": "100mm"
+    },
+    "material": "Copper",
+    "quantity": 20000.0,
+    "uom": "NOS",
+    "unit_price": 1.152,
+    "total_price": 23040.0,
+    "brand": null,
+    "key_specs": [
+      "6mm² cross-section",
+      "100mm length",
+      "6mm end lugs"
+    ],
+    "search_keywords": [
+      "earth braid",
+      "copper braid",
+      "grounding braid",
+      "6mm²",
+      "100mm",
+      "end lugs"
+    ],
+    "reasoning": "This item is an earth braid, which is a flexible copper conductor used for grounding and bonding in electrical systems. It has a cross-sectional area of 6mm² and a length of 100mm. The braid comes with 6mm end lugs for easy connection."
+  },
+  {
+    "row_index": 102,
+    "raw_description": "EXPANSION COUPLER FOR 50MM(H) CABLE TRAY HDG W/O HWRS.",
+    "item_type": "expansion coupler",
+    "dimensions": {
+      "height": "50mm"
+    },
+    "material": "HDG",
+    "quantity": 100.0,
+    "uom": "NOS",
+    "unit_price": 2.46,
+    "total_price": 246.0,
+    "brand": null,
+    "key_specs": [
+      "For 50mm height cable tray",
+      "HDG material",
+      "Without hardware"
+    ],
+    "search_keywords": [
+      "expansion coupler",
+      "cable tray",
+      "HDG",
+      "50mm",
+      "hardware",
+      "connector"
+    ],
+    "reasoning": "This item is an expansion coupler used for connecting 50mm high cable trays. It is made of HDG (Hot-Dip Galvanized) material and does not include hardware."
+  },
+  {
+    "row_index": 103,
+    "raw_description": "ROOFING BOLT M6X16MM C/W NUT, FLAT WASHER -EG",
+    "item_type": "accessory",
+    "dimensions": {
+      "length": "16mm"
+    },
+    "material": "EG",
+    "quantity": 44400.0,
+    "uom": "NOS",
+    "unit_price": 0.204,
+    "total_price": 9057.6,
+    "brand": null,
+    "key_specs": [
+      "M6x16mm",
+      "with nut",
+      "with flat washer",
+      "electro-galvanized"
+    ],
+    "search_keywords": [
+      "roofing bolt",
+      "M6",
+      "16mm",
+      "nut",
+      "flat washer",
+      "EG",
+      "electro-galvanized"
+    ],
+    "reasoning": "This item is a roofing bolt, which is a type of fastener used in construction, specifically for roofing applications. It comes with a nut and flat washer, indicating it's a complete fastening set. The bolt is M6 size with a length of 16mm, and it's electro-galvanized (EG) for corrosion resistance."
+  },
+  {
+    "row_index": 104,
+    "raw_description": "GI TRUNKING 150X150X1.5MM THK. X 3 MTR. LTH. C/W COVER, COUPLER",
+    "item_type": "cable tray",
+    "dimensions": {
+      "width": "150mm",
+      "height": "150mm",
+      "thickness": "1.5mm",
+      "length": "3m"
+    },
+    "material": "GI",
+    "quantity": 50.0,
+    "uom": "NOS",
+    "unit_price": 167.184,
+    "total_price": 8359.2,
+    "brand": null,
+    "key_specs": [
+      "GI material",
+      "150x150mm cross-section",
+      "1.5mm thickness",
+      "3m length",
+      "Includes cover",
+      "Includes coupler"
+    ],
+    "search_keywords": [
+      "GI",
+      "trunking",
+      "150x150",
+      "1.5mm",
+      "3m",
+      "cover",
+      "coupler",
+      "cable tray"
+    ],
+    "reasoning": "This item is a galvanized iron (GI) cable trunking system. It's a type of cable tray used for organizing and protecting electrical cables. The trunking has a square cross-section of 150x150mm, is 1.5mm thick, and comes in 3-meter lengths. It includes a cover for cable protection and a coupler for connecting multiple sections."
+  },
+  {
+    "row_index": 105,
+    "raw_description": "GI TRUNKING 100X100X1.2MM THK. X 3 MTR. LTH. C/W COVER, COUPLER",
+    "item_type": "cable tray",
+    "dimensions": {
+      "width": "100mm",
+      "height": "100mm",
+      "thickness": "1.2mm",
+      "length": "3m"
+    },
+    "material": "GI",
+    "quantity": 100.0,
+    "uom": "NOS",
+    "unit_price": 95.484,
+    "total_price": 9548.4,
+    "brand": null,
+    "key_specs": [
+      "GI material",
+      "100x100mm cross-section",
+      "1.2mm thickness",
+      "3m length",
+      "Includes cover",
+      "Includes coupler"
+    ],
+    "search_keywords": [
+      "GI",
+      "trunking",
+      "100x100",
+      "1.2mm",
+      "3m",
+      "cover",
+      "coupler",
+      "galvanized iron",
+      "cable tray"
+    ],
+    "reasoning": "This item is a galvanized iron (GI) cable trunking system. It includes the main trunking section, a cover, and a coupler. The trunking has a square cross-section of 100x100mm, is 1.2mm thick, and comes in 3-meter lengths. It's sold as a complete unit (NOS) including all components."
+  },
+  {
+    "row_index": 106,
+    "raw_description": "GI TRUNKING 75X75X1.0MM THK. X 3 MTR. LTH. C/W COVER, COUPLER",
+    "item_type": "cable tray",
+    "dimensions": {
+      "width": "75mm",
+      "height": "75mm",
+      "thickness": "1.0mm",
+      "length": "3m"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 64.404,
+    "total_price": 1288.08,
+    "brand": null,
+    "key_specs": [
+      "GI material",
+      "75x75mm cross-section",
+      "1.0mm thickness",
+      "3m length",
+      "Includes cover",
+      "Includes coupler"
+    ],
+    "search_keywords": [
+      "GI",
+      "trunking",
+      "75x75",
+      "1.0mm",
+      "3m",
+      "cover",
+      "coupler",
+      "cable tray"
+    ],
+    "reasoning": "This item is a GI (Galvanized Iron) cable trunking system with cover and coupler. It's essentially a type of cable tray used for organizing and protecting electrical cables."
+  },
+  {
+    "row_index": 107,
+    "raw_description": "GI TRUNKING 50X50X1.0MM THK. X 3 MTR. LTH. C/W COVER, COUPLER",
+    "item_type": "cable tray",
+    "dimensions": {
+      "width": "50mm",
+      "height": "50mm",
+      "thickness": "1.0mm",
+      "length": "3m"
+    },
+    "material": "GI",
+    "quantity": 50.0,
+    "uom": "NOS",
+    "unit_price": 46.68,
+    "total_price": 2334.0,
+    "brand": null,
+    "key_specs": [
+      "GI material",
+      "50x50mm dimensions",
+      "1.0mm thickness",
+      "3 meter length",
+      "Includes cover",
+      "Includes coupler"
+    ],
+    "search_keywords": [
+      "GI",
+      "trunking",
+      "50x50",
+      "1.0mm",
+      "3 meter",
+      "cover",
+      "coupler",
+      "cable tray"
+    ],
+    "reasoning": "This item is a GI (Galvanized Iron) cable trunking system. It's a type of cable tray used for organizing and protecting electrical cables. The trunking has dimensions of 50x50mm with a thickness of 1.0mm and comes in 3-meter lengths. It includes a cover and coupler, which are essential components for a complete trunking system."
+  },
+  {
+    "row_index": 108,
+    "raw_description": "TOP LID TEE FOR 150X150MM GI TRUNKING, 1.5MM THK.",
+    "item_type": "Top Lid Tee",
+    "dimensions": {
+      "width": "150mm",
+      "height": "150mm",
+      "thickness": "1.5mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 30.576,
+    "total_price": 611.52,
+    "brand": null,
+    "key_specs": [
+      "150x150mm",
+      "GI material",
+      "1.5mm thickness",
+      "For trunking"
+    ],
+    "search_keywords": [
+      "top lid",
+      "tee",
+      "150x150mm",
+      "GI",
+      "trunking",
+      "1.5mm",
+      "galvanized iron",
+      "cable tray accessory"
+    ],
+    "reasoning": "This item is a top lid tee, which is an accessory for a 150x150mm GI (Galvanized Iron) trunking system. It's used to cover the junction where three sections of trunking meet at a T-intersection, providing protection and a finished appearance."
+  },
+  {
+    "row_index": 109,
+    "raw_description": "TOP LID TEE FOR 100X100MM GI TRUNKING, 1.2MM THK.",
+    "item_type": "Top Lid Tee",
+    "dimensions": {
+      "width": "100mm",
+      "height": "100mm",
+      "thickness": "1.2mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 21.3,
+    "total_price": 426.0,
+    "brand": null,
+    "key_specs": [
+      "100x100mm",
+      "GI",
+      "1.2mm thickness"
+    ],
+    "search_keywords": [
+      "top lid",
+      "tee",
+      "GI",
+      "galvanized iron",
+      "trunking",
+      "100x100mm",
+      "1.2mm thickness"
+    ],
+    "reasoning": "This item is a top lid tee for a 100x100mm galvanized iron (GI) trunking system. It has a thickness of 1.2mm and is used as a T-shaped junction cover in cable management systems."
+  },
+  {
+    "row_index": 110,
+    "raw_description": "TOP LID TEE FOR 75X75MM GI TRUNKING, 1.0MM THK.",
+    "item_type": "Top Lid Tee",
+    "dimensions": {
+      "width": "75mm",
+      "height": "75mm",
+      "thickness": "1.0mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 15.54,
+    "total_price": 310.8,
+    "brand": null,
+    "key_specs": [
+      "75x75mm",
+      "GI",
+      "1.0mm thickness",
+      "for trunking"
+    ],
+    "search_keywords": [
+      "top lid",
+      "tee",
+      "GI",
+      "galvanized iron",
+      "trunking",
+      "75x75mm",
+      "1.0mm thickness"
+    ],
+    "reasoning": "This item is a top lid tee fitting for a 75x75mm galvanized iron (GI) trunking system. It has a thickness of 1.0mm and is used to cover and connect trunking sections at T-junctions."
+  },
+  {
+    "row_index": 111,
+    "raw_description": "TOP LID TEE FOR 50X50MM GI TRUNKING, 1.0MM THK.",
+    "item_type": "Top Lid Tee",
+    "dimensions": {
+      "width": "50mm",
+      "height": "50mm",
+      "thickness": "1.0mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 12.588,
+    "total_price": 251.76,
+    "brand": null,
+    "key_specs": [
+      "50x50mm",
+      "GI",
+      "1.0mm thickness",
+      "trunking"
+    ],
+    "search_keywords": [
+      "top lid",
+      "tee",
+      "GI",
+      "galvanized iron",
+      "trunking",
+      "50x50mm",
+      "1.0mm thickness"
+    ],
+    "reasoning": "This item is a top lid tee for a 50x50mm galvanized iron (GI) trunking system. It has a thickness of 1.0mm and is used as a T-shaped cover or junction piece in cable management systems."
+  },
+  {
+    "row_index": 112,
+    "raw_description": "TOP LID TEE FOR 150X150MM GI TRUNKING, 1.5MM THK.",
+    "item_type": "Top Lid Tee",
+    "dimensions": {
+      "width": "150mm",
+      "height": "150mm",
+      "thickness": "1.5mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 30.576,
+    "total_price": 611.52,
+    "brand": null,
+    "key_specs": [
+      "150x150mm size",
+      "1.5mm thickness",
+      "GI material",
+      "For trunking system"
+    ],
+    "search_keywords": [
+      "top lid",
+      "tee",
+      "150x150mm",
+      "GI",
+      "trunking",
+      "1.5mm",
+      "galvanized iron",
+      "cable tray accessory"
+    ],
+    "reasoning": "This item is a top lid tee, which is an accessory for a 150x150mm GI (Galvanized Iron) trunking system. It's used to cover and protect the tee junction in a cable tray system, providing a neat and safe installation."
+  },
+  {
+    "row_index": 113,
+    "raw_description": "TOP LID TEE FOR 100X100MM GI TRUNKING, 1.2MM THK.",
+    "item_type": "Top Lid Tee",
+    "dimensions": {
+      "width": "100mm",
+      "height": "100mm",
+      "thickness": "1.2mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 21.3,
+    "total_price": 426.0,
+    "brand": null,
+    "key_specs": [
+      "100x100mm",
+      "GI",
+      "1.2mm thickness",
+      "Top Lid Tee",
+      "For Trunking"
+    ],
+    "search_keywords": [
+      "top lid",
+      "tee",
+      "GI",
+      "galvanized iron",
+      "trunking",
+      "100x100mm",
+      "1.2mm thickness"
+    ],
+    "reasoning": "This item is a Top Lid Tee, which is a type of accessory for a 100x100mm GI (Galvanized Iron) trunking system. It has a thickness of 1.2mm and is used to cover and connect trunking sections at T-junctions."
+  },
+  {
+    "row_index": 114,
+    "raw_description": "TOP LID TEE FOR 75X75MM GI TRUNKING, 1.0MM THK.",
+    "item_type": "Top Lid Tee",
+    "dimensions": {
+      "width": "75mm",
+      "height": "75mm",
+      "thickness": "1.0mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 15.54,
+    "total_price": 310.8,
+    "brand": null,
+    "key_specs": [
+      "75x75mm",
+      "GI",
+      "1.0mm thickness",
+      "trunking accessory"
+    ],
+    "search_keywords": [
+      "top lid",
+      "tee",
+      "GI",
+      "galvanized iron",
+      "trunking",
+      "75x75mm",
+      "1.0mm thickness"
+    ],
+    "reasoning": "This item is a top lid tee, which is an accessory for a 75x75mm galvanized iron (GI) trunking system. It has a thickness of 1.0mm and is used to cover and connect trunking sections at T-junctions."
+  },
+  {
+    "row_index": 115,
+    "raw_description": "TOP LID TEE FOR 50X50MM GI TRUNKING, 1.0MM THK.",
+    "item_type": "Top Lid Tee",
+    "dimensions": {
+      "width": "50mm",
+      "height": "50mm",
+      "thickness": "1.0mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 12.588,
+    "total_price": 251.76,
+    "brand": null,
+    "key_specs": [
+      "50x50mm",
+      "GI",
+      "1.0mm thickness",
+      "for trunking"
+    ],
+    "search_keywords": [
+      "top lid",
+      "tee",
+      "GI",
+      "galvanized iron",
+      "trunking",
+      "50x50mm",
+      "1.0mm thickness"
+    ],
+    "reasoning": "This item is a top lid tee fitting for a 50x50mm galvanized iron (GI) trunking system. It has a thickness of 1.0mm and is used to cover and connect trunking sections at T-junctions."
+  },
+  {
+    "row_index": 116,
+    "raw_description": "45° TOP LID BEND FOR 150X150MM GI TRUNKING, 1.5MM THK.",
+    "item_type": "Top Lid Bend",
+    "dimensions": {
+      "width": "150mm",
+      "height": "150mm",
+      "thickness": "1.5mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 27.048,
+    "total_price": 540.96,
+    "brand": null,
+    "key_specs": [
+      "45° angle",
+      "150x150mm",
+      "1.5mm thickness",
+      "GI material"
+    ],
+    "search_keywords": [
+      "45 degree",
+      "top lid bend",
+      "GI trunking",
+      "150x150mm",
+      "1.5mm thick",
+      "galvanized iron",
+      "trunking accessory"
+    ],
+    "reasoning": "This item is a 45-degree top lid bend for a galvanized iron (GI) trunking system. It is designed to cover and change the direction of a 150x150mm trunking at a 45-degree angle. The bend is made of 1.5mm thick GI material, which provides durability and corrosion resistance."
+  },
+  {
+    "row_index": 117,
+    "raw_description": "45° TOP LID BEND FOR 100X100MM GI TRUNKING, 1.2MM THK.",
+    "item_type": "Top Lid Bend",
+    "dimensions": {
+      "width": "100mm",
+      "height": "100mm",
+      "thickness": "1.2mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 18.648,
+    "total_price": 372.96,
+    "brand": null,
+    "key_specs": [
+      "45° angle",
+      "100x100mm",
+      "1.2mm thickness",
+      "GI material"
+    ],
+    "search_keywords": [
+      "45 degree",
+      "top lid bend",
+      "GI trunking",
+      "100x100mm",
+      "1.2mm thickness",
+      "galvanized iron",
+      "trunking accessory"
+    ],
+    "reasoning": "This item is a 45-degree top lid bend for a galvanized iron (GI) trunking system. It is designed to cover and protect the top of a 45-degree bend in a 100x100mm trunking system. The material thickness is 1.2mm, which provides durability and protection for the enclosed cables or wires."
+  },
+  {
+    "row_index": 118,
+    "raw_description": "45° TOP LID BEND FOR 75X75MM GI TRUNKING, 1.0MM THK.",
+    "item_type": "Top Lid Bend",
+    "dimensions": {
+      "width": "75mm",
+      "height": "75mm",
+      "thickness": "1.0mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 12.708,
+    "total_price": 254.16,
+    "brand": null,
+    "key_specs": [
+      "45° angle",
+      "75x75mm",
+      "1.0mm thickness",
+      "GI material"
+    ],
+    "search_keywords": [
+      "45 degree",
+      "top lid bend",
+      "GI trunking",
+      "75x75mm",
+      "1.0mm thickness",
+      "galvanized iron"
+    ],
+    "reasoning": "This item is a 45-degree top lid bend for a galvanized iron (GI) trunking system. It has dimensions of 75x75mm and is made of 1.0mm thick material. It's an accessory used in cable management systems to create a 45-degree turn in the top cover of a trunking system."
+  },
+  {
+    "row_index": 119,
+    "raw_description": "45° TOP LID BEND FOR 50X50MM GI TRUNKING, 1.0MM THK.",
+    "item_type": "Top Lid Bend",
+    "dimensions": {
+      "width": "50mm",
+      "height": "50mm",
+      "thickness": "1.0mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 10.356,
+    "total_price": 207.12,
+    "brand": null,
+    "key_specs": [
+      "45 degree",
+      "50x50mm",
+      "GI trunking",
+      "1.0mm thickness"
+    ],
+    "search_keywords": [
+      "45 degree",
+      "top lid",
+      "bend",
+      "GI",
+      "trunking",
+      "50x50mm",
+      "1.0mm"
+    ],
+    "reasoning": "This item is a 45-degree top lid bend for a GI (Galvanized Iron) trunking system. It's designed to cover and change direction of a 50x50mm trunking at a 45-degree angle."
+  },
+  {
+    "row_index": 120,
+    "raw_description": "90° TOP LID BEND FOR 150X150MM GI TRUNKING, 1.5MM THK.",
+    "item_type": "Top Lid Bend",
+    "dimensions": {
+      "width": "150mm",
+      "height": "150mm",
+      "thickness": "1.5mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 29.88,
+    "total_price": 597.6,
+    "brand": null,
+    "key_specs": [
+      "90 degree bend",
+      "150x150mm size",
+      "GI material",
+      "1.5mm thickness",
+      "For trunking"
+    ],
+    "search_keywords": [
+      "90 degree",
+      "top lid",
+      "bend",
+      "150x150mm",
+      "GI",
+      "trunking",
+      "1.5mm thickness"
+    ],
+    "reasoning": "This item is a 90-degree top lid bend for a GI (Galvanized Iron) trunking system. It has dimensions of 150mm x 150mm and is made of 1.5mm thick material. It's used as a covering component for right-angle bends in a cable management system."
+  },
+  {
+    "row_index": 121,
+    "raw_description": "90° TOP LID BEND FOR 100X100MM GI TRUNKING, 1.2MM THK.",
+    "item_type": "90° Top Lid Bend",
+    "dimensions": {
+      "width": "100mm",
+      "height": "100mm",
+      "thickness": "1.2mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 20.064,
+    "total_price": 401.28,
+    "brand": null,
+    "key_specs": [
+      "90° bend",
+      "Top lid",
+      "100x100mm dimensions",
+      "GI material",
+      "1.2mm thickness",
+      "For trunking system"
+    ],
+    "search_keywords": [
+      "90 degree",
+      "top lid",
+      "bend",
+      "100x100mm",
+      "GI",
+      "trunking",
+      "1.2mm thickness"
+    ],
+    "reasoning": "This item is a 90-degree top lid bend for a 100x100mm GI (Galvanized Iron) trunking system. It is made of 1.2mm thick material and is used to create a right-angle turn in the trunking system while providing a cover for the top."
+  },
+  {
+    "row_index": 122,
+    "raw_description": "90° TOP LID BEND FOR 75X75MM GI TRUNKING, 1.0MM THK.",
+    "item_type": "bend",
+    "dimensions": {
+      "width": "75mm",
+      "height": "75mm",
+      "thickness": "1.0mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 14.304,
+    "total_price": 286.08,
+    "brand": null,
+    "key_specs": [
+      "90° top lid bend",
+      "75x75mm",
+      "1.0mm thickness",
+      "GI material"
+    ],
+    "search_keywords": [
+      "90 degree",
+      "top lid",
+      "bend",
+      "75x75mm",
+      "GI",
+      "galvanized iron",
+      "trunking",
+      "1.0mm",
+      "thickness"
+    ],
+    "reasoning": "This item is a 90-degree top lid bend for a galvanized iron (GI) trunking system. It has dimensions of 75x75mm and is made of 1.0mm thick material. It's an accessory used in cable management systems to change the direction of the trunking at a right angle while providing a cover for the top."
+  },
+  {
+    "row_index": 123,
+    "raw_description": "90° TOP LID BEND FOR 50X50MM GI TRUNKING, 1.0MM THK.",
+    "item_type": "bend",
+    "dimensions": {
+      "width": "50mm",
+      "height": "50mm",
+      "thickness": "1.0mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 11.136,
+    "total_price": 222.72,
+    "brand": null,
+    "key_specs": [
+      "90° top lid bend",
+      "50x50mm",
+      "1.0mm thickness"
+    ],
+    "search_keywords": [
+      "90 degree",
+      "top lid",
+      "bend",
+      "GI",
+      "galvanized iron",
+      "trunking",
+      "50x50mm",
+      "1.0mm thickness"
+    ],
+    "reasoning": "This item is a 90-degree top lid bend for a 50x50mm GI (Galvanized Iron) trunking system. It is made of 1.0mm thick material and is used to create a right-angle turn in the trunking system while providing a cover for the top."
+  },
+  {
+    "row_index": 124,
+    "raw_description": "REDUCER FOR 150X150 100X100MM GI TRUNKING, 1.5MM THK.",
+    "item_type": "Reducer",
+    "dimensions": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "thickness": "1.5mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 29.82,
+    "total_price": 596.4,
+    "brand": null,
+    "key_specs": [
+      "150x150 to 100x100mm",
+      "GI trunking",
+      "1.5mm thickness"
+    ],
+    "search_keywords": [
+      "reducer",
+      "trunking",
+      "GI",
+      "galvanized iron",
+      "150x150",
+      "100x100",
+      "1.5mm"
+    ],
+    "reasoning": "This item is a reducer for a galvanized iron (GI) trunking system. It transitions from a 150x150mm trunking size to a 100x100mm size, with a thickness of 1.5mm. Reducers are used to change the size of the trunking in a cable management system."
+  },
+  {
+    "row_index": 125,
+    "raw_description": "REDUCER FOR 150X100 - 100X100MM GI TRUNKING, 1.2MM THK.",
+    "item_type": "Reducer",
+    "dimensions": {
+      "length": null,
+      "width": "150mm to 100mm",
+      "height": "100mm",
+      "thickness": "1.2mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 25.164,
+    "total_price": 503.28,
+    "brand": null,
+    "key_specs": [
+      "150x100mm to 100x100mm",
+      "GI material",
+      "1.2mm thickness",
+      "Trunking reducer"
+    ],
+    "search_keywords": [
+      "reducer",
+      "GI",
+      "galvanized iron",
+      "trunking",
+      "150x100",
+      "100x100",
+      "1.2mm"
+    ],
+    "reasoning": "This item is a reducer for a galvanized iron (GI) trunking system. It transitions from a 150x100mm trunking size to a 100x100mm size, with a thickness of 1.2mm. It's used to connect different sizes of trunking in an electrical or cable management system."
+  },
+  {
+    "row_index": 126,
+    "raw_description": "REDUCER FOR 100X100 50X50MM GI TRUNKING, 1.2MM THK.",
+    "item_type": "Reducer",
+    "dimensions": {
+      "length": null,
+      "width": "100mm",
+      "height": "100mm",
+      "thickness": "1.2mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 21.48,
+    "total_price": 429.6,
+    "brand": null,
+    "key_specs": [
+      "100x100mm to 50x50mm",
+      "1.2mm thickness",
+      "GI material"
+    ],
+    "search_keywords": [
+      "reducer",
+      "trunking",
+      "GI",
+      "galvanized iron",
+      "100x100",
+      "50x50",
+      "1.2mm"
+    ],
+    "reasoning": "This item is a reducer for a GI (Galvanized Iron) trunking system. It transitions from a 100x100mm size to a 50x50mm size, with a thickness of 1.2mm. Reducers are used to change the size of the trunking system, allowing for transitions between different sized sections."
+  },
+  {
+    "row_index": 127,
+    "raw_description": "REDUCER FOR 75X75 50X50MM GI TRUNKING, 1.0MM THK.",
+    "item_type": "Reducer",
+    "dimensions": {
+      "length": null,
+      "width": "75mm",
+      "height": "75mm",
+      "thickness": "1.0mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 17.652,
+    "total_price": 353.04,
+    "brand": null,
+    "key_specs": [
+      "75x75mm to 50x50mm",
+      "1.0mm thickness",
+      "GI material"
+    ],
+    "search_keywords": [
+      "reducer",
+      "trunking",
+      "GI",
+      "galvanized iron",
+      "75x75",
+      "50x50",
+      "1.0mm"
+    ],
+    "reasoning": "This item is a reducer for a GI (Galvanized Iron) trunking system. It transitions from a 75x75mm size to a 50x50mm size, with a thickness of 1.0mm. It's used in electrical or cable management systems to change the size of the trunking run."
+  },
+  {
+    "row_index": 128,
+    "raw_description": "REDUCER FOR 100X100 - 75X75MM GI TRUNKING, 1.2MM THK.",
+    "item_type": "Reducer",
+    "dimensions": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "thickness": "1.2mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 22.008,
+    "total_price": 440.16,
+    "brand": null,
+    "key_specs": [
+      "100x100mm to 75x75mm",
+      "1.2mm thickness",
+      "GI material"
+    ],
+    "search_keywords": [
+      "reducer",
+      "GI",
+      "trunking",
+      "100x100",
+      "75x75",
+      "1.2mm",
+      "galvanized iron"
+    ],
+    "reasoning": "This item is a reducer for GI (Galvanized Iron) trunking, used to transition from a 100x100mm trunking size to a 75x75mm size. It is made of 1.2mm thick galvanized iron material."
+  },
+  {
+    "row_index": 129,
+    "raw_description": "UN EQUAL TEE TOP LID FOR 150X150-150X150-100X100MM GI TRUNKING, 1.5MM THK. PG",
+    "item_type": "Unequal Tee Top Lid",
+    "dimensions": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "thickness": "1.5mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 59.124,
+    "total_price": 1182.48,
+    "brand": null,
+    "key_specs": [
+      "150X150-150X150-100X100MM",
+      "1.5MM THK",
+      "PG"
+    ],
+    "search_keywords": [
+      "Unequal Tee",
+      "Top Lid",
+      "GI Trunking",
+      "150x150",
+      "100x100",
+      "1.5mm thickness",
+      "PG"
+    ],
+    "reasoning": "This item is an unequal tee top lid for a GI (Galvanized Iron) trunking system. It's designed to cover a tee junction where trunking sizes change from 150x150mm to 100x100mm. The lid is made of 1.5mm thick material and is described as 'PG' which likely stands for 'Pre-Galvanized'."
+  },
+  {
+    "row_index": 130,
+    "raw_description": "UN EQUAL TEE TOP LID FOR 100X100-100X100-50X50MM TRUNKING, 1.2MM THK. PG",
+    "item_type": "Unequal Tee Top Lid",
+    "dimensions": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "thickness": "1.2mm"
+    },
+    "material": "PG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 48.288,
+    "total_price": 965.76,
+    "brand": null,
+    "key_specs": [
+      "Unequal Tee Top Lid",
+      "For 100x100-100x100-50x50mm Trunking",
+      "1.2mm thickness",
+      "PG material"
+    ],
+    "search_keywords": [
+      "unequal tee",
+      "top lid",
+      "trunking",
+      "100x100",
+      "50x50",
+      "1.2mm",
+      "PG"
+    ],
+    "reasoning": "This item is an unequal tee top lid for a trunking system. It's designed to fit a trunking configuration with dimensions 100x100-100x100-50x50mm. The lid is made of PG (Pre-Galvanized) material with a thickness of 1.2mm."
+  },
+  {
+    "row_index": 131,
+    "raw_description": "UN EQUAL TEE TOP LID FOR 75X75-75X75-50X50MM TRUNKING, 1.0MM THK. PG",
+    "item_type": "Unequal Tee Top Lid",
+    "dimensions": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "thickness": "1.0mm"
+    },
+    "material": "PG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 28.824,
+    "total_price": 576.48,
+    "brand": null,
+    "key_specs": [
+      "Unequal Tee Top Lid",
+      "For 75x75-75x75-50x50mm Trunking",
+      "1.0mm thickness",
+      "PG material"
+    ],
+    "search_keywords": [
+      "unequal tee",
+      "top lid",
+      "trunking",
+      "75x75",
+      "75x75-50x50",
+      "1.0mm",
+      "PG"
+    ],
+    "reasoning": "This item is an unequal tee top lid for a trunking system. It is designed to fit a trunking configuration of 75x75-75x75-50x50mm, indicating it covers a T-junction where two 75x75mm sections meet a 50x50mm section. The lid is made of PG (Pre-Galvanized) material with a thickness of 1.0mm."
+  },
+  {
+    "row_index": 132,
+    "raw_description": "UN EQUAL TEE TOP LID FOR 100X100-50X50-50X50MM TRUNKING, 1.2MM THK. PG",
+    "item_type": "Unequal Tee Top Lid",
+    "dimensions": {
+      "length": null,
+      "width": "100mm",
+      "height": "50mm",
+      "thickness": "1.2mm"
+    },
+    "material": "PG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 48.288,
+    "total_price": 965.76,
+    "brand": null,
+    "key_specs": [
+      "Unequal Tee",
+      "Top Lid",
+      "100x100-50x50-50x50mm Trunking",
+      "1.2mm thickness",
+      "PG material"
+    ],
+    "search_keywords": [
+      "unequal tee",
+      "top lid",
+      "trunking",
+      "100x100",
+      "50x50",
+      "1.2mm",
+      "PG",
+      "cable management"
+    ],
+    "reasoning": "This item is an unequal tee top lid for a cable trunking system. It's designed to cover a trunking junction where three different sizes meet (100x100mm and two 50x50mm sections). The lid is made of PG (Pre-Galvanized) material with a thickness of 1.2mm, providing protection and access to the cable trunking system."
+  },
+  {
+    "row_index": 133,
+    "raw_description": "UN EQUAL TEE TOP LID FOR 100X100-100X100-75X75MM TRUNKING, 1.2MM THK. PG",
+    "item_type": "Unequal Tee Top Lid",
+    "dimensions": {
+      "length": null,
+      "width": "100mm",
+      "height": "100mm",
+      "thickness": "1.2mm"
+    },
+    "material": "PG",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 43.896,
+    "total_price": 877.92,
+    "brand": null,
+    "key_specs": [
+      "Unequal Tee Top Lid",
+      "For 100x100-100x100-75x75mm Trunking",
+      "1.2mm Thickness",
+      "PG material"
+    ],
+    "search_keywords": [
+      "unequal tee",
+      "top lid",
+      "trunking",
+      "100x100",
+      "75x75",
+      "1.2mm",
+      "PG",
+      "cable management"
+    ],
+    "reasoning": "This item is an unequal tee top lid for a cable trunking system. It's designed to cover the junction where three trunking sections meet, with two 100x100mm sections and one 75x75mm section. The lid is made of PG (Pre-Galvanized) material with a thickness of 1.2mm, providing protection and access to the cable trunking system."
+  },
+  {
+    "row_index": 134,
+    "raw_description": "150X150X100X100 SQUARE TEE (Need more details)",
+    "item_type": "tee",
+    "dimensions": {
+      "length": "150mm",
+      "width": "150mm",
+      "height": "100mm"
+    },
+    "material": "null",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 0.0,
+    "total_price": 0.0,
+    "brand": null,
+    "key_specs": [
+      "150x150x100x100 square tee"
+    ],
+    "search_keywords": [
+      "square tee",
+      "150x150x100x100",
+      "tee",
+      "cable tray accessory"
+    ],
+    "reasoning": "This item is a square tee, which is an accessory for cable tray systems. It's used to create T-shaped junctions in cable tray installations. The dimensions suggest it connects trays of different sizes."
+  },
+  {
+    "row_index": 135,
+    "raw_description": "150X150X150X100 SQUARE TEE (Need more details)",
+    "item_type": "tee",
+    "dimensions": {
+      "length": "150mm",
+      "width": "150mm",
+      "height": "150mm"
+    },
+    "material": "null",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 0.0,
+    "total_price": 0.0,
+    "brand": null,
+    "key_specs": [
+      "150x150x150x100 dimensions",
+      "Square tee",
+      "Cable tray accessory"
+    ],
+    "search_keywords": [
+      "square tee",
+      "150x150x150x100",
+      "tee",
+      "cable tray accessory"
+    ],
+    "reasoning": "This item is a square tee, which is an accessory for cable tray systems. It has three 150mm sides and one 100mm side, likely used to connect cable trays at right angles. The item requires more details, possibly regarding material or specific design features."
+  },
+  {
+    "row_index": 136,
+    "raw_description": "COUPLER FOR 50X50MM GI TRUNKING, 1.0MM THK.",
+    "item_type": "coupler",
+    "dimensions": {
+      "width": "50mm",
+      "height": "50mm",
+      "thickness": "1.0mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 1.284,
+    "total_price": 25.68,
+    "brand": null,
+    "key_specs": [
+      "50x50mm",
+      "GI trunking",
+      "1.0mm thickness"
+    ],
+    "search_keywords": [
+      "coupler",
+      "GI",
+      "trunking",
+      "50x50mm",
+      "1.0mm",
+      "galvanized iron",
+      "connector",
+      "joint"
+    ],
+    "reasoning": "This item is a coupler, which is used to join or connect sections of 50x50mm GI (Galvanized Iron) trunking. The coupler is made of the same material as the trunking (GI) and has a thickness of 1.0mm. It's an accessory for the trunking system, allowing for continuous and secure installation of trunking sections."
+  },
+  {
+    "row_index": 137,
+    "raw_description": "COUPLER FOR 75X75MM GI TRUNKING, 1.0MM THK.",
+    "item_type": "coupler",
+    "dimensions": {
+      "width": "75mm",
+      "height": "75mm",
+      "thickness": "1.0mm"
+    },
+    "material": "GI",
+    "quantity": 1500.0,
+    "uom": "NOS",
+    "unit_price": 1.464,
+    "total_price": 2196.0,
+    "brand": null,
+    "key_specs": [
+      "75x75mm",
+      "GI (Galvanized Iron)",
+      "1.0mm thickness",
+      "For trunking"
+    ],
+    "search_keywords": [
+      "coupler",
+      "GI",
+      "trunking",
+      "75x75mm",
+      "1.0mm",
+      "galvanized iron"
+    ],
+    "reasoning": "This item is a coupler used for connecting 75x75mm GI (Galvanized Iron) trunking sections. It is made of GI material with a thickness of 1.0mm."
+  },
+  {
+    "row_index": 138,
+    "raw_description": "COUPLER FOR 100X100MM GI TRUNKING, 1.2MM THK.",
+    "item_type": "coupler",
+    "dimensions": {
+      "width": "100mm",
+      "height": "100mm",
+      "thickness": "1.2mm"
+    },
+    "material": "GI",
+    "quantity": 1500.0,
+    "uom": "NOS",
+    "unit_price": 1.848,
+    "total_price": 2772.0,
+    "brand": null,
+    "key_specs": [
+      "100x100mm",
+      "GI trunking",
+      "1.2mm thickness"
+    ],
+    "search_keywords": [
+      "coupler",
+      "GI",
+      "trunking",
+      "100x100mm",
+      "1.2mm",
+      "galvanized iron"
+    ],
+    "reasoning": "This item is a coupler used for joining 100x100mm GI (Galvanized Iron) trunking sections. It has a thickness of 1.2mm and is sold individually (NOS - Numbers)."
+  },
+  {
+    "row_index": 139,
+    "raw_description": "COUPLER FOR 150X150MM GI TRUNKING, 1.5MM THK.",
+    "item_type": "coupler",
+    "dimensions": {
+      "width": "150mm",
+      "height": "150mm",
+      "thickness": "1.5mm"
+    },
+    "material": "GI",
+    "quantity": 1500.0,
+    "uom": "NOS",
+    "unit_price": 2.712,
+    "total_price": 4068.0,
+    "brand": null,
+    "key_specs": [
+      "150x150mm size",
+      "1.5mm thickness",
+      "For GI trunking",
+      "Coupler"
+    ],
+    "search_keywords": [
+      "coupler",
+      "GI",
+      "trunking",
+      "150x150mm",
+      "1.5mm thickness",
+      "galvanized iron"
+    ],
+    "reasoning": "This item is a coupler used for connecting 150x150mm GI (Galvanized Iron) trunking sections. It has a thickness of 1.5mm and is sold individually (NOS - Numbers)."
+  },
+  {
+    "row_index": 140,
+    "raw_description": "EXPANSION COUPLER FOR 150X150MM GI TRUNKING, 1.5MM THK.",
+    "item_type": "Expansion Coupler",
+    "dimensions": {
+      "width": "150mm",
+      "height": "150mm",
+      "thickness": "1.5mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 18.336,
+    "total_price": 366.72,
+    "brand": null,
+    "key_specs": [
+      "150x150mm size",
+      "1.5mm thickness",
+      "GI material",
+      "For trunking"
+    ],
+    "search_keywords": [
+      "expansion coupler",
+      "GI",
+      "galvanized iron",
+      "trunking",
+      "150x150mm",
+      "1.5mm thickness",
+      "electrical",
+      "cable management"
+    ],
+    "reasoning": "This item is an expansion coupler used for 150x150mm GI (Galvanized Iron) trunking. It's a component in cable management systems, allowing for expansion and contraction in trunking installations. The thickness of 1.5mm suggests it's a sturdy, industrial-grade component."
+  },
+  {
+    "row_index": 141,
+    "raw_description": "EXPANSION COUPLER FOR 100X100MM GI TRUNKING, 1.2MM THK.",
+    "item_type": "Expansion Coupler",
+    "dimensions": {
+      "width": "100mm",
+      "height": "100mm",
+      "thickness": "1.2mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 14.172,
+    "total_price": 283.44,
+    "brand": null,
+    "key_specs": [
+      "100x100mm",
+      "GI material",
+      "1.2mm thickness",
+      "For trunking"
+    ],
+    "search_keywords": [
+      "expansion coupler",
+      "GI",
+      "galvanized iron",
+      "trunking",
+      "100x100mm",
+      "1.2mm thickness",
+      "electrical",
+      "cable management"
+    ],
+    "reasoning": "This item is an expansion coupler used for joining sections of 100x100mm galvanized iron (GI) trunking. It's designed to accommodate thermal expansion and contraction in cable management systems. The 1.2mm thickness suggests it's a sturdy component suitable for industrial or commercial applications."
+  },
+  {
+    "row_index": 142,
+    "raw_description": "EXPANSION COUPLER FOR 75X75MM GI TRUNKING, 1.0MM THK.",
+    "item_type": "Expansion Coupler",
+    "dimensions": {
+      "width": "75mm",
+      "height": "75mm",
+      "thickness": "1.0mm"
+    },
+    "material": "GI",
+    "quantity": 20.0,
+    "uom": "NOS",
+    "unit_price": 13.008,
+    "total_price": 260.16,
+    "brand": null,
+    "key_specs": [
+      "75x75mm size",
+      "1.0mm thickness",
+      "GI material",
+      "For trunking"
+    ],
+    "search_keywords": [
+      "expansion coupler",
+      "GI",
+      "galvanized iron",
+      "trunking",
+      "75x75mm",
+      "1.0mm thickness",
+      "electrical",
+      "cable management"
+    ],
+    "reasoning": "This item is an expansion coupler used for 75x75mm GI (Galvanized Iron) trunking. It's a component in cable management systems, allowing for expansion and contraction in trunking installations. The 1.0mm thickness indicates it's made of sheet metal."
+  },
+  {
+    "row_index": 143,
+    "raw_description": "EXPANSION COUPLER FOR 50X50MM GI TRUNKING, 1.0MM THK.",
+    "item_type": "Expansion Coupler",
+    "dimensions": {
+      "width": "50mm",
+      "height": "50mm",
+      "thickness": "1.0mm"
+    },
+    "material": "GI",
+    "quantity": 100.0,
+    "uom": "NOS",
+    "unit_price": 11.52,
+    "total_price": 1152.0,
+    "brand": null,
+    "key_specs": [
+      "50x50mm",
+      "GI material",
+      "1.0mm thickness",
+      "For trunking"
+    ],
+    "search_keywords": [
+      "expansion coupler",
+      "GI",
+      "galvanized iron",
+      "trunking",
+      "50x50mm",
+      "1.0mm thickness",
+      "electrical",
+      "cable management"
+    ],
+    "reasoning": "This item is an expansion coupler used for 50x50mm GI (Galvanized Iron) trunking. It's designed to join sections of trunking while allowing for thermal expansion and contraction. The 1.0mm thickness indicates the material gauge of the coupler."
+  },
+  {
+    "row_index": 144,
+    "raw_description": "PAN HEAD MACHINE SCREW M5X10MM C/W NUT -NICKLE PLATTING",
+    "item_type": "accessory",
+    "dimensions": {
+      "length": "10mm"
+    },
+    "material": "nickel plated",
+    "quantity": 19600.0,
+    "uom": "NOS",
+    "unit_price": 0.156,
+    "total_price": 3057.6,
+    "brand": null,
+    "key_specs": [
+      "PAN HEAD",
+      "MACHINE SCREW",
+      "M5X10MM",
+      "WITH NUT",
+      "NICKEL PLATING"
+    ],
+    "search_keywords": [
+      "PAN HEAD",
+      "MACHINE SCREW",
+      "M5",
+      "10MM",
+      "NUT",
+      "NICKEL PLATING",
+      "FASTENER",
+      "HARDWARE"
+    ],
+    "reasoning": "This item is a pan head machine screw with accompanying nut. It's a type of fastener used in various mechanical assemblies. The screw is M5 size with a length of 10mm and has nickel plating for corrosion resistance."
+  },
+  {
+    "row_index": 145,
+    "raw_description": "GROSS TOTAL AED",
+    "item_type": "summary",
+    "dimensions": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "thickness": null
+    },
+    "material": "null",
+    "quantity": null,
+    "uom": null,
+    "unit_price": null,
+    "total_price": 678110.928,
+    "brand": null,
+    "key_specs": [
+      "Gross Total"
+    ],
+    "search_keywords": [
+      "gross total",
+      "total price",
+      "summary"
+    ],
+    "reasoning": "This is a summary line showing the gross total price for the entire quotation. It doesn't represent a specific item but rather the overall cost."
+  },
+  {
+    "row_index": 146,
+    "raw_description": "VAT 5%",
+    "item_type": "VAT",
+    "dimensions": {
+      "height": null,
+      "length": null,
+      "width": null,
+      "thickness": null
+    },
+    "material": "null",
+    "quantity": null,
+    "uom": null,
+    "unit_price": null,
+    "total_price": 33905.54,
+    "brand": null,
+    "key_specs": [
+      "5% VAT"
+    ],
+    "search_keywords": [
+      "VAT",
+      "tax",
+      "5%",
+      "value added tax"
+    ],
+    "reasoning": "This item represents a 5% Value Added Tax (VAT) charge, not a physical product. It's a percentage-based fee applied to the total of goods or services."
+  },
+  {
+    "row_index": 147,
+    "raw_description": "NET TOTAL AED",
+    "item_type": "summary",
+    "dimensions": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "thickness": null
+    },
+    "material": "null",
+    "quantity": null,
+    "uom": null,
+    "unit_price": null,
+    "total_price": 712016.47,
+    "brand": null,
+    "key_specs": [
+      "Net total for entire quotation",
+      "Currency: AED"
+    ],
+    "search_keywords": [
+      "net total",
+      "summary",
+      "quotation total"
+    ],
+    "reasoning": "This is a summary line representing the net total of the entire quotation in AED (Arab Emirates Dirham). It does not represent a specific cable tray or related item."
+  },
+  {
+    "row_index": 148,
+    "raw_description": "50% ADVANCE WITH PO, BALANCE 50% BEFORE DELIVERY",
+    "item_type": "unknown",
+    "dimensions": {},
+    "material": "",
+    "quantity": NaN,
+    "uom": null,
+    "unit_price": NaN,
+    "total_price": null,
+    "brand": null,
+    "key_specs": [],
+    "search_keywords": [
+      "advance",
+      "with",
+      "balance",
+      "before",
+      "delivery"
+    ],
+    "reasoning": "Heuristic extraction"
+  },
+  {
+    "row_index": 149,
+    "raw_description": "2-3 WEEKS",
+    "item_type": "delivery information",
+    "dimensions": {
+      "height": null,
+      "length": null,
+      "width": null,
+      "thickness": null
+    },
+    "material": "null",
+    "quantity": null,
+    "uom": null,
+    "unit_price": null,
+    "total_price": null,
+    "brand": null,
+    "key_specs": [
+      "2-3 weeks delivery time"
+    ],
+    "search_keywords": [
+      "delivery",
+      "lead time",
+      "shipping"
+    ],
+    "reasoning": "This line item provides information about the delivery timeframe for the order. It does not describe a physical product but rather a service aspect of the order."
+  },
+  {
+    "row_index": 150,
+    "raw_description": "30 DAYS",
+    "item_type": "validity_period",
+    "dimensions": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "thickness": null
+    },
+    "material": "null",
+    "quantity": null,
+    "uom": null,
+    "unit_price": null,
+    "total_price": null,
+    "brand": null,
+    "key_specs": [
+      "30 days validity"
+    ],
+    "search_keywords": [
+      "validity",
+      "quotation validity",
+      "offer validity",
+      "30 days"
+    ],
+    "reasoning": "This line item specifies the validity period of the quotation rather than describing a product. The quotation is valid for 30 days."
+  },
+  {
+    "row_index": 151,
+    "raw_description": "ITEM 98,99,135,136 NEEDS FURTHER CLARIFICATION TO QUOTE SPECIFICALLY",
+    "item_type": "unknown",
+    "dimensions": {},
+    "material": "",
+    "quantity": NaN,
+    "uom": null,
+    "unit_price": NaN,
+    "total_price": null,
+    "brand": null,
+    "key_specs": [],
+    "search_keywords": [
+      "item",
+      "135",
+      "136",
+      "needs",
+      "further",
+      "clarification",
+      "quote",
+      "specifically"
+    ],
+    "reasoning": "Heuristic extraction"
+  },
+  {
+    "row_index": 152,
+    "raw_description": "VAT 5% IS APPLICABLE ON TAX INVOICE",
+    "item_type": "VAT",
+    "dimensions": {
+      "height": null,
+      "length": null,
+      "width": null,
+      "thickness": null
+    },
+    "material": "null",
+    "quantity": null,
+    "uom": null,
+    "unit_price": null,
+    "total_price": null,
+    "brand": null,
+    "key_specs": [
+      "5% VAT",
+      "Applicable on tax invoice"
+    ],
+    "search_keywords": [
+      "VAT",
+      "Value Added Tax",
+      "tax",
+      "5%",
+      "invoice"
+    ],
+    "reasoning": "This item represents a 5% Value Added Tax (VAT) charge that is applicable on the tax invoice. It's not a physical product but a tax line item."
+  }
+]

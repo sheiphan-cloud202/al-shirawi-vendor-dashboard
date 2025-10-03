@@ -3,11 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vendor Analysis - Al Shirawi ORC POC</title>
+  <title>Vendor Analysis - Al Shirawi ORC</title>
   <link rel="stylesheet" href="/ui/styles.css" />
   <link rel="stylesheet" href="/ui/analysis.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script defer src="/ui/analysis.js"></script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'/>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
+  <meta name="description" content="Simple vendor comparison and analysis interface with AI-powered recommendations">
+  <meta name="keywords" content="vendor analysis, comparison, AI recommendations, procurement, decision support">
   <meta name="color-scheme" content="light dark" />
 </head>
 <body>
@@ -16,41 +21,52 @@
       <h1>📊 Vendor Comparison & Analysis</h1>
       <p class="subtitle">AI-powered vendor quote comparison and recommendations</p>
       <nav class="nav">
-        <a href="/ui/">← Upload</a>
-        <a href="/ui/analysis.html" class="active">Analysis</a>
+        <a href="/ui/home.html">🏠 Home</a>
+        <a href="/ui/index.html">Upload</a>
+        <a href="/ui/analysis.html" class="active">Basic Analysis</a>
+        <a href="/ui/dashboard.html">📊 Dashboard</a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <!-- Loading State -->
-    <div id="loading" class="loading">Loading vendors...</div>
+  <main class="analysis-container">
+    <div class="container">
+      <!-- Loading State -->
+      <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Loading vendor data...</p>
+      </div>
 
-    <!-- No Data State -->
-    <div id="no-data" class="no-data" style="display: none;">
-      <p>No vendor comparisons found. Please upload files and run the workflow first.</p>
-      <a href="/ui/" class="btn">Go to Upload</a>
+      <!-- No Data State -->
+      <div id="no-data" class="no-data" style="display: none;">
+        <h2>⚠️ No Vendor Data Available</h2>
+        <p>No vendor comparisons found. Please upload files and run the workflow first.</p>
+        <a href="/ui/index.html" class="btn btn-primary">Go to Upload Page</a>
+      </div>
+
+      <!-- Vendor Selection -->
+      <section id="vendor-section" class="vendor-section" style="display: none;">
+        <h2>Select Vendors to Compare</h2>
+        <div id="vendor-list" class="vendor-grid"></div>
+        <button id="analyze-btn" class="btn btn-primary" disabled>Analyze Selected Vendors</button>
+      </section>
+
+      <!-- Individual Vendor Details -->
+      <section id="details-section" style="display: none;">
+        <h2>Vendor Details</h2>
+        <div id="vendor-details" class="vendor-details-grid"></div>
+      </section>
+
+      <!-- AI Recommendations -->
+      <section id="recommendations-section" class="recommendations-section" style="display: none;">
+        <h2>🤖 AI Recommendations</h2>
+        <div id="ai-loading" class="ai-loading" style="display: none;">
+          <div class="spinner"></div>
+          <p>Analyzing with AI...</p>
+        </div>
+        <div id="ai-results"></div>
+      </section>
     </div>
-
-    <!-- Vendor Selection -->
-    <section id="vendor-section" class="card" style="display: none;">
-      <h2>Select Vendors to Compare</h2>
-      <div id="vendor-list" class="vendor-grid"></div>
-      <button id="analyze-btn" class="btn btn-primary" disabled>Analyze Selected Vendors</button>
-    </section>
-
-    <!-- Individual Vendor Details -->
-    <section id="details-section" style="display: none;">
-      <h2>Vendor Details</h2>
-      <div id="vendor-details" class="vendor-details-grid"></div>
-    </section>
-
-    <!-- AI Recommendations -->
-    <section id="recommendations-section" class="card" style="display: none;">
-      <h2>🤖 AI Recommendations</h2>
-      <div id="ai-loading" class="loading" style="display: none;">Analyzing with AI...</div>
-      <div id="ai-results"></div>
-    </section>
   </main>
 
   <footer class="footer">

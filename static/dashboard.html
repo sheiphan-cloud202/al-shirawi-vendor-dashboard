@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vendor Analysis Dashboard - Al Shirawi ORC</title>
+  <link rel="stylesheet" href="/ui/styles.css" />
+  <link rel="stylesheet" href="/ui/dashboard.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script defer src="/ui/dashboard.js"></script>
+  <script>
+    // Scroll to top function
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+    
+    // Show/hide FAB based on scroll position
+    window.addEventListener('scroll', function() {
+      const fab = document.querySelector('.fab');
+      if (window.scrollY > 300) {
+        fab.style.opacity = '1';
+        fab.style.transform = 'scale(1)';
+      } else {
+        fab.style.opacity = '0';
+        fab.style.transform = 'scale(0.8)';
+      }
+    });
+    
+    // Initialize FAB as hidden
+    document.addEventListener('DOMContentLoaded', function() {
+      const fab = document.querySelector('.fab');
+      fab.style.opacity = '0';
+      fab.style.transform = 'scale(0.8)';
+      fab.style.transition = 'all 0.3s ease';
+    });
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+  <meta name="description" content="Comprehensive vendor analysis dashboard with AI-powered insights and interactive charts">
+  <meta name="keywords" content="vendor analysis, dashboard, AI insights, procurement, data visualization">
+  <meta name="color-scheme" content="light dark" />
+</head>
+<body>
+  <header class="header">
+    <div class="container-fluid">
+      <h1>📊 Vendor Analysis Dashboard</h1>
+      <p class="subtitle">AI-Powered Procurement Intelligence & Decision Support</p>
+      <nav class="nav">
+        <a href="/ui/home.html">🏠 Home</a>
+        <a href="/ui/index.html">📤 Upload</a>
+        <a href="/ui/analysis.html">📋 Analysis</a>
+        <a href="/ui/dashboard.html" class="active">📊 Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="dashboard-container">
+    <div class="container-fluid">
+      <!-- Loading State -->
+      <div id="loading" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Loading comprehensive data...</p>
+      </div>
+
+      <!-- No Data State -->
+      <div id="no-data" class="no-data" style="display: none;">
+        <div class="no-data-content">
+          <h2>⚠️ No Vendor Data Available</h2>
+          <p>Please upload vendor quotations and run the workflow first.</p>
+          <a href="/ui/index.html" class="btn btn-primary">Go to Upload Page</a>
+        </div>
+      </div>
+
+      <!-- Main Dashboard Content -->
+      <div id="dashboard" style="display: none;">
+      
+      <!-- Quick Access Toolbar -->
+      <section class="quick-access-bar">
+        <div class="quick-actions">
+          <button onclick="window.location.href='/ui/index.html'" class="quick-btn">
+            <span class="btn-icon">📤</span>
+            Upload Data
+          </button>
+          <button onclick="scrollToVendorTable()" class="quick-btn">
+            <span class="btn-icon">📋</span>
+            Vendor Table
+          </button>
+          <button onclick="document.getElementById('select-all-btn').click()" class="quick-btn">
+            <span class="btn-icon">✅</span>
+            Select All
+          </button>
+          <button onclick="exportStatistics()" class="quick-btn">
+            <span class="btn-icon">💾</span>
+            Export Stats
+          </button>
+          <button onclick="window.open('/docs', '_blank')" class="quick-btn">
+            <span class="btn-icon">📖</span>
+            API Docs
+          </button>
+        </div>
+      </section>
+      
+      <!-- Executive Summary Cards -->
+      <section class="summary-section">
+        <h2>Executive Summary</h2>
+        <div class="stats-grid">
+          <div class="stat-card primary">
+            <div class="stat-icon">🏢</div>
+            <div class="stat-content">
+              <div class="stat-value" id="stat-vendors">-</div>
+              <div class="stat-label">Total Vendors</div>
+            </div>
+          </div>
+          
+          <div class="stat-card success">
+            <div class="stat-icon">✅</div>
+            <div class="stat-content">
+              <div class="stat-value" id="stat-match-rate">-</div>
+              <div class="stat-label">Avg Match Rate</div>
+            </div>
+          </div>
+          
+          <div class="stat-card info">
+            <div class="stat-icon">📦</div>
+            <div class="stat-content">
+              <div class="stat-value" id="stat-items">-</div>
+              <div class="stat-label">BOQ Line Items</div>
+            </div>
+          </div>
+          
+          <div class="stat-card warning">
+            <div class="stat-icon">💰</div>
+            <div class="stat-content">
+              <div class="stat-value" id="stat-price-range">-</div>
+              <div class="stat-label">Price Range</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Charts Section -->
+      <section class="charts-section">
+        <div class="charts-grid">
+          <div class="chart-card">
+            <h3>Quality Distribution</h3>
+            <canvas id="qualityChart"></canvas>
+          </div>
+          
+          <div class="chart-card">
+            <h3>Vendor Match Rates</h3>
+            <canvas id="matchRateChart"></canvas>
+          </div>
+          
+          <div class="chart-card">
+            <h3>Price Comparison</h3>
+            <canvas id="priceChart"></canvas>
+          </div>
+          
+          <div class="chart-card">
+            <h3>Issues Breakdown</h3>
+            <canvas id="issuesChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- Vendor Comparison Table -->
+      <section class="table-section">
+        <div class="section-header">
+          <h2>Detailed Vendor Comparison</h2>
+          <div class="controls">
+            <button id="select-all-btn" class="btn btn-secondary">Select All</button>
+            <button id="analyze-selected-btn" class="btn btn-primary" disabled>
+              <span class="btn-icon">🤖</span> AI Analysis
+            </button>
+          </div>
+        </div>
+        
+        <div class="table-wrapper">
+          <table id="vendor-table" class="data-table">
+            <thead>
+              <tr>
+                <th><input type="checkbox" id="checkbox-all" /></th>
+                <th>Vendor</th>
+                <th>Match Rate</th>
+                <th>Quality Score</th>
+                <th>Total Price</th>
+                <th>Excellent</th>
+                <th>Good</th>
+                <th>Fair</th>
+                <th>Missing</th>
+                <th>Issues</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="vendor-table-body">
+              <!-- Populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- AI Recommendations Section -->
+      <section id="ai-section" class="ai-section" style="display: none;">
+        <div class="section-header">
+          <h2>🤖 AI-Powered Procurement Recommendation</h2>
+          <button id="close-ai-btn" class="btn-close">×</button>
+        </div>
+        
+        <div id="ai-loading" class="ai-loading">
+          <div class="spinner"></div>
+          <p>Analyzing vendor data with Claude AI...</p>
+          <small>This may take 10-20 seconds</small>
+        </div>
+        
+        <div id="ai-results" class="ai-results">
+          <!-- Populated by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Item-Level Analysis Modal -->
+      <div id="item-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Item-Level Details: <span id="modal-vendor-name"></span></h3>
+            <button class="btn-close" onclick="closeItemModal()">×</button>
+          </div>
+          
+          <div class="modal-body">
+            <!-- Filters -->
+            <div class="filter-bar">
+              <label>
+                Filter by Status:
+                <select id="item-status-filter">
+                  <option value="">All Items</option>
+                  <option value="excellent">✅ Excellent</option>
+                  <option value="good">✓ Good</option>
+                  <option value="fair">⚠ Fair</option>
+                  <option value="missing">❌ Missing/Poor</option>
+                </select>
+              </label>
+              
+              <div class="search-box">
+                <input type="text" id="item-search" placeholder="Search by description or Sr.No..." />
+              </div>
+            </div>
+            
+            <div id="item-list" class="item-list">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item Detail Modal (for AI analysis of single item) -->
+      <div id="item-detail-modal" class="modal" style="display: none;">
+        <div class="modal-content modal-medium">
+          <div class="modal-header">
+            <h3>🔍 AI Item Analysis</h3>
+            <button class="btn-close" onclick="closeItemDetailModal()">×</button>
+          </div>
+          
+          <div class="modal-body">
+            <div id="item-detail-loading" class="loading">
+              <div class="spinner"></div>
+              <p>Analyzing item with AI...</p>
+            </div>
+            
+            <div id="item-detail-content">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Floating Action Button -->
+  <div class="fab-container">
+    <button class="fab" onclick="scrollToTop()" title="Scroll to Top">
+      <span>↑</span>
+    </button>
+  </div>
+
+  <footer class="footer">
+    <div class="container-fluid">
+      <small>
+        Powered by AWS Bedrock (Claude 3.5 Sonnet) • 
+        <a href="/health" target="_blank">API Health</a> • 
+        <a href="/docs" target="_blank">API Docs</a>
+      </small>
+    </div>
+  </footer>
+</body>
+</html>
+
+

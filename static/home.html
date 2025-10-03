@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Al Shirawi ORC - AI-Powered Procurement Intelligence</title>
+  <link rel="stylesheet" href="/ui/styles.css" />
+  <link rel="stylesheet" href="/ui/dashboard.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏢</text></svg>">
+  <meta name="description" content="AI-powered procurement intelligence platform for vendor analysis, comparison, and decision support">
+  <meta name="keywords" content="procurement, AI, vendor analysis, business intelligence, Al Shirawi">
+  <style>
+    /* Home Page Specific Styles */
+    .home-container {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    }
+    
+    .hero {
+      background: linear-gradient(135deg, var(--primary-600), var(--info-600));
+      color: var(--text-inverse);
+      padding: var(--space-20) var(--space-6);
+      text-align: center;
+      border-radius: var(--radius-2xl);
+      margin-bottom: var(--space-16);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero h1 {
+      font-size: var(--text-6xl);
+      font-weight: 800;
+      margin: 0 0 var(--space-4);
+      line-height: 1.1;
+      background: linear-gradient(135deg, #ffffff, rgba(255,255,255,0.9));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero p {
+      font-size: var(--text-xl);
+      opacity: 0.95;
+      margin: 0 0 var(--space-8);
+      font-weight: 400;
+      line-height: 1.6;
+    }
+    
+    .hero-cta {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-4) var(--space-8);
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--text-inverse);
+      text-decoration: none;
+      border-radius: var(--radius-xl);
+      font-weight: 600;
+      font-size: var(--text-lg);
+      transition: all var(--transition-normal);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .hero-btn:hover::before {
+      left: 100%;
+    }
+    
+    .hero-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      text-decoration: none;
+      color: var(--text-inverse);
+    }
+    
+    .hero-btn.primary {
+      background: var(--text-inverse);
+      color: var(--primary-700);
+      border-color: var(--text-inverse);
+    }
+    
+    .hero-btn.primary:hover {
+      background: var(--primary-50);
+      color: var(--primary-800);
+    }
+    
+    .features-section {
+      margin: var(--space-16) 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: var(--space-12);
+      font-size: var(--text-5xl);
+      font-weight: 700;
+      color: var(--text-primary);
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -var(--space-3);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary-500), var(--info-500));
+      border-radius: var(--radius-full);
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: var(--space-8);
+      margin: var(--space-12) 0;
+    }
+    
+    .feature-card {
+      background: var(--bg-primary);
+      border: 2px solid var(--border-primary);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      text-align: center;
+      transition: all var(--transition-normal);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary-500), var(--info-500));
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--primary-300);
+    }
+    
+    .feature-icon {
+      font-size: 4rem;
+      margin-bottom: var(--space-5);
+      display: block;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    }
+    
+    .feature-card h3 {
+      margin: 0 0 var(--space-3);
+      font-size: var(--text-2xl);
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+    
+    .feature-card p {
+      color: var(--text-secondary);
+      margin: 0 0 var(--space-6);
+      line-height: 1.6;
+      font-size: var(--text-base);
+    }
+    
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: var(--space-5) 0;
+      text-align: left;
+    }
+    
+    .feature-list li {
+      padding: var(--space-2) 0;
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    
+    .feature-list li::before {
+      content: "✓";
+      color: var(--success-500);
+      font-weight: bold;
+      font-size: var(--text-lg);
+      flex-shrink: 0;
+    }
+    
+    .feature-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+      color: var(--text-inverse);
+      text-decoration: none;
+      border-radius: var(--radius-xl);
+      font-weight: 600;
+      font-size: var(--text-base);
+      transition: all var(--transition-normal);
+      margin-top: var(--space-4);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .feature-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .feature-btn:hover::before {
+      left: 100%;
+    }
+    
+    .feature-btn:hover {
+      background: linear-gradient(135deg, var(--primary-700), var(--primary-800));
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      text-decoration: none;
+      color: var(--text-inverse);
+    }
+    
+    .feature-btn.secondary {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 2px solid var(--border-primary);
+    }
+    
+    .feature-btn.secondary:hover {
+      background: var(--primary-600);
+      color: var(--text-inverse);
+      border-color: var(--primary-600);
+    }
+    
+    .stats-section {
+      margin: var(--space-16) 0;
+    }
+    
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-6);
+      margin: var(--space-12) 0;
+    }
+    
+    .stat-box {
+      background: linear-gradient(135deg, var(--primary-600), var(--info-600));
+      color: var(--text-inverse);
+      padding: var(--space-8);
+      border-radius: var(--radius-2xl);
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .stat-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+      pointer-events: none;
+    }
+    
+    .stat-number {
+      font-size: var(--text-5xl);
+      font-weight: 800;
+      margin-bottom: var(--space-2);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .stat-label {
+      font-size: var(--text-base);
+      opacity: 0.9;
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .guide-section {
+      margin: var(--space-16) 0;
+      background: var(--bg-primary);
+      padding: var(--space-12);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-primary);
+    }
+    
+    .guide-section h2 {
+      text-align: center;
+      margin-bottom: var(--space-8);
+      font-size: var(--text-4xl);
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    
+    .guide-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .guide-steps {
+      list-style: none;
+      padding: 0;
+      counter-reset: step-counter;
+    }
+    
+    .guide-steps li {
+      counter-increment: step-counter;
+      margin: var(--space-6) 0;
+      padding: var(--space-4);
+      background: var(--bg-secondary);
+      border-radius: var(--radius-xl);
+      border-left: 4px solid var(--primary-500);
+      position: relative;
+      font-size: var(--text-lg);
+      line-height: 1.6;
+    }
+    
+    .guide-steps li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: -2px;
+      top: var(--space-4);
+      background: var(--primary-500);
+      color: var(--text-inverse);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: var(--text-sm);
+    }
+    
+    .guide-steps strong {
+      color: var(--primary-700);
+      font-weight: 700;
+    }
+    
+    .guide-steps a {
+      color: var(--primary-600);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .guide-steps a:hover {
+      color: var(--primary-700);
+      text-decoration: underline;
+    }
+    
+    .resources-section {
+      margin: var(--space-16) 0;
+    }
+    
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-6);
+    }
+    
+    .resource-card {
+      background: var(--bg-primary);
+      padding: var(--space-6);
+      border-radius: var(--radius-2xl);
+      text-decoration: none;
+      border: 2px solid var(--border-primary);
+      transition: all var(--transition-normal);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .resource-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary-500), var(--info-500));
+    }
+    
+    .resource-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-300);
+      text-decoration: none;
+    }
+    
+    .resource-card h3 {
+      margin: 0 0 var(--space-2);
+      color: var(--primary-700);
+      font-size: var(--text-xl);
+      font-weight: 700;
+    }
+    
+    .resource-card p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      line-height: 1.5;
+    }
+    
+    .resource-card.docs h3 {
+      color: var(--primary-700);
+    }
+    
+    .resource-card.health h3 {
+      color: var(--success-700);
+    }
+    
+    .resource-card.guides h3 {
+      color: var(--info-700);
+    }
+    
+    .resource-card.config h3 {
+      color: var(--warning-700);
+    }
+  </style>
+</head>
+<body>
+  <div class="home-container">
+    <header class="header">
+      <div class="container-fluid">
+        <h1>🏢 Al Shirawi ORC</h1>
+        <p class="subtitle">AI-Powered Procurement Intelligence Platform</p>
+        <nav class="nav">
+          <a href="/ui/home.html" class="active">🏠 Home</a>
+          <a href="/ui/index.html">📤 Upload</a>
+          <a href="/ui/analysis.html">📋 Analysis</a>
+          <a href="/ui/dashboard.html">📊 Dashboard</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container-fluid">
+      <!-- Hero Section -->
+      <div class="hero">
+        <div class="hero-content">
+          <h1>Welcome to Your Procurement Command Center</h1>
+          <p>Transform vendor analysis with AI-powered insights, intelligent matching, and data-driven decision support</p>
+          <div class="hero-cta">
+            <a href="/ui/index.html" class="hero-btn primary">
+              🚀 Get Started
+            </a>
+            <a href="/ui/dashboard.html" class="hero-btn">
+              📊 View Dashboard
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Section -->
+      <section class="features-section">
+        <h2 class="section-title">Choose Your Workflow</h2>
+        
+        <div class="features-grid">
+          <!-- Upload & Process -->
+          <div class="feature-card">
+            <div class="feature-icon">📤</div>
+            <h3>Upload & Process</h3>
+            <p>Upload your BOQ Excel and vendor PDF quotations, then run the AI-powered workflow for intelligent analysis</p>
+            <ul class="feature-list">
+              <li>Upload Enquiry Excel Files</li>
+              <li>Upload Multiple Vendor PDFs</li>
+              <li>AWS Textract Processing</li>
+              <li>LLM Analysis & Matching</li>
+              <li>Automated Data Extraction</li>
+            </ul>
+            <a href="/ui/index.html" class="feature-btn">Start Upload Process</a>
+          </div>
+
+          <!-- Advanced Dashboard -->
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Advanced Dashboard</h3>
+            <p>Comprehensive data analysis with interactive charts, AI recommendations, and detailed vendor comparisons</p>
+            <ul class="feature-list">
+              <li>Executive Summary Cards</li>
+              <li>Interactive Charts (Chart.js)</li>
+              <li>AI-Powered Analysis</li>
+              <li>Item-Level Drill-Down</li>
+              <li>Real-time Statistics</li>
+            </ul>
+            <a href="/ui/dashboard.html" class="feature-btn">Open Dashboard</a>
+          </div>
+
+          <!-- Basic Analysis -->
+          <div class="feature-card">
+            <div class="feature-icon">📋</div>
+            <h3>Basic Analysis</h3>
+            <p>Simple vendor comparison interface for quick reviews and straightforward decision making</p>
+            <ul class="feature-list">
+              <li>Vendor Selection Interface</li>
+              <li>Match Rate Summary</li>
+              <li>Price Comparison</li>
+              <li>AI Recommendations</li>
+              <li>Quick Decision Support</li>
+            </ul>
+            <a href="/ui/analysis.html" class="feature-btn secondary">View Analysis</a>
+          </div>
+
+          <!-- API & Documentation -->
+          <div class="feature-card">
+            <div class="feature-icon">🔌</div>
+            <h3>API & Documentation</h3>
+            <p>Developer access to all endpoints with comprehensive documentation and interactive testing</p>
+            <ul class="feature-list">
+              <li>RESTful API Endpoints</li>
+              <li>Interactive API Docs</li>
+              <li>User Guides & Tutorials</li>
+              <li>Technical Reference</li>
+              <li>Code Examples</li>
+            </ul>
+            <a href="/docs" class="feature-btn secondary" target="_blank">View API Docs</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Platform Capabilities -->
+      <section class="stats-section">
+        <h2 class="section-title">Platform Capabilities</h2>
+        
+        <div class="quick-stats">
+          <div class="stat-box">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Analysis Interfaces</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">API Endpoints</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">AI</div>
+            <div class="stat-label">Claude 3.5 Sonnet</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Vendor Comparisons</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Start Guide -->
+      <section class="guide-section">
+        <h2>🚀 Quick Start Guide</h2>
+        
+        <div class="guide-content">
+          <ol class="guide-steps">
+            <li><strong>Upload Data:</strong> Go to <a href="/ui/index.html">Upload Page</a> and upload your enquiry Excel and vendor PDFs</li>
+            <li><strong>Run Workflow:</strong> Click "Run" to process files with AWS Textract and AI analysis</li>
+            <li><strong>View Dashboard:</strong> Open <a href="/ui/dashboard.html">Advanced Dashboard</a> to see comprehensive analysis</li>
+            <li><strong>AI Analysis:</strong> Select vendors and click "AI Analysis" for intelligent recommendations</li>
+            <li><strong>Drill Down:</strong> Click "View Items" to see detailed item-level comparisons</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Documentation & Resources -->
+      <section class="resources-section">
+        <h2 class="section-title">📚 Documentation & Resources</h2>
+        
+        <div class="resources-grid">
+          <a href="/docs" target="_blank" class="resource-card docs">
+            <h3>📖 API Documentation</h3>
+            <p>Interactive API docs with try-it-out functionality and comprehensive endpoint reference</p>
+          </a>
+          
+          <a href="/health" target="_blank" class="resource-card health">
+            <h3>💚 Health Check</h3>
+            <p>Verify system status, connectivity, and service availability in real-time</p>
+          </a>
+          
+          <div class="resource-card guides">
+            <h3>📋 User Guides</h3>
+            <p>DASHBOARD_GUIDE.md<br>QUICK_START_GUIDE.md<br>FEATURES_MAP.md</p>
+          </div>
+          
+          <div class="resource-card config">
+            <h3>⚙️ Configuration</h3>
+            <p>AWS Profile: thinktank<br>Region: us-east-1<br>Model: Claude 3.5 Sonnet</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container-fluid">
+        <small>
+          Powered by AWS Bedrock (Claude 3.5 Sonnet) • FastAPI • Chart.js • 
+          <a href="/health" target="_blank">System Health</a> • 
+          <a href="/docs" target="_blank">API Docs</a>
+        </small>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
+

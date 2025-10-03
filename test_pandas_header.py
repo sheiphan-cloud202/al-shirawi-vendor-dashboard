@@ -45,3 +45,4 @@ for h in [12, 13, 14]:
     print(f"  First row values: {df.iloc[0].tolist()[:3] if len(df) > 0 else 'N/A'}...")
 
 
+

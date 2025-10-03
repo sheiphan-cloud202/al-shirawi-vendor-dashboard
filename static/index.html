@@ -3,76 +3,570 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Al Shirawi ORC POC</title>
+  <title>Upload & Process - Al Shirawi ORC</title>
   <link rel="stylesheet" href="/ui/styles.css" />
   <link rel="stylesheet" href="/ui/analysis.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script defer src="/ui/app.js"></script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'/>">
-  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📤</text></svg>">
+  <meta name="description" content="Upload BOQ Excel files and vendor PDFs for AI-powered analysis and comparison">
+  <meta name="keywords" content="upload, BOQ, vendor analysis, PDF processing, Excel">
   <style>
-    /* Critical minimal styles if CSS fails to load */
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; padding: 0; }
+    /* Upload Page Specific Styles */
+    .upload-container {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+      padding: var(--space-6) 0;
+    }
+    
+    .upload-header {
+      text-align: center;
+      margin-bottom: var(--space-12);
+    }
+    
+    .upload-header h1 {
+      font-size: var(--text-5xl);
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: var(--space-4);
+      background: linear-gradient(135deg, var(--primary-700), var(--info-700));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .upload-header p {
+      font-size: var(--text-xl);
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .upload-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: var(--space-8);
+      margin-bottom: var(--space-12);
+    }
+    
+    .upload-step {
+      background: var(--bg-primary);
+      border: 2px solid var(--border-primary);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+      transition: all var(--transition-normal);
+    }
+    
+    .upload-step::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary-500), var(--info-500));
+    }
+    
+    .upload-step:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--primary-300);
+    }
+    
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+    
+    .step-number {
+      background: linear-gradient(135deg, var(--primary-600), var(--info-600));
+      color: var(--text-inverse);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: var(--text-lg);
+      flex-shrink: 0;
+    }
+    
+    .step-title {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0;
+    }
+    
+    .step-description {
+      color: var(--text-secondary);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      margin-bottom: var(--space-6);
+    }
+    
+    .form-enhanced {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    
+    .form-row {
+      display: flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      align-items: end;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .form-group label {
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: var(--text-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .form-group input,
+    .form-group select {
+      padding: var(--space-4) var(--space-5);
+      border: 2px solid var(--border-primary);
+      border-radius: var(--radius-xl);
+      font-size: var(--text-base);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      transition: all var(--transition-fast);
+      font-family: inherit;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary-500);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      background: var(--bg-primary);
+    }
+    
+    .file-input-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+    
+    .file-input {
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+    
+    .file-input-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-8);
+      border: 2px dashed var(--border-secondary);
+      border-radius: var(--radius-xl);
+      background: var(--bg-secondary);
+      transition: all var(--transition-normal);
+      cursor: pointer;
+      min-height: 120px;
+    }
+    
+    .file-input-display:hover {
+      border-color: var(--primary-500);
+      background: var(--primary-50);
+    }
+    
+    .file-input-display.has-file {
+      border-color: var(--success-500);
+      background: var(--success-50);
+    }
+    
+    .file-icon {
+      font-size: 2rem;
+      margin-bottom: var(--space-2);
+      color: var(--text-tertiary);
+    }
+    
+    .file-text {
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      text-align: center;
+    }
+    
+    .file-name {
+      color: var(--success-700);
+      font-weight: 600;
+      margin-top: var(--space-2);
+    }
+    
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin: var(--space-4) 0;
+    }
+    
+    .checkbox {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      cursor: pointer;
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      padding: var(--space-2);
+      border-radius: var(--radius-lg);
+      transition: all var(--transition-fast);
+    }
+    
+    .checkbox:hover {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+    }
+    
+    .checkbox input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--primary-500);
+      cursor: pointer;
+    }
+    
+    .btn-enhanced {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-4) var(--space-8);
+      background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+      color: var(--text-inverse);
+      border: none;
+      border-radius: var(--radius-xl);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      text-decoration: none;
+      min-height: 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-enhanced::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .btn-enhanced:hover::before {
+      left: 100%;
+    }
+    
+    .btn-enhanced:hover {
+      background: linear-gradient(135deg, var(--primary-700), var(--primary-800));
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      text-decoration: none;
+      color: var(--text-inverse);
+    }
+    
+    .btn-enhanced:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    
+    .result-enhanced {
+      background: var(--bg-secondary);
+      border: 2px solid var(--border-primary);
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      white-space: pre-wrap;
+      max-height: 300px;
+      overflow: auto;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: var(--text-sm);
+      line-height: 1.5;
+      color: var(--text-secondary);
+      margin-top: var(--space-4);
+    }
+    
+    .success-section {
+      background: linear-gradient(135deg, var(--success-50), var(--bg-primary));
+      border: 2px solid var(--success-200);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      text-align: center;
+      margin-top: var(--space-6);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .success-section h3 {
+      color: var(--success-700);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+    }
+    
+    .success-actions {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: var(--space-6);
+    }
+    
+    .success-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      text-decoration: none;
+      border-radius: var(--radius-xl);
+      font-weight: 600;
+      font-size: var(--text-base);
+      transition: all var(--transition-normal);
+      border: 2px solid var(--border-primary);
+    }
+    
+    .success-btn:hover {
+      background: var(--primary-600);
+      color: var(--text-inverse);
+      border-color: var(--primary-600);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    
+    .success-btn.primary {
+      background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+      color: var(--text-inverse);
+      border-color: var(--primary-600);
+    }
+    
+    .success-btn.primary:hover {
+      background: linear-gradient(135deg, var(--primary-700), var(--primary-800));
+    }
+    
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      color: var(--text-inverse);
+    }
+    
+    .loading-spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-top-color: var(--primary-500);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: var(--space-4);
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .loading-text {
+      font-size: var(--text-lg);
+      color: var(--text-inverse);
+      margin: 0;
+    }
+    
+    .progress-bar {
+      width: 300px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-top: var(--space-4);
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-500), var(--info-500));
+      border-radius: var(--radius-full);
+      transition: width 0.3s ease-in-out;
+      width: 0%;
+    }
   </style>
-  
-  <!--
-    Simple UI to upload Enquiry Excel, multiple Vendor PDFs, and run workflow.
-  -->
 </head>
 <body>
-  <header class="header">
-    <div class="container">
-      <h1>Al Shirawi ORC POC</h1>
-      <p class="subtitle">Upload BOQ Excel, vendor PDFs, and run the workflow</p>
-      <nav class="nav">
-        <a href="/ui/" class="active">Upload</a>
-        <a href="/ui/analysis.html">Analysis</a>
-      </nav>
+  <div class="upload-container">
+    <header class="header">
+      <div class="container">
+        <h1>📤 Upload & Process</h1>
+        <p class="subtitle">Upload BOQ Excel files and vendor PDFs for AI-powered analysis</p>
+        <nav class="nav">
+          <a href="/ui/home.html">🏠 Home</a>
+          <a href="/ui/index.html" class="active">📤 Upload</a>
+          <a href="/ui/analysis.html">📋 Analysis</a>
+          <a href="/ui/dashboard.html">📊 Dashboard</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="upload-header">
+        <h1>Data Upload & Processing</h1>
+        <p>Upload your enquiry Excel files and vendor PDF quotations to begin the AI-powered analysis workflow</p>
+      </div>
+
+      <div class="upload-steps">
+        <!-- Step 1: Upload Enquiry Excel -->
+        <div class="upload-step">
+          <div class="step-header">
+            <div class="step-number">1</div>
+            <h2 class="step-title">Upload Enquiry Excel</h2>
+          </div>
+          <p class="step-description">Upload your Bill of Quantities (BOQ) Excel file containing the enquiry details and specifications.</p>
+          
+          <form id="form-enquiry" class="form-enhanced" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="enquiry-file">BOQ Excel File</label>
+              <div class="file-input-wrapper">
+                <input type="file" id="enquiry-file" name="file" accept=".xlsx,.xls,.xlsm" required class="file-input" />
+                <div class="file-input-display" id="enquiry-display">
+                  <div class="file-icon">📊</div>
+                  <div class="file-text">Click to select Excel file<br><small>Supports .xlsx, .xls, .xlsm formats</small></div>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn-enhanced">
+              📤 Upload Enquiry File
+            </button>
+          </form>
+          <pre id="enquiry-result" class="result-enhanced" style="display: none;"></pre>
+        </div>
+
+        <!-- Step 2: Upload Vendor PDFs -->
+        <div class="upload-step">
+          <div class="step-header">
+            <div class="step-number">2</div>
+            <h2 class="step-title">Upload Vendor PDFs</h2>
+          </div>
+          <p class="step-description">Upload vendor quotation PDFs with their corresponding response numbers for proper identification.</p>
+          
+          <form id="form-vendor" class="form-enhanced" enctype="multipart/form-data">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="vendor-response">Response Number</label>
+                <input type="number" id="vendor-response" name="response_number" min="1" step="1" required placeholder="Enter response number" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="vendor-files">Vendor PDF Files</label>
+              <div class="file-input-wrapper">
+                <input type="file" id="vendor-files" name="files" accept="application/pdf" multiple required class="file-input" />
+                <div class="file-input-display" id="vendor-display">
+                  <div class="file-icon">📄</div>
+                  <div class="file-text">Click to select PDF files<br><small>Supports multiple PDF files</small></div>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn-enhanced">
+              📄 Upload Vendor PDFs
+            </button>
+          </form>
+          <pre id="vendor-result" class="result-enhanced" style="display: none;"></pre>
+        </div>
+
+        <!-- Step 3: Run Workflow -->
+        <div class="upload-step">
+          <div class="step-header">
+            <div class="step-number">3</div>
+            <h2 class="step-title">Run AI Workflow</h2>
+          </div>
+          <p class="step-description">Execute the AI-powered workflow to process files, extract data, and generate comprehensive analysis.</p>
+          
+          <form id="form-run" class="form-enhanced">
+            <div class="checkbox-group">
+              <label class="checkbox">
+                <input type="checkbox" id="skip-textract" name="skip_textract" />
+                <span>Skip Textract processing (use existing CSV files)</span>
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="skip-boq" name="skip_boq" />
+                <span>Skip BOQ extraction (use existing CSV file)</span>
+              </label>
+            </div>
+            <button type="submit" class="btn-enhanced">
+              🚀 Run AI Workflow
+            </button>
+          </form>
+          <pre id="run-result" class="result-enhanced" style="display: none;"></pre>
+          
+          <!-- Success Section -->
+          <div id="workflow-success" class="success-section" style="display: none;">
+            <h3>✅ Workflow Completed Successfully!</h3>
+            <p>Your data has been processed and analyzed. You can now view the comprehensive results and AI recommendations.</p>
+            <div class="success-actions">
+              <a href="/ui/dashboard.html" class="success-btn primary">
+                📊 View Advanced Dashboard
+              </a>
+              <a href="/ui/analysis.html" class="success-btn">
+                📋 View Basic Analysis
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <small>
+          API Endpoints: <code>/upload/enquiry</code>, <code>/upload/vendor</code>, <code>/run-workflow</code> • 
+          <a href="/health" target="_blank">System Health</a> • 
+          <a href="/docs" target="_blank">API Docs</a>
+        </small>
+      </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">Processing your files...</p>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
     </div>
-  </header>
-
-  <main class="container">
-    <section class="card">
-      <h2>1. Upload Enquiry Excel</h2>
-      <form id="form-enquiry" class="form" enctype="multipart/form-data">
-        <input type="file" id="enquiry-file" name="file" accept=".xlsx,.xls,.xlsm" required />
-        <button type="submit">Upload Enquiry</button>
-      </form>
-      <pre id="enquiry-result" class="result"></pre>
-    </section>
-
-    <section class="card">
-      <h2>2. Upload Vendor PDFs</h2>
-      <form id="form-vendor" class="form" enctype="multipart/form-data">
-        <label>
-          Response Number
-          <input type="number" id="vendor-response" name="response_number" min="1" step="1" required />
-        </label>
-        <input type="file" id="vendor-files" name="files" accept="application/pdf" multiple required />
-        <button type="submit">Upload Vendor PDFs</button>
-      </form>
-      <pre id="vendor-result" class="result"></pre>
-    </section>
-
-    <section class="card">
-      <h2>3. Run Workflow</h2>
-      <form id="form-run" class="form">
-        <label class="checkbox">
-          <input type="checkbox" id="skip-textract" name="skip_textract" /> Skip Textract (use existing CSVs)
-        </label>
-        <label class="checkbox">
-          <input type="checkbox" id="skip-boq" name="skip_boq" /> Skip BOQ extraction (use existing CSV)
-        </label>
-        <button type="submit">Run</button>
-      </form>
-      <pre id="run-result" class="result"></pre>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <small>API: <code>/upload/enquiry</code>, <code>/upload/vendor</code>, <code>/run-workflow</code></small>
-    </div>
-  </footer>
+  </div>
 </body>
 </html>
 

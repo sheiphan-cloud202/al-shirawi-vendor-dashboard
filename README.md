@@ -24,30 +24,111 @@ uv run complete_workflow.py --skip-textract --skip-boq
 # Install deps
 uv sync
 
-# Start FastAPI with uvicorn
+# Start FastAPI with uvicorn (Method 1)
 uv run uvicorn server:app --host 0.0.0.0 --port 8000 --reload
+
+# Or use the quick start script (Method 2)
+./start_dashboard.sh
 ```
 
 ### Open the UI
 
-- Navigate to: `http://localhost:8000/` (auto-redirects to `/ui/`)
-- **Upload Page**: Upload the inquiry Excel and vendor PDFs, then click Run Workflow.
-- **Analysis Page**: `/ui/analysis.html` - AI-powered vendor comparison and recommendations
+Navigate to: `http://localhost:8000/` (auto-redirects to `/ui/`)
 
-### Analysis Features
+**Three Interface Options**:
 
-The Analysis Dashboard provides:
+1. **Upload Page** (`/ui/`) - Upload the inquiry Excel and vendor PDFs, run workflow
+2. **Basic Analysis** (`/ui/analysis.html`) - Simple vendor comparison interface
+3. **📊 Advanced Dashboard** (`/ui/dashboard.html`) - **NEW! Comprehensive data analysis interface**
 
-1. **Vendor Selection**: Select one or more vendors to compare
-2. **Detailed Metrics**: View match rates, total prices, and quality scores per vendor
-3. **AI Recommendations**: Get Claude 3.5 Sonnet-powered analysis on which vendor offers the best value
-4. **Issue Detection**: Automatically identifies quantity variances, UOM mismatches, and type conflicts
+## 🎯 Advanced Dashboard Features
 
-The AI analyzes:
-- Match quality and completion rates
-- Price competitiveness
-- Issue severity and frequency
-- Overall vendor reliability
+The new Advanced Dashboard (`/ui/dashboard.html`) provides a comprehensive, data-rich analysis interface designed for senior data scientists and analysts:
+
+### Executive Summary
+- **Real-time Statistics**: Total vendors, average match rates, BOQ items, and price ranges
+- **4 Interactive Charts** (Chart.js):
+  - Quality Distribution (Doughnut Chart)
+  - Vendor Match Rates (Bar Chart)
+  - Price Comparison (Bar Chart)
+  - Issues Breakdown (Horizontal Bar)
+
+### Interactive Vendor Table
+- Visual progress bars for match rates
+- Quality score calculation (0-100)
+- Color-coded status indicators
+- Multi-vendor selection for batch analysis
+- Sortable columns
+
+### AI-Powered Analysis (AWS Bedrock - Claude 3.5 Sonnet)
+
+**Vendor-Level Analysis**:
+- Executive summary with recommended vendor
+- Vendor rankings with scores out of 100
+- Detailed strengths/weaknesses per vendor
+- Risk assessment with mitigation strategies
+- Price competitiveness analysis
+- Final actionable recommendation
+
+**Item-Level Analysis**:
+- Deep-dive analysis for any BOQ item
+- Match validation (Correct/Incorrect/Uncertain)
+- Discrepancy detection
+- Pricing assessment (Fair/High/Low)
+- Recommendation (Accept/Reject/Review)
+
+### Drill-Down Capabilities
+- **Item Detail View**: Click "View Items" on any vendor
+- **Advanced Filtering**: Filter by status (Excellent/Good/Fair/Missing)
+- **Search**: Search by Sr.No or description
+- **Side-by-Side Comparison**: BOQ requirements vs vendor quotes
+- **Per-Item AI Analysis**: Click "🤖 AI Analysis" on any item
+
+### Data Visualizations
+- Quality distribution across all vendors
+- Match rate comparison bar charts
+- Price competitiveness analysis
+- Common issues breakdown
+
+## 🔌 New API Endpoints
+
+### `/api/statistics` (GET)
+Returns comprehensive cross-vendor statistics:
+- Total vendors and BOQ items
+- Overall match rates
+- Price ranges (min/max/avg)
+- Quality distribution
+- Common issues
+
+### `/api/vendors/{vendor_id}/items` (GET)
+Get filtered item-level data:
+- Query params: `status` (excellent/good/fair/missing), `limit`
+- Returns: Filtered list of comparison items
+
+### `/api/analyze` (POST) - Enhanced
+AI-powered vendor comparison:
+- Multi-factor analysis
+- Enhanced prompt engineering
+- Quality breakdown
+- Heuristic fallback if AI unavailable
+
+### `/api/analyze-item` (POST) - NEW
+AI analysis of specific BOQ item:
+- Form data: `vendor_id`, `boq_sr_no`
+- Returns: Detailed AI assessment of match
+
+## 📊 Quality Score Algorithm
+
+```python
+Quality Score = (
+  (excellent_matches × 100) +
+  (good_matches × 75) +
+  (fair_matches × 40) +
+  (missing_matches × 0)
+) / total_items
+```
+
+Provides a 0-100 score for quick vendor quality assessment.
 
 API endpoints:
 

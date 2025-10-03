@@ -56,6 +56,14 @@ async function runWorkflow(e) {
     const res = await fetch("/run-workflow", { method: "POST", body: fd });
     const data = await res.json();
     out.textContent = JSON.stringify(data, null, 2);
+    
+    // Show success message with links
+    if (res.ok && data.code === 0) {
+      const successDiv = $("#workflow-success");
+      if (successDiv) {
+        successDiv.style.display = "block";
+      }
+    }
   } catch (err) {
     out.textContent = String(err);
   }
