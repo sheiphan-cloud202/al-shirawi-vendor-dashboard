@@ -4,6 +4,7 @@ const $$ = (sel) => document.querySelectorAll(sel);
 let allVendors = [];
 let selectedVendors = new Set();
 let vendorDetails = {};
+let currentVendorItems = [];
 
 // Load vendors on page load
 window.addEventListener("DOMContentLoaded", async () => {
@@ -140,9 +141,29 @@ function viewDetails(vendorId) {
   const details = vendorDetails[vendorId];
   if (!details) return;
   
-  // Create modal or navigate to detail view
-  alert(`Full details for vendor ${vendorId}\n\nItems: ${details.items.length}\n\nSee browser console for raw data.`);
-  console.log("Vendor Details:", details);
+  // Show modal with detailed view
+  const modal = $("#vendor-details-modal");
+  const vendor = allVendors.find(v => v.id === vendorId);
+  
+  $("#modal-vendor-name").textContent = vendor ? vendor.name : `Vendor ${vendorId}`;
+  
+  // Update summary stats
+  const summary = details.summary;
+  $("#modal-total-items").textContent = summary.total_items;
+  $("#modal-match-rate").textContent = `${summary.match_rate}%`;
+  $("#modal-total-price").textContent = `$${summary.total_price.toLocaleString()}`;
+  $("#modal-excellent").textContent = summary.excellent_matches;
+  
+  // Set current items and render
+  currentVendorItems = details.items;
+  renderVendorItemsList(currentVendorItems);
+  
+  // Setup filters
+  $("#item-status-filter").addEventListener("change", filterVendorItems);
+  $("#item-search").addEventListener("input", filterVendorItems);
+  
+  // Show modal
+  modal.style.display = "flex";
 }
 
 // Analyze button handler
@@ -220,4 +241,127 @@ function formatRecommendation(text) {
     .replace(/\n(\d+\.)/g, '<br/>$1')
     .replace(/^(.+)$/, '<p>$1</p>');
 }
+
+// Render vendor items list in modal
+function renderVendorItemsList(items) {
+  const container = $("#vendor-items-list");
+  
+  if (items.length === 0) {
+    container.innerHTML = '<p class="no-results">No items match the filter criteria.</p>';
+    return;
+  }
+  
+  let html = '<div class="items-grid">';
+  
+  items.forEach(item => {
+    const statusClass = getItemStatusClass(item["Match Status"]);
+    const hasIssues = item.Issues && item.Issues !== "None";
+    
+    html += `
+      <div class="item-card ${statusClass}">
+        <div class="item-header">
+          <span class="item-sr-no">Sr.No: ${item["BOQ Sr.No"]}</span>
+          <span class="item-status">${item["Match Status"]}</span>
+        </div>
+        
+        <div class="item-section">
+          <h4>BOQ Requirement</h4>
+          <p class="item-desc">${item["BOQ Description"]}</p>
+          <div class="item-meta">
+            <span>Qty: ${item["BOQ Qty"]} ${item["BOQ UOM"]}</span>
+            <span>Type: ${item["BOQ Item Type"]}</span>
+          </div>
+          ${item["BOQ Dimensions"] ? `<div class="item-dims">📏 ${item["BOQ Dimensions"]}</div>` : ''}
+        </div>
+        
+        <div class="item-section vendor-section">
+          <h4>Vendor Quote</h4>
+          ${item["Vendor Description"] === "NOT QUOTED" ? 
+            '<p class="not-quoted">❌ Not Quoted</p>' :
+            `
+            <p class="item-desc">${item["Vendor Description"]}</p>
+            <div class="item-meta">
+              ${item["Vendor Qty"] ? `<span>Qty: ${item["Vendor Qty"]} ${item["Vendor UOM"] || ''}</span>` : ''}
+              ${item["Vendor Unit Price"] ? `<span>Unit: $${parseFloat(item["Vendor Unit Price"]).toLocaleString()}</span>` : ''}
+              ${item["Vendor Total Price"] ? `<span class="price-highlight">Total: $${parseFloat(item["Vendor Total Price"]).toLocaleString()}</span>` : ''}
+            </div>
+            ${item["Vendor Brand"] ? `<div class="item-brand">🏷️ ${item["Vendor Brand"]}</div>` : ''}
+            `
+          }
+        </div>
+        
+        ${hasIssues ? `
+          <div class="item-issues">
+            <strong>⚠️ Issues:</strong> ${item.Issues}
+          </div>
+        ` : ''}
+        
+        <div class="item-footer">
+          <div class="confidence">
+            Confidence: ${parseFloat(item["Match Confidence"] || 0).toFixed(2)}
+          </div>
+        </div>
+      </div>
+    `;
+  });
+  
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+function getItemStatusClass(status) {
+  if (status.includes("EXCELLENT")) return "status-excellent";
+  if (status.includes("GOOD")) return "status-good";
+  if (status.includes("FAIR")) return "status-fair";
+  return "status-missing";
+}
+
+function filterVendorItems() {
+  const statusFilter = $("#item-status-filter").value.toLowerCase();
+  const searchTerm = $("#item-search").value.toLowerCase();
+  
+  let filtered = currentVendorItems;
+  
+  // Apply status filter
+  if (statusFilter) {
+    const statusMap = {
+      "excellent": "EXCELLENT",
+      "good": "GOOD",
+      "fair": "FAIR",
+      "missing": "MISSING"
+    };
+    const targetStatus = statusMap[statusFilter];
+    filtered = filtered.filter(item => item["Match Status"].includes(targetStatus));
+  }
+  
+  // Apply search filter
+  if (searchTerm) {
+    filtered = filtered.filter(item => 
+      item["BOQ Sr.No"].toLowerCase().includes(searchTerm) ||
+      item["BOQ Description"].toLowerCase().includes(searchTerm) ||
+      (item["Vendor Description"] && item["Vendor Description"].toLowerCase().includes(searchTerm))
+    );
+  }
+  
+  renderVendorItemsList(filtered);
+}
+
+function closeVendorDetailsModal() {
+  $("#vendor-details-modal").style.display = "none";
+  currentVendorItems = [];
+}
+
+// Close modal on outside click
+window.addEventListener("click", (e) => {
+  if (e.target.classList.contains("modal")) {
+    e.target.style.display = "none";
+  }
+});
+
+// Keyboard shortcuts
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeVendorDetailsModal();
+  }
+});
 

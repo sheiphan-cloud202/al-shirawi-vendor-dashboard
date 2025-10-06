@@ -23,7 +23,7 @@
       <nav class="nav">
         <a href="/ui/home.html">🏠 Home</a>
         <a href="/ui/index.html">Upload</a>
-        <a href="/ui/analysis.html" class="active">Basic Analysis</a>
+        <a href="/ui/analysis.html" class="active"> Analysis</a>
         <a href="/ui/dashboard.html">📊 Dashboard</a>
       </nav>
     </div>
@@ -66,6 +66,62 @@
         </div>
         <div id="ai-results"></div>
       </section>
+
+      <!-- Vendor Details Modal -->
+      <div id="vendor-details-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Vendor Details: <span id="modal-vendor-name"></span></h3>
+            <button class="btn-close" onclick="closeVendorDetailsModal()">×</button>
+          </div>
+          
+          <div class="modal-body">
+            <!-- Summary Stats -->
+            <div class="vendor-summary">
+              <div class="summary-stats">
+                <div class="stat-item">
+                  <span class="stat-label">Total Items</span>
+                  <span class="stat-value" id="modal-total-items">-</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Match Rate</span>
+                  <span class="stat-value" id="modal-match-rate">-</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Total Price</span>
+                  <span class="stat-value" id="modal-total-price">-</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Excellent Matches</span>
+                  <span class="stat-value" id="modal-excellent">-</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filter-bar">
+              <label>
+                Filter by Status:
+                <select id="item-status-filter">
+                  <option value="">All Items</option>
+                  <option value="excellent">✅ Excellent</option>
+                  <option value="good">✓ Good</option>
+                  <option value="fair">⚠ Fair</option>
+                  <option value="missing">❌ Missing/Poor</option>
+                </select>
+              </label>
+              
+              <div class="search-box">
+                <input type="text" id="item-search" placeholder="Search by description or Sr.No..." />
+              </div>
+            </div>
+            
+            <div id="vendor-items-list" class="items-list">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 
