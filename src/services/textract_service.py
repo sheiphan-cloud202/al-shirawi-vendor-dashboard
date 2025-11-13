@@ -1,3 +1,4 @@
+"""AWS Textract PDF OCR Table Extraction Service"""
 import json
 import os
 import time
@@ -7,7 +8,7 @@ from typing import Dict, List, Optional, Tuple
 
 import boto3
 
-from index_responses import build_index
+from src.processors.index_responses import build_index
 
 # Import fallback PDF processing
 try:
@@ -341,9 +342,9 @@ def save_tables_json(out_dir: Path, vendor_key: str, pdf_path: Path, tables: Lis
 
 
 def main() -> int:
-    data_dir = Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc/data")
-    out_dir = Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc/out/textract")
-    pdfs = list_vendor_pdfs(data_dir)
+    from src.utils.constants import DATA_DIR, TEXTRACT_DIR
+    
+    pdfs = list_vendor_pdfs(DATA_DIR)
     if not pdfs:
         print("No PDFs found.")
         return 0
@@ -358,12 +359,11 @@ def main() -> int:
     for vendor_key, pdf_path in pdfs:
         print(f"Analyzing (async): {vendor_key} -> {pdf_path}")
         tables = analyze_pdf_tables_async(pdf_path, bucket=bucket, prefix=prefix)
-        out_path = save_tables_json(out_dir, vendor_key, pdf_path, tables)
+        out_path = save_tables_json(TEXTRACT_DIR, vendor_key, pdf_path, tables)
         print(f"Saved tables: {out_path}")
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
 

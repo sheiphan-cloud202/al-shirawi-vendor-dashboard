@@ -18,41 +18,42 @@ import shutil
 import pandas as pd
 
 # Import existing modules
-from bedrock_header_extractor import (
+from src.services.bedrock_service import (
     find_inquiry_excel,
     decide_headers_with_bedrock,
     export_clean_sheet_csvs,
     write_headers_summary
 )
 
-from textract_tables import (
+from src.services.textract_service import (
     list_vendor_pdfs,
     analyze_pdf_tables_async,
     extract_tables_local_pdfplumber,  # Fallback for local PDF extraction
     save_tables_json
 )
 
-from textract_to_csv import (
+from src.processors.textract_to_csv import (
     load_tables,
     tables_to_csv_rows,
     write_csv as write_textract_csv
 )
 
-from workflow_enhanced import EnhancedWorkflowOrchestrator
+from src.services.comparison_service import EnhancedWorkflowOrchestrator
 
-import vendor_logic
+from src.core import vendor_logic
 
 
 class CompleteWorkflowOrchestrator:
     """Orchestrates the complete end-to-end workflow"""
     
     def __init__(self, session_id: Optional[str] = None):
-        self.base_dir = Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc")
+        from src.utils.constants import BASE_DIR
+        self.base_dir = BASE_DIR
         self.session_id = session_id
         
         # Use session-specific directories if session_id is provided
         if session_id:
-            import vendor_logic
+            from src.core import vendor_logic
             self.out_dir = vendor_logic.get_session_out_dir(session_id)
             # Point data_dir to session's uploads directory for vendor PDFs
             self.data_dir = self.out_dir / "uploads" / "vendors"

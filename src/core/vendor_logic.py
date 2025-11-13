@@ -11,21 +11,17 @@ import shutil
 import uuid
 from typing import List, Dict, Any, Optional
 
-from complete_workflow import CompleteWorkflowOrchestrator
+from src.core.workflow import CompleteWorkflowOrchestrator
+from src.utils.constants import (
+    BASE_DIR, DATA_DIR, OUT_DIR, COMPARISON_DIR, 
+    ENQUIRY_ATTACHMENT_DIR, STATIC_DIR, UPLOADED_FILES_TRACKER
+)
 
 try:
     import boto3
     BEDROCK_AVAILABLE = True
 except ImportError:
     BEDROCK_AVAILABLE = False
-
-BASE_DIR = Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc")
-DATA_DIR = BASE_DIR / "data"
-OUT_DIR = BASE_DIR / "out"
-COMPARISON_DIR = OUT_DIR / "vendor_comparisons"
-ENQUIRY_ATTACHMENT_DIR = DATA_DIR / "Enquiry Attachment"
-STATIC_DIR = BASE_DIR / "static"
-UPLOADED_FILES_TRACKER = OUT_DIR / "uploaded_files_tracker.json"
 
 def generate_session_id() -> str:
     """Generate a unique session ID"""

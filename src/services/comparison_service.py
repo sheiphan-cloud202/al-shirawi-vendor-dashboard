@@ -847,20 +847,22 @@ class EnhancedWorkflowOrchestrator:
     """Enhanced workflow that creates per-vendor comparison CSVs"""
     
     def __init__(self, use_bedrock: bool = False, max_workers: Optional[int] = None, session_id: Optional[str] = None):
+        from src.utils.constants import DATA_DIR, OUT_DIR
+        
         self.bedrock = EnhancedBedrockClient()
         self.boq_agent = BOQUnderstandingAgent(self.bedrock)
         self.vendor_agent = VendorQuoteUnderstandingAgent(self.bedrock)
         self.alignment_agent = IntelligentAlignmentAgent(self.bedrock)
         
-        self.data_dir = Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc/data")
+        self.data_dir = DATA_DIR
         self.session_id = session_id
         
         # Use session-specific output directory if session_id is provided
         if session_id:
-            import vendor_logic
+            from src.core import vendor_logic
             self.out_dir = vendor_logic.get_session_out_dir(session_id)
         else:
-            self.out_dir = Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc/out")
+            self.out_dir = OUT_DIR
         
         self.inquiry_csv = self.out_dir / "inquiry_csv" / "FINAL.csv"
         self.textract_csv_dir = self.out_dir / "textract_csv"

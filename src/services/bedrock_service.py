@@ -8,7 +8,7 @@ import boto3
 import pandas as pd
 
 try:
-    from textract_tables import analyze_boq_excel, normalize_column_name  # type: ignore
+    from src.services.textract_service import analyze_boq_excel, normalize_column_name  # type: ignore
 except Exception:
     # Fallback minimal implementations to avoid hard dependency during header extraction
     def normalize_column_name(name: str) -> str:
@@ -136,7 +136,8 @@ def find_inquiry_excel(default_root: Optional[Path] = None, tracked_filename: Op
     Returns:
         Path to the Excel file, or None if not found
     """
-    base = default_root or Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc/data/Enquiry Attachment")
+    from src.utils.constants import ENQUIRY_ATTACHMENT_DIR
+    base = default_root or ENQUIRY_ATTACHMENT_DIR
     if not base.exists():
         return None
     
@@ -333,11 +334,13 @@ def main(argv: Optional[List[str]] = None) -> int:
     if not xlsx or not xlsx.exists():
         print("Inquiry Excel not found. Place the file under data/Enquiry Attachment/.")
         return 1
+    from src.utils.constants import INQUIRY_CSV_DIR, OUT_DIR
+    
     print(f"Analyzing Excel: {xlsx}")
     decisions = decide_headers_with_bedrock(xlsx)
-    out_dir = Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc/out/inquiry_csv")
+    out_dir = INQUIRY_CSV_DIR
     written = export_clean_sheet_csvs(xlsx, decisions, out_dir)
-    summary_path = Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc/out/inquiry_headers.json")
+    summary_path = OUT_DIR / "inquiry_headers.json"
     write_headers_summary(decisions, summary_path)
     print(f"Wrote {len(written)} sheet CSVs to {out_dir}")
     print(f"Wrote headers summary: {summary_path}")

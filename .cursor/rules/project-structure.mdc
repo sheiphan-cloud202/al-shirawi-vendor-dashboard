@@ -1,0 +1,150 @@
+---
+alwaysApply: true
+---
+
+# Project Structure Rules
+
+## Overview
+This project follows a layered architecture with clear separation of concerns. All application logic is organized under the `src/` directory.
+
+## Directory Structure
+
+```
+al_shirawi_orc_poc/
+├── run.py                    # Application entry point
+├── src/                      # Main package (all application code)
+│   ├── api/                  # API Layer - FastAPI endpoints
+│   ├── core/                 # Core Business Logic
+│   ├── services/             # External Service Integrations
+│   ├── processors/           # Data Processing Utilities
+│   └── utils/                # Shared Utilities & Constants
+├── static/                   # Frontend UI files
+├── data/                     # Input data directory
+└── out/                      # Output files directory
+```
+
+## Module Organization
+
+### `src/api/` - API Layer
+- **Purpose**: FastAPI REST API endpoints
+- **Key Files**:
+  - `server.py` - Main FastAPI application with all endpoints
+- **Imports**: Should import from `src.core` and `src.services`
+- **Dependencies**: FastAPI, core business logic modules
+
+### `src/core/` - Business Logic
+- **Purpose**: Core business logic and workflow orchestration
+- **Key Files**:
+  - `vendor_logic.py` - File management, session handling, vendor data operations
+  - `workflow.py` - Main workflow orchestrator (CompleteWorkflowOrchestrator)
+- **Imports**: Can import from `src.services`, `src.processors`, `src.utils`
+- **Dependencies**: Services layer, processors, utilities
+
+### `src/services/` - Service Layer
+- **Purpose**: External service integrations (AWS, LLM, etc.)
+- **Key Files**:
+  - `textract_service.py` - AWS Textract PDF OCR table extraction
+  - `bedrock_service.py` - AWS Bedrock LLM for BOQ header extraction
+  - `comparison_service.py` - LLM-powered vendor comparison engine
+- **Imports**: Can import from `src.processors`, `src.utils`
+- **Dependencies**: AWS SDK (boto3), processors for data transformation
+
+### `src/processors/` - Data Processors
+- **Purpose**: Data transformation and processing utilities
+- **Key Files**:
+  - `textract_to_csv.py` - Converts Textract JSON to CSV format
+  - `index_responses.py` - Vendor response metadata extraction
+- **Imports**: Should only import from `src.utils` (constants)
+- **Dependencies**: Standard library only (json, csv, pathlib)
+
+### `src/utils/` - Utilities
+- **Purpose**: Shared constants, configuration, and utility functions
+- **Key Files**:
+  - `constants.py` - All shared constants (paths, AWS config, etc.)
+- **Imports**: No internal imports (only standard library)
+- **Dependencies**: Standard library only
+
+## Import Rules
+
+### Import Patterns
+1. **Absolute imports from `src`**: Always use `from src.module import ...`
+2. **No relative imports**: Avoid `from ..module import ...`
+3. **Import order**:
+   - Standard library imports
+   - Third-party imports
+   - Local `src.*` imports
+
+### Example Imports
+```python
+# ✅ Correct
+from src.core import vendor_logic
+from src.services.textract_service import list_vendor_pdfs
+from src.utils.constants import BASE_DIR, OUT_DIR
+
+# ❌ Incorrect
+from vendor_logic import ...  # Missing src prefix
+from ..core import ...        # Relative imports
+import vendor_logic           # Should use from src.core import
+```
+
+## Adding New Code
+
+### Where to Add New Files
+
+1. **New API Endpoints**: Add to `src/api/server.py` or create new files in `src/api/`
+2. **New Business Logic**: Add to `src/core/` (create new files if needed)
+3. **New AWS Services**: Add to `src/services/` (e.g., `s3_service.py`)
+4. **New Data Processors**: Add to `src/processors/`
+5. **New Utilities**: Add to `src/utils/`
+
+### File Naming Conventions
+- Use `snake_case` for all Python files
+- Service files: `*_service.py`
+- Processor files: `*_processor.py` or descriptive names
+- Utility files: descriptive names (e.g., `constants.py`, `validators.py`)
+
+## Constants Management
+
+- **All paths and configuration**: Must be defined in `src/utils/constants.py`
+- **No hardcoded paths**: Never use absolute paths like `/Users/.../project/`
+- **Use constants**: Import from `src.utils.constants` instead of hardcoding
+
+```python
+# ✅ Correct
+from src.utils.constants import DATA_DIR, OUT_DIR
+file_path = DATA_DIR / "file.xlsx"
+
+# ❌ Incorrect
+file_path = Path("/Users/.../data/file.xlsx")
+```
+
+## Session Management
+
+- Session-specific directories are managed through `vendor_logic.get_session_out_dir(session_id)`
+- All session-aware code should check for `session_id` parameter
+- Session outputs are isolated in `out/sessions/{session_id}/`
+
+## Entry Point
+
+- **Main entry**: `run.py` at project root
+- **Server startup**: Uses `uvicorn` to run `src.api.server:app`
+- **Run command**: `python run.py`
+
+## Dependencies
+
+- **API Layer**: FastAPI, uvicorn
+- **Core**: pandas (for Excel/CSV processing)
+- **Services**: boto3 (AWS SDK)
+- **All layers**: Standard library (pathlib, json, csv, etc.)
+
+## Testing Considerations
+
+- Tests should mirror the `src/` structure
+- Test files should be in `tests/` directory with same subdirectory structure
+- Use `from src.module import ...` in tests as well
+
+## Legacy Code
+
+- **No legacy code**: All unused files have been removed
+- **Old files**: `workflow.py`, `main.py`, `combine_vendors.py` were deleted
+- **Migration**: All active code has been moved to `src/` with updated imports

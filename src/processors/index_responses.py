@@ -1,3 +1,4 @@
+"""Vendor Response Metadata Extraction & Indexing"""
 import json
 import re
 from dataclasses import dataclass, asdict
@@ -123,11 +124,12 @@ def build_index(data_dir: Path) -> Dict[str, VendorResponse]:
 
 
 def main() -> int:
-    data_dir = Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc/data")
-    if not data_dir.exists():
-        print(f"Data directory not found: {data_dir}")
+    from src.utils.constants import DATA_DIR
+    
+    if not DATA_DIR.exists():
+        print(f"Data directory not found: {DATA_DIR}")
         return 1
-    index = build_index(data_dir)
+    index = build_index(DATA_DIR)
     # Print pretty JSON for human readability
     out = {k: asdict(v) for k, v in index.items()}
     print(json.dumps(out, indent=2))
@@ -136,5 +138,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
 

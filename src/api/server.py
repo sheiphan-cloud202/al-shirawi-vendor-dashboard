@@ -21,13 +21,14 @@ from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.responses import JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
-import vendor_logic
+from src.core import vendor_logic
+from src.utils.constants import STATIC_DIR
 
 # Initialize FastAPI application
 app = FastAPI(title="Al Shirawi ORC POC API", version="0.1.0")
 
 # Mount static files for UI
-app.mount("/ui", StaticFiles(directory=str(vendor_logic.STATIC_DIR), html=True), name="ui")
+app.mount("/ui", StaticFiles(directory=str(STATIC_DIR), html=True), name="ui")
 
 
 

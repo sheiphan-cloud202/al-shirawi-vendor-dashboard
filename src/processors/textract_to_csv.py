@@ -1,3 +1,4 @@
+"""Converts Textract JSON output to CSV format"""
 import json
 import csv
 from pathlib import Path
@@ -42,16 +43,16 @@ def write_csv(rows: List[List[str]], out_path: Path) -> None:
 
 
 def main() -> int:
-    in_dir = Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc/out/textract")
-    out_dir = Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc/out/textract_csv")
-    json_files = sorted(in_dir.glob("*.tables.json"))
+    from src.utils.constants import TEXTRACT_DIR, TEXTRACT_CSV_DIR
+    
+    json_files = sorted(TEXTRACT_DIR.glob("*.tables.json"))
     if not json_files:
         print("No Textract table JSON files found.")
         return 0
     for j in json_files:
         tables = load_tables(j)
         rows = tables_to_csv_rows(tables)
-        out_csv = out_dir / (j.stem + ".csv")
+        out_csv = TEXTRACT_CSV_DIR / (j.stem + ".csv")
         write_csv(rows, out_csv)
         print(f"Wrote {out_csv}")
     return 0
@@ -59,6 +60,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
-
 
