@@ -937,6 +937,10 @@ class EnhancedWorkflowOrchestrator:
                     import traceback
                     self._thread_safe_print(traceback.format_exc())
         
+        # Step 3: Generate consolidated all_comparison table
+        print("\n[Step 3] 📊 Generating consolidated comparison table...")
+        self._generate_all_comparison_table(boq_lines)
+        
         print("=" * 80)
         print("✅ Workflow completed successfully!")
         print(f"📂 Output directory: {self.comparison_dir}")
@@ -1452,6 +1456,157 @@ class EnhancedWorkflowOrchestrator:
                 vendor_lines.append(understanding)
         
         return vendor_lines
+    
+    def _generate_all_comparison_table(self, boq_lines: List[BOQLineUnderstanding]) -> Path:
+        """
+        Generate a consolidated comparison table with all vendors side-by-side.
+        Format: BOQ Data | Vendor 1 Data | Vendor 2 Data | Vendor 3 Data | ...
+        
+        Args:
+            boq_lines: List of BOQ line understandings
+        
+        Returns:
+            Path to the generated all_comparison.csv file
+        """
+        
+        # Load all individual comparison CSVs to extract vendor data
+        comparison_files = sorted(self.comparison_dir.glob("*_comparison.csv"))
+        
+        if not comparison_files:
+            print("  ⚠️  No individual comparison files found, skipping all_comparison generation")
+            return None
+        
+        print(f"  📋 Found {len(comparison_files)} comparison file(s)")
+        
+        # Dictionary to store all vendor data keyed by BOQ Sr.No
+        all_data = {}
+        vendor_names = []
+        
+        # Read each comparison CSV and extract vendor data
+        for comparison_file in comparison_files:
+            vendor_name = self._extract_vendor_name(comparison_file.name).replace("_comparison", "")
+            vendor_names.append(vendor_name)
+            print(f"    📄 Processing: {vendor_name}")
+            
+            try:
+                df = pd.read_csv(comparison_file)
+                
+                for idx, row in df.iterrows():
+                    boq_sr_no = str(row.get("BOQ Sr.No", "")).strip()
+                    
+                    # Skip rows without BOQ Sr.No
+                    if not boq_sr_no or boq_sr_no.lower() in ("boq sr.no", ""):
+                        continue
+                    
+                    # Initialize entry for this BOQ item if not exists
+                    if boq_sr_no not in all_data:
+                        all_data[boq_sr_no] = {
+                            "boq_sr_no": boq_sr_no,
+                            "boq_description": row.get("BOQ Description", ""),
+                            "boq_qty": row.get("BOQ Qty", ""),
+                            "boq_uom": row.get("BOQ UOM", ""),
+                            "boq_item_type": row.get("BOQ Item Type", ""),
+                            "boq_dimensions": row.get("BOQ Dimensions", ""),
+                            "boq_material": row.get("BOQ Material", ""),
+                            "vendors": {}
+                        }
+                    
+                    # Store vendor-specific data
+                    all_data[boq_sr_no]["vendors"][vendor_name] = {
+                        "description": row.get("Vendor Description", ""),
+                        "qty": row.get("Vendor Qty", ""),
+                        "uom": row.get("Vendor UOM", ""),
+                        "unit_price": row.get("Vendor Unit Price", ""),
+                        "total_price": row.get("Vendor Total Price", ""),
+                        "brand": row.get("Vendor Brand", ""),
+                        "match_confidence": row.get("Match Confidence", ""),
+                        "match_status": row.get("Match Status", ""),
+                        "issues": row.get("Issues", ""),
+                        "reasoning": row.get("LLM Reasoning", "")
+                    }
+            except Exception as e:
+                print(f"      ⚠️  Error reading {comparison_file.name}: {e}")
+                continue
+        
+        # Generate the consolidated CSV
+        output_path = self.comparison_dir / "all_comparison.csv"
+        
+        print(f"  ✍️  Writing consolidated table to: {output_path.name}")
+        
+        with open(output_path, "w", newline="", encoding="utf-8") as f:
+            # Build dynamic header with all vendors
+            header = [
+                "BOQ Sr.No",
+                "BOQ Description",
+                "BOQ Qty",
+                "BOQ UOM",
+                "BOQ Item Type",
+                "BOQ Dimensions",
+                "BOQ Material"
+            ]
+            
+            # Add vendor columns for each vendor
+            for vendor_name in vendor_names:
+                header.extend([
+                    f"{vendor_name} - Description",
+                    f"{vendor_name} - Qty",
+                    f"{vendor_name} - UOM",
+                    f"{vendor_name} - Unit Price",
+                    f"{vendor_name} - Total Price",
+                    f"{vendor_name} - Brand",
+                    f"{vendor_name} - Match Confidence",
+                    f"{vendor_name} - Match Status",
+                    f"{vendor_name} - Issues",
+                    f"{vendor_name} - Reasoning"
+                ])
+            
+            writer = csv.writer(f)
+            writer.writerow(header)
+            
+            # Write data rows sorted by BOQ Sr.No
+            for boq_sr_no in sorted(all_data.keys(), key=lambda x: self._sort_key(x)):
+                item = all_data[boq_sr_no]
+                row = [
+                    item["boq_sr_no"],
+                    item["boq_description"],
+                    item["boq_qty"],
+                    item["boq_uom"],
+                    item["boq_item_type"],
+                    item["boq_dimensions"],
+                    item["boq_material"]
+                ]
+                
+                # Add vendor data for each vendor
+                for vendor_name in vendor_names:
+                    vendor_data = item["vendors"].get(vendor_name, {})
+                    row.extend([
+                        vendor_data.get("description", ""),
+                        vendor_data.get("qty", ""),
+                        vendor_data.get("uom", ""),
+                        vendor_data.get("unit_price", ""),
+                        vendor_data.get("total_price", ""),
+                        vendor_data.get("brand", ""),
+                        vendor_data.get("match_confidence", ""),
+                        vendor_data.get("match_status", ""),
+                        vendor_data.get("issues", ""),
+                        vendor_data.get("reasoning", "")
+                    ])
+                
+                writer.writerow(row)
+        
+        print(f"  ✓ Generated all_comparison.csv with {len(all_data)} BOQ items and {len(vendor_names)} vendor(s)")
+        return output_path
+    
+    def _sort_key(self, sr_no: str):
+        """Helper to sort BOQ items by numeric serial number"""
+        try:
+            # Extract leading number from sr_no
+            match = re.match(r'(\d+)', str(sr_no).strip())
+            if match:
+                return int(match.group(1))
+        except (ValueError, AttributeError):
+            pass
+        return float('inf')
     
     def _write_vendor_comparison_csv(self, vendor_name: str, alignments: List[AlignedMatch]) -> Path:
         """Write per-vendor comparison CSV"""

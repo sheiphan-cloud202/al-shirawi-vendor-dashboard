@@ -148,3 +148,6 @@ file_path = Path("/Users/.../data/file.xlsx")
 - **No legacy code**: All unused files have been removed
 - **Old files**: `workflow.py`, `main.py`, `combine_vendors.py` were deleted
 - **Migration**: All active code has been moved to `src/` with updated imports
+
+
+DO NOT create markdown files unless told.
