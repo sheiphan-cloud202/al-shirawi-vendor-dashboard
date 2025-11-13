@@ -156,7 +156,7 @@ function viewDetails(vendorId) {
   
   // Set current items and render
   currentVendorItems = details.items;
-  renderVendorItemsList(currentVendorItems);
+  renderVendorItemsList(currentVendorItems, vendorId);
   
   // Setup filters
   $("#item-status-filter").addEventListener("change", filterVendorItems);
@@ -235,7 +235,11 @@ function renderAnalysisResults(data) {
 
 function formatRecommendation(text) {
   // Convert markdown-style formatting to HTML
-  return text
+  if (text == null) {
+    return '<p>No analysis available.</p>';
+  }
+  const safeText = String(text);
+  return safeText
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\n\n/g, '</p><p>')
     .replace(/\n(\d+\.)/g, '<br/>$1')
@@ -243,7 +247,7 @@ function formatRecommendation(text) {
 }
 
 // Render vendor items list in modal
-function renderVendorItemsList(items) {
+function renderVendorItemsList(items, vendorId) {
   const container = $("#vendor-items-list");
   
   if (items.length === 0) {
@@ -300,6 +304,9 @@ function renderVendorItemsList(items) {
           <div class="confidence">
             Confidence: ${parseFloat(item["Match Confidence"] || 0).toFixed(2)}
           </div>
+          <button class="btn-analyze-item" onclick="analyzeItem('${vendorId}', '${item["BOQ Sr.No"]}')">
+            🤖 Analyze Item
+          </button>
         </div>
       </div>
     `;
@@ -343,12 +350,134 @@ function filterVendorItems() {
     );
   }
   
-  renderVendorItemsList(filtered);
+  // Get current vendor ID from the modal
+  const currentVendorId = $("#modal-vendor-name").textContent.split(": ")[1];
+  const vendor = allVendors.find(v => v.name === currentVendorId);
+  const vendorId = vendor ? vendor.id : "";
+  renderVendorItemsList(filtered, vendorId);
 }
 
 function closeVendorDetailsModal() {
   $("#vendor-details-modal").style.display = "none";
   currentVendorItems = [];
+}
+
+// Item Analysis Functions
+async function analyzeItem(vendorId, boqSrNo) {
+  const modal = $("#item-analysis-modal");
+  const loading = $("#analysis-loading");
+  const results = $("#analysis-results");
+  const itemDetails = $("#analysis-item-details");
+  
+  // Show modal and loading state
+  modal.style.display = "flex";
+  loading.style.display = "block";
+  results.innerHTML = "";
+  itemDetails.innerHTML = "";
+  
+  try {
+    // Find the item data
+    const item = currentVendorItems.find(i => i["BOQ Sr.No"] === boqSrNo);
+    if (!item) {
+      throw new Error("Item not found");
+    }
+    
+    // Display item details
+    renderItemDetails(item);
+    
+    // Call API
+    const formData = new FormData();
+    formData.append("vendor_id", vendorId);
+    formData.append("boq_sr_no", boqSrNo);
+    
+    const res = await fetch("/api/analyze-item", {
+      method: "POST",
+      body: formData,
+    });
+    
+    if (!res.ok) {
+      throw new Error(`API error: ${res.status}`);
+    }
+    
+    const data = await res.json();
+    
+    // Hide loading and show results
+    loading.style.display = "none";
+    renderItemAnalysisResults(data);
+    
+  } catch (err) {
+    loading.style.display = "none";
+    results.innerHTML = `<div class="error">Error: ${err.message}</div>`;
+  }
+}
+
+function renderItemDetails(item) {
+  const container = $("#analysis-item-details");
+  
+  const html = `
+    <div class="item-analysis-header">
+      <h4>Item: ${item["BOQ Sr.No"]}</h4>
+      <span class="item-status-badge">${item["Match Status"]}</span>
+    </div>
+    
+    <div class="item-comparison">
+      <div class="boq-section">
+        <h5>📋 BOQ Requirement</h5>
+        <p><strong>Description:</strong> ${item["BOQ Description"]}</p>
+        <p><strong>Quantity:</strong> ${item["BOQ Qty"]} ${item["BOQ UOM"]}</p>
+        <p><strong>Type:</strong> ${item["BOQ Item Type"]}</p>
+        ${item["BOQ Dimensions"] ? `<p><strong>Dimensions:</strong> ${item["BOQ Dimensions"]}</p>` : ''}
+      </div>
+      
+      <div class="vendor-section">
+        <h5>🏢 Vendor Quote</h5>
+        ${item["Vendor Description"] === "NOT QUOTED" ? 
+          '<p class="not-quoted">❌ Not Quoted</p>' :
+          `
+          <p><strong>Description:</strong> ${item["Vendor Description"]}</p>
+          ${item["Vendor Qty"] ? `<p><strong>Quantity:</strong> ${item["Vendor Qty"]} ${item["Vendor UOM"] || ''}</p>` : ''}
+          ${item["Vendor Unit Price"] ? `<p><strong>Unit Price:</strong> $${parseFloat(item["Vendor Unit Price"]).toLocaleString()}</p>` : ''}
+          ${item["Vendor Total Price"] ? `<p><strong>Total Price:</strong> $${parseFloat(item["Vendor Total Price"]).toLocaleString()}</p>` : ''}
+          ${item["Vendor Brand"] ? `<p><strong>Brand:</strong> ${item["Vendor Brand"]}</p>` : ''}
+          `
+        }
+      </div>
+    </div>
+    
+    ${item.Issues && item.Issues !== "None" ? `
+      <div class="item-issues">
+        <h5>⚠️ Issues</h5>
+        <p>${item.Issues}</p>
+      </div>
+    ` : ''}
+    
+    <div class="item-meta">
+      <p><strong>Match Confidence:</strong> ${parseFloat(item["Match Confidence"] || 0).toFixed(2)}</p>
+    </div>
+  `;
+  
+  container.innerHTML = html;
+}
+
+function renderItemAnalysisResults(data) {
+  const container = $("#analysis-results");
+  
+  let html = '<div class="analysis-content">';
+  
+  if (data.error) {
+    html += `<div class="error">Error: ${data.error}</div>`;
+  } else {
+    html += '<h5>🤖 AI Analysis</h5>';
+    html += `<div class="analysis-text">${formatRecommendation(data.analysis)}</div>`;
+    html += `<p class="model-info"><small>Model: ${data.model_used}</small></p>`;
+  }
+  
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+function closeItemAnalysisModal() {
+  $("#item-analysis-modal").style.display = "none";
 }
 
 // Close modal on outside click

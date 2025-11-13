@@ -13,6 +13,8 @@ import csv
 import json
 import os
 import re
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional, Any
@@ -844,18 +846,31 @@ class IntelligentAlignmentAgent:
 class EnhancedWorkflowOrchestrator:
     """Enhanced workflow that creates per-vendor comparison CSVs"""
     
-    def __init__(self, use_bedrock: bool = False):
+    def __init__(self, use_bedrock: bool = False, max_workers: Optional[int] = None, session_id: Optional[str] = None):
         self.bedrock = EnhancedBedrockClient()
         self.boq_agent = BOQUnderstandingAgent(self.bedrock)
         self.vendor_agent = VendorQuoteUnderstandingAgent(self.bedrock)
         self.alignment_agent = IntelligentAlignmentAgent(self.bedrock)
         
         self.data_dir = Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc/data")
-        self.out_dir = Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc/out")
+        self.session_id = session_id
+        
+        # Use session-specific output directory if session_id is provided
+        if session_id:
+            import vendor_logic
+            self.out_dir = vendor_logic.get_session_out_dir(session_id)
+        else:
+            self.out_dir = Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc/out")
+        
         self.inquiry_csv = self.out_dir / "inquiry_csv" / "FINAL.csv"
         self.textract_csv_dir = self.out_dir / "textract_csv"
         self.comparison_dir = self.out_dir / "vendor_comparisons"
         self.cache_dir = self.out_dir / "vendor_cache"
+        
+        # Thread-safe print lock
+        self.print_lock = threading.Lock()
+        # Number of parallel workers (None = auto-detect based on CPU count)
+        self.max_workers = max_workers
     
     def run(self) -> int:
         """Execute enhanced workflow"""
@@ -866,6 +881,8 @@ class EnhancedWorkflowOrchestrator:
         
         # Step 1: Load and understand BOQ requirements (with caching)
         print("\n[Step 1] 🧠 Understanding BOQ Requirements with LLM...")
+        print(f"  📄 BOQ CSV: {self.inquiry_csv.name}")
+        print(f"  📍 Path: {self.inquiry_csv}")
         
         # Try to load from cache first
         boq_lines = self._load_boq_lines_cache()
@@ -884,45 +901,39 @@ class EnhancedWorkflowOrchestrator:
         # Step 2: Process each vendor
         print("\n[Step 2] 🏭 Processing Vendor Quotations...")
         vendor_csvs = list(self.textract_csv_dir.glob("*.csv"))
-        print(f"  Found {len(vendor_csvs)} vendor CSV files\n")
+        print(f"  Found {len(vendor_csvs)} vendor CSV files")
+        print("  Files to process:")
+        for csv_file in sorted(vendor_csvs):
+            print(f"    • {csv_file.name}")
+        print()
         
         self.comparison_dir.mkdir(parents=True, exist_ok=True)
         
-        for csv_path in vendor_csvs:
-            vendor_name = self._extract_vendor_name(csv_path.name)
-            print(f"  Processing: {vendor_name}")
+        # Process vendors in parallel using multithreading
+        self._thread_safe_print(f"\n🚀 Processing {len(vendor_csvs)} vendor(s) in parallel...")
+        
+        # Process vendors in parallel
+        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
+            # Submit all vendor processing tasks
+            future_to_vendor = {
+                executor.submit(self._process_single_vendor, csv_path, boq_lines): csv_path
+                for csv_path in vendor_csvs
+            }
             
-            # Step 2a: Understand vendor lines (with caching)
-            print("    🧠 Understanding vendor quotes with LLM...")
-            
-            # Try to load from cache first
-            vendor_lines = self._load_vendor_lines_cache(csv_path)
-            
-            if vendor_lines is None:
-                # Cache miss or invalid - process with LLM 
-                print("    🤖 Processing with LLM (cache miss)...")
-                vendor_lines = self._load_and_understand_vendor(csv_path)
-                print(f"      ✓ Understood {len(vendor_lines)} vendor line items")
-                
-                # Save to cache for next time
-                self._save_vendor_lines_cache(csv_path, vendor_lines)
-            else:
-                print(f"      ✓ Loaded {len(vendor_lines)} vendor line items from cache")
-            
-            # Step 2b: Align BOQ to vendor
-            print("    🔗 Aligning BOQ to vendor quotes...")
-            alignments = []
-            for boq_line in boq_lines:
-                match = self.alignment_agent.find_best_match(boq_line, vendor_lines)
-                alignments.append(match)
-            
-            matched = sum(1 for a in alignments if a.match_confidence > 0.5)
-            print(f"      ✓ Aligned {matched}/{len(alignments)} items (confidence > 0.5)")
-            
-            # Step 2c: Generate per-vendor CSV
-            print("    📄 Generating comparison CSV...")
-            output_path = self._write_vendor_comparison_csv(vendor_name, alignments)
-            print(f"      ✓ Written: {output_path.name}\n")
+            # Collect results as they complete
+            completed = 0
+            for future in as_completed(future_to_vendor):
+                csv_path = future_to_vendor[future]
+                try:
+                    future.result()  # Wait for completion and check for exceptions
+                    completed += 1
+                    vendor_name = self._extract_vendor_name(csv_path.name)
+                    self._thread_safe_print(f"  ✓ [{completed}/{len(vendor_csvs)}] Completed: {vendor_name}")
+                except Exception as e:
+                    vendor_name = self._extract_vendor_name(csv_path.name)
+                    self._thread_safe_print(f"  ❌ Error processing {vendor_name}: {e}")
+                    import traceback
+                    self._thread_safe_print(traceback.format_exc())
         
         print("=" * 80)
         print("✅ Workflow completed successfully!")
@@ -1092,7 +1103,7 @@ class EnhancedWorkflowOrchestrator:
         print(f"      💾 Cached vendor lines: {cache_path.name}")
     
     def _load_vendor_lines_cache(self, csv_path: Path) -> Optional[List[VendorLineUnderstanding]]:
-        """Load vendor lines from cache if available and valid"""
+        """Load vendor lines from cache if available and valid (non-threaded version)"""
         cache_path = self._get_cache_path(csv_path)
         
         if not cache_path.exists():
@@ -1127,6 +1138,45 @@ class EnhancedWorkflowOrchestrator:
             
         except Exception as e:
             print(f"      ⚠️  Cache load error: {e}, regenerating...")
+            return None
+    
+    def _load_vendor_lines_cache_threaded(self, csv_path: Path) -> Optional[List[VendorLineUnderstanding]]:
+        """Load vendor lines from cache if available and valid (thread-safe version)"""
+        cache_path = self._get_cache_path(csv_path)
+        
+        if not cache_path.exists():
+            return None
+        
+        try:
+            # Use lock for file reading to prevent race conditions
+            with self.print_lock:
+                with open(cache_path, 'r', encoding='utf-8') as f:
+                    cache_data = json.load(f)
+            
+            # Convert dictionaries back to dataclasses
+            vendor_lines = []
+            for line_dict in cache_data:
+                line = VendorLineUnderstanding(
+                    row_index=line_dict['row_index'],
+                    raw_description=line_dict['raw_description'],
+                    item_type=line_dict['item_type'],
+                    dimensions=line_dict['dimensions'],
+                    material=line_dict['material'],
+                    quantity=line_dict['quantity'],
+                    uom=line_dict['uom'],
+                    unit_price=line_dict['unit_price'],
+                    total_price=line_dict['total_price'],
+                    brand=line_dict['brand'],
+                    key_specs=line_dict['key_specs'],
+                    search_keywords=line_dict['search_keywords'],
+                    reasoning=line_dict['reasoning']
+                )
+                vendor_lines.append(line)
+            
+            return vendor_lines
+            
+        except Exception as e:
+            self._thread_safe_print(f"      ⚠️  Cache load error: {e}, regenerating...")
             return None
     
     def clear_vendor_cache(self) -> None:
@@ -1252,6 +1302,155 @@ class EnhancedWorkflowOrchestrator:
             print(f"  ⚠️  BOQ cache load error: {e}, regenerating...")
             return None
     
+    def _thread_safe_print(self, *args, **kwargs):
+        """Thread-safe print function"""
+        with self.print_lock:
+            print(*args, **kwargs)
+    
+    def _process_single_vendor(self, csv_path: Path, boq_lines: List[BOQLineUnderstanding]) -> Dict[str, Any]:
+        """
+        Process a single vendor CSV file. This method is designed to be called in parallel.
+        Each thread creates its own Bedrock client and agents for thread safety.
+        
+        Args:
+            csv_path: Path to the vendor CSV file
+            boq_lines: List of BOQ line understandings (shared across all vendors)
+        
+        Returns:
+            Dictionary with processing results
+        """
+        vendor_name = self._extract_vendor_name(csv_path.name)
+        
+        # Create thread-local Bedrock client and agents for thread safety
+        # Each thread needs its own client instance to avoid conflicts
+        thread_bedrock = EnhancedBedrockClient()
+        thread_vendor_agent = VendorQuoteUnderstandingAgent(thread_bedrock)
+        thread_alignment_agent = IntelligentAlignmentAgent(thread_bedrock)
+        
+        self._thread_safe_print(f"  🏭 Processing: {vendor_name}")
+        self._thread_safe_print(f"    📄 CSV file: {csv_path.name}")
+        self._thread_safe_print(f"    📍 Path: {csv_path}")
+        
+        # Step 2a: Understand vendor lines (with caching)
+        self._thread_safe_print("    🧠 Understanding vendor quotes with LLM...")
+        
+        # Try to load from cache first (thread-safe)
+        vendor_lines = self._load_vendor_lines_cache_threaded(csv_path)
+        
+        if vendor_lines is None:
+            # Cache miss or invalid - process with LLM 
+            self._thread_safe_print("    🤖 Processing with LLM (cache miss)...")
+            vendor_lines = self._load_and_understand_vendor_threaded(csv_path, thread_vendor_agent)
+            self._thread_safe_print(f"      ✓ Understood {len(vendor_lines)} vendor line items")
+            
+            # Save to cache for next time (with lock to prevent race conditions)
+            with self.print_lock:
+                self._save_vendor_lines_cache(csv_path, vendor_lines)
+        else:
+            self._thread_safe_print(f"      ✓ Loaded {len(vendor_lines)} vendor line items from cache")
+        
+        # Step 2b: Align BOQ to vendor
+        self._thread_safe_print("    🔗 Aligning BOQ to vendor quotes...")
+        alignments = []
+        for boq_line in boq_lines:
+            match = thread_alignment_agent.find_best_match(boq_line, vendor_lines)
+            alignments.append(match)
+        
+        matched = sum(1 for a in alignments if a.match_confidence > 0.5)
+        self._thread_safe_print(f"      ✓ Aligned {matched}/{len(alignments)} items (confidence > 0.5)")
+        
+        # Step 2c: Generate per-vendor CSV
+        self._thread_safe_print("    📄 Generating comparison CSV...")
+        output_path = self._write_vendor_comparison_csv(vendor_name, alignments)
+        self._thread_safe_print(f"      ✓ Written: {output_path.name}")
+        
+        return {
+            "vendor_name": vendor_name,
+            "csv_path": str(csv_path),
+            "output_path": str(output_path),
+            "vendor_lines_count": len(vendor_lines),
+            "matched_items": matched,
+            "total_items": len(alignments)
+        }
+    
+    def _load_and_understand_vendor_threaded(self, csv_path: Path, vendor_agent: VendorQuoteUnderstandingAgent) -> List[VendorLineUnderstanding]:
+        """
+        Thread-safe version of _load_and_understand_vendor that uses a provided vendor agent.
+        This allows each thread to use its own Bedrock client.
+        """
+        try:
+            # Read raw lines to find header row (more reliable than pandas with inconsistent columns)
+            import csv
+            header_row = None
+            
+            with open(csv_path, 'r', encoding='utf-8') as f:
+                csv_reader = csv.reader(f)
+                for line_num, row in enumerate(csv_reader):
+                    if line_num > 50:  # Don't search beyond first 50 lines
+                        break
+                    
+                    # Clean and lowercase cells
+                    cells = [c.strip().lower() for c in row if c.strip()]
+                    
+                    # Check if this row looks like a header (more strict criteria)
+                    # 1. Must have description column
+                    has_desc = any('description' in c or 'desc' in c for c in cells)
+                    
+                    # 2. Must have at least 2 of: qty, unit, price
+                    price_indicators = sum([
+                        any('price' in c for c in cells),
+                        any('qty' in c or 'quantity' in c for c in cells),
+                        any('unit' == c or 'uom' in c for c in cells)
+                    ])
+                    
+                    # 3. Cells should be short (headers are typically 1-4 words, not long sentences)
+                    avg_cell_length = sum(len(c) for c in cells) / len(cells) if cells else 100
+                    cells_short = avg_cell_length < 30  # Reject lines with very long text
+                    
+                    # Must meet all criteria
+                    if len(cells) >= 3 and has_desc and price_indicators >= 2 and cells_short:
+                        header_row = line_num
+                        self._thread_safe_print(f"      ✓ Found header at line {line_num}: {cells[:5]}...")
+                        break
+            
+            # Read with detected header or default
+            if header_row is not None:
+                # Use skiprows instead of header for more reliable parsing with metadata rows
+                df = pd.read_csv(csv_path, skiprows=header_row, encoding='utf-8', engine='python')
+            else:
+                df = pd.read_csv(csv_path, encoding='utf-8', engine='python')
+        except Exception:
+            try:
+                df = pd.read_csv(csv_path, on_bad_lines='skip', encoding='latin-1', engine='python')
+            except Exception as e:
+                self._thread_safe_print(f"      ❌ Error reading CSV: {e}")
+                return []
+        
+        vendor_lines = []
+        
+        for idx, row in df.iterrows():
+            row_data = row.to_dict()
+            
+            # Skip rows that are all NaN
+            if all(pd.isna(v) or str(v).strip() == '' for v in row_data.values()):
+                continue
+            
+            # Use LLM to understand (sample every 5th)
+            if idx % 5 == 0:
+                # Case-insensitive description lookup for debug print
+                desc = ""
+                for key, value in row_data.items():
+                    if 'desc' in str(key).lower() or 'item' in str(key).lower():
+                        desc = str(value)[:40]
+                        break
+                self._thread_safe_print(f"      🤖 LLM analyzing row {idx}: {desc}...")
+            
+            understanding = vendor_agent.understand_vendor_line(idx, row_data)
+            if understanding:
+                vendor_lines.append(understanding)
+        
+        return vendor_lines
+    
     def _write_vendor_comparison_csv(self, vendor_name: str, alignments: List[AlignedMatch]) -> Path:
         """Write per-vendor comparison CSV"""
         
@@ -1347,7 +1546,8 @@ class EnhancedWorkflowOrchestrator:
 
 def main() -> int:
     """Main entry point"""
-    orchestrator = EnhancedWorkflowOrchestrator()
+    # Use parallel processing (None = auto-detect CPU count)
+    orchestrator = EnhancedWorkflowOrchestrator(max_workers=None)
     return orchestrator.run()
 
 

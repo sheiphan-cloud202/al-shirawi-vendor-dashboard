@@ -125,10 +125,28 @@ class SheetHeaderDecision:
     normalized_columns: List[str]
 
 
-def find_inquiry_excel(default_root: Optional[Path] = None) -> Optional[Path]:
+def find_inquiry_excel(default_root: Optional[Path] = None, tracked_filename: Optional[str] = None) -> Optional[Path]:
+    """
+    Find the inquiry Excel file.
+    
+    Args:
+        default_root: Root directory to search in
+        tracked_filename: Optional tracked filename from upload tracker. If provided, uses this file.
+    
+    Returns:
+        Path to the Excel file, or None if not found
+    """
     base = default_root or Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc/data/Enquiry Attachment")
     if not base.exists():
         return None
+    
+    # If tracked filename is provided, use that file
+    if tracked_filename:
+        tracked_path = base / tracked_filename
+        if tracked_path.exists() and tracked_path.is_file():
+            return tracked_path
+    
+    # Fallback: find first Excel file (backward compatibility)
     candidates = sorted([p for p in base.iterdir() if p.is_file() and p.suffix.lower() in (".xlsx", ".xlsm", ".xls")])
     return candidates[0] if candidates else None
 

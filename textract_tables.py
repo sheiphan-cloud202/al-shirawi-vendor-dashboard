@@ -30,15 +30,161 @@ class Table:
     cells: List[TableCell]
 
 
-def list_vendor_pdfs(data_dir: Path) -> List[Tuple[str, Path]]:
-    index = build_index(data_dir)
+def _load_uploaded_files_tracker(tracker_path: Path) -> Dict[str, List[str]]:
+    """
+    Load the tracker of uploaded files (response_number -> list of filenames).
+    
+    Handles both NEW nested format and OLD flat format:
+    - NEW: {"vendors": {"21": {"files": [{"filename": "x.pdf", ...}]}}}
+    - OLD: {"21": ["file1.pdf", "file2.pdf"]}
+    
+    Returns: {"21": ["file1.pdf", "file2.pdf"], ...}
+    """
+    if not tracker_path.exists():
+        return {}
+    
+    try:
+        tracker_data = json.loads(tracker_path.read_text())
+        result = {}
+        
+        # Handle NEW nested format (from vendor_logic.py)
+        vendors = tracker_data.get("vendors", {})
+        if isinstance(vendors, dict):
+            for response_key, response_data in vendors.items():
+                if isinstance(response_data, dict):
+                    files = response_data.get("files", [])
+                    # Extract filenames from file info dicts
+                    filenames = []
+                    for f in files:
+                        if isinstance(f, dict):
+                            filenames.append(f.get("filename"))
+                        elif isinstance(f, str):
+                            filenames.append(f)
+                    if filenames:
+                        result[response_key] = filenames
+        
+        # Handle OLD flat format (backward compatibility)
+        # Only add if not already in result from new format
+        for key, value in tracker_data.items():
+            if key != "vendors" and key != "enquiry_excel" and key != "last_updated":
+                if isinstance(value, list) and key not in result:
+                    result[key] = value
+                elif isinstance(value, dict) and "files" in value and key not in result:
+                    # Handle intermediate format
+                    files = value.get("files", [])
+                    filenames = [f if isinstance(f, str) else f.get("filename") for f in files]
+                    result[key] = filenames
+        
+        # Debug logging
+        if result:
+            print(f"  📋 Loaded tracker from {tracker_path.name}: Found {len(result)} response(s) with files")
+            for response_key, filenames in result.items():
+                print(f"     Response {response_key}: {len(filenames)} file(s)")
+        else:
+            print(f"  ⚠️  Tracker {tracker_path.name} is empty or has no vendor files")
+        
+        return result
+    except Exception as e:
+        print(f"⚠️  Error loading tracker {tracker_path}: {e}")
+        return {}
+
+
+def list_vendor_pdfs(data_dir: Path, tracker_path: Optional[Path] = None) -> List[Tuple[str, Path]]:
+    """
+    List vendor PDFs, optionally filtered to only uploaded files.
+    
+    Args:
+        data_dir: Data directory containing Response folders
+        tracker_path: Optional path to uploaded files tracker JSON.
+                     If provided, only returns PDFs that were uploaded via API.
+    """
     pdfs: List[Tuple[str, Path]] = []
-    for key, info in index.items():
-        if info.attachments_dir:
-            base = Path(info.attachments_dir)
-            for p in base.iterdir():
-                if p.is_file() and p.suffix.lower() == ".pdf":
-                    pdfs.append((key, p))
+    
+    # Load tracker if provided
+    uploaded_files = {}
+    if tracker_path:
+        uploaded_files = _load_uploaded_files_tracker(tracker_path)
+    
+    # Check if this is a session-based directory structure (Response_N folders)
+    # Session structure: uploads/vendors/Response_21/file.pdf
+    # Legacy structure: Response 3 - IKKT Attachment/file.pdf (with Response 3 - IKKT.txt)
+    is_session_structure = False
+    if data_dir.exists():
+        # Check for Response_N pattern (session structure)
+        session_folders = [d for d in data_dir.iterdir() if d.is_dir() and d.name.startswith("Response_")]
+        if session_folders:
+            is_session_structure = True
+    
+    if is_session_structure:
+        # Session-based structure: directly enumerate Response_N folders
+        print(f"  📂 Using session directory structure: {data_dir}")
+        for response_dir in data_dir.iterdir():
+            if not response_dir.is_dir():
+                continue
+            
+            # Extract response number from folder name (e.g., "Response_21" -> "21")
+            if not response_dir.name.startswith("Response_"):
+                continue
+            
+            try:
+                response_num = response_dir.name.split("_")[1]
+            except IndexError:
+                continue
+            
+            # If tracker is provided, only process tracked files
+            if tracker_path:
+                tracked_filenames = uploaded_files.get(response_num, [])
+                if not tracked_filenames:
+                    print(f"     ⚠️  No tracked files for Response {response_num}, skipping")
+                    continue
+                
+                # Only include PDFs that match tracked filenames
+                for filename in tracked_filenames:
+                    pdf_path = response_dir / filename
+                    if pdf_path.exists() and pdf_path.is_file() and pdf_path.suffix.lower() == ".pdf":
+                        key = f"Response {response_num} - Uploaded"
+                        pdfs.append((key, pdf_path))
+                        print(f"     ✓ Found: {filename}")
+                    else:
+                        print(f"     ⚠️  Tracked file not found: {filename} at {pdf_path}")
+            else:
+                # No tracker - return all PDFs in this response folder
+                for pdf_file in response_dir.iterdir():
+                    if pdf_file.is_file() and pdf_file.suffix.lower() == ".pdf":
+                        key = f"Response {response_num} - Uploaded"
+                        pdfs.append((key, pdf_file))
+    else:
+        # Legacy structure: use build_index
+        print("  📂 Using legacy directory structure with build_index")
+        index = build_index(data_dir)
+        
+        for key, info in index.items():
+            if info.attachments_dir:
+                base = Path(info.attachments_dir)
+                
+                # Extract response number from key (e.g., "Response 3 - IKKT" -> "3")
+                response_num = None
+                if info.response_number and info.response_number > 0:
+                    response_num = str(info.response_number)
+                
+                # If tracker is provided, only process tracked files
+                if tracker_path and response_num:
+                    tracked_filenames = uploaded_files.get(response_num, [])
+                    if not tracked_filenames:
+                        # No tracked files for this response number, skip
+                        continue
+                    
+                    # Only include PDFs that match tracked filenames
+                    for filename in tracked_filenames:
+                        pdf_path = base / filename
+                        if pdf_path.exists() and pdf_path.is_file() and pdf_path.suffix.lower() == ".pdf":
+                            pdfs.append((key, pdf_path))
+                else:
+                    # No tracker provided - return all PDFs (backward compatibility)
+                    for p in base.iterdir():
+                        if p.is_file() and p.suffix.lower() == ".pdf":
+                            pdfs.append((key, p))
+    
     return pdfs
 
 

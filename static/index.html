@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <script defer src="/ui/app.js"></script>
+  <script defer src="/ui/app.js?v=2"></script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📤</text></svg>">
   <meta name="description" content="Upload BOQ Excel files and vendor PDFs for AI-powered analysis and comparison">
   <meta name="keywords" content="upload, BOQ, vendor analysis, PDF processing, Excel">
@@ -432,6 +432,13 @@
       <div class="container">
         <h1>📤 Upload & Process</h1>
         <p class="subtitle">Upload BOQ Excel files and vendor PDFs for AI-powered analysis</p>
+        
+        <!-- Session Badge -->
+        <div id="session-badge" class="session-badge" style="display: none;">
+          <span class="session-icon">⏳</span>
+          <span class="session-text">Initializing session...</span>
+        </div>
+        
         <nav class="nav">
           <a href="/ui/home.html">🏠 Home</a>
           <a href="/ui/index.html" class="active">📤 Upload</a>

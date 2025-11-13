@@ -13,7 +13,7 @@ Usage:
 
 import sys
 from pathlib import Path
-from typing import List
+from typing import List, Optional
 import shutil
 import pandas as pd
 
@@ -40,14 +40,30 @@ from textract_to_csv import (
 
 from workflow_enhanced import EnhancedWorkflowOrchestrator
 
+import vendor_logic
+
 
 class CompleteWorkflowOrchestrator:
     """Orchestrates the complete end-to-end workflow"""
     
-    def __init__(self):
+    def __init__(self, session_id: Optional[str] = None):
         self.base_dir = Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc")
-        self.data_dir = self.base_dir / "data"
-        self.out_dir = self.base_dir / "out"
+        self.session_id = session_id
+        
+        # Use session-specific directories if session_id is provided
+        if session_id:
+            import vendor_logic
+            self.out_dir = vendor_logic.get_session_out_dir(session_id)
+            # Point data_dir to session's uploads directory for vendor PDFs
+            self.data_dir = self.out_dir / "uploads" / "vendors"
+            print(f"📁 Using session-specific output directory: {self.out_dir}")
+            print(f"📁 Using session-specific uploads directory: {self.data_dir}")
+            print(f"🆔 Session ID: {session_id}")
+            print(f"   All outputs will be isolated in: {self.out_dir}")
+        else:
+            self.out_dir = self.base_dir / "out"
+            self.data_dir = self.base_dir / "data"
+        
         self.inquiry_csv_dir = self.out_dir / "inquiry_csv"
         self.textract_dir = self.out_dir / "textract"
         self.textract_csv_dir = self.out_dir / "textract_csv"
@@ -146,14 +162,46 @@ class CompleteWorkflowOrchestrator:
         print("STEP 1: Analyzing Inquiry BOQ Excel")
         print("=" * 80)
         
-        inquiry_excel = find_inquiry_excel(self.data_dir / "Enquiry Attachment")
+        # Get tracked enquiry Excel filename (session-aware)
+        # ONLY use files from this specific session - NO FALLBACK
+        tracked_enquiry_filename = None
+        if self.session_id:
+            # Session-specific: ONLY files uploaded to this session
+            tracked_enquiry_filename = vendor_logic.get_uploaded_enquiry_excel(session_id=self.session_id)
+            if tracked_enquiry_filename:
+                print(f"📄 Using enquiry Excel from session {self.session_id}: {tracked_enquiry_filename}")
+            else:
+                print(f"⚠️  No enquiry Excel uploaded to session {self.session_id}")
+        else:
+            # Backward compatibility mode
+            tracked_enquiry_filename = vendor_logic.get_uploaded_enquiry_excel(session_id=None)
+            if tracked_enquiry_filename:
+                print(f"📄 Using uploaded enquiry Excel: {tracked_enquiry_filename}")
+            else:
+                print("⚠️  No tracked enquiry Excel found, using first available file")
+        
+        # Determine enquiry Excel directory based on session
+        if self.session_id:
+            enquiry_excel_dir = self.out_dir / "uploads" / "enquiry"
+        else:
+            enquiry_excel_dir = self.base_dir / "data" / "Enquiry Attachment"
+        
+        inquiry_excel = find_inquiry_excel(
+            enquiry_excel_dir,
+            tracked_filename=tracked_enquiry_filename
+        )
         
         if not inquiry_excel or not inquiry_excel.exists():
-            print("❌ ERROR: No inquiry Excel file found in data/Enquiry Attachment/")
-            print("   Place your BOQ Excel file there first.")
+            if self.session_id:
+                print(f"❌ ERROR: No inquiry Excel file found in session {self.session_id}")
+                print(f"   Expected location: {enquiry_excel_dir}")
+            else:
+                print("❌ ERROR: No inquiry Excel file found in data/Enquiry Attachment/")
+            print("   Upload your BOQ Excel file via /upload/enquiry API endpoint first.")
             return 1
         
-        print(f"📄 Found inquiry Excel: {inquiry_excel.name}")
+        print(f"📄 Processing inquiry Excel: {inquiry_excel.name}")
+        print(f"   📍 Full path: {inquiry_excel}")
         
         # Check if already processed
         boq_csv = self.inquiry_csv_dir / "FINAL.csv"
@@ -185,18 +233,54 @@ class CompleteWorkflowOrchestrator:
         print("STEP 2: OCR Vendor PDF Quotations using AWS Textract")
         print("=" * 80)
         
-        vendor_pdfs = list_vendor_pdfs(self.data_dir)
+        # Use tracker to ONLY process uploaded files for this specific session
+        # NO FALLBACK - session isolation is strict
+        vendor_pdfs = []
+        if self.session_id:
+            # Session-specific processing: ONLY files uploaded to this session
+            session_tracker_path = vendor_logic.get_session_tracker_path(self.session_id)
+            print(f"  🔍 Checking session tracker: {session_tracker_path}")
+            
+            if session_tracker_path.exists():
+                vendor_pdfs = list_vendor_pdfs(self.data_dir, tracker_path=session_tracker_path)
+                print(f"    ✓ Found {len(vendor_pdfs)} PDF(s) in session {self.session_id}")
+            else:
+                print(f"    ℹ️  Session tracker does not exist - no files uploaded to this session")
+            
+            if vendor_pdfs:
+                print(f"  📋 Total: {len(vendor_pdfs)} vendor PDF(s) to process for session {self.session_id}")
+        else:
+            # No session_id - use default tracker (backward compatibility mode)
+            tracker_path = vendor_logic.UPLOADED_FILES_TRACKER
+            print(f"  🔍 Checking default tracker: {tracker_path}")
+            vendor_pdfs = list_vendor_pdfs(self.data_dir, tracker_path=tracker_path)
+            
+            # Fallback to all PDFs if tracker is empty (backward compatibility)
+            if not vendor_pdfs:
+                print("  ⚠️  No PDFs found in default tracker, falling back to all PDFs...")
+                vendor_pdfs = list_vendor_pdfs(self.data_dir, tracker_path=None)
+            
+            if vendor_pdfs:
+                print(f"  📋 Found {len(vendor_pdfs)} vendor PDF(s) to process")
         
         if not vendor_pdfs:
             print("⚠️  WARNING: No vendor PDF files found")
-            print("   Place vendor PDFs in data/Response N Attachment/ folders")
+            print("   Upload vendor PDFs via /upload/vendor API endpoint first")
         else:
-            print(f"📄 Found {len(vendor_pdfs)} vendor PDF file(s)")
+            print(f"📄 Found {len(vendor_pdfs)} vendor PDF file(s) (from uploaded files only)")
+            print("\n   Files to process:")
+            for vendor_key, pdf_path in vendor_pdfs:
+                print(f"     • Response: {vendor_key}")
+                print(f"       📄 PDF: {pdf_path.name}")
+                print(f"       📍 Path: {pdf_path}")
             
             # Check if Textract should be run
             existing_json = list(self.textract_dir.glob("*.tables.json"))
             if skip_textract and existing_json and not force:
-                print(f"✓ Found {len(existing_json)} existing Textract JSON files, skipping OCR")
+                print(f"\n✓ Found {len(existing_json)} existing Textract JSON files, skipping OCR")
+                print("   Existing files:")
+                for json_file in sorted(existing_json):
+                    print(f"     • {json_file.name}")
             else:
                 import os
                 # Default to provided S3 bucket/prefix if env not set
@@ -211,7 +295,7 @@ class CompleteWorkflowOrchestrator:
                     # Use fallback local PDF extraction
                     for vendor_key, pdf_path in vendor_pdfs:
                         print(f"\n  Processing: {vendor_key}")
-                        print(f"    📄 PDF: {pdf_path.name}")
+                        print(f"    📄 PDF: {pdf_path.name} (uploaded filename)")
                         print(f"    🔍 Running local PDF extraction (pdfplumber)...")
                         
                         try:
@@ -228,7 +312,7 @@ class CompleteWorkflowOrchestrator:
                     
                     for vendor_key, pdf_path in vendor_pdfs:
                         print(f"\n  Processing: {vendor_key}")
-                        print(f"    📄 PDF: {pdf_path.name}")
+                        print(f"    📄 PDF: {pdf_path.name} (uploaded filename)")
                         print("    🔍 Running AWS Textract (async)...")
                         
                         try:
@@ -256,8 +340,12 @@ class CompleteWorkflowOrchestrator:
         elif existing_vendor_csvs and not textract_json_files:
             print(f"✓ Found {len(existing_vendor_csvs)} existing vendor CSV file(s)")
             print("  Skipping Textract JSON conversion (CSVs already exist)")
+            print("\n   Existing CSV files:")
+            for csv_file in sorted(existing_vendor_csvs):
+                print(f"     • {csv_file.name}")
         else:
             print(f"📄 Found {len(textract_json_files)} Textract JSON file(s)")
+            print("\n   Converting JSON files:")
             
             for json_file in textract_json_files:
                 print(f"\n  Converting: {json_file.name}")
@@ -297,12 +385,22 @@ class CompleteWorkflowOrchestrator:
             return 1
         
         print(f"✓ BOQ CSV ready: {boq_csv.name}")
-        print(f"✓ Vendor CSVs ready: {len(vendor_csvs)} file(s)")
+        print(f"   📍 Path: {boq_csv}")
+        print(f"\n✓ Vendor CSVs ready: {len(vendor_csvs)} file(s)")
+        print("   Files to process:")
+        for csv_file in sorted(vendor_csvs):
+            print(f"     • {csv_file.name}")
         print()
         
-        # Run enhanced workflow
+        # Run enhanced workflow with parallel processing
         try:
-            orchestrator = EnhancedWorkflowOrchestrator(use_bedrock=use_bedrock)
+            # Use parallel processing for vendors (None = auto-detect CPU count)
+            max_workers = None  # Can be set to a specific number if needed
+            orchestrator = EnhancedWorkflowOrchestrator(
+                use_bedrock=use_bedrock, 
+                max_workers=max_workers,
+                session_id=self.session_id
+            )
             result = orchestrator.run()
             
             if result == 0:
@@ -311,16 +409,31 @@ class CompleteWorkflowOrchestrator:
                 print("=" * 80)
                 
                 # Print summary of outputs
-                print("\n📂 Output Files:")
+                print("\n📂 Output Files Generated:")
                 print(f"   BOQ CSV: {boq_csv}")
-                print(f"   Vendor CSVs: {self.textract_csv_dir}")
-                print(f"   Comparisons: {self.comparison_dir}")
+                print(f"   Vendor CSVs directory: {self.textract_csv_dir}")
+                print(f"   Comparisons directory: {self.comparison_dir}")
                 
                 comparison_files = list(self.comparison_dir.glob("*_comparison.csv"))
                 if comparison_files:
                     print(f"\n📊 Generated {len(comparison_files)} comparison CSV(s):")
-                    for cf in comparison_files:
+                    for cf in sorted(comparison_files):
                         print(f"      • {cf.name}")
+                
+                # Summary of files used
+                print("\n📋 Summary of Files Used:")
+                print(f"   📄 Enquiry Excel: {inquiry_excel.name if inquiry_excel else 'N/A'}")
+                if tracked_enquiry_filename:
+                    print(f"      (Tracked filename: {tracked_enquiry_filename})")
+                
+                # Show tracked vendor PDFs
+                uploaded_pdfs = vendor_logic.get_uploaded_pdfs()
+                if uploaded_pdfs:
+                    print(f"\n   📄 Vendor PDFs ({len(uploaded_pdfs)} response(s)):")
+                    for resp_num, filenames in sorted(uploaded_pdfs.items()):
+                        print(f"      Response {resp_num}:")
+                        for filename in filenames:
+                            print(f"        • {filename}")
                 
                 print("\n💡 Next Steps:")
                 print("   1. Review comparison CSVs in Excel/Google Sheets")

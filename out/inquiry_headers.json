@@ -5,16 +5,18 @@
     "raw_columns": [
       "Sr. No",
       "Description",
-      "TOTAL Qty in Length / Nos",
       "UOM",
-      "REMARKS"
+      "TOTAL Qty in Length / Nos",
+      "UNIT PRICE",
+      "TOTAL PRICE"
     ],
     "normalized_columns": [
       "sr._no",
       "description",
-      "total_qty_in_length_nos",
       "uom",
-      "remarks"
+      "total_qty_in_length_nos",
+      "unit_price",
+      "total_price"
     ]
   }
 ]

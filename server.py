@@ -1,530 +1,508 @@
-from pathlib import Path
-from typing import List
-import csv
-import json
-import os
-import re
 
+"""
+Al Shirawi ORC (Optical Character Recognition) POC API Server
+
+This FastAPI server provides a comprehensive API for managing vendor quotation analysis
+and comparison workflows. It handles file uploads, workflow orchestration, and provides
+analytics for vendor comparison data.
+
+Key Features:
+- File upload management for enquiry Excel files and vendor PDF documents
+- Workflow orchestration for document processing and analysis
+- Vendor comparison and analytics APIs
+- AI-powered vendor analysis using AWS Bedrock (when available)
+- Static UI serving for web-based interface
+
+The server integrates with vendor_logic module for business logic and file operations.
+"""
+
+from typing import List, Optional
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.responses import JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
-from complete_workflow import CompleteWorkflowOrchestrator
+import vendor_logic
 
-# Bedrock client for AI recommendations
-try:
-    import boto3
-    BEDROCK_AVAILABLE = True
-except ImportError:
-    BEDROCK_AVAILABLE = False
-
-
-BASE_DIR = Path("/Users/sheiphanjoseph/Desktop/Developer/al_shirawi_orc_poc")
-DATA_DIR = BASE_DIR / "data"
-OUT_DIR = BASE_DIR / "out"
-COMPARISON_DIR = OUT_DIR / "vendor_comparisons"
-
-ENQUIRY_ATTACHMENT_DIR = DATA_DIR / "Enquiry Attachment"
-
+# Initialize FastAPI application
 app = FastAPI(title="Al Shirawi ORC POC API", version="0.1.0")
 
-def ensure_dir(p: Path) -> None:
-    p.mkdir(parents=True, exist_ok=True)
+# Mount static files for UI
+app.mount("/ui", StaticFiles(directory=str(vendor_logic.STATIC_DIR), html=True), name="ui")
 
-# Static UI
-STATIC_DIR = BASE_DIR / "static"
-ensure_dir(STATIC_DIR)
-app.mount("/ui", StaticFiles(directory=str(STATIC_DIR), html=True), name="ui")
 
 
 @app.get("/health")
 def health() -> dict:
+    """
+    Health check endpoint to verify API server status.
+    
+    Returns:
+        dict: Simple status response indicating the API is operational
+    """
     return {"status": "ok"}
 
 
-@app.post("/upload/enquiry")
-async def upload_enquiry_excel(file: UploadFile = File(...)) -> JSONResponse:
-    # Only accept Excel files
-    allowed_suffixes = {".xlsx", ".xlsm", ".xls"}
-    suffix = Path(file.filename).suffix.lower()
-    if suffix not in allowed_suffixes:
-        raise HTTPException(status_code=400, detail="Only Excel files are allowed (.xlsx/.xlsm/.xls)")
-
-    ensure_dir(ENQUIRY_ATTACHMENT_DIR)
-
-    dest_path = ENQUIRY_ATTACHMENT_DIR / Path(file.filename).name
-    contents = await file.read()
-    dest_path.write_bytes(contents)
-
+@app.post("/create-session")
+def create_session() -> JSONResponse:
+    """
+    Create a new session for isolated workflow runs.
+    
+    Returns:
+        JSONResponse: Session ID for the new session
+    """
+    session_id = vendor_logic.generate_session_id()
     return JSONResponse({
-        "message": "Enquiry Excel uploaded",
-        "filename": file.filename,
-        "saved_to": str(dest_path),
+        "message": "Session created",
+        "session_id": session_id,
+        "output_directory": str(vendor_logic.get_session_out_dir(session_id))
     })
+
+
+
+@app.post("/upload/enquiry")
+async def upload_enquiry_excel(
+    file: UploadFile = File(...),
+    session_id: Optional[str] = Form(None, description="Session ID (optional - auto-generated if not provided)")
+) -> JSONResponse:
+    """
+    Upload enquiry Excel file containing BOQ (Bill of Quantities) data to a specific session.
+    
+    **Recommended Workflow:**
+    1. POST /create-session → get session_id
+    2. POST /upload/enquiry with session_id
+    3. POST /upload/vendor with same session_id
+    4. POST /run-workflow with same session_id
+    
+    If no session_id is provided, one will be auto-generated and returned.
+    Use the returned session_id for subsequent uploads and workflow execution.
+    
+    Args:
+        file (UploadFile): Excel file containing BOQ data
+        session_id (str, optional): Session ID from /create-session. Auto-generated if not provided.
+        
+    Returns:
+        JSONResponse: Success response with file details and save location
+        
+    Raises:
+        HTTPException: 400 if file format is not supported
+        HTTPException: 500 if file processing fails
+    """
+    allowed_suffixes = {".xlsx", ".xlsm", ".xls"}
+    suffix = file.filename.split(".")[-1].lower()
+    if f".{suffix}" not in allowed_suffixes:
+        raise HTTPException(status_code=400, detail="Only Excel files are allowed (.xlsx/.xlsm/.xls)")
+    
+    # Auto-generate session_id if not provided
+    if not session_id:
+        session_id = vendor_logic.generate_session_id()
+        print(f"🆔 Auto-generated session ID for enquiry upload: {session_id}")
+    
+    contents = await file.read()
+    try:
+        saved_path = vendor_logic.save_enquiry_excel(file.filename, contents, session_id=session_id)
+        # Get tracked enquiry Excel filename
+        tracked_filename = vendor_logic.get_uploaded_enquiry_excel(session_id=session_id)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    return JSONResponse({
+        "message": f"Enquiry Excel uploaded to session {session_id}",
+        "filename": file.filename,
+        "saved_to": saved_path,
+        "tracked_filename": tracked_filename,
+        "session_id": session_id,
+        "note": "IMPORTANT: Use this session_id when uploading vendor PDFs and running the workflow!"
+    })
+
 
 
 @app.post("/upload/vendor")
 async def upload_vendor_pdfs(
     response_number: int = Form(..., description="Response number N to map folder 'Response N Attachment'"),
     files: List[UploadFile] = File(..., description="One or more vendor PDF files"),
+    session_id: Optional[str] = Form(None, description="Session ID (optional - use same as enquiry upload)")
 ) -> JSONResponse:
+    """
+    Upload vendor PDF quotation files for a specific response number to a session.
+    
+    **IMPORTANT**: Use the SAME session_id that was returned when uploading the enquiry Excel.
+    All files in a session must use the same session_id for proper tracking.
+    
+    If no session_id is provided, files will be uploaded to the default location.
+    
+    Args:
+        response_number (int): Response number to map to 'Response N Attachment' folder
+        files (List[UploadFile]): One or more PDF files containing vendor quotations
+        session_id (str, optional): Session ID from enquiry upload response
+        
+    Returns:
+        JSONResponse: Success response with upload details and file locations
+        
+    Raises:
+        HTTPException: 400 if no files provided or invalid file format
+        HTTPException: 500 if file processing fails
+    """
     if not files:
         raise HTTPException(status_code=400, detail="No files provided")
-
-    # Create folder like: data/Response N Attachment/
-    folder_name = f"Response {response_number} Attachment"
-    dest_dir = DATA_DIR / folder_name
-    ensure_dir(dest_dir)
-
-    saved: List[str] = []
+    
+    if not session_id:
+        print(f"⚠️  Warning: No session_id provided for vendor upload. Files uploaded without session tracking.")
+    else:
+        print(f"✅ Received vendor upload for Response {response_number} with session_id: {session_id}")
+    
+    file_objs = []
     for f in files:
-        suffix = Path(f.filename).suffix.lower()
-        if suffix != ".pdf":
-            raise HTTPException(status_code=400, detail=f"Only PDF files are allowed: {f.filename}")
-        dest_path = dest_dir / Path(f.filename).name
         contents = await f.read()
-        dest_path.write_bytes(contents)
-        saved.append(str(dest_path))
-
+        file_objs.append({"filename": f.filename, "contents": contents})
+    try:
+        saved = vendor_logic.save_vendor_pdfs(response_number, file_objs, session_id=session_id)
+        # Get tracked filenames for this response
+        uploaded_pdfs = vendor_logic.get_uploaded_pdfs(session_id=session_id)
+        tracked_filenames = uploaded_pdfs.get(response_number, [])
+    except ValueError as ve:
+        raise HTTPException(status_code=400, detail=str(ve))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+    response_msg = f"Vendor PDFs uploaded to session {session_id}" if session_id else "Vendor PDFs uploaded"
+    note_msg = "IMPORTANT: Use this session_id when running the workflow!" if session_id else "Warning: No session_id - files not tracked in any session"
+    
     return JSONResponse({
-        "message": "Vendor PDFs uploaded",
+        "message": response_msg,
         "response_number": response_number,
         "count": len(saved),
         "saved_to": saved,
+        "tracked_filenames": tracked_filenames,
+        "session_id": session_id,
+        "note": note_msg
     })
+
 
 
 @app.post("/run-workflow")
 def run_workflow(
     skip_textract: bool = Form(False),
     skip_boq: bool = Form(False),
+    session_id: Optional[str] = Form(None, description="Session ID to process (optional)")
 ) -> JSONResponse:
+    """
+    Execute the complete vendor analysis workflow.
+    
+    **Recommended Workflow:**
+    1. POST /create-session → get session_id
+    2. POST /upload/enquiry with session_id → upload BOQ Excel
+    3. POST /upload/vendor with session_id → upload vendor PDFs (repeat for each vendor)
+    4. POST /run-workflow with session_id → process all files in session
+    
+    The workflow:
+    - Extracts data from uploaded PDFs using AWS Textract (unless skipped)
+    - Processes BOQ data from Excel files (unless skipped)
+    - Performs vendor comparison and matching with LLM (in parallel)
+    - Generates analysis reports and comparison data
+    
+    If session_id is provided: ONLY processes files from that specific session
+    If session_id is NOT provided: Processes files from default location (legacy mode)
+    
+    Args:
+        skip_textract (bool): Skip PDF text extraction step (default: False)
+        skip_boq (bool): Skip BOQ processing step (default: False)
+        session_id (str, optional): Session ID to process. Use session_id from upload responses.
+        
+    Returns:
+        JSONResponse: Success response with workflow completion status and session info
+        
+    Raises:
+        HTTPException: 400 if session has no uploaded files
+        HTTPException: 500 if workflow execution fails
+    """
     try:
-        orchestrator = CompleteWorkflowOrchestrator()
-        result = orchestrator.run(skip_textract=skip_textract, skip_boq=skip_boq)
+        # Validate session has uploaded files (if session_id provided)
+        if session_id:
+            tracker_path = vendor_logic.get_session_tracker_path(session_id)
+            if not tracker_path.exists():
+                raise HTTPException(
+                    status_code=400, 
+                    detail=f"Session '{session_id}' has no uploaded files. Upload files first using /upload/enquiry and /upload/vendor with this session_id."
+                )
+        
+        result = vendor_logic.run_workflow(skip_textract=skip_textract, skip_boq=skip_boq, session_id=session_id)
         if result != 0:
             raise HTTPException(status_code=500, detail=f"Workflow failed with code {result}")
-        return JSONResponse({"message": "Workflow completed successfully", "code": result})
+        
+        output_dir = str(vendor_logic.get_session_out_dir(session_id)) if session_id else "out"
+        note = "All outputs are isolated in the session-specific directory" if session_id else "Files processed from default location"
+        
+        return JSONResponse({
+            "message": "Workflow completed successfully",
+            "code": result,
+            "session_id": session_id,
+            "output_directory": output_dir,
+            "note": note
+        })
     except HTTPException:
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
+
 # Redirect root to Home page
 @app.get("/")
 def root() -> RedirectResponse:
+    """
+    Redirect root URL to the home page UI.
+    
+    Returns:
+        RedirectResponse: Redirects to /ui/home.html
+    """
     return RedirectResponse(url="/ui/home.html")
+
+
+# ========================================================================
+# Session Management APIs
+# ========================================================================
+
+
+@app.get("/api/sessions")
+def list_sessions() -> JSONResponse:
+    """
+    List all available sessions.
+    
+    Returns all sessions with their metadata, sorted by creation time (newest first).
+    Each session includes information about uploaded files, outputs, and workflow runs.
+    
+    Returns:
+        JSONResponse: List of sessions with metadata including:
+        - session_id: Unique session identifier
+        - created_at: Session creation timestamp
+        - enquiry_excel: Name of uploaded BOQ file
+        - vendor_count: Number of vendors uploaded
+        - outputs: Status of generated outputs
+    """
+    try:
+        sessions = vendor_logic.list_all_sessions()
+        return JSONResponse({
+            "sessions": sessions,
+            "total": len(sessions)
+        })
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error listing sessions: {str(e)}")
+
+
+@app.get("/api/sessions/{session_id}")
+def get_session(session_id: str) -> JSONResponse:
+    """
+    Get detailed information about a specific session.
+    
+    Returns comprehensive session details including all uploaded files,
+    workflow status, and generated outputs.
+    
+    Args:
+        session_id (str): Session ID
+        
+    Returns:
+        JSONResponse: Detailed session information including:
+        - session_id: Unique identifier
+        - path: File system path to session directory
+        - created_at: Creation timestamp
+        - last_updated: Last modification timestamp
+        - enquiry_excel: Uploaded BOQ filename
+        - vendor_count: Number of vendors
+        - outputs: Status of generated outputs (inquiry_csv, textract, comparisons)
+        - workflow_runs: History of workflow executions
+        
+    Raises:
+        HTTPException: 404 if session not found
+        HTTPException: 500 if error retrieving session info
+    """
+    try:
+        session_info = vendor_logic.get_session_info(session_id)
+        return JSONResponse(session_info)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Session {session_id} not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error getting session info: {str(e)}")
+
+
+@app.delete("/api/sessions/{session_id}")
+def delete_session(session_id: str) -> JSONResponse:
+    """
+    Delete a session and all its data.
+    
+    This permanently removes the session directory including all uploaded files,
+    outputs, and metadata. This action cannot be undone.
+    
+    **Warning**: Use with caution. Consider archiving important sessions before deletion.
+    
+    Args:
+        session_id (str): Session ID to delete
+        
+    Returns:
+        JSONResponse: Deletion confirmation with session_id
+        
+    Raises:
+        HTTPException: 404 if session not found
+        HTTPException: 500 if deletion fails
+    """
+    try:
+        vendor_logic.delete_session(session_id)
+        return JSONResponse({
+            "message": f"Session {session_id} deleted successfully",
+            "session_id": session_id
+        })
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Session {session_id} not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error deleting session: {str(e)}")
 
 
 # ========================================================================
 # Vendor Comparison & Analysis APIs
 # ========================================================================
 
+
 @app.get("/api/vendors")
-def list_vendors() -> JSONResponse:
-    """List all available vendor comparisons"""
-    if not COMPARISON_DIR.exists():
-        return JSONResponse({"vendors": [], "message": "No comparisons found. Run workflow first."})
+def list_vendors(session_id: Optional[str] = None) -> JSONResponse:
+    """
+    Get list of all available vendors with their comparison data.
     
-    vendors = []
-    for csv_file in COMPARISON_DIR.glob("*_comparison.csv"):
-        # Extract vendor name from filename like "3_-_IKKT_comparison.csv"
-        match = re.match(r"(\d+)_-_(.+)_comparison\.csv", csv_file.name)
-        if match:
-            response_num = match.group(1)
-            vendor_name = match.group(2).replace("_", " ")
-            vendors.append({
-                "id": response_num,
-                "name": vendor_name,
-                "filename": csv_file.name,
-            })
+    Returns a list of vendors that have been processed and have comparison
+    data available. Each vendor includes ID, name, and filename information.
     
-    return JSONResponse({"vendors": sorted(vendors, key=lambda v: int(v["id"]))})
+    Args:
+        session_id (str, optional): Session ID to filter vendors. If provided, only
+                                   vendors from that session are returned.
+    
+    Returns:
+        JSONResponse: List of vendors with optional message if no data found
+    """
+    vendors = vendor_logic.list_vendors(session_id=session_id)
+    message = None
+    if not vendors:
+        msg = "No comparisons found. Run workflow first."
+        if session_id:
+            msg += f" (Session: {session_id})"
+        message = msg
+    return JSONResponse({
+        "vendors": vendors,
+        "message": message,
+        "session_id": session_id
+    })
+
 
 
 @app.get("/api/vendors/{vendor_id}/comparison")
 def get_vendor_comparison(vendor_id: str) -> JSONResponse:
-    """Get detailed comparison data for a specific vendor"""
-    # Find the comparison CSV
-    matches = list(COMPARISON_DIR.glob(f"{vendor_id}_-_*_comparison.csv"))
+    """
+    Get detailed comparison data for a specific vendor.
     
-    if not matches:
-        raise HTTPException(status_code=404, detail=f"Vendor {vendor_id} not found")
+    Returns comprehensive comparison data including:
+    - Summary statistics (total items, matched items, match rates)
+    - Quality distribution (excellent, good, fair, missing matches)
+    - Total pricing information
+    - Issues summary
+    - Detailed item-by-item comparison data
     
-    csv_file = matches[0]
-    
+    Args:
+        vendor_id (str): Unique identifier for the vendor
+        
+    Returns:
+        JSONResponse: Detailed comparison data for the vendor
+        
+    Raises:
+        HTTPException: 404 if vendor not found
+        HTTPException: 500 if data reading fails
+    """
     try:
-        with open(csv_file, "r", encoding="utf-8", errors="ignore") as f:
-            reader = csv.DictReader(f)
-            rows = list(reader)
-        
-        # Calculate summary statistics
-        total_items = len(rows)
-        matched_items = sum(1 for r in rows if r.get("Vendor Description"))
-        excellent_matches = sum(1 for r in rows if "✅ EXCELLENT" in r.get("Match Status", ""))
-        good_matches = sum(1 for r in rows if "✓ GOOD" in r.get("Match Status", ""))
-        
-        # Calculate total price
-        total_price = 0.0
-        for r in rows:
-            try:
-                price_str = r.get("Vendor Total Price", "").strip()
-                if price_str:
-                    total_price += float(price_str)
-            except (ValueError, AttributeError):
-                pass
-        
-        # Extract issues summary
-        issues_summary = {}
-        for r in rows:
-            issues = r.get("Issues", "")
-            if issues and issues != "None":
-                issue_types = issues.split(";")
-                for issue in issue_types:
-                    issue = issue.strip()
-                    if ":" in issue:
-                        issue_type = issue.split(":")[0].strip()
-                        issues_summary[issue_type] = issues_summary.get(issue_type, 0) + 1
-        
-        return JSONResponse({
-            "vendor_id": vendor_id,
-            "filename": csv_file.name,
-            "summary": {
-                "total_items": total_items,
-                "matched_items": matched_items,
-                "excellent_matches": excellent_matches,
-                "good_matches": good_matches,
-                "match_rate": round(matched_items / total_items * 100, 1) if total_items > 0 else 0,
-                "total_price": round(total_price, 2),
-                "issues": issues_summary,
-            },
-            "items": rows,
-        })
-    
+        data = vendor_logic.get_vendor_comparison(vendor_id)
+        return JSONResponse(data)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Vendor {vendor_id} not found")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error reading comparison: {str(e)}")
 
 
+
 @app.get("/api/vendors/{vendor_id}/items")
 def get_vendor_items(vendor_id: str, status: str = None, limit: int = None) -> JSONResponse:
-    """Get detailed item-level data for a vendor with optional filtering"""
-    matches = list(COMPARISON_DIR.glob(f"{vendor_id}_-_*_comparison.csv"))
+    """
+    Get filtered list of items for a specific vendor.
     
-    if not matches:
-        raise HTTPException(status_code=404, detail=f"Vendor {vendor_id} not found")
+    Returns item data for a vendor with optional filtering by match status
+    and limiting the number of results returned.
     
-    csv_file = matches[0]
-    
+    Args:
+        vendor_id (str): Unique identifier for the vendor
+        status (str, optional): Filter by match status ('excellent', 'good', 'fair', 'missing')
+        limit (int, optional): Maximum number of items to return
+        
+    Returns:
+        JSONResponse: Filtered list of vendor items with metadata
+        
+    Raises:
+        HTTPException: 404 if vendor not found
+        HTTPException: 500 if data reading fails
+    """
     try:
-        with open(csv_file, "r", encoding="utf-8", errors="ignore") as f:
-            reader = csv.DictReader(f)
-            items = list(reader)
-        
-        # Filter by status if provided
-        if status:
-            status_map = {
-                "excellent": "✅ EXCELLENT",
-                "good": "✓ GOOD",
-                "fair": "⚠ FAIR",
-                "missing": "❌ MISSING/POOR"
-            }
-            filter_status = status_map.get(status.lower())
-            if filter_status:
-                items = [item for item in items if filter_status in item.get("Match Status", "")]
-        
-        # Limit results if specified
-        if limit and limit > 0:
-            items = items[:limit]
-        
-        return JSONResponse({"vendor_id": vendor_id, "items": items, "total": len(items)})
-    
+        data = vendor_logic.get_vendor_items(vendor_id, status, limit)
+        return JSONResponse(data)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Vendor {vendor_id} not found")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error reading items: {str(e)}")
 
 
+
 @app.get("/api/statistics")
 def get_overall_statistics() -> JSONResponse:
-    """Get comprehensive statistics across all vendors"""
-    if not COMPARISON_DIR.exists():
-        return JSONResponse({"message": "No data available"})
+    """
+    Get overall statistics across all vendors and comparisons.
     
-    all_stats = {
-        "total_vendors": 0,
-        "total_boq_items": 0,
-        "overall_match_rate": 0.0,
-        "price_range": {"min": float('inf'), "max": 0.0, "avg": 0.0},
-        "quality_distribution": {
-            "excellent": 0,
-            "good": 0,
-            "fair": 0,
-            "missing": 0
-        },
-        "common_issues": {},
-        "vendors": []
-    }
+    Returns comprehensive statistics including:
+    - Total vendors and BOQ items processed
+    - Overall match rates and quality distribution
+    - Price range analysis (min, max, average)
+    - Common issues across all vendors
+    - Individual vendor performance summaries
     
-    total_prices = []
-    
-    for csv_file in COMPARISON_DIR.glob("*_comparison.csv"):
-        match = re.match(r"(\d+)_-_(.+)_comparison\.csv", csv_file.name)
-        if not match:
-            continue
-        
-        vendor_id = match.group(1)
-        vendor_name = match.group(2).replace("_", " ")
-        
-        with open(csv_file, "r", encoding="utf-8", errors="ignore") as f:
-            reader = csv.DictReader(f)
-            rows = list(reader)
-        
-        total_items = len(rows)
-        matched = sum(1 for r in rows if r.get("Vendor Description") and r.get("Vendor Description") != "NOT QUOTED")
-        
-        # Quality distribution
-        excellent = sum(1 for r in rows if "✅ EXCELLENT" in r.get("Match Status", ""))
-        good = sum(1 for r in rows if "✓ GOOD" in r.get("Match Status", ""))
-        fair = sum(1 for r in rows if "⚠ FAIR" in r.get("Match Status", ""))
-        missing = sum(1 for r in rows if "❌ MISSING/POOR" in r.get("Match Status", ""))
-        
-        all_stats["quality_distribution"]["excellent"] += excellent
-        all_stats["quality_distribution"]["good"] += good
-        all_stats["quality_distribution"]["fair"] += fair
-        all_stats["quality_distribution"]["missing"] += missing
-        
-        # Price analysis
-        total_price = 0.0
-        for r in rows:
-            try:
-                price_str = r.get("Vendor Total Price", "").strip()
-                if price_str:
-                    price = float(price_str)
-                    total_price += price
-            except (ValueError, AttributeError):
-                pass
-        
-        if total_price > 0:
-            total_prices.append(total_price)
-            all_stats["price_range"]["min"] = min(all_stats["price_range"]["min"], total_price)
-            all_stats["price_range"]["max"] = max(all_stats["price_range"]["max"], total_price)
-        
-        # Issues
-        for r in rows:
-            issues = r.get("Issues", "")
-            if issues and issues != "None":
-                for issue in issues.split(";"):
-                    issue_type = issue.split(":")[0].strip() if ":" in issue else issue.strip()
-                    if issue_type:
-                        all_stats["common_issues"][issue_type] = all_stats["common_issues"].get(issue_type, 0) + 1
-        
-        all_stats["vendors"].append({
-            "id": vendor_id,
-            "name": vendor_name,
-            "total_items": total_items,
-            "matched_items": matched,
-            "match_rate": round(matched / total_items * 100, 1) if total_items > 0 else 0,
-            "total_price": round(total_price, 2),
-            "quality": {
-                "excellent": excellent,
-                "good": good,
-                "fair": fair,
-                "missing": missing
-            }
-        })
-        
-        all_stats["total_vendors"] += 1
-        all_stats["total_boq_items"] = total_items  # Assuming all vendors quote same BOQ
-    
-    # Calculate overall metrics
-    if all_stats["vendors"]:
-        all_stats["overall_match_rate"] = round(
-            sum(v["match_rate"] for v in all_stats["vendors"]) / len(all_stats["vendors"]), 1
-        )
-    
-    if total_prices:
-        all_stats["price_range"]["avg"] = round(sum(total_prices) / len(total_prices), 2)
-    
-    if all_stats["price_range"]["min"] == float('inf'):
-        all_stats["price_range"]["min"] = 0.0
-    
-    return JSONResponse(all_stats)
+    Returns:
+        JSONResponse: Comprehensive statistics data
+    """
+    stats = vendor_logic.get_overall_statistics()
+    return JSONResponse(stats)
+
 
 
 @app.post("/api/analyze")
 def analyze_vendors(vendor_ids: List[str] = Form(...)) -> JSONResponse:
-    """AI-powered analysis and recommendation of vendors using AWS Bedrock"""
+    """
+    Perform AI-powered analysis and comparison of multiple vendors.
     
-    if not BEDROCK_AVAILABLE:
-        raise HTTPException(
-            status_code=503,
-            detail="AWS Bedrock not available. Install boto3 and configure AWS credentials."
-        )
+    This endpoint uses AWS Bedrock (when available) to perform intelligent
+    analysis of vendor quotations, providing recommendations and rankings.
+    Falls back to heuristic analysis if AI services are unavailable.
     
-    # Collect comparison data for all vendors
-    vendors_data = []
-    for vendor_id in vendor_ids:
-        matches = list(COMPARISON_DIR.glob(f"{vendor_id}_-_*_comparison.csv"))
-        if not matches:
-            continue
+    Args:
+        vendor_ids (List[str]): List of vendor IDs to analyze and compare
         
-        csv_file = matches[0]
-        vendor_name = re.match(r"\d+_-_(.+)_comparison\.csv", csv_file.name).group(1).replace("_", " ")
+    Returns:
+        JSONResponse: Analysis results including:
+        - Vendor performance data
+        - AI recommendations and rankings
+        - Model used for analysis
+        - Error information if applicable
         
-        with open(csv_file, "r", encoding="utf-8", errors="ignore") as f:
-            reader = csv.DictReader(f)
-            rows = list(reader)
-        
-        # Calculate metrics
-        total_items = len(rows)
-        matched = sum(1 for r in rows if r.get("Vendor Description") and r.get("Vendor Description") != "NOT QUOTED")
-        
-        # Quality breakdown
-        excellent = sum(1 for r in rows if "✅ EXCELLENT" in r.get("Match Status", ""))
-        good = sum(1 for r in rows if "✓ GOOD" in r.get("Match Status", ""))
-        fair = sum(1 for r in rows if "⚠ FAIR" in r.get("Match Status", ""))
-        missing = total_items - (excellent + good + fair)
-        
-        total_price = sum(float(r.get("Vendor Total Price", 0) or 0) for r in rows if r.get("Vendor Total Price", "").strip())
-        
-        # Count issues
-        qty_issues = sum(1 for r in rows if "Qty variance" in r.get("Issues", ""))
-        uom_issues = sum(1 for r in rows if "UOM mismatch" in r.get("Issues", ""))
-        type_issues = sum(1 for r in rows if "Type mismatch" in r.get("Issues", ""))
-        
-        # Calculate average confidence
-        confidences = []
-        for r in rows:
-            try:
-                conf = float(r.get("Match Confidence", "0"))
-                confidences.append(conf)
-            except (ValueError, TypeError):
-                pass
-        avg_confidence = round(sum(confidences) / len(confidences), 3) if confidences else 0.0
-        
-        vendors_data.append({
-            "vendor_id": vendor_id,
-            "vendor_name": vendor_name,
-            "total_items": total_items,
-            "matched_items": matched,
-            "match_rate": round(matched / total_items * 100, 1) if total_items > 0 else 0,
-            "total_price": round(total_price, 2),
-            "avg_confidence": avg_confidence,
-            "quality": {
-                "excellent": excellent,
-                "good": good,
-                "fair": fair,
-                "missing": missing
-            },
-            "issues": {
-                "qty_variance": qty_issues,
-                "uom_mismatch": uom_issues,
-                "type_mismatch": type_issues,
-            }
-        })
-    
-    # Generate AI recommendation using Bedrock
+    Raises:
+        HTTPException: 503 if AI services are unavailable
+        HTTPException: 500 if analysis fails
+    """
     try:
-        profile = os.getenv("AWS_PROFILE", "thinktank")
-        region = os.getenv("AWS_REGION", "us-east-1")
-        model_id = os.getenv("BEDROCK_MODEL_ID", "anthropic.claude-3-5-sonnet-20240620-v1:0")
-        
-        session = boto3.Session(profile_name=profile, region_name=region)
-        bedrock = session.client("bedrock-runtime")
-        
-        prompt = f"""You are an expert procurement analyst with deep experience in vendor evaluation and RFQ analysis. 
-
-Analyze the following vendor quotation data and provide a comprehensive, data-driven recommendation:
-
-Vendor Comparison Data:
-{json.dumps(vendors_data, indent=2)}
-
-Provide a detailed analysis with:
-
-1. **Executive Summary** - One paragraph with the recommended vendor and key rationale
-
-2. **Vendor Rankings** - Rank all vendors from best to worst with scores out of 100
-
-3. **Detailed Vendor Analysis** - For each vendor:
-   - Key strengths (2-3 points)
-   - Key weaknesses (2-3 points)
-   - Quality assessment (based on match rates and confidence)
-   - Pricing position (competitive/average/high)
-
-4. **Risk Assessment** - Identify top 3 risks across all vendors with mitigation strategies
-
-5. **Price Competitiveness** - Comparative price analysis with recommendations
-
-6. **Final Recommendation** - Specific, actionable recommendation with justification
-
-Be thorough, specific, and data-driven. Use the actual numbers provided."""
-
-        payload = {
-            "anthropic_version": "bedrock-2023-05-31",
-            "max_tokens": 4000,
-            "temperature": 0.3,
-            "messages": [
-                {
-                    "role": "user",
-                    "content": prompt
-                }
-            ]
-        }
-        
-        response = bedrock.invoke_model(
-            modelId=model_id,
-            body=json.dumps(payload)
-        )
-        
-        result = json.loads(response["body"].read())
-        ai_recommendation = result["content"][0]["text"]
-        
-        return JSONResponse({
-            "vendors": vendors_data,
-            "ai_recommendation": ai_recommendation,
-            "model_used": model_id,
-        })
-    
+        result = vendor_logic.analyze_vendors(vendor_ids)
+        return JSONResponse(result)
+    except RuntimeError as e:
+        raise HTTPException(status_code=503, detail=str(e))
     except Exception as e:
-        # Fallback to heuristic recommendation
-        if not vendors_data:
-            raise HTTPException(status_code=400, detail="No valid vendor data found")
-        
-        # Enhanced heuristic: consider multiple factors
-        def score_vendor(v):
-            match_score = v["match_rate"] * 0.4
-            quality_score = (v["quality"]["excellent"] * 3 + v["quality"]["good"] * 2 + v["quality"]["fair"]) * 0.3
-            # Normalize price (lower is better)
-            max_price = max(vd["total_price"] for vd in vendors_data if vd["total_price"] > 0)
-            price_score = (1 - (v["total_price"] / max_price if max_price > 0 else 0)) * 30
-            return match_score + quality_score + price_score
-        
-        vendors_data.sort(key=score_vendor, reverse=True)
-        best_vendor = vendors_data[0]
-        
-        recommendation = f"""**[Heuristic Analysis]**
+        raise HTTPException(status_code=500, detail=str(e))
 
-Based on automated scoring considering match rate, quality, and pricing:
-
-**Recommended Vendor: {best_vendor['vendor_name']}**
-
-**Key Metrics:**
-- Match Rate: {best_vendor['match_rate']}%
-- Total Price: ${best_vendor['total_price']:,.2f}
-- Quality: {best_vendor['quality']['excellent']} Excellent, {best_vendor['quality']['good']} Good matches
-
-**Vendor Rankings:**
-"""
-        for i, v in enumerate(vendors_data, 1):
-            recommendation += f"\n{i}. **{v['vendor_name']}** - {v['match_rate']}% match, ${v['total_price']:,.2f}"
-        
-        recommendation += f"\n\n**Note:** AI analysis unavailable. This is a heuristic recommendation based on weighted scoring.\nError: {str(e)}"
-        
-        return JSONResponse({
-            "vendors": vendors_data,
-            "ai_recommendation": recommendation,
-            "model_used": "heuristic",
-            "error": str(e),
-        })
 
 
 @app.post("/api/analyze-item")
@@ -532,90 +510,38 @@ def analyze_single_item(
     vendor_id: str = Form(...),
     boq_sr_no: str = Form(...),
 ) -> JSONResponse:
-    """Get AI-powered analysis for a specific BOQ item and vendor match"""
+    """
+    Perform AI-powered analysis of a single BOQ item and its vendor match.
     
-    if not BEDROCK_AVAILABLE:
-        raise HTTPException(status_code=503, detail="Bedrock not available")
+    This endpoint analyzes a specific BOQ item and its corresponding vendor
+    quotation match, providing detailed insights about the match quality,
+    discrepancies, and recommendations.
     
-    # Find the vendor CSV
-    matches = list(COMPARISON_DIR.glob(f"{vendor_id}_-_*_comparison.csv"))
-    if not matches:
-        raise HTTPException(status_code=404, detail="Vendor not found")
-    
-    csv_file = matches[0]
-    
-    # Find the specific item
-    with open(csv_file, "r", encoding="utf-8", errors="ignore") as f:
-        reader = csv.DictReader(f)
-        item_data = None
-        for row in reader:
-            if row.get("BOQ Sr.No", "").strip() == boq_sr_no.strip():
-                item_data = row
-                break
-    
-    if not item_data:
-        raise HTTPException(status_code=404, detail="Item not found")
-    
-    # Use Bedrock to analyze this specific match
+    Args:
+        vendor_id (str): Unique identifier for the vendor
+        boq_sr_no (str): BOQ serial number of the item to analyze
+        
+    Returns:
+        JSONResponse: Analysis results including:
+        - Item data and match details
+        - AI analysis of the match quality
+        - Model used for analysis
+        - Error information if applicable
+        
+    Raises:
+        HTTPException: 503 if AI services are unavailable
+        HTTPException: 404 if vendor or item not found
+    """
     try:
-        profile = os.getenv("AWS_PROFILE", "thinktank")
-        region = os.getenv("AWS_REGION", "us-east-1")
-        model_id = os.getenv("BEDROCK_MODEL_ID", "anthropic.claude-3-5-sonnet-20240620-v1:0")
-        
-        session = boto3.Session(profile_name=profile, region_name=region)
-        bedrock = session.client("bedrock-runtime")
-        
-        prompt = f"""Analyze this specific BOQ item and vendor quotation match:
-
-**BOQ Requirement:**
-- Sr.No: {item_data.get('BOQ Sr.No')}
-- Description: {item_data.get('BOQ Description')}
-- Quantity: {item_data.get('BOQ Qty')} {item_data.get('BOQ UOM')}
-- Item Type: {item_data.get('BOQ Item Type')}
-- Dimensions: {item_data.get('BOQ Dimensions')}
-- Material: {item_data.get('BOQ Material')}
-
-**Vendor Quote:**
-- Description: {item_data.get('Vendor Description')}
-- Quantity: {item_data.get('Vendor Qty')} {item_data.get('Vendor UOM')}
-- Unit Price: {item_data.get('Vendor Unit Price')}
-- Total Price: {item_data.get('Vendor Total Price')}
-- Brand: {item_data.get('Vendor Brand')}
-
-**Match Status:** {item_data.get('Match Status')}
-**Match Confidence:** {item_data.get('Match Confidence')}
-**Issues:** {item_data.get('Issues')}
-**LLM Reasoning:** {item_data.get('LLM Reasoning')}
-
-Provide:
-1. Is this a correct match? (Yes/No/Uncertain)
-2. Key observations about the match quality
-3. Any discrepancies or concerns
-4. Pricing assessment (fair/high/low if applicable)
-5. Recommendation (Accept/Reject/Review)
-
-Be specific and concise."""
-
-        payload = {
-            "anthropic_version": "bedrock-2023-05-31",
-            "max_tokens": 1000,
-            "temperature": 0.2,
-            "messages": [{"role": "user", "content": prompt}]
-        }
-        
-        response = bedrock.invoke_model(modelId=model_id, body=json.dumps(payload))
-        result = json.loads(response["body"].read())
-        analysis = result["content"][0]["text"]
-        
-        return JSONResponse({
-            "item": item_data,
-            "analysis": analysis,
-            "model_used": model_id
-        })
-    
+        result = vendor_logic.analyze_single_item(vendor_id, boq_sr_no)
+        return JSONResponse(result)
+    except RuntimeError as e:
+        raise HTTPException(status_code=503, detail=str(e))
+    except FileNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))
     except Exception as e:
         return JSONResponse({
-            "item": item_data,
+            "item": None,
             "analysis": f"AI analysis unavailable: {str(e)}",
             "model_used": "none",
             "error": str(e)
