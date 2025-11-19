@@ -14,10 +14,11 @@ import json
 import os
 import re
 import threading
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional, Any, Tuple
 
 import boto3
 import pandas as pd
@@ -28,9 +29,9 @@ import pandas as pd
 # ============================================================================
 
 class EnhancedBedrockClient:
-    """Enhanced Bedrock client with detailed prompt engineering"""
+    """Enhanced Bedrock client with detailed prompt engineering and batch processing"""
     
-    def __init__(self):
+    def __init__(self, max_parallel_calls: int = 5):
         # Default to provided AWS CLI profile if not set
         profile = os.getenv("AWS_PROFILE", "thinktank")
         region = os.getenv("AWS_REGION") or os.getenv("AWS_DEFAULT_REGION", "us-east-1")
@@ -38,14 +39,18 @@ class EnhancedBedrockClient:
         self.client = session.client("bedrock-runtime")
         self.model_id = os.getenv("BEDROCK_MODEL_ID", "anthropic.claude-3-5-sonnet-20240620-v1:0")
         self.use_bedrock = os.getenv("BEDROCK_DISABLE") != "1"
+        self.max_parallel_calls = max_parallel_calls
+        # Rate limiting
+        self.request_delay = 0.1  # 100ms delay between batches to avoid throttling
     
     def invoke_structured(self, prompt: str, json_schema: Dict, 
                          tool_name: str = "extract_data",
                          tool_description: str = "Extract structured data from the input",
                          max_tokens: int = 4096, 
-                         temperature: float = 0.0) -> Optional[Dict]:
+                         temperature: float = 0.0,
+                         max_retries: int = 3) -> Optional[Dict]:
         """
-        Invoke Bedrock with structured output using Tool Use (Converse API).
+        Invoke Bedrock with structured output using Tool Use (Converse API) with retry logic.
         This provides native JSON schema support for reliable structured responses.
         Reference: https://aws.amazon.com/blogs/machine-learning/structured-data-response-with-amazon-bedrock-prompt-engineering-and-tool-use/
         
@@ -56,6 +61,7 @@ class EnhancedBedrockClient:
             tool_description: Description of what the tool does
             max_tokens: Maximum tokens for response
             temperature: Sampling temperature (0.0 for deterministic)
+            max_retries: Maximum number of retries on throttling (default: 3)
         
         Returns:
             Parsed JSON dict matching the schema, or None on error
@@ -63,62 +69,80 @@ class EnhancedBedrockClient:
         if not self.use_bedrock:
             return None
         
-        try:
-            # Define tool with JSON schema
-            tool_config = {
-                "tools": [
-                    {
-                        "toolSpec": {
-                            "name": tool_name,
-                            "description": tool_description,
-                            "inputSchema": {
-                                "json": json_schema
-                            }
+        # Define tool with JSON schema
+        tool_config = {
+            "tools": [
+                {
+                    "toolSpec": {
+                        "name": tool_name,
+                        "description": tool_description,
+                        "inputSchema": {
+                            "json": json_schema
                         }
                     }
-                ]
-            }
-            
-            # Prepare message
-            messages = [
-                {
-                    "role": "user",
-                    "content": [{"text": prompt}]
                 }
             ]
-            
-            # Call Converse API with tool use
-            response = self.client.converse(
-                modelId=self.model_id,
-                messages=messages,
-                toolConfig=tool_config,
-                inferenceConfig={
-                    "maxTokens": max_tokens,
-                    "temperature": temperature
-                }
-            )
-            
-            # Extract tool use result
-            output_message = response.get("output", {}).get("message", {})
-            content = output_message.get("content", [])
-            
-            # Find tool use in response
-            for item in content:
-                if "toolUse" in item:
-                    tool_use = item["toolUse"]
-                    # Return the structured input data (which is our output)
-                    return tool_use.get("input", {})
-            
-            # Fallback: try to extract text response
-            for item in content:
-                if "text" in item:
-                    return self.extract_json(item["text"])
-            
-            return None
-            
-        except Exception as e:
-            print(f"      ⚠️  Bedrock structured invoke error: {e}")
-            return None
+        }
+        
+        # Prepare message
+        messages = [
+            {
+                "role": "user",
+                "content": [{"text": prompt}]
+            }
+        ]
+        
+        # Retry loop with exponential backoff
+        for attempt in range(max_retries + 1):
+            try:
+                # Call Converse API with tool use
+                response = self.client.converse(
+                    modelId=self.model_id,
+                    messages=messages,
+                    toolConfig=tool_config,
+                    inferenceConfig={
+                        "maxTokens": max_tokens,
+                        "temperature": temperature
+                    }
+                )
+                
+                # Extract tool use result
+                output_message = response.get("output", {}).get("message", {})
+                content = output_message.get("content", [])
+                
+                # Find tool use in response
+                for item in content:
+                    if "toolUse" in item:
+                        tool_use = item["toolUse"]
+                        # Return the structured input data (which is our output)
+                        return tool_use.get("input", {})
+                
+                # Fallback: try to extract text response
+                for item in content:
+                    if "text" in item:
+                        return self.extract_json(item["text"])
+                
+                return None
+                
+            except Exception as e:
+                error_msg = str(e)
+                # Check if it's a throttling error
+                if "ThrottlingException" in error_msg or "Too many requests" in error_msg:
+                    if attempt < max_retries:
+                        # Exponential backoff: 1s, 2s, 4s, 8s...
+                        wait_time = 2 ** attempt
+                        print(f"      ⚠️  Throttled, waiting {wait_time}s before retry {attempt + 1}/{max_retries}...")
+                        time.sleep(wait_time)
+                        continue
+                    else:
+                        print("      ❌ Max retries reached for throttling error")
+                        return None
+                else:
+                    # Non-throttling error, don't retry
+                    print(f"      ⚠️  Bedrock structured invoke error: {e}")
+                    return None
+        
+        return None
     
     def invoke(self, prompt: str, system_prompt: Optional[str] = None, 
                max_tokens: int = 4096, temperature: float = 0.0) -> str:
@@ -190,6 +214,128 @@ class EnhancedBedrockClient:
                     pass
         
         return None
+    
+    def invoke_structured_batch(self, 
+                               requests: List[Tuple[str, Dict, str, str]], 
+                               max_tokens: int = 4096, 
+                               temperature: float = 0.0,
+                               progress_label: str = "Processing") -> List[Optional[Dict]]:
+        """
+        Invoke Bedrock with structured output in parallel for multiple requests with progress tracking.
+        
+        Args:
+            requests: List of (prompt, json_schema, tool_name, tool_description) tuples
+            max_tokens: Maximum tokens for each response
+            temperature: Sampling temperature
+            progress_label: Label for progress messages
+        
+        Returns:
+            List of parsed JSON dicts matching schemas, in same order as requests
+        """
+        if not self.use_bedrock or not requests:
+            return [None] * len(requests)
+        
+        results = [None] * len(requests)
+        completed_count = 0
+        total_count = len(requests)
+        lock = threading.Lock()
+        
+        def process_single(index: int, prompt: str, json_schema: Dict, 
+                          tool_name: str, tool_description: str) -> Tuple[int, Optional[Dict]]:
+            """Process a single request and return (index, result)"""
+            nonlocal completed_count
+            try:
+                result = self.invoke_structured(
+                    prompt=prompt,
+                    json_schema=json_schema,
+                    tool_name=tool_name,
+                    tool_description=tool_description,
+                    max_tokens=max_tokens,
+                    temperature=temperature
+                )
+                
+                # Update progress
+                with lock:
+                    completed_count += 1
+                    if completed_count % 5 == 0 or completed_count == total_count:
+                        print(f"      📊 {progress_label}: {completed_count}/{total_count} completed")
+                
+                return (index, result)
+            except Exception as e:
+                with lock:
+                    completed_count += 1
+                print(f"      ⚠️  Batch item {index} error: {e}")
+                return (index, None)
+        
+        # Process in parallel using ThreadPoolExecutor with rate limiting
+        with ThreadPoolExecutor(max_workers=self.max_parallel_calls) as executor:
+            futures = []
+            for idx, (prompt, schema, tool_name, tool_desc) in enumerate(requests):
+                future = executor.submit(process_single, idx, prompt, schema, tool_name, tool_desc)
+                futures.append(future)
+                # Small delay to avoid burst throttling
+                time.sleep(self.request_delay)
+            
+            # Collect results
+            for future in as_completed(futures):
+                try:
+                    idx, result = future.result()
+                    results[idx] = result
+                except Exception as e:
+                    print(f"      ⚠️  Batch processing error: {e}")
+        
+        return results
+    
+    def invoke_batch(self, 
+                    requests: List[Tuple[str, Optional[str]]], 
+                    max_tokens: int = 4096, 
+                    temperature: float = 0.0) -> List[str]:
+        """
+        Invoke Bedrock in parallel for multiple text-based requests.
+        
+        Args:
+            requests: List of (prompt, system_prompt) tuples
+            max_tokens: Maximum tokens for each response
+            temperature: Sampling temperature
+        
+        Returns:
+            List of text responses, in same order as requests
+        """
+        if not self.use_bedrock or not requests:
+            return ["{}"] * len(requests)
+        
+        results = ["{}"] * len(requests)
+        
+        def process_single(index: int, prompt: str, system_prompt: Optional[str]) -> Tuple[int, str]:
+            """Process a single request and return (index, result)"""
+            try:
+                result = self.invoke(
+                    prompt=prompt,
+                    system_prompt=system_prompt,
+                    max_tokens=max_tokens,
+                    temperature=temperature
+                )
+                return (index, result)
+            except Exception as e:
+                print(f"      ⚠️  Batch item {index} error: {e}")
+                return (index, "{}")
+        
+        # Process in parallel using ThreadPoolExecutor
+        with ThreadPoolExecutor(max_workers=self.max_parallel_calls) as executor:
+            futures = []
+            for idx, (prompt, system_prompt) in enumerate(requests):
+                future = executor.submit(process_single, idx, prompt, system_prompt)
+                futures.append(future)
+            
+            # Collect results
+            for future in as_completed(futures):
+                try:
+                    idx, result = future.result()
+                    results[idx] = result
+                except Exception as e:
+                    print(f"      ⚠️  Batch processing error: {e}")
+        
+        return results
 
 
 # ============================================================================
@@ -259,16 +405,12 @@ class AlignedMatch:
 # ============================================================================
 
 class BOQUnderstandingAgent:
-    """Uses LLM to deeply understand each BOQ line item"""
+    """Uses LLM to deeply understand each BOQ line item with batch processing support"""
     
     def __init__(self, bedrock: EnhancedBedrockClient):
         self.bedrock = bedrock
-    
-    def understand_boq_line(self, row_index: int, sr_no: str, description: str, qty: float, uom: str) -> BOQLineUnderstanding:
-        """Use LLM to extract semantic understanding from BOQ line"""
-        
-        # Define JSON schema for structured output
-        json_schema = {
+        # Define JSON schema for BOQ extraction (shared across all requests)
+        self.json_schema = {
             "type": "object",
             "properties": {
                 "item_type": {
@@ -313,6 +455,9 @@ class BOQUnderstandingAgent:
             },
             "required": ["item_type", "dimensions", "material", "quantity", "uom", "search_keywords", "reasoning"]
         }
+    
+    def understand_boq_line(self, row_index: int, sr_no: str, description: str, qty: float, uom: str) -> BOQLineUnderstanding:
+        """Use LLM to extract semantic understanding from BOQ line"""
                                 
         prompt = f"""Analyze this BOQ line item and extract detailed semantic information.
 
@@ -332,7 +477,7 @@ Important:
         
         result = self.bedrock.invoke_structured(
             prompt=prompt,
-            json_schema=json_schema,
+            json_schema=self.json_schema,
             tool_name="extract_boq_data",
             tool_description="Extract structured information from BOQ line item",
             max_tokens=1024,
@@ -412,6 +557,79 @@ Important:
             search_keywords=keywords[:10],
             reasoning="Heuristic extraction"
         )
+    
+    def understand_boq_lines_batch(self, 
+                                   boq_data: List[Tuple[int, str, str, float, str]]) -> List[BOQLineUnderstanding]:
+        """
+        Batch process multiple BOQ lines in parallel using LLM.
+        
+        Args:
+            boq_data: List of (row_index, sr_no, description, qty, uom) tuples
+        
+        Returns:
+            List of BOQLineUnderstanding objects in same order as input
+        """
+        if not boq_data:
+            return []
+        
+        # Build batch requests
+        requests = []
+        for row_index, sr_no, description, qty, uom in boq_data:
+            prompt = f"""Analyze this BOQ line item and extract detailed semantic information.
+
+BOQ Line:
+Sr. No: {sr_no}
+Description: {description}
+Quantity: {qty}
+UOM: {uom}
+
+Important:
+- Extract ALL dimensions mentioned (width, height, thickness, length) with units
+- Identify material type (HDG = Hot Dip Galvanized, GI, SS304, etc.)
+- List key specifications beyond dimensions
+- Generate comprehensive keywords for fuzzy matching
+- Be precise with units (mm, m, inch, etc.)
+"""
+            requests.append((prompt, self.json_schema, "extract_boq_data", 
+                           "Extract structured information from BOQ line item"))
+        
+        # Process in parallel with progress tracking
+        results = self.bedrock.invoke_structured_batch(
+            requests, 
+            max_tokens=1024, 
+            temperature=0.0,
+            progress_label="BOQ lines"
+        )
+        
+        # Convert results to BOQLineUnderstanding objects
+        understandings = []
+        for i, ((row_index, sr_no, description, qty, uom), result) in enumerate(zip(boq_data, results)):
+            if result:
+                try:
+                    parsed_qty = float(result.get("quantity") or qty)
+                except (ValueError, TypeError):
+                    parsed_qty = qty
+                
+                understanding = BOQLineUnderstanding(
+                    row_index=row_index,
+                    sr_no=sr_no,
+                    raw_description=description,
+                    item_type=result.get("item_type") or "unknown",
+                    dimensions=result.get("dimensions") or {},
+                    material=result.get("material") or "",
+                    quantity=parsed_qty,
+                    uom=result.get("uom") or uom,
+                    key_specs=result.get("key_specs") or [],
+                    search_keywords=result.get("search_keywords") or [],
+                    reasoning=result.get("reasoning") or ""
+                )
+            else:
+                # Use fallback for failed items
+                understanding = self._fallback_understanding(row_index, sr_no, description, qty, uom)
+            
+            understandings.append(understanding)
+        
+        return understandings
 
 
 # ============================================================================
@@ -419,29 +637,12 @@ Important:
 # ============================================================================
 
 class VendorQuoteUnderstandingAgent:
-    """Uses LLM to deeply understand each vendor quote line"""
+    """Uses LLM to deeply understand each vendor quote line with batch processing support"""
     
     def __init__(self, bedrock: EnhancedBedrockClient):
         self.bedrock = bedrock
-    
-    def understand_vendor_line(self, row_index: int, row_data: Dict[str, Any]) -> Optional[VendorLineUnderstanding]:
-        """Use LLM to extract semantic understanding from vendor quote line"""
-        
-        # Skip if no meaningful description
-        # Try case-insensitive column matching
-        description = ""
-        for key, value in row_data.items():
-            key_lower = str(key).lower().strip()
-            if 'description' in key_lower or 'desc' in key_lower or 'item' in key_lower:
-                if value and str(value).strip() and len(str(value).strip()) >= 5:
-                    description = str(value).strip()
-                    break
-        
-        if not description:
-            return None
-        
-        # Define JSON schema for structured output
-        json_schema = {
+        # Define JSON schema for vendor extraction (shared across all requests)
+        self.json_schema = {
             "type": "object",
             "properties": {
                 "item_type": {
@@ -498,6 +699,22 @@ class VendorQuoteUnderstandingAgent:
             },
             "required": ["item_type", "dimensions", "material", "search_keywords", "reasoning"]
         }
+    
+    def understand_vendor_line(self, row_index: int, row_data: Dict[str, Any]) -> Optional[VendorLineUnderstanding]:
+        """Use LLM to extract semantic understanding from vendor quote line"""
+        
+        # Skip if no meaningful description
+        # Try case-insensitive column matching
+        description = ""
+        for key, value in row_data.items():
+            key_lower = str(key).lower().strip()
+            if 'description' in key_lower or 'desc' in key_lower or 'item' in key_lower:
+                if value and str(value).strip() and len(str(value).strip()) >= 5:
+                    description = str(value).strip()
+                    break
+        
+        if not description:
+            return None
         
         prompt = f"""Analyze this vendor quotation line and extract structured information.
 
@@ -514,7 +731,7 @@ Important:
         
         result = self.bedrock.invoke_structured(
             prompt=prompt,
-            json_schema=json_schema,
+            json_schema=self.json_schema,
             tool_name="extract_vendor_quote_data",
             tool_description="Extract structured information from vendor quotation line",
             max_tokens=1024,
@@ -610,6 +827,97 @@ Important:
             search_keywords=keywords[:10],
             reasoning="Heuristic extraction"
         )
+    
+    def understand_vendor_lines_batch(self, 
+                                     vendor_data: List[Tuple[int, Dict[str, Any]]]) -> List[Optional[VendorLineUnderstanding]]:
+        """
+        Batch process multiple vendor lines in parallel using LLM.
+        
+        Args:
+            vendor_data: List of (row_index, row_data) tuples
+        
+        Returns:
+            List of VendorLineUnderstanding objects (or None) in same order as input
+        """
+        if not vendor_data:
+            return []
+        
+        # Filter out rows without meaningful descriptions and build requests
+        valid_indices = []
+        requests = []
+        descriptions = []
+        
+        for idx, (row_index, row_data) in enumerate(vendor_data):
+            # Try case-insensitive column matching
+            description = ""
+            for key, value in row_data.items():
+                key_lower = str(key).lower().strip()
+                if 'description' in key_lower or 'desc' in key_lower or 'item' in key_lower:
+                    if value and str(value).strip() and len(str(value).strip()) >= 5:
+                        description = str(value).strip()
+                        break
+            
+            if description:
+                valid_indices.append(idx)
+                descriptions.append(description)
+                
+                prompt = f"""Analyze this vendor quotation line and extract structured information.
+
+Vendor Quote Line:
+{json.dumps(row_data, indent=2)}
+
+Important:
+- Extract ALL numeric values (qty, prices) from any column
+- Identify dimensions from description with units
+- Identify material type (HDG, GI, SS304, etc.)
+- Parse UOM variations (Mtr/Lth/NOS/Nos/etc.)
+- Provide comprehensive search keywords for matching
+"""
+                requests.append((prompt, self.json_schema, "extract_vendor_quote_data", 
+                               "Extract structured information from vendor quotation line"))
+        
+        # Process valid requests in parallel with progress tracking
+        if requests:
+            results = self.bedrock.invoke_structured_batch(
+                requests, 
+                max_tokens=1024, 
+                temperature=0.0,
+                progress_label="Vendor lines"
+            )
+        else:
+            results = []
+        
+        # Build final result list with None for invalid rows
+        understandings: List[Optional[VendorLineUnderstanding]] = [None] * len(vendor_data)
+        
+        for valid_idx, result_idx in enumerate(valid_indices):
+            row_index, row_data = vendor_data[result_idx]
+            result = results[valid_idx] if valid_idx < len(results) else None
+            description = descriptions[valid_idx]
+            
+            if result:
+                understanding = VendorLineUnderstanding(
+                    row_index=row_index,
+                    raw_description=str(description),
+                    item_type=result.get("item_type") or "unknown",
+                    dimensions=result.get("dimensions") or {},
+                    material=result.get("material") or "",
+                    quantity=self._parse_float(result.get("quantity")),
+                    uom=result.get("uom"),
+                    unit_price=self._parse_float(result.get("unit_price")),
+                    total_price=self._parse_float(result.get("total_price")),
+                    brand=result.get("brand"),
+                    key_specs=result.get("key_specs") or [],
+                    search_keywords=result.get("search_keywords") or [],
+                    reasoning=result.get("reasoning") or ""
+                )
+            else:
+                # Use fallback for failed items
+                understanding = self._fallback_understanding(row_index, description, row_data)
+            
+            understandings[result_idx] = understanding
+        
+        return understandings
 
 
 # ============================================================================
@@ -844,12 +1152,23 @@ class IntelligentAlignmentAgent:
 # ============================================================================
 
 class EnhancedWorkflowOrchestrator:
-    """Enhanced workflow that creates per-vendor comparison CSVs"""
+    """Enhanced workflow that creates per-vendor comparison CSVs with parallel batch processing"""
     
-    def __init__(self, use_bedrock: bool = False, max_workers: Optional[int] = None, session_id: Optional[str] = None):
+    def __init__(self, use_bedrock: bool = False, max_workers: Optional[int] = None, 
+                 max_parallel_bedrock_calls: int = 5, session_id: Optional[str] = None):
+        """
+        Initialize the workflow orchestrator with parallel processing capabilities.
+        
+        Args:
+            use_bedrock: Whether to use Bedrock (overridden by BEDROCK_DISABLE env var)
+            max_workers: Number of parallel workers for vendor processing (None = auto-detect)
+            max_parallel_bedrock_calls: Number of parallel Bedrock API calls per batch (default: 5)
+                Set to 5 by default; adjust based on your AWS Bedrock throttling limits.
+            session_id: Optional session ID for session-specific output directories
+        """
         from src.utils.constants import DATA_DIR, OUT_DIR
         
-        self.bedrock = EnhancedBedrockClient()
+        self.bedrock = EnhancedBedrockClient(max_parallel_calls=max_parallel_bedrock_calls)
         self.boq_agent = BOQUnderstandingAgent(self.bedrock)
         self.vendor_agent = VendorQuoteUnderstandingAgent(self.bedrock)
         self.alignment_agent = IntelligentAlignmentAgent(self.bedrock)
@@ -939,7 +1258,27 @@ class EnhancedWorkflowOrchestrator:
         
         # Step 3: Generate consolidated all_comparison table
         print("\n[Step 3] 📊 Generating consolidated comparison table...")
-        self._generate_all_comparison_table(boq_lines)
+        comparison_csv_path = self._generate_all_comparison_table(boq_lines)
+        
+        # Step 4: Upload comparison CSV to S3 (if session_id is provided)
+        if self.session_id:
+            print("\n[Step 4] ☁️  Uploading comparison CSV to S3...")
+            try:
+                from src.services.s3_service import upload_comparison_to_s3
+                s3_info = upload_comparison_to_s3(self.session_id, comparison_csv_path)
+                if s3_info:
+                    print(f"  ✓ Uploaded to S3: {s3_info['s3_uri']}")
+                    print("  📥 Download URL generated (expires in 24 hours)")
+                    # Store S3 info in session directory for later retrieval
+                    s3_info_file = self.comparison_dir / "s3_upload_info.json"
+                    import json
+                    with open(s3_info_file, 'w') as f:
+                        json.dump(s3_info, f, indent=2)
+                    print(f"  ✓ S3 info saved to: {s3_info_file.name}")
+                else:
+                    print("  ⚠️  S3 upload failed or S3 not configured")
+            except Exception as e:
+                print(f"  ⚠️  S3 upload error (continuing anyway): {e}")
         
         print("=" * 80)
         print("✅ Workflow completed successfully!")
@@ -949,15 +1288,16 @@ class EnhancedWorkflowOrchestrator:
         return 0
     
     def _load_and_understand_boq(self) -> List[BOQLineUnderstanding]:
-        """Load BOQ and use LLM to understand each line"""
+        """Load BOQ and use LLM to understand each line with batch processing"""
         
         if not self.inquiry_csv.exists():
             print(f"  ❌ Error: BOQ CSV not found at {self.inquiry_csv}")
             return []
         
         df = pd.read_csv(self.inquiry_csv)
-        boq_lines = []
         
+        # Collect all valid BOQ lines
+        boq_data = []
         for idx, row in df.iterrows():
             sr_no = str(row.get("Sr. No", "")).strip()
             description = str(row.get("Description", "")).strip()
@@ -978,17 +1318,17 @@ class EnhancedWorkflowOrchestrator:
             except Exception:
                 continue
             
-            # Use LLM to understand this line (only every 3rd for efficiency)
-            if idx % 3 == 0:
-                print(f"    🤖 LLM analyzing: {sr_no} - {description[:50]}...")
-            
-            understanding = self.boq_agent.understand_boq_line(idx, sr_no, description, qty, uom)
-            boq_lines.append(understanding)
+            boq_data.append((idx, sr_no, description, qty, uom))
+        
+        print(f"    🤖 Processing {len(boq_data)} BOQ lines in parallel batches...")
+        
+        # Use batch processing for all BOQ lines
+        boq_lines = self.boq_agent.understand_boq_lines_batch(boq_data)
         
         return boq_lines
     
     def _load_and_understand_vendor(self, csv_path: Path) -> List[VendorLineUnderstanding]:
-        """Load vendor CSV and use LLM to understand each line"""
+        """Load vendor CSV and use LLM to understand each line with batch processing"""
         
         try:
             # Read raw lines to find header row (more reliable than pandas with inconsistent columns)
@@ -1038,8 +1378,8 @@ class EnhancedWorkflowOrchestrator:
                 print(f"      ❌ Error reading CSV: {e}")
                 return []
         
-        vendor_lines = []
-        
+        # Collect all valid vendor lines for batch processing
+        vendor_data = []
         for idx, row in df.iterrows():
             row_data = row.to_dict()
             
@@ -1047,19 +1387,15 @@ class EnhancedWorkflowOrchestrator:
             if all(pd.isna(v) or str(v).strip() == '' for v in row_data.values()):
                 continue
             
-            # Use LLM to understand (sample every 5th)
-            if idx % 5 == 0:
-                # Case-insensitive description lookup for debug print
-                desc = ""
-                for key, value in row_data.items():
-                    if 'desc' in str(key).lower() or 'item' in str(key).lower():
-                        desc = str(value)[:40]
-                        break
-                print(f"      🤖 LLM analyzing row {idx}: {desc}...")
-            
-            understanding = self.vendor_agent.understand_vendor_line(idx, row_data)
-            if understanding:
-                vendor_lines.append(understanding)
+            vendor_data.append((idx, row_data))
+        
+        print(f"      🤖 Processing {len(vendor_data)} vendor lines in parallel batches...")
+        
+        # Use batch processing for all vendor lines
+        all_understandings = self.vendor_agent.understand_vendor_lines_batch(vendor_data)
+        
+        # Filter out None values
+        vendor_lines = [u for u in all_understandings if u is not None]
         
         return vendor_lines
     
@@ -1329,7 +1665,8 @@ class EnhancedWorkflowOrchestrator:
         
         # Create thread-local Bedrock client and agents for thread safety
         # Each thread needs its own client instance to avoid conflicts
-        thread_bedrock = EnhancedBedrockClient()
+        # Use the same max_parallel_calls configuration as the main orchestrator
+        thread_bedrock = EnhancedBedrockClient(max_parallel_calls=self.bedrock.max_parallel_calls)
         thread_vendor_agent = VendorQuoteUnderstandingAgent(thread_bedrock)
         thread_alignment_agent = IntelligentAlignmentAgent(thread_bedrock)
         
@@ -1432,8 +1769,8 @@ class EnhancedWorkflowOrchestrator:
                 self._thread_safe_print(f"      ❌ Error reading CSV: {e}")
                 return []
         
-        vendor_lines = []
-        
+        # Collect all valid vendor lines for batch processing
+        vendor_data = []
         for idx, row in df.iterrows():
             row_data = row.to_dict()
             
@@ -1441,19 +1778,15 @@ class EnhancedWorkflowOrchestrator:
             if all(pd.isna(v) or str(v).strip() == '' for v in row_data.values()):
                 continue
             
-            # Use LLM to understand (sample every 5th)
-            if idx % 5 == 0:
-                # Case-insensitive description lookup for debug print
-                desc = ""
-                for key, value in row_data.items():
-                    if 'desc' in str(key).lower() or 'item' in str(key).lower():
-                        desc = str(value)[:40]
-                        break
-                self._thread_safe_print(f"      🤖 LLM analyzing row {idx}: {desc}...")
-            
-            understanding = vendor_agent.understand_vendor_line(idx, row_data)
-            if understanding:
-                vendor_lines.append(understanding)
+            vendor_data.append((idx, row_data))
+        
+        self._thread_safe_print(f"      🤖 Processing {len(vendor_data)} vendor lines in parallel batches...")
+        
+        # Use batch processing for all vendor lines
+        all_understandings = vendor_agent.understand_vendor_lines_batch(vendor_data)
+        
+        # Filter out None values
+        vendor_lines = [u for u in all_understandings if u is not None]
         
         return vendor_lines
     
@@ -1478,7 +1811,8 @@ class EnhancedWorkflowOrchestrator:
         
         print(f"  📋 Found {len(comparison_files)} comparison file(s)")
         
-        # Dictionary to store all vendor data keyed by BOQ Sr.No
+        # Dictionary to store all vendor data keyed by composite key (Sr.No + Description)
+        # This handles cases where the same Sr.No appears in different sections (e.g., Cable Ladder vs Cable Tray)
         all_data = {}
         vendor_names = []
         
@@ -1493,16 +1827,21 @@ class EnhancedWorkflowOrchestrator:
                 
                 for idx, row in df.iterrows():
                     boq_sr_no = str(row.get("BOQ Sr.No", "")).strip()
+                    boq_description = str(row.get("BOQ Description", "")).strip()
                     
                     # Skip rows without BOQ Sr.No
                     if not boq_sr_no or boq_sr_no.lower() in ("boq sr.no", ""):
                         continue
                     
+                    # Use composite key: Sr.No + Description to handle duplicate Sr.Nos across sections
+                    # This ensures unique identification of BOQ items (e.g., Cable Ladder item 1 vs Cable Tray item 1)
+                    composite_key = f"{boq_sr_no}|||{boq_description}"
+                    
                     # Initialize entry for this BOQ item if not exists
-                    if boq_sr_no not in all_data:
-                        all_data[boq_sr_no] = {
+                    if composite_key not in all_data:
+                        all_data[composite_key] = {
                             "boq_sr_no": boq_sr_no,
-                            "boq_description": row.get("BOQ Description", ""),
+                            "boq_description": boq_description,
                             "boq_qty": row.get("BOQ Qty", ""),
                             "boq_uom": row.get("BOQ UOM", ""),
                             "boq_item_type": row.get("BOQ Item Type", ""),
@@ -1512,7 +1851,7 @@ class EnhancedWorkflowOrchestrator:
                         }
                     
                     # Store vendor-specific data
-                    all_data[boq_sr_no]["vendors"][vendor_name] = {
+                    all_data[composite_key]["vendors"][vendor_name] = {
                         "description": row.get("Vendor Description", ""),
                         "qty": row.get("Vendor Qty", ""),
                         "uom": row.get("Vendor UOM", ""),
@@ -1564,8 +1903,9 @@ class EnhancedWorkflowOrchestrator:
             writer.writerow(header)
             
             # Write data rows sorted by BOQ Sr.No
-            for boq_sr_no in sorted(all_data.keys(), key=lambda x: self._sort_key(x)):
-                item = all_data[boq_sr_no]
+            # Extract Sr.No from composite key for sorting
+            for composite_key in sorted(all_data.keys(), key=lambda x: self._sort_key(x.split("|||")[0] if "|||" in x else x)):
+                item = all_data[composite_key]
                 row = [
                     item["boq_sr_no"],
                     item["boq_description"],
@@ -1703,8 +2043,14 @@ class EnhancedWorkflowOrchestrator:
 
 def main() -> int:
     """Main entry point"""
-    # Use parallel processing (None = auto-detect CPU count)
-    orchestrator = EnhancedWorkflowOrchestrator(max_workers=None)
+    # Use parallel processing with optimized settings:
+    # - max_workers=None: Auto-detect CPU count for vendor parallelization
+    # - max_parallel_bedrock_calls=5: Process 5 Bedrock API calls simultaneously per batch
+    #   (adjust this if you experience throttling or have higher rate limits)
+    orchestrator = EnhancedWorkflowOrchestrator(
+        max_workers=None, 
+        max_parallel_bedrock_calls=5
+    )
     return orchestrator.run()
 
 

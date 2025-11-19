@@ -117,6 +117,16 @@ AI analysis of specific BOQ item:
 - Form data: `vendor_id`, `boq_sr_no`
 - Returns: Detailed AI assessment of match
 
+### `/api/sessions/{session_id}/download-url` (GET) - NEW
+Get presigned S3 download URL for comparison CSV:
+- Path param: `session_id`
+- Query param: `regenerate` (optional, default: false)
+- Returns: Presigned S3 URL valid for 24 hours
+- **Features**:
+  - Automatically uploads comparison CSV to S3 after workflow completion
+  - Caches presigned URLs for performance
+  - Organizes files by session ID in S3: `sessions/{session_id}/comparisons/all_comparison.csv`
+
 ## 📊 Quality Score Algorithm
 
 ```python
@@ -199,6 +209,9 @@ export AWS_REGION=us-east-1
 # For Textract PDF processing
 export TEXTRACT_S3_BUCKET=your-bucket
 export TEXTRACT_S3_PREFIX=textract-temp/
+
+# For S3 comparison CSV uploads
+export S3_BUCKET_NAME=al-shirawi-orc-poc  # Default bucket for comparison CSVs
 
 # Optional
 export BEDROCK_MODEL_ID=anthropic.claude-3-5-sonnet-20240620-v1:0

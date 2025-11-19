@@ -26,4 +26,5 @@ UPLOADED_FILES_TRACKER = OUT_DIR / "uploaded_files_tracker.json"
 AWS_PROFILE = os.getenv("AWS_PROFILE", "thinktank")
 AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
 BEDROCK_MODEL_ID = os.getenv("BEDROCK_MODEL_ID", "anthropic.claude-3-5-sonnet-20240620-v1:0")
+S3_BUCKET_NAME = os.getenv("S3_BUCKET_NAME", "al-shirawi-orc-poc")
 

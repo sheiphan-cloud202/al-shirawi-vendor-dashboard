@@ -396,10 +396,16 @@ class CompleteWorkflowOrchestrator:
         # Run enhanced workflow with parallel processing
         try:
             # Use parallel processing for vendors (None = auto-detect CPU count)
+            # max_workers: Controls number of vendors processed in parallel
+            # max_parallel_bedrock_calls: Controls number of Bedrock API calls per batch
+            #   (set to 5; adjust if you hit throttling or have higher rate limits)
             max_workers = None  # Can be set to a specific number if needed
+            max_parallel_bedrock_calls = 5  # Process 5 LLM calls simultaneously per batch
+            
             orchestrator = EnhancedWorkflowOrchestrator(
                 use_bedrock=use_bedrock, 
                 max_workers=max_workers,
+                max_parallel_bedrock_calls=max_parallel_bedrock_calls,
                 session_id=self.session_id
             )
             result = orchestrator.run()

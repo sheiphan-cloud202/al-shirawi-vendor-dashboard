@@ -549,3 +549,96 @@ def analyze_single_item(
         })
 
 
+# ========================================================================
+# S3 Download APIs
+# ========================================================================
+
+
+@app.get("/api/sessions/{session_id}/download-url")
+def get_comparison_download_url(session_id: str, regenerate: bool = False) -> JSONResponse:
+    """
+    Get download URL for the comparison CSV file.
+    
+    Returns a presigned S3 URL for downloading the all_comparison.csv file
+    for a specific session. The URL is valid for 24 hours.
+    
+    Args:
+        session_id (str): Session ID
+        regenerate (bool): If True, regenerate the presigned URL even if cached
+        
+    Returns:
+        JSONResponse: Download URL and metadata including:
+        - download_url: Presigned S3 URL (expires in 24 hours)
+        - s3_uri: S3 URI of the file
+        - file_name: Name of the comparison file
+        - expires_in: URL expiration time in seconds
+        
+    Raises:
+        HTTPException: 404 if session or comparison file not found
+        HTTPException: 500 if S3 operation fails
+    """
+    import json
+    from pathlib import Path
+    
+    try:
+        # Get session output directory
+        session_out_dir = vendor_logic.get_session_out_dir(session_id)
+        comparison_dir = session_out_dir / "vendor_comparisons"
+        
+        # Check if comparison CSV exists
+        comparison_csv = comparison_dir / "all_comparison.csv"
+        if not comparison_csv.exists():
+            raise HTTPException(
+                status_code=404,
+                detail=f"Comparison CSV not found for session {session_id}. Run workflow first."
+            )
+        
+        # Check if S3 info exists and is valid
+        s3_info_file = comparison_dir / "s3_upload_info.json"
+        
+        if s3_info_file.exists() and not regenerate:
+            # Load existing S3 info
+            with open(s3_info_file, 'r') as f:
+                s3_info = json.load(f)
+            
+            # Return cached info
+            return JSONResponse({
+                "download_url": s3_info.get("download_url"),
+                "s3_uri": s3_info.get("s3_uri"),
+                "s3_key": s3_info.get("s3_key"),
+                "bucket": s3_info.get("bucket"),
+                "file_name": s3_info.get("file_name"),
+                "session_id": session_id,
+                "expires_in": 86400,  # 24 hours
+                "cached": True
+            })
+        
+        # Generate new presigned URL
+        from src.services.s3_service import upload_comparison_to_s3
+        s3_info = upload_comparison_to_s3(session_id, comparison_csv)
+        
+        if not s3_info:
+            raise HTTPException(
+                status_code=500,
+                detail="Failed to upload to S3 or generate download URL"
+            )
+        
+        return JSONResponse({
+            "download_url": s3_info.get("download_url"),
+            "s3_uri": s3_info.get("s3_uri"),
+            "s3_key": s3_info.get("s3_key"),
+            "bucket": s3_info.get("bucket"),
+            "file_name": s3_info.get("file_name"),
+            "session_id": session_id,
+            "expires_in": 86400,  # 24 hours
+            "cached": False
+        })
+        
+    except HTTPException:
+        raise
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Session {session_id} not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error generating download URL: {str(e)}")
+
+

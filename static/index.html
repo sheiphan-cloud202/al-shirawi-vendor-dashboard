@@ -541,14 +541,12 @@
           <!-- Success Section -->
           <div id="workflow-success" class="success-section" style="display: none;">
             <h3>✅ Workflow Completed Successfully!</h3>
-            <p>Your data has been processed and analyzed. You can now view the comprehensive results and AI recommendations.</p>
+            <p>Your data has been processed and analyzed. You can now download the comprehensive comparison results.</p>
             <div class="success-actions">
-              <a href="/ui/dashboard.html" class="success-btn primary">
-                📊 View Advanced Dashboard
-              </a>
-              <a href="/ui/analysis.html" class="success-btn">
-                📋 View Basic Analysis
-              </a>
+              <button id="download-comparison-btn" class="success-btn primary" onclick="downloadComparison()">
+                📥 Download Comparison CSV
+              </button>
+              <div id="download-status" style="margin-top: 12px; font-size: 14px; color: var(--text-secondary);"></div>
             </div>
           </div>
         </div>

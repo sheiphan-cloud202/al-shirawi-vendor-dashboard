@@ -281,8 +281,64 @@ async function runWorkflow(e) {
   }
 }
 
-// Make createSession available globally for onclick handlers
+// Download comparison CSV
+async function downloadComparison() {
+  if (!currentSessionId) {
+    showNotification('No active session. Please run workflow first.', 'error');
+    return;
+  }
+  
+  const btn = $("#download-comparison-btn");
+  const status = $("#download-status");
+  
+  // Disable button and show loading state
+  btn.disabled = true;
+  btn.textContent = "⏳ Generating download link...";
+  status.textContent = "Please wait...";
+  
+  try {
+    console.log(`📥 Requesting download URL for session: ${currentSessionId}`);
+    
+    // Get download URL from API
+    const res = await fetch(`/api/sessions/${currentSessionId}/download-url`);
+    
+    if (!res.ok) {
+      const error = await res.json();
+      throw new Error(error.detail || `HTTP ${res.status}`);
+    }
+    
+    const data = await res.json();
+    
+    if (data.download_url) {
+      console.log('✓ Download URL received');
+      status.textContent = "✓ Opening download...";
+      
+      // Open download URL in new tab
+      window.open(data.download_url, '_blank');
+      
+      showNotification('Download started!', 'success');
+      status.textContent = `✓ Downloaded: ${data.file_name} (${data.cached ? 'cached' : 'fresh'})`;
+      
+      // Re-enable button
+      btn.disabled = false;
+      btn.textContent = "📥 Download Comparison CSV";
+    } else {
+      throw new Error('No download URL in response');
+    }
+  } catch (err) {
+    console.error('❌ Download error:', err);
+    showNotification(`Download failed: ${err.message}`, 'error');
+    status.textContent = `❌ Error: ${err.message}`;
+    
+    // Re-enable button
+    btn.disabled = false;
+    btn.textContent = "📥 Download Comparison CSV";
+  }
+}
+
+// Make functions available globally for onclick handlers
 window.createSession = createSession;
+window.downloadComparison = downloadComparison;
 
 window.addEventListener("DOMContentLoaded", async () => {
   // Add CSS animations for notifications
