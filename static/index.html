@@ -424,6 +424,101 @@
       transition: width 0.3s ease-in-out;
       width: 0%;
     }
+
+    /* Workflow Logs Styles */
+    .workflow-logs {
+      background: var(--bg-secondary);
+      border: 2px solid var(--border-primary);
+      border-radius: var(--radius-xl);
+      margin-top: var(--space-6);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .logs-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-4);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      /* Dark header to match the log panel */
+      background: linear-gradient(90deg, rgba(8,10,15,0.95), rgba(20,24,30,0.95));
+    }
+
+    .logs-header h3 {
+      margin: 0;
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: #e6f0ff; /* lighter title color for contrast */
+    }
+
+    .logs-close {
+      background: transparent;
+      border: none;
+      font-size: var(--text-xl);
+      cursor: pointer;
+      color: rgba(230,240,255,0.8);
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-lg);
+      transition: all var(--transition-fast);
+    }
+
+    .logs-close:hover {
+      background: rgba(255,255,255,0.03);
+      color: #ffffff;
+    }
+
+    .logs-content {
+      padding: var(--space-4);
+      max-height: 400px;
+      overflow-y: auto;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .log-entry {
+      margin-bottom: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-lg);
+      word-break: break-word;
+    }
+
+    .log-entry.info {
+      background: rgba(59, 130, 246, 0.1);
+      color: #1e40af;
+      border-left: 3px solid #3b82f6;
+    }
+
+    .log-entry.success {
+      background: rgba(16, 185, 129, 0.1);
+      color: #065f46;
+      border-left: 3px solid #10b981;
+    }
+
+    .log-entry.warning {
+      background: rgba(251, 191, 36, 0.1);
+      color: #92400e;
+      border-left: 3px solid #fbbf24;
+    }
+
+    .log-entry.error {
+      background: rgba(239, 68, 68, 0.1);
+      color: #7f1d1d;
+      border-left: 3px solid #ef4444;
+    }
+
+    .log-timestamp {
+      color: var(--text-secondary);
+      font-size: 0.85em;
+      opacity: 0.7;
+    }
   </style>
 </head>
 <body>
@@ -442,8 +537,8 @@
         <nav class="nav">
           <a href="/ui/home.html">🏠 Home</a>
           <a href="/ui/index.html" class="active">📤 Upload</a>
-          <a href="/ui/analysis.html">📋 Analysis</a>
-          <a href="/ui/dashboard.html">📊 Dashboard</a>
+          <!-- <a href="/ui/analysis.html">📋 Analysis</a>
+          <a href="/ui/dashboard.html">📊 Dashboard</a> -->
         </nav>
       </div>
     </header>
@@ -536,6 +631,16 @@
               🚀 Run AI Workflow
             </button>
           </form>
+          
+          <!-- Workflow Logs -->
+          <div id="workflow-logs" class="workflow-logs" style="display: none;">
+            <div class="logs-header">
+              <h3>📋 Workflow Logs</h3>
+              <button type="button" class="logs-close" onclick="clearLogs()" title="Clear logs">✕</button>
+            </div>
+            <div id="logs-container" class="logs-content"></div>
+          </div>
+          
           <pre id="run-result" class="result-enhanced" style="display: none;"></pre>
           
           <!-- Success Section -->

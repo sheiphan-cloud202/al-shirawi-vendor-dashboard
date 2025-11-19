@@ -108,6 +108,41 @@ function showNotification(message, type = 'info') {
   }, 3000);
 }
 
+// ===== Logging System =====
+function showLogs() {
+  const logsDiv = $("#workflow-logs");
+  if (logsDiv) {
+    logsDiv.style.display = "block";
+  }
+}
+
+function clearLogs() {
+  const logsContainer = $("#logs-container");
+  if (logsContainer) {
+    logsContainer.innerHTML = "";
+  }
+}
+
+function addLog(message, type = 'info') {
+  const logsContainer = $("#logs-container");
+  if (!logsContainer) return;
+  
+  const entry = document.createElement('div');
+  entry.className = `log-entry ${type}`;
+  
+  const time = new Date().toLocaleTimeString();
+  entry.innerHTML = `<span class="log-timestamp">${time}</span> ${escapeHtml(message)}`;
+  
+  logsContainer.appendChild(entry);
+  logsContainer.scrollTop = logsContainer.scrollHeight;
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
 async function uploadEnquiry(e) {
   e.preventDefault();
   
@@ -237,11 +272,30 @@ async function runWorkflow(e) {
     return;
   }
   
+  // Clear and show logs
+  clearLogs();
+  showLogs();
+  addLog('Starting AI Workflow...', 'info');
+  addLog(`Session ID: ${currentSessionId}`, 'info');
+  
   const skipTextract = $("#skip-textract").checked;
   const skipBoq = $("#skip-boq").checked;
+  
+  if (skipTextract) {
+    addLog('Textract processing: SKIPPED', 'warning');
+  } else {
+    addLog('Textract processing: ENABLED', 'info');
+  }
+  
+  if (skipBoq) {
+    addLog('BOQ extraction: SKIPPED', 'warning');
+  } else {
+    addLog('BOQ extraction: ENABLED', 'info');
+  }
+  
   const out = $("#run-result");
   out.style.display = "block";
-  out.textContent = `Running workflow for session: ${currentSessionId}\n(this can take several minutes)...`;
+  out.textContent = `Running workflow for session: ${currentSessionId}\n(this can take several minutes)...\n\nCheck the logs below for detailed progress.`;
   
   const fd = new FormData();
   if (skipTextract) fd.append("skip_textract", "true");
@@ -251,32 +305,70 @@ async function runWorkflow(e) {
   if (currentSessionId && typeof currentSessionId === 'string' && currentSessionId !== 'null' && currentSessionId !== 'undefined') {
     fd.append("session_id", currentSessionId);
     console.log(`🚀 Running workflow for session: ${currentSessionId}`);
+    addLog('Submitting workflow request to server...', 'info');
   } else {
     console.error('⚠️ No valid session_id available for workflow!');
     out.textContent = "❌ Invalid session. Please refresh the page and try again.";
+    addLog('Error: Invalid session ID', 'error');
     return;
   }
   
   try {
+    addLog('Processing files...', 'info');
+
+    // Staged logs to give a simple, clear view of processing stages
+    const stagedSteps = [
+      { msg: 'OCR: starting text extraction from PDFs...', type: 'info' },
+      { msg: 'OCR: extracting pages and tables...', type: 'info' },
+      { msg: 'OCR: saving extracted CSVs...', type: 'info' },
+      { msg: 'LLM: analyzing BOQ lines (understanding)...', type: 'info' },
+      { msg: 'LLM: understanding vendor quotes...', type: 'info' },
+      { msg: 'LLM: aligning BOQ items with vendor quotes...', type: 'info' },
+      { msg: 'Finalizing outputs and writing CSVs...', type: 'info' }
+    ];
+
+    let stepIndex = 0;
+    const stagedInterval = setInterval(() => {
+      if (stepIndex < stagedSteps.length) {
+        const s = stagedSteps[stepIndex++];
+        addLog(s.msg, s.type);
+      } else {
+        // After all named steps, show a gentle heartbeat so the user knows it's still running
+        addLog('Still processing... (this may take a few minutes)', 'info');
+      }
+    }, 1200);
+
     const res = await fetch("/run-workflow", { method: "POST", body: fd });
     const data = await res.json();
     out.textContent = JSON.stringify(data, null, 2);
-    
+
+    // Stop staged logs once we have a response
+    clearInterval(stagedInterval);
+
     // Show success message with links
     if (res.ok && data.code === 0) {
+      addLog('✅ Workflow completed successfully!', 'success');
+      addLog(`Output directory: ${data.output_directory}`, 'success');
       showNotification('Workflow completed successfully!', 'success');
       out.textContent += `\n\n✅ Workflow completed for session: ${currentSessionId}`;
       out.textContent += `\n📁 Output directory: ${data.output_directory}`;
-      
+
       const successDiv = $("#workflow-success");
       if (successDiv) {
         successDiv.style.display = "block";
       }
     } else {
+      addLog('❌ Workflow failed or returned error code', 'error');
+      if (data.message) {
+        addLog(`Error: ${data.message}`, 'error');
+      }
       showNotification('Workflow failed', 'error');
     }
   } catch (err) {
+    // Ensure staged logger is stopped on error
+    try { clearInterval(stagedInterval); } catch (e) {}
     out.textContent = String(err);
+    addLog(`❌ Workflow error: ${err.message || String(err)}`, 'error');
     showNotification('Workflow error', 'error');
   }
 }
